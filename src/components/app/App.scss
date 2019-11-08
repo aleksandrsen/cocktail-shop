@@ -1,0 +1,154 @@
+@import "../../../node_modules/antd/dist/antd.css";
+
+.app {
+
+}
+
+// Default classes
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 30px;
+}
+
+// Reset
+a {
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Styles
+header {
+    background-color: rgba(0, 0, 0, 0.63);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    height: 50px;
+}
+
+.ant-page-header {
+    padding: 0 15px;
+
+    .ant-page-header-heading {
+        display: none;
+    }
+
+    .ant-page-header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .nav-wrapper ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            display: block;
+            padding: 17px 30px;
+            font-size: 18px;
+            transition: .3s;
+
+            &:hover {
+                background-color: #888888;
+            }
+        }
+    }
+
+    .right-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .shopping-cart {
+            padding: 10px;
+            margin-right: 25px;
+            cursor: pointer;
+
+            .material-icons {
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+
+        .wish-list {
+            padding: 10px;
+            cursor: pointer;
+
+            .material-icons {
+                font-size: 30px;
+                color: #fff;
+            }
+        }
+
+        .logOut,
+        .logIn {
+            padding: 17px 5px;
+            font-size: 18px;
+            transition: .3s;
+
+            &:hover {
+                background-color: #888888;
+            }
+        }
+    }
+}
+
+
+////////////////////////////////////////////////////////////
+.inner {
+    width: 100%;
+}
+
+.ant-carousel .slick-slide {
+    //height: calc(100vh - 52px);
+    height: 100vh;
+
+    div {
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
+
+
+
+
+
