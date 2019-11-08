@@ -6,14 +6,9 @@ import ShoppingCart from "../shopping-cart";
 import Logo from "../logo"
 import WishList from "../wish-list";
 // Antd
-import { PageHeader, Button } from 'antd';
+import { PageHeader } from 'antd';
 
 function Header(props) {
-    let [isLogin, changeIsLogin] = useState(false);
-
-    changeIsLogin = (oldLogin) => {
-        isLogin = !oldLogin;
-    };
 
   return (
       <header>
@@ -28,7 +23,7 @@ function Header(props) {
                   <WishList/>
                   <ShoppingCart/>
                   {/*<a className="logOut">Log Out</a>*/}
-                  <a className="logOut" onClick={changeIsLogin}>Log In</a>
+                  <a className="logOut">Log In</a>
               </div>
           </PageHeader>
       </header>

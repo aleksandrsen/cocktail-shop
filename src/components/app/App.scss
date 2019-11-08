@@ -20,6 +20,7 @@
 // Reset
 a {
     color: #fff;
+
     &:hover {
         color: #fff;
     }
@@ -39,7 +40,6 @@ li {
 // Styles
 header {
     background-color: rgba(0, 0, 0, 0.63);
-    color: #fff;
     position: absolute;
     top: 0;
     left: 0;
@@ -47,12 +47,18 @@ header {
     z-index: 100;
 }
 
-.logo {
-    height: 50px;
-}
-
 .ant-page-header {
+    $padding-top: 17px;
+    $header-font-size: 16px;
+    $header-text-color: #ffad05;
+    $header-text-hover-color: #bc7b05;
+    $header-transition: .3s;
     padding: 0 15px;
+
+    .logo {
+        display: block;
+        height: 50px;
+    }
 
     .ant-page-header-heading {
         display: none;
@@ -68,17 +74,21 @@ header {
 
     .nav-wrapper ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
 
         a {
             display: block;
-            padding: 17px 30px;
-            font-size: 18px;
-            transition: .3s;
+            padding: $padding-top 20px;
+            font-size: $header-font-size;
+            transition: $header-transition;
+            text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            color: $header-text-color;
 
             &:hover {
-                background-color: #888888;
+                border-bottom: 1px solid $header-text-color;
+                color: $header-text-hover-color;
             }
         }
     }
@@ -88,48 +98,45 @@ header {
         justify-content: center;
         align-items: center;
 
-        .shopping-cart {
-            padding: 10px;
-            margin-right: 25px;
-            cursor: pointer;
-
-            .material-icons {
-                font-size: 30px;
-                color: #fff;
-            }
-        }
-
+        .shopping-cart,
         .wish-list {
-            padding: 10px;
             cursor: pointer;
+            padding: 0 7px;
 
             .material-icons {
-                font-size: 30px;
-                color: #fff;
+                font-size: 27px;
+                color: $header-text-color;
+                transition: $header-transition;
+
+                &:hover {
+                    color: $header-text-hover-color;
+                }
             }
         }
 
         .logOut,
         .logIn {
-            padding: 17px 5px;
-            font-size: 18px;
-            transition: .3s;
+            text-transform: uppercase;
+            padding: $padding-top 15px;
+            font-size: $header-font-size;
+            transition: $header-transition;
+            border-bottom: 1px solid transparent;
+            color: $header-text-color;
 
             &:hover {
-                background-color: #888888;
+                border-bottom: 1px solid $header-text-color;
+                color: $header-text-hover-color;
             }
         }
     }
 }
 
 
-////////////////////////////////////////////////////////////
 .inner {
     width: 100%;
 }
 
 .ant-carousel .slick-slide {
-    //height: calc(100vh - 52px);
     height: 100vh;
 
     div {
