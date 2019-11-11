@@ -5,7 +5,7 @@ import {Carousel} from 'antd';
 function HomeCarousel(props) {
 
     return (
-        <Carousel autoplay>
+        <Carousel>
             <div>
                 <img src="./img/cocktail-slide-1.jpg" alt=""/>
             </div>

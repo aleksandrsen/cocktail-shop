@@ -1,0 +1,69 @@
+// Reset
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: #fff;
+
+&:hover {
+     color: #fff;
+ }
+}
+
+ol, ul, dl {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+// Default classes
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 30px;
+}
+
+.default-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.section-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    font-size: 36px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+.section-sub-title {
+    font-family: 'Roboto', serif;
+    font-size: 20px;
+    color: #ffad05;
+    margin-bottom: 15px;
+}
+
+.default-text {
+    line-height: 1.5em;
+    font-size: 16px;
+    color: #787878;
+}

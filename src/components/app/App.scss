@@ -4,40 +4,7 @@
 
 }
 
-// Default classes
-.container {
-    max-width: 1200px;
-    padding: 0 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.container-fluid {
-    width: 100%;
-    padding: 0 30px;
-}
-
-// Reset
-a {
-    color: #fff;
-
-    &:hover {
-        color: #fff;
-    }
-}
-
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-// Styles
+// Header start
 header {
     background-color: rgba(0, 0, 0, 0.63);
     position: absolute;
@@ -76,6 +43,7 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0;
 
         a {
             display: block;
@@ -130,27 +98,55 @@ header {
         }
     }
 }
+// Header end
 
-
+// Inner start
 .inner {
     width: 100%;
+
+    // Main carousel start
+    .ant-carousel .slick-slide {
+        height: 100vh;
+
+        div {
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    // Main carousel end
+
+    // Our story start
+    .our-story {
+        .grey {
+            padding: 40px 30px;
+            background-color: #f1f1f1;
+            position: relative;
+        }
+
+        .left {
+            max-width: 40%;
+        }
+
+        img {
+            position: absolute;
+            height: 110%;
+            top: -5%;
+            left: 50%;
+        }
+    }
+    // Our story end
+
 }
 
-.ant-carousel .slick-slide {
-    height: 100vh;
+// Inner end
 
-    div {
-        width: 100%;
-        height: 100%;
-    }
-
-    img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
 
 
 

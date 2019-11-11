@@ -3,6 +3,7 @@ import './App.scss';
 // Components
 import Header from "../header"
 import HomeCarousel from "../home-carousel";
+import OurStory from "../our-story";
 
 function App(props) {
 
@@ -12,6 +13,7 @@ function App(props) {
             <main>
             <div className="inner">
                 <HomeCarousel/>
+                <OurStory/>
             </div>
             </main>
         </>
