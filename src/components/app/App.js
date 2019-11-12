@@ -4,6 +4,7 @@ import './App.scss';
 import Header from "../header"
 import HomeCarousel from "../home-carousel";
 import OurStory from "../our-story";
+import HappyHour from "../happy-hour";
 
 function App(props) {
 
@@ -14,6 +15,7 @@ function App(props) {
             <div className="inner">
                 <HomeCarousel/>
                 <OurStory/>
+                <HappyHour/>
             </div>
             </main>
         </>

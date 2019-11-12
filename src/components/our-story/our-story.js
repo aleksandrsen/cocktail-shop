@@ -8,12 +8,12 @@ function OurStory(props) {
             <div className="container">
                 <div className="grey">
                     <div className="left">
-                        <div className="section-title">
+                        <h2 className="section-title">
                             Our Story
-                        </div>
-                        <div className="section-sub-title">
+                        </h2>
+                        <h3 className="section-sub-title">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi culpa debitis
-                        </div>
+                        </h3>
                         <div className="default-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium assumenda
                             commodi cum, dolores dolorum eaque enim exercitationem id impedit ipsam nesciunt qui

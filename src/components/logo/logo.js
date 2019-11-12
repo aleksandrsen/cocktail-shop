@@ -4,7 +4,7 @@ import './logo.scss';
 function Logo(props) {
 
   return (
-      <img className="logo" src="./img/logo.png" alt="Logo"/>
+      <img className="logo" src="./img/logo1.png" alt="Logo"/>
   );
 }
 
