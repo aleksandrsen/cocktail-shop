@@ -124,44 +124,46 @@ header {
 
     // Our story start
     .our-story {
+
         .grey {
-            padding: 40px 30px;
-            background-color: #f1f1f1;
+            padding: 40px 0;
             position: relative;
+            background-color: #f1f1f1;
         }
 
         .left {
-            max-width: 40%;
+            max-width: 50%;
         }
 
         img {
             position: absolute;
             height: 110%;
             top: -5%;
-            left: 50%;
+            left: 55%;
         }
     }
     // Our story end
 
     // Happy hour start
     .happy-hour {
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), center / cover no-repeat url("https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fpsh-ex-ftnikkei-3937bb4%2Fimages%2F2%2F6%2F8%2F9%2F16719862-1-eng-GB%2Fjapan%20whisky.jpg?source=nar-cms");
+
         .content-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 30px;
-            background-color: rgba(0, 0, 0, 0.79);
+
         }
 
         img.logo {
-            max-height: 90px;
+            max-height: 110px;
             width: auto;
             margin-bottom: 15px;
         }
 
         .section-title {
-            color: #bc7b05;
+            color: #ffac04;
         }
 
         .section-sub-title {
@@ -169,6 +171,148 @@ header {
         }
     }
     // Happy hour end
+
+    // Upcoming events start
+    .upcoming-events {
+        margin-bottom: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .default-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        .upcoming-event-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+
+            .event-info {
+                width: 40%;
+                padding: 20px;
+                background: center / cover no-repeat url("upcoming-event-bacgkround.jpg");
+
+            }
+
+            .upcoming-event-title {
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 22px;
+                color: #ffac04;
+                margin-bottom: 15px;
+            }
+
+            .upcoming-event-date {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 15px;
+
+                .calendar {
+                    color: #000;
+                }
+
+                .format-event-date {
+                    margin-left: 15px;
+                    font-size: 24px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .event-img {
+                width: 60%;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+
+            .default-text {
+                margin-bottom: 20px;
+            }
+
+            .event-counter {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 25px;
+
+                .count-item {
+                    width: 23%;
+                    padding: 15px 10px;
+                    font-size: 26px;
+                    background-color: #000;
+                    color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    transition: .3s;
+
+                    &:hover {
+                        color: #000;
+                        background-color: #ffac04;
+                    }
+
+                    span {
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+
+                    span:first-child {
+                        margin-bottom: 10px;
+                    }
+
+                    span:last-child {
+                        font-size: 16px;
+                    }
+                }
+                
+                .count-item.active {
+                    color: #000;
+                    background-color: #ffac04;
+                }
+            }
+
+            .upcoming-event-actions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    padding: 7px 30px;
+                    background-color: #000;
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    border: 1px solid #ffac04;
+                    transition: .3s;
+
+                    &:first-child {
+                        margin-right: 15px;
+                    }
+
+                    &:hover {
+                        background-color: #ffac04;
+                        color: #000;
+                    }
+                }
+            }
+
+            .next-events-container {
+
+            }
+
+
+        }
+    }
+    // Upcoming events end
+
+
 
 }
 

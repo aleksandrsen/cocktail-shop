@@ -4,7 +4,7 @@ import './happy-hour.scss';
 function HappyHour(props) {
 
     return (
-        <div className="default-section happy-hour">
+        <section className="default-section happy-hour">
             <div className="container">
                 <div className="content-wrapper">
                     <img className="logo" src="./img/logo1.png" alt=""/>
@@ -12,7 +12,7 @@ function HappyHour(props) {
                     <h3 className="section-sub-title">Weekdays 6.00 pm to 9.00 pm</h3>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -5,6 +5,7 @@ import Header from "../header"
 import HomeCarousel from "../home-carousel";
 import OurStory from "../our-story";
 import HappyHour from "../happy-hour";
+import UpcomingEvents from "../upcoming-events";
 
 function App(props) {
 
@@ -16,6 +17,7 @@ function App(props) {
                 <HomeCarousel/>
                 <OurStory/>
                 <HappyHour/>
+                <UpcomingEvents/>
             </div>
             </main>
         </>

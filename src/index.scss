@@ -1,33 +1,12 @@
 // Reset
+@import "./reset.css";
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
-a {
-    color: #fff;
-
-&:hover {
-     color: #fff;
- }
-}
-
-ol, ul, dl {
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
+// section instead divs
 
 // Default classes
 .container {
@@ -53,6 +32,11 @@ img {
     font-size: 36px;
     color: black;
     margin-bottom: 15px;
+    text-align: center;
+}
+
+h3 {
+    margin-bottom: 0;
 }
 
 .section-sub-title {
@@ -61,10 +45,11 @@ img {
     color: #ffad05;
     margin-bottom: 15px;
     font-weight: 400;
+    text-align: center;
 }
 
 .default-text {
     line-height: 1.5em;
     font-size: 16px;
-    color: #787878;
+    color: #606060;
 }

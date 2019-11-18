@@ -5,8 +5,9 @@ function OurStory(props) {
 
     return (
         <div className="default-section our-story">
-            <div className="container">
+            {/*<div className="container">*/}
                 <div className="grey">
+                    <div className="container">
                     <div className="left">
                         <h2 className="section-title">
                             Our Story
@@ -23,8 +24,9 @@ function OurStory(props) {
                             Placeat?
                         </div>
                     </div>
+                    </div>
                     <img src="./img/our-story.png" alt=""/>
-                </div>
+                {/*</div>*/}
             </div>
         </div>
     );
