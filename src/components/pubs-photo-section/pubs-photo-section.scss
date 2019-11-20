@@ -1,0 +1,29 @@
+.pubs-photo-section {
+
+    .photo-gallery {
+        display: flex;
+
+        img {
+            object-fit: cover;
+        }
+
+        .left {
+            display: flex;
+            flex-wrap: wrap;
+            width: 50%;
+
+            img {
+                width: 50%;
+            }
+        }
+
+        .right {
+            width: 50%;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

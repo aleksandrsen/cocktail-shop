@@ -1,0 +1,23 @@
+.main-menu {
+    .nav-wrapper ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+
+        a {
+            display: block;
+            padding: 17px 20px;
+            font-size: 16px;
+            transition: .3s;
+            text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            color: #ffad05;
+
+            &:hover {
+                border-bottom: 1px solid #ffad05;
+                color: #bc7b05;
+            }
+        }
+    }
+}

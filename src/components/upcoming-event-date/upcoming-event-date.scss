@@ -1,0 +1,16 @@
+.upcoming-event-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    .calendar {
+        color: #000;
+    }
+
+    .format-event-date {
+        margin-left: 15px;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+}

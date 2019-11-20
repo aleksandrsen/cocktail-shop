@@ -1,3 +1,1 @@
-import HomeCarousel from "./home-carousel";
-
-export default HomeCarousel;
+export {default} from "./home-carousel";

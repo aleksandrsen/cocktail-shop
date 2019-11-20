@@ -1,3 +1,1 @@
-import WishList from "./wish-list";
-
-export default WishList;
+export {default} from "./wish-list";
