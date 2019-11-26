@@ -1,5 +1,10 @@
 import React from 'react';
 import './pubs-photo-section.scss';
+import photo1 from "./img/photo-gallery-img-1.jpg"
+import photo2 from "./img/photo-gallery-img-2.jpg"
+import photo3 from "./img/photo-gallery-img-3.jpg"
+import photo4 from "./img/photo-gallery-img-4.jpg"
+import photo5 from "./img/photo-gallery-img-5.jpg"
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -19,13 +24,13 @@ function PubsPhotoSection(props) {
             </Container>
             <div className="photo-gallery">
                 <div className="left">
-                    <img src="./img/photo-gallery-img-1.jpg" alt=""/>
-                    <img src="./img/photo-gallery-img-2.jpg" alt=""/>
-                    <img src="./img/photo-gallery-img-3.jpg" alt=""/>
-                    <img src="./img/photo-gallery-img-4.jpg" alt=""/>
+                    <img src={photo1} alt=""/>
+                    <img src={photo2} alt=""/>
+                    <img src={photo3} alt=""/>
+                    <img src={photo4} alt=""/>
                 </div>
                 <div className="right">
-                    <img src="./img/photo-gallery-img-5.jpg" alt=""/>
+                    <img src={photo5} alt=""/>
                 </div>
             </div>
             <JoinMailingList/>

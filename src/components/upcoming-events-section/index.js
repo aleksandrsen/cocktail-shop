@@ -1,1 +1,1 @@
-export {default} from "./upcoming-events";
+export {default} from "./upcoming-events-section";

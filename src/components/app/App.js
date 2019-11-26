@@ -1,32 +1,34 @@
 import React from 'react';
 import './App.scss';
+import store from "../../store"
+import {Provider} from "react-redux"
 // Components
 import Header from "../header"
 import HomeCarousel from "../home-carousel";
-import OurStory from "../our-story-section";
-import HappyHour from "../happy-hour-section";
-import UpcomingEvents from "../upcoming-events-section";
+import OurStorySection from "../our-story-section";
+import HappyHourSection from "../happy-hour-section";
+import UpcomingEventsSection from "../upcoming-events-section";
 import PubsPhotoSection from "../pubs-photo-section";
 import NextEventsSection from "../next-events-section";
-import BlogNews from "../blog&news-section";
+import BlogNewsSection from "../blog&news-section";
 
 function App(props) {
 
     return (
-        <>
+        <Provider store={store}>
             <Header/>
             <main>
                 <div className="inner">
                     <HomeCarousel/>
                 </div>
-                <OurStory/>
-                <HappyHour/>
-                <UpcomingEvents/>
+                <OurStorySection/>
+                <HappyHourSection/>
+                <UpcomingEventsSection/>
                 <NextEventsSection/>
                 <PubsPhotoSection/>
-                <BlogNews/>
+                <BlogNewsSection/>
             </main>
-        </>
+        </Provider>
     );
 }
 

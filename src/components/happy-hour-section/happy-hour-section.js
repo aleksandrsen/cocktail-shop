@@ -1,12 +1,12 @@
 import React from 'react';
-import './happy-hour.scss';
+import './happy-hour-section.scss';
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import SectionSubTitle from "../common-components/section-sub-title";
 
-function HappyHour(props) {
+function HappyHourSection(props) {
 
     return (
         <Section className="happy-hour">
@@ -21,4 +21,4 @@ function HappyHour(props) {
     );
 }
 
-export default HappyHour;
+export default HappyHourSection;

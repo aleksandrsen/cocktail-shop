@@ -1,5 +1,5 @@
 import React from 'react';
-import './upcoming-events.scss';
+import './upcoming-events-section.scss';
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -7,7 +7,7 @@ import Container from "../common-components/container";
 import DefaultText from "../common-components/default-text";
 import UpcomingEventItem from "../upcoming-event-item";
 
-function UpcomingEvents(props) {
+function UpcomingEventsSection(props) {
 
     return (
         <Section className="upcoming-events">
@@ -22,4 +22,4 @@ function UpcomingEvents(props) {
     );
 }
 
-export default UpcomingEvents;
+export default UpcomingEventsSection;

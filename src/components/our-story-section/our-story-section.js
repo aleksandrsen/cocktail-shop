@@ -1,5 +1,6 @@
 import React from 'react';
-import './our-story.scss';
+import './our-story-section.scss';
+import ourStoryBg from "./img/our-story.png"
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -8,7 +9,7 @@ import DefaultText from "../common-components/default-text";
 import DefaultButton from "../common-components/default-button";
 import SectionSubTitle from "../common-components/section-sub-title";
 
-function OurStory(props) {
+function OurStorySection(props) {
 
     return (
         <Section className="our-story">
@@ -23,10 +24,10 @@ function OurStory(props) {
                         <DefaultButton isLink="true" linkPath="/our-story">Cheers</DefaultButton>
                     </div>
                 </Container>
-                <img src="./img/our-story.png" alt=""/>
+                <img src={ourStoryBg} alt=""/>
             </div>
         </Section>
     );
 }
 
-export default OurStory;
+export default OurStorySection;

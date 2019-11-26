@@ -1,1 +1,1 @@
-export {default} from "./happy-hour";
+export {default} from "./happy-hour-section";

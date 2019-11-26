@@ -1,1 +1,1 @@
-export {default} from "./our-story";
+export {default} from "./our-story-section";
