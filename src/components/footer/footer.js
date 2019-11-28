@@ -1,47 +1,49 @@
-import React, {useEffect, useState} from 'react';
-import './event-counter.scss';
+import React from 'react';
+import './footer.scss';
+import logo from './img/logo.png'
+import Container from "../common-components/container";
+import SocialNetworks from "../social-networks";
 
-function EventCounter(props) {
-    let {date} = props;
-    const [days, setDays] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
-
-    useEffect(() => {
-        let intervalId = setInterval(() => {
-            let dateDifference = new Date(date - new Date());
-            setDays(Math.floor(+dateDifference/(24 * 60 * 60 * 1000)));
-            setHours(dateDifference.getHours());
-            setMinutes(dateDifference.getMinutes());
-            setSeconds(dateDifference.getSeconds());
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        }
-    });
-
-    function formatNumber(number) {
-        return number < 10 ? `0${number}` : number;
-    }
+function Footer(props) {
 
     return (
-        <div className="event-counter">
-            <div className="count-item days active">
-                <span>{formatNumber(days)}</span><span>days</span>
-            </div>
-            <div className="count-item hours">
-                <span>{formatNumber(hours)}</span><span>hours</span>
-            </div>
-            <div className="count-item minutes">
-                <span>{formatNumber(minutes)}</span><span>minutes</span>
-            </div>
-            <div className="count-item seconds">
-                <span>{formatNumber(seconds)}</span><span>seconds</span>
-            </div>
-        </div>
+        <footer>
+            <Container>
+                <div className="footer-content">
+                    <div className="contact-us">
+                        <h4 className="footer-title">Contact us</h4>
+                        <div className="address contact-item">
+                            <span>Address: </span>
+                            New York, 345 Park AveNY 10154, USA
+                        </div>
+                        <div className="email contact-item">
+                            <span>Email: </span>
+                            pubOnHub@gmail.com
+                        </div>
+                        <div className="phone contact-item">
+                            <span>Phone: </span>
+                            +1 245 123 222
+                        </div>
+                    </div>
+                    <img src={logo} alt="logo"/>
+                    <div className="about-story">
+                        <h4 className="footer-title">About story</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aspernatur autem beatae
+                            delectus dolores dolorum error est ex inventore laudantium nam numquam optio, quod sint
+                            soluta, totam vitae voluptate voluptates.
+                        </p>
+                        <span className="hub">Hub on pubs</span>
+                    </div>
+                </div>
+                <SocialNetworks/>
+                <div className="copyright">
+                    <i className="material-icons">copyright</i>
+                    {new Date().getFullYear()} - Hub on pubs - All Rights Reserved
+                </div>
+            </Container>
+        </footer>
     );
 }
 
-export default EventCounter;
+export default Footer;

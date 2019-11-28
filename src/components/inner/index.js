@@ -1,1 +1,1 @@
-export {default} from "./home-carousel";
+export {default} from "./inner";

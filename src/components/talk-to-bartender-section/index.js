@@ -1,1 +1,1 @@
-export {default} from "./bartender-details";
+export {default} from "./talk-to-bartender-section";

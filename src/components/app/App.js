@@ -1,34 +1,38 @@
 import React from 'react';
 import './App.scss';
-import store from "../../store"
-import {Provider} from "react-redux"
+import {Route, Switch} from "react-router-dom"
 // Components
 import Header from "../header"
-import HomeCarousel from "../home-carousel";
-import OurStorySection from "../our-story-section";
-import HappyHourSection from "../happy-hour-section";
-import UpcomingEventsSection from "../upcoming-events-section";
-import PubsPhotoSection from "../pubs-photo-section";
-import NextEventsSection from "../next-events-section";
-import BlogNewsSection from "../blog&news-section";
+import Footer from "../footer";
+import BartenderDetails from "../bartender-details";
+// Pages
+import HomePage from "../pages/home-page";
+import AboutUsPage from "../pages/about-us-page";
+import ContactPage from "../pages/contact-page";
+import BartendersPage from "../pages/bartenders-page";
+import BlogPage from "../pages/blog-page";
 
 function App(props) {
 
     return (
-        <Provider store={store}>
+        <>
             <Header/>
             <main>
-                <div className="inner">
-                    <HomeCarousel/>
-                </div>
-                <OurStorySection/>
-                <HappyHourSection/>
-                <UpcomingEventsSection/>
-                <NextEventsSection/>
-                <PubsPhotoSection/>
-                <BlogNewsSection/>
+                <Switch>
+                    <Route path="/" exact component={HomePage}/>
+                    <Route path="/about" component={AboutUsPage}/>
+                    <Route path="/bartenders" exact component={BartendersPage}/>
+                    <Route path="/bartenders/:id" render={({match, location, history}) => {
+                        console.log(match, location, history);
+                        const {id} = match.params;
+                        return <BartenderDetails bartenderId={id}/>
+                    }}/>
+                    <Route path="/blog" component={BlogPage}/>
+                    <Route path="/contact" component={ContactPage}/>
+                </Switch>
             </main>
-        </Provider>
+            <Footer/>
+        </>
     );
 }
 

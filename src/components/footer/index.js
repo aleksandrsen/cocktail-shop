@@ -1,1 +1,1 @@
-export {default} from "./event-counter";
+export {default} from "./footer";

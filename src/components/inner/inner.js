@@ -1,8 +1,8 @@
 import React from 'react';
-import './home-carousel.scss';
+import './inner.scss';
 import {Carousel} from 'antd';
 
-function HomeCarousel(props) {
+function Inner(props) {
 
     return (
         <div className="inner">
@@ -33,4 +33,4 @@ function HomeCarousel(props) {
     );
 }
 
-export default HomeCarousel;
+export default Inner;

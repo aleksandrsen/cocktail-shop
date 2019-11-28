@@ -1,13 +1,43 @@
-.about-us-section {
+.pub-bartenders-section {
 
-    .about-us-section-content {
+    .ant-row {
+        margin-bottom: 40px;
+    }
+
+    .ant-col:nth-child(n + 4) {
+        margin-top: 50px;
+    }
+
+    .bartender-item {
         display: flex;
         flex-direction: column;
         align-items: center;
+        cursor: pointer;
+
+        &:hover {
+
+            img {
+                box-shadow: 0 0 17px 2px #ffac04;
+            }
+
+            .name {
+                color: #ffac04;
+            }
+        }
     }
 
+    $trans: .3s;
     img {
-        margin-bottom: 50px;
+        margin-bottom: 20px;
+        transition: $trans;
+    }
+
+    .name {
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #000;
+        font-weight: 600;
+        transition: $trans;
     }
 }
 

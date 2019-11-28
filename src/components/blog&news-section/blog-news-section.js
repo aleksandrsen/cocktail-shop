@@ -1,5 +1,6 @@
 import React from 'react';
 import './blog-news-section.scss';
+import sortedBlogPosts from "../../data/blog-posts";
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -18,8 +19,12 @@ function BlogNewsSection(props) {
                     labore magni nobis omnis rerum, soluta? Delectus id impedit velit veniam vero voluptates. Aliasamet doloribus fuga impedit modi quia
                 </DefaultText>
                 <div className="blog-news-container">
-                    <BlogNewsItem/>
-                    <BlogNewsItem imgLeft = {true}/>
+                    {
+                        sortedBlogPosts.map((post, idx) => {
+                            if (idx >= 2) return "";
+                            return <BlogNewsItem key={post.id} imgLeft = {idx%2} post={post}/>
+                        })
+                    }
                 </div>
             </Container>
         </Section>

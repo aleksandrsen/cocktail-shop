@@ -1,1 +1,1 @@
-export {default} from "./pub-bartenders-section";
+export {default} from "./bartender-item";

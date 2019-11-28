@@ -1,32 +1,37 @@
 import React from 'react';
-import './pub-partners-section.scss';
+import './pub-bartenders-section.scss';
+import pubBartenders from "../../data/pub-bartenders";
 // Components
-import partner1 from "./img/partner-1.png"
-import partner2 from "./img/partner-2.png"
+import {Row} from 'antd';
+import BartenderItem from "../bartender-item";
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import DefaultText from "../common-components/default-text";
+import SectionSubTitle from "../common-components/section-sub-title";
 
-function PubPartnersSection(props) {
+function PubBartendersSection(props) {
 
     return (
-        <Section className="pub-partners-section">
+        <Section className="pub-bartenders-section">
             <Container>
-                <SectionTitle>Pub partners</SectionTitle>
+                <SectionSubTitle>Our team</SectionSubTitle>
+                <SectionTitle>Pub bartenders</SectionTitle>
                 <DefaultText>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. At deleniti dolores eaque et expedita
                     harum hic illo iste modi necessitatibus nostrum nulla porro quae quidem repellat soluta tempora,
                     veniam veritatis!
                 </DefaultText>
-                <div className="partners">
-                    <img src={partner1} alt="pub partner img"/>
-                    <img src={partner2} alt="pub partner img"/>
-                    <img src={partner1} alt="pub partner img"/>
-                </div>
+                <Row gutter={32}>
+                    {
+                        pubBartenders.map(bartender => {
+                          return <BartenderItem key={bartender.id} bartender={bartender}/>
+                        })
+                    }
+                </Row>
             </Container>
         </Section>
     );
 }
 
-export default PubPartnersSection;
+export default PubBartendersSection;

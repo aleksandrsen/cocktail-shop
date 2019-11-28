@@ -2,7 +2,7 @@ import React from 'react';
 import './default-button.scss';
 
 function DefaultButton(props) {
-    let {isLink, size, linkPath} = props;
+    let {isLink, size, linkPath, type} = props;
 
     if (isLink) {
         return (
@@ -12,7 +12,7 @@ function DefaultButton(props) {
         )
     } else {
         return (
-            <button className={`default-button ${size}`}>
+            <button className={`default-button ${size}`} type={type}>
                 {props.children}
             </button>
         )

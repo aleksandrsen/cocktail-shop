@@ -1,5 +1,6 @@
 import React from 'react';
 import './happy-hour-section.scss';
+import logo from './img/logo.png'
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -12,7 +13,7 @@ function HappyHourSection(props) {
         <Section className="happy-hour">
             <Container>
                 <div className="content-wrapper">
-                    <img className="logo" src="./img/logo1.png" alt=""/>
+                    <img className="logo" src={logo} alt=""/>
                     <SectionTitle>Happy hour is here</SectionTitle>
                     <SectionSubTitle>Weekdays 6.00 pm to 9.00 pm</SectionSubTitle>
                 </div>

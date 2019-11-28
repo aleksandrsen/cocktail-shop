@@ -4,7 +4,7 @@ import './section.scss';
 function Section(props) {
 
     return (
-        <section className={`default-section ${props.className}`}>
+        <section className={`default-section ${props.className || ''}`}>
             {props.children}
         </section>
     );

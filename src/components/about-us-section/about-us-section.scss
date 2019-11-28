@@ -1,28 +1,8 @@
-.our-story {
-
-    .grey {
-        padding: 40px 0;
-        position: relative;
-        background-color: #f1f1f1;
-    }
-
-    .left {
-        max-width: 50%;
+.pub-partners-section {
+    .partners {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-
-        .default-text {
-            text-align: left;
-        }
-    }
-
-    img {
-        position: absolute;
-        height: 110%;
-        top: -5%;
-        left: 55%;
+        justify-content: space-around;
+        align-items: center;
     }
 }
 

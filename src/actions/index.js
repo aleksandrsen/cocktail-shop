@@ -1,4 +1,9 @@
 import {userLogin, userLogOut} from "../constants"
 
-export const userLoginAction = () => ({type: userLogin});
-export const userLogOutAction = () => ({type: userLogOut});
+const userLoginAction = () => ({type: userLogin});
+const userLogOutAction = () => ({type: userLogOut});
+
+export {
+    userLoginAction,
+    userLogOutAction
+}

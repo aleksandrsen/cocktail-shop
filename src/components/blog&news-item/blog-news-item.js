@@ -1,48 +1,57 @@
 import React from 'react';
 import './blog-news-item.scss';
-import blogPhoto from "./img/blog-photo.jpg"
+import cutTextContent from "../../functions/cut-text-content";
+import formatDate from "../../functions/format-date";
 // Components
 import DefaultText from "../common-components/default-text";
 
 function BlogNewsItem(props) {
+    const maxTitleLength = 39;
+    const maxTextLength = 127;
+
     let {imgLeft} = props;
+    let {title, text, img, date, author} = props.post;
 
-    let title = "Private parties from 20 to 50 guests";
-    let text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur dignissimos est expedita ratione repellendus";
-
-    function cutTextContent(text, maxLength) {
-        if (text.length > maxLength) {
-            return text.slice(0, maxLength - 3) + "..."
-        }
-        return text;
-    }
+    let blogNewsItemTitle = title.length > maxTitleLength ? cutTextContent(title, maxTitleLength) : title;
+    let blogNewsItemText = text.length > maxTextLength ? cutTextContent(text, maxTextLength) : text;
+    let blogDate = formatDate(date, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+    });
+    let shortMonth = formatDate(date, {
+        month: "short"
+    });
+    let dayNumber = formatDate(date, {
+        day: "numeric"
+    });
 
     return (
         <div className="blog-news-item">
             <div className="blog-news-item-info">
                 <div className="blog-news-item-date">
-                    <div className="main-date">16</div>
-                    <div className="month">oct</div>
+                    <div className="main-date">{dayNumber < 10 ? "0" + dayNumber : dayNumber}</div>
+                    <div className="month">{shortMonth}</div>
                 </div>
                 <div className="blog-news-item-details">
                     <div className="theme">
                         <i className="material-icons">person</i>
-                        <span>Ourathemes</span>
+                        <span>{author}</span>
                     </div>
                     <div className="title">
-                        {cutTextContent(title, 39)}
+                        {blogNewsItemTitle}
                     </div>
                     <DefaultText>
-                        {cutTextContent(text, 127)}
+                        {blogNewsItemText}
                     </DefaultText>
                     <div className="date">
                         <i className="material-icons">query_builder</i>
-                        <span>16 oct 2020</span>
+                        <span>{blogDate}</span>
                     </div>
                 </div>
             </div>
             <div className={`blog-news-item-photo ${imgLeft ? "img-left" : ""}`}>
-                <img src={blogPhoto} alt=""/>
+                <img src={img} alt={title}/>
             </div>
         </div>
     );
