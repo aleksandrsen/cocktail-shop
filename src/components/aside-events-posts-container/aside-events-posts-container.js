@@ -1,8 +1,8 @@
 import React from 'react';
-import './aside-event-posts-container.scss';
+import './aside-events-posts-container.scss';
 // Components
 
-function AsideEventPostContainer(props) {
+function AsideEventsPostsContainer(props) {
 
     return (
         <aside className="aside-event-posts-container">
@@ -11,4 +11,4 @@ function AsideEventPostContainer(props) {
     );
 }
 
-export default AsideEventPostContainer;
+export default AsideEventsPostsContainer;
