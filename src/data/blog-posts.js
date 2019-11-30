@@ -1,11 +1,13 @@
 import blogPostImg1 from "./img/blog-post-item-1.jpg"
 import blogPostImg2 from "./img/blog-post-item-2.jpg"
 import blogPostImg3 from "./img/blog-post-item-3.jpg"
+import smallBlogPostImg from "./img/small-blog-post-1.jpg"
 
 let blogPosts = [
     {
         title: "Private parties from 20 to 50 guests",
         img: blogPostImg1,
+        asideImg: smallBlogPostImg,
         id: "5909796d-5030-4e36-adec-68b8f9ec2d96",
         date: "2019-11-2",
         author: "Jane Smith",
@@ -27,6 +29,7 @@ let blogPosts = [
     {
         title: "Every evening beer parties from 10pm to 12px",
         img: blogPostImg2,
+        asideImg: smallBlogPostImg,
         id: "a304959a-76c0-4b34-954a-b38dbf310360",
         date: "2019-10-28",
         author: "Bruce Robertson",
@@ -52,6 +55,7 @@ let blogPosts = [
     },    {
         title: "Private parties only for major people",
         img: blogPostImg3,
+        asideImg: smallBlogPostImg,
         id: "429dea85-11dd-4054-a31e-c60c92e17255",
         date: "2019-12-1",
         author: "Amanda Brian",
@@ -83,6 +87,7 @@ let blogPosts = [
     {
         title: "Private parties from 20 to 50 guests",
         img: blogPostImg3,
+        asideImg: smallBlogPostImg,
         id: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54",
         date: "2019-9-15",
         author: "Allan Butler",
@@ -109,6 +114,7 @@ let blogPosts = [
     {
         title: "Every evening beer parties from 10pm to 12px",
         img: blogPostImg1,
+        asideImg: smallBlogPostImg,
         id: "53b642d7-5e86-4717-a466-0640a1dee076",
         date: "2019-11-17",
         author: "Alison Black",
@@ -130,6 +136,7 @@ let blogPosts = [
     {
         title: "Private parties only for major people",
         img: blogPostImg2,
+        asideImg: smallBlogPostImg,
         id: "20bed9b5-9c7b-4771-8221-75b74ed1904a",
         date: "2020-1-17",
         author: "Daisy Nail",

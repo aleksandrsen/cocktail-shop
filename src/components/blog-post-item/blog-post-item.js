@@ -23,7 +23,7 @@ function BlogPostItem(props) {
 
     return (
         <div className="blog-post-item">
-            <div className="blog-post-title">{blogPostTitle}</div>
+            <h3 className="blog-post-title">{blogPostTitle}</h3>
             <div className="blog-post-date">{blogPostDate}</div>
             <img className="blog-post-img" src={img} alt=""/>
             <DefaultText>
