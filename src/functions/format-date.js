@@ -7,8 +7,7 @@ export default function formatDate(dateString, optionsObj) {
         minute: "numeric"
     };
 
-    let arr = dateString.split('-');
-    let date = new Date(+arr[0], +arr[1] - 1, +arr[2]);
+    let date = new Date(Date.parse(dateString));
     let formatter = new Intl.DateTimeFormat("en", optionsObj || defaultOptions);
     return formatter.format(date)
 }
