@@ -24,7 +24,7 @@ function AsideEventsContainer(props) {
                         <div className="aside-even-item">
                             <div className="left">
                                 <div className="event-day">
-                                    {day}
+                                    {day < 10 ? "0" + day : day}
                                 </div>
                                 <div className="event-month-year">
                                     {eventMonthYear}
