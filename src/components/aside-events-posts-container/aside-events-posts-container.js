@@ -4,6 +4,7 @@ import './aside-events-posts-container.scss';
 import AsideSearchForm from "../aside-search-form";
 import AsidePostsContainer from "../aside-posts-container";
 import AsideEventsContainer from "../aside-events-container";
+import InstagramGallery from "../instagram-gallery";
 
 function AsideEventsPostsContainer(props) {
 
@@ -19,6 +20,10 @@ function AsideEventsPostsContainer(props) {
             <div className="aside-item">
                 <h3 className="title">Recent Posts</h3>
                 <AsidePostsContainer/>
+            </div>
+            <div className="aside-item">
+                <h3 className="title">Instagram</h3>
+                <InstagramGallery/>
             </div>
         </aside>
     );

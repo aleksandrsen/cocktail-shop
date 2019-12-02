@@ -12,6 +12,7 @@ import ContactPage from "../pages/contact-page";
 import BartendersPage from "../pages/bartenders-page";
 import BlogPage from "../pages/blog-page";
 import MusicEventPage from "../pages/music-event-page";
+import BlogDetails from "../blog-details";
 
 function App(props) {
 
@@ -29,7 +30,10 @@ function App(props) {
                         return <BartenderDetails bartenderId={id}/>
                     }}/>
                     <Route path="/music-event" component={MusicEventPage}/>
-                    <Route path="/blog" component={BlogPage}/>
+                    <Route path="/blog" exact component={BlogPage}/>
+                    <Route path="/blog/:id" render={({match, location, history}) => {
+                        return <BlogDetails/>
+                    }}/>
                     <Route path="/contact" component={ContactPage}/>
                 </Switch>
             </main>

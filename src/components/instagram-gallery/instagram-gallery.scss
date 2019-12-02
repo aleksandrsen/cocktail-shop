@@ -1,0 +1,13 @@
+.instagram-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    img {
+        width: 32%;
+
+        &:nth-child(n + 4) {
+            margin-top: 2%;
+        }
+    }
+}

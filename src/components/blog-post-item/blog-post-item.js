@@ -3,6 +3,7 @@ import './blog-post-item.scss';
 import commentsIcon from "../../data/img/comments.svg"
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
+import {Link} from "react-router-dom";
 // Components
 import DefaultText from "../common-components/default-text";
 import SocialNetworks from "../social-networks";
@@ -30,7 +31,10 @@ function BlogPostItem(props) {
                 {blogPostText}
             </DefaultText>
             <div className="blog-post-controls">
-                <a className="read-more" href="#">Read more</a>
+                <Link to={`/blog/details`}>
+                {/*<a className="read-more" href="/blog/blogItem">Read more</a>*/}
+                Read more
+                </Link>
                 <span className="comments">
                     <img src={commentsIcon} alt=""/>
                     <span className="reviews-count">{reviews.length}</span>
