@@ -5,16 +5,15 @@ import {Row, Col, Form, Input} from 'antd';
 import DefaultButton from "../common-components/default-button";
 
 function ContactForm(props) {
-    let {btnText} = props;
+    let {btnText, btnPos} = props;
     let [fullName, setName] = useState('');
     let [email, setEmail] = useState('');
     let [subject, setSubject] = useState('');
     let [message, setMessage] = useState('');
-
     const {TextArea} = Input;
 
     return (
-        <Form onSubmit={handleSubmit} className="contact-form">
+        <Form onSubmit={handleSubmit} className={`contact-form ${btnPos}`}>
             <Row type="flex" justify="space-between" align="middle">
                 <Col span={7}>
                     <Input

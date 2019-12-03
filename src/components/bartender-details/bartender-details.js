@@ -16,7 +16,7 @@ function BartenderDetails(props) {
     let bartender = pubBartenders.find(({name, surname}) => {
         return (name + '-' + surname).toLowerCase() === bartenderId;
     });
-    let {name, surname, img, email, id} = bartender;
+    let {name, surname, img} = bartender;
 
     return (
         <>

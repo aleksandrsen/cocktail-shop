@@ -6,6 +6,7 @@ import DefaultText from "../common-components/default-text";
 
 function MusicEventItem(props) {
     let {title, text, dateStart, middleImg} = props.eventItem;
+    let {showEventDetails} = props;
     let date = formatDate(dateStart, {year: "numeric", month: "long", day: "numeric"});
 
     return (
@@ -16,7 +17,12 @@ function MusicEventItem(props) {
                 </Col>
                 <Col span={13}>
                     <h3 className="event-item-title">
-                        <a href="#">{title}</a>
+                        <a href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            showEventDetails();
+                        }}
+                        >{title}</a>
                     </h3>
                     <div className="event-item-date">{date}</div>
                     <DefaultText>{text}</DefaultText>

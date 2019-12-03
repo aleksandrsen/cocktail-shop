@@ -1,6 +1,14 @@
 .contact-form {
     text-align: center;
 
+    &.left {
+        text-align: left;
+    }
+
+    &.right {
+        text-align: right;
+    }
+
     .ant-row-flex,
     .ant-row {
         margin-bottom: 30px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './pub-bartenders-section.scss';
 import pubBartenders from "../../data/pub-bartenders";
+import {withRouter} from "react-router-dom";
 // Components
 import {Row} from 'antd';
 import BartenderItem from "../bartender-item";
@@ -11,6 +12,7 @@ import DefaultText from "../common-components/default-text";
 import SectionSubTitle from "../common-components/section-sub-title";
 
 function PubBartendersSection(props) {
+    let {history} = props;
 
     return (
         <Section className="pub-bartenders-section">
@@ -25,7 +27,15 @@ function PubBartendersSection(props) {
                 <Row gutter={32}>
                     {
                         pubBartenders.map(bartender => {
-                          return <BartenderItem key={bartender.id} bartender={bartender}/>
+                          return <BartenderItem
+                              key={bartender.id}
+                              bartender={bartender}
+                              bartenderDetails = {() => {
+                                  let {name, surname} = bartender;
+                                  let bartenderRoute = (name + "-" + surname).toLowerCase();
+                                  history.push(bartenderRoute)}
+                              }
+                          />
                         })
                     }
                 </Row>
@@ -34,4 +44,4 @@ function PubBartendersSection(props) {
     );
 }
 
-export default PubBartendersSection;
+export default withRouter(PubBartendersSection);

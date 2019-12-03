@@ -17,19 +17,19 @@ function MainMenu(props) {
         },
         {
             text: "Cocktails",
-            to: "/cocktails"
+            to: "/cocktails/"
         },
         {
             text: "Music&Event",
-            to: "/music-event"
+            to: "/music-events/"
         },
         {
             text: "Bartender's",
-            to: "/bartenders"
+            to: "/bartenders/"
         },
         {
             text: "Blog",
-            to: "/blog"
+            to: "/blog/"
         },
         {
             text: "Contact",
