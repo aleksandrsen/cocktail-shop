@@ -22,7 +22,7 @@ function App(props) {
             <Header/>
             <main>
                 <Switch>
-                    <Route path="/" exact component={HomePage}/>
+                    <Route path="/home" exact component={HomePage}/>
                     <Route path="/about" component={AboutUsPage}/>
 
                     <Route path="/bartenders/" exact component={BartendersPage}/>

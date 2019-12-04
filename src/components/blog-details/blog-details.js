@@ -7,9 +7,9 @@ import formatDate from "../../functions/format-date";
 
 // Components
 import DefaultText from "../common-components/default-text";
-import ContactForm from "../contact-form";
 import SocialNetworks from "../social-networks";
 import ReviewsList from "../reviews-list";
+import LeaveComments from "../leaave-comments";
 
 function BlogDetails(props) {
     let {blogPostId} = props;
@@ -38,9 +38,8 @@ function BlogDetails(props) {
                 <span className="share-title">Share:</span>
                 <SocialNetworks/>
             </div>
+            <LeaveComments/>
             <ReviewsList postId={blogPostId}/>
-            <h3 className="leave-comments">Leave your comments</h3>
-            <ContactForm btnPos="right" btnText="Submit comment"/>
         </div>
     );
 }

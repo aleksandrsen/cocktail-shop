@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./main-menu.scss"
 import MainMenuItem from "../main-menu-item";
 
 function MainMenu(props) {
 
-    let [activeLinkIdx, setActiveLinkIdx] = useState(0);
-
     const navLinks = [
         {
             text: "Home",
-            to: "/"
+            to: "/home"
         },
         {
             text: "About us",
@@ -45,11 +43,8 @@ function MainMenu(props) {
                         navLinks.map((navLink, idx) => {
                             let {text, to} = navLink;
                             return <MainMenuItem key={text}
-                                                 isActive={idx === activeLinkIdx}
-                                                 idx={idx}
                                                  to={to}
-                                                 text={text}
-                                                 setActiveLinkIdx={setActiveLinkIdx}/>
+                                                 text={text}/>
                         })
                     }
                 </ul>
