@@ -1,8 +1,8 @@
 import React from 'react';
 import './review-list-item.scss';
 import formatDate from "../../functions/format-date";
-import like from "../../data/img/like.svg";
-import dislike from "../../data/img/dislike.svg";
+import like from "../../img/icons/like.svg";
+import dislike from "../../img/icons/dislike.svg";
 
 // Components
 function ReviewListItem(props) {

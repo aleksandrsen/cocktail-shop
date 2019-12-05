@@ -1,8 +1,8 @@
 import React from 'react';
 import './get-in-touch-section.scss';
-import emailIcon from "../../data/img/email-icon.svg";
-import phoneIcon from "../../data/img/phone-icon.svg";
-import mapIcon from "../../data/img/map-icon.svg";
+import emailIcon from "../../img/icons/email-icon.svg";
+import phoneIcon from "../../img/icons/phone-icon.svg";
+import mapIcon from "../../img/icons/map-icon.svg";
 // Components
 import {Row, Col} from 'antd';
 import Section from "../common-components/section";
@@ -18,7 +18,7 @@ function GetInTouchSection(props) {
                 <Row type="flex" justify="space-between" align="middle">
                     <Col span={8}>
                         <div className="contact-item">
-                            <img src={emailIcon} alt="send-icon"/>
+                            <img className="contact-item-icon" src={emailIcon} alt="send-icon"/>
                             <div className="contact">
                                 <span>Email: </span>pubOnHub@gmail.com
                             </div>
@@ -26,7 +26,7 @@ function GetInTouchSection(props) {
                     </Col>
                     <Col span={8}>
                         <div className="contact-item">
-                            <img src={phoneIcon} alt="phone-icon"/>
+                            <img className="contact-item-icon" src={phoneIcon} alt="phone-icon"/>
                             <div className="contact">
                                 <span>Phone: </span>+1 245 123 222
                             </div>
@@ -34,7 +34,7 @@ function GetInTouchSection(props) {
                     </Col>
                     <Col span={8}>
                         <div className="contact-item">
-                            <img src={mapIcon} alt="map-icon"/>
+                            <img className="contact-item-icon" src={mapIcon} alt="map-icon"/>
                             <div className="contact">
                                 <span>Address: </span>New York, 345 Park AveNY 10154, USA
                             </div>
@@ -47,4 +47,3 @@ function GetInTouchSection(props) {
 }
 
 export default GetInTouchSection;
-

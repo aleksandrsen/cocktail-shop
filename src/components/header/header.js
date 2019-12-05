@@ -1,9 +1,9 @@
 import React from 'react';
 import './header.scss';
+import logo from "../../img/logo.png"
 // Components
 import MainMenu from "../main-menu";
 import ShoppingCart from "../shopping-cart";
-import Logo from "../logo"
 import WishList from "../wish-list"
 import LogOutLogInBtn from "../logOut-logIn-btn";
 // Antd
@@ -14,7 +14,7 @@ function Header(props) {
     return (
         <header>
             <PageHeader title="Title">
-                <Logo/>
+                <img className="logo" src={logo} alt=""/>
                 <MainMenu/>
                 <div className="right-block">
                     <WishList/>

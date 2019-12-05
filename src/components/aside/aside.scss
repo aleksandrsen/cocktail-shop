@@ -1,0 +1,13 @@
+.aside {
+
+    .aside-item + .aside-item {
+        margin-top: 40px;
+    }
+
+    .title {
+        text-transform: uppercase;
+        font-size: 30px;
+        color: #000;
+        margin-bottom: 20px;
+    }
+}

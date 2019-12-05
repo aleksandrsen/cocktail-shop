@@ -6,8 +6,9 @@ header {
     width: 100%;
     z-index: 100;
 
-    .logo:hover {
-        cursor: pointer;
+    .logo {
+        max-width: 55px;
+        height: auto;
     }
 
     .ant-page-header {

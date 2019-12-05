@@ -14,6 +14,7 @@ import BlogPage from "../pages/blog-page";
 import MusicEventPage from "../pages/music-event-page";
 import EventDetails from "../event-details";
 import BlogDetailsPage from "../pages/blog-details-page";
+import CocktailsPage from "../pages/cocktails-page";
 
 function App(props) {
 
@@ -24,6 +25,7 @@ function App(props) {
                 <Switch>
                     <Route path="/home" exact component={HomePage}/>
                     <Route path="/about" component={AboutUsPage}/>
+                    <Route path="/cocktails/" component={CocktailsPage}/>
 
                     <Route path="/bartenders/" exact component={BartendersPage}/>
                     <Route path="/bartenders/:id" render={({match}) => {

@@ -5,12 +5,12 @@ import {Col} from 'antd';
 
 function BartenderItem(props) {
     let {bartenderDetails} = props;
-    let {name, surname, img, id} = props.bartender;
+    let {name, surname, img} = props.bartender;
 
     return (
-        <Col key={id} span={8}>
+        <Col span={8}>
             <div className="bartender-item" onClick={() => bartenderDetails()}>
-                <img src={img} alt=""/>
+                <img className="bartender-item-img" src={img} alt=""/>
                 <span className="name">{name} {surname}</span>
             </div>
         </Col>

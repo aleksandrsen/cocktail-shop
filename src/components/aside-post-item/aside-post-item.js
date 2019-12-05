@@ -1,11 +1,13 @@
 import React from 'react';
 import './aside-post-item.scss';
-import asideCalendarIcon from "../../data/img/aside-calendar-icon.svg";
+import asideCalendarIcon from "../../img/icons/aside-calendar-icon.svg";
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
+import {withRouter} from "react-router-dom";
 
 function AsidePostItem(props) {
-    let {asideImg, title, date} = props.postItem;
+    let {asideImg, title, date, id} = props.postItem;
+    let {history} = props;
     const maxTitleLength = 45;
     let recentPostTitle = cutTextContent(title, maxTitleLength);
     let recentPostDate = formatDate(date, {
@@ -15,7 +17,7 @@ function AsidePostItem(props) {
     });
 
     return (
-        <div className="aside-post-item">
+        <div className="aside-post-item" onClick={() => history.push(`/blog/${id}`)}>
             <img src={asideImg} className="post-img" alt="post-img"/>
             <div className="post-info">
                 <div className="post-title">
@@ -30,4 +32,4 @@ function AsidePostItem(props) {
     )
 }
 
-export default AsidePostItem;
+export default withRouter(AsidePostItem);

@@ -1,12 +1,12 @@
 import React from 'react';
 import './about-us-section.scss';
+import {Link} from "react-router-dom";
 // Components
-import newBottle from "./img/new-bottle.jpg"
+import newBottle from "../../img/new-bottle.jpg"
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import DefaultText from "../common-components/default-text";
-import DefaultButton from "../common-components/default-button";
 import SectionSubTitle from "../common-components/section-sub-title";
 
 function AboutUsSection(props) {
@@ -36,7 +36,7 @@ function AboutUsSection(props) {
                         numquam veniam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem doloremque
                         eligendi ipsum iste laudantium magni maiores perspiciatis placeat sint.
                     </DefaultText>
-                    <DefaultButton>Our menu</DefaultButton>
+                    <Link to={"/cocktails/"} className="default-button">Our menu</Link>
                 </div>
             </Container>
         </Section>

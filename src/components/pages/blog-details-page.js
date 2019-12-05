@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "../common-components/section";
 import Container from "../common-components/container";
-import AsideEventPostsContainer from "../aside-events-posts-container";
+import AsideEventPostsContainer from "../aside";
 import {Row, Col} from "antd";
 import BlogDetails from "../blog-details";
 

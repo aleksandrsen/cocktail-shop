@@ -1,8 +1,8 @@
-import blogPostImg1 from "./img/blog-post-item-1.jpg"
-import blogPostImg2 from "./img/blog-post-item-2.jpg"
-import blogPostImg3 from "./img/blog-post-item-3.jpg"
-import smallBlogPostImg from "./img/small-blog-post-1.jpg"
-import bigBlogPostImg from "./img/big-blog-post-1.jpg"
+import blogPostImg1 from "../img/blog-posts/blog-post-item-1.jpg"
+import blogPostImg2 from "../img/blog-posts/blog-post-item-2.jpg"
+import blogPostImg3 from "../img/blog-posts/blog-post-item-3.jpg"
+import smallBlogPostImg from "../img/blog-posts/small-blog-post-1.jpg"
+import bigBlogPostImg from "../img/blog-posts/big-blog-post-1.jpg"
 
 let blogPosts = [
     {

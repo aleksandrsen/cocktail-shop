@@ -7,10 +7,12 @@ import DefaultButton from "../common-components/default-button";
 
 function ReviewsList(props) {
     let {postId} = props;
-    let reviews = sortedBlogPosts.find(({id}) => postId).reviews;
+    const shortReviewsListLength = 3;
+    let reviews = sortedBlogPosts.find(({id}) => id === postId).reviews;
+
     const [isShort, setShort] = useState(true);
 
-    const shortReviewsList = reviews.slice(0, 3).map(review => {
+    const shortReviewsList = reviews.slice(0, shortReviewsListLength).map(review => {
         return <ReviewListItem key={review.id} reviews={review}/>
     });
 
@@ -23,7 +25,7 @@ function ReviewsList(props) {
     return (
         <div className="reviews-list">
             {isShort ? shortReviewsList : allReviewsList}
-            {showAllCommentsBtn}
+            {reviews.length < shortReviewsListLength + 1 ? '' : showAllCommentsBtn}
         </div>
     );
 }

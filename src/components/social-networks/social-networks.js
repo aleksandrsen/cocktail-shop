@@ -1,10 +1,10 @@
 import React from 'react';
 import './social-networks.scss';
-import facebook from './img/facebook.svg'
-import twitter from './img/twitter.svg'
-import pinterest from './img/pinterest.svg'
-import youtube from './img/youtube.svg'
-import instagram from './img/instagram.svg'
+import facebook from '../../img/icons/facebook.svg'
+import twitter from '../../img/icons/twitter.svg'
+import pinterest from '../../img/icons/pinterest.svg'
+import youtube from '../../img/icons/youtube.svg'
+import instagram from '../../img/icons/instagram.svg'
 
 function SocialNetworks(props) {
 

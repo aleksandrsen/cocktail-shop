@@ -1,8 +1,9 @@
 import React from "react";
+// Components
 import Section from "../common-components/section";
 import Container from "../common-components/container";
-import BlogPostsContainer from "../blog-posts-container";
-import AsideEventPostsContainer from "../aside-events-posts-container";
+import BlogPostsList from "../blog-posts-list";
+import Aside from "../aside";
 import {Row, Col} from "antd";
 
 function BlogPage(props) {
@@ -12,10 +13,10 @@ function BlogPage(props) {
             <Container>
                 <Row type="flex" justify="space-between">
                     <Col span={17}>
-                        <BlogPostsContainer/>
+                        <BlogPostsList/>
                     </Col>
                     <Col span={6}>
-                        <AsideEventPostsContainer/>
+                        <Aside/>
                     </Col>
                 </Row>
             </Container>

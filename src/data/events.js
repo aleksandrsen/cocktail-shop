@@ -1,16 +1,16 @@
-import eventImg1 from "./img/event-item-1.jpg"
-import eventImg2 from "./img/event-item-2.jpg"
-import eventImg3 from "./img/event-item-3.jpg"
-import eventImg4 from "./img/event-item-4.jpg"
-import eventImg5 from "./img/event-item-5.jpg"
+import eventImg1 from "../img/events/event-item-1.jpg"
+import eventImg2 from "../img/events/event-item-2.jpg"
+import eventImg3 from "../img/events/event-item-3.jpg"
+import eventImg4 from "../img/events/event-item-4.jpg"
+import eventImg5 from "../img/events/event-item-5.jpg"
 
-import middleEventImg1 from "./img/middle-event-item-1.jpg"
-import middleEventImg2 from "./img/middle-event-item-2.jpg"
-import middleEventImg3 from "./img/middle-event-item-3.jpg"
-import middleEventImg4 from "./img/middle-event-item-4.jpg"
-import middleEventImg5 from "./img/middle-event-item-5.jpg"
+import middleEventImg1 from "../img/events/middle-event-item-1.jpg"
+import middleEventImg2 from "../img/events/middle-event-item-2.jpg"
+import middleEventImg3 from "../img/events/middle-event-item-3.jpg"
+import middleEventImg4 from "../img/events/middle-event-item-4.jpg"
+import middleEventImg5 from "../img/events/middle-event-item-5.jpg"
 
-import bigEventImg from "./img/big-event-item-1.jpg"
+import bigEventImg from "../img/blog-posts/big-event-item-1.jpg"
 
 let events = [
     {

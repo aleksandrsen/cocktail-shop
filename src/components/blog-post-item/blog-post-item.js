@@ -1,6 +1,6 @@
 import React from 'react';
 import './blog-post-item.scss';
-import commentsIcon from "../../data/img/comments.svg"
+import commentsIcon from "../../img/icons/comments.svg"
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
 // Components

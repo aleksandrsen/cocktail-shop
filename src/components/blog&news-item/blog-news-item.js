@@ -2,6 +2,7 @@ import React from 'react';
 import './blog-news-item.scss';
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
+import {Link} from "react-router-dom";
 // Components
 import DefaultText from "../common-components/default-text";
 
@@ -10,7 +11,7 @@ function BlogNewsItem(props) {
     const maxTextLength = 127;
 
     let {imgLeft} = props;
-    let {title, text, img, date, author} = props.post;
+    let {title, text, img, date, author, id} = props.post;
 
     let blogNewsItemTitle = title.length > maxTitleLength ? cutTextContent(title, maxTitleLength) : title;
     let blogNewsItemText = text.length > maxTextLength ? cutTextContent(text, maxTextLength) : text;
@@ -38,9 +39,9 @@ function BlogNewsItem(props) {
                         <i className="material-icons">person</i>
                         <span>{author}</span>
                     </div>
-                    <div className="title">
+                    <Link to={`/blog/${id}`} className="title">
                         {blogNewsItemTitle}
-                    </div>
+                    </Link>
                     <DefaultText>
                         {blogNewsItemText}
                     </DefaultText>

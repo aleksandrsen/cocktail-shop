@@ -2,9 +2,11 @@ import React from 'react';
 import './aside-event-item.scss';
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
+import {withRouter} from "react-router-dom";
 
 function AsideEventItem(props) {
-    let {title, dateStart, dateEnd} = props.eventItem;
+    let {title, dateStart, dateEnd, id} = props.eventItem;
+    let {history} = props;
     const maxTitleLength = 54;
     let eventTitle = cutTextContent(title, maxTitleLength);
     let day = formatDate(dateStart, {day: "numeric"});
@@ -13,7 +15,7 @@ function AsideEventItem(props) {
     let timeEnd = formatDate(dateEnd, {hour: "2-digit", minute: "2-digit"});
     return (
 
-        <div className="aside-even-item">
+        <div className="aside-even-item" onClick={() => history.push(`/music-events/${id}`)}>
             <div className="left">
                 <div className="event-day">
                     {day < 10 ? "0" + day : day}
@@ -37,4 +39,4 @@ function AsideEventItem(props) {
     );
 }
 
-export default AsideEventItem;
+export default withRouter(AsideEventItem);

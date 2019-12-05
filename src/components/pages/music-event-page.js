@@ -1,8 +1,8 @@
 import React from "react";
 import Section from "../common-components/section";
 import Container from "../common-components/container";
-import AsideEventPostsContainer from "../aside-events-posts-container";
-import MusicEventsContainer from "../music-events-container";
+import AsideEventPostsContainer from "../aside";
+import MusicEventsContainer from "../music-events-list";
 import {Row, Col} from "antd";
 
 function MusicEventPage(props) {

@@ -1,9 +1,9 @@
-import bartender0 from "./img/bartender-0.jpg"
-import bartender1 from "./img/bartender-1.jpg"
-import bartender2 from "./img/bartender-2.jpg"
-import bartender3 from "./img/bartender-3.jpg"
-import bartender4 from "./img/bartender-4.jpg"
-import bartender5 from "./img/bartender-5.jpg"
+import bartender0 from "../img/bartenders/bartender-0.jpg"
+import bartender1 from "../img/bartenders/bartender-1.jpg"
+import bartender2 from "../img/bartenders/bartender-2.jpg"
+import bartender3 from "../img/bartenders/bartender-3.jpg"
+import bartender4 from "../img/bartenders/bartender-4.jpg"
+import bartender5 from "../img/bartenders/bartender-5.jpg"
 
 let pubBartenders = [
     {

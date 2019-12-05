@@ -1,6 +1,6 @@
 import React from 'react';
 import './footer.scss';
-import logo from './img/logo.png'
+import logo from '../../img/logo.png'
 import Container from "../common-components/container";
 import SocialNetworks from "../social-networks";
 

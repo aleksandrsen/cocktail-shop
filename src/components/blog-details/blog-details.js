@@ -1,15 +1,14 @@
 import React from 'react';
 import './blog-details.scss';
 import sortedBlogPosts from "../../data/blog-posts";
-import clockIcon from "../../data/img/clock-regular.svg";
-import userIcon from "../../data/img/user-icon.svg";
+import clockIcon from "../../img/icons/clock-regular.svg";
+import userIcon from "../../img/icons/user-icon.svg";
 import formatDate from "../../functions/format-date";
 
 // Components
 import DefaultText from "../common-components/default-text";
-import SocialNetworks from "../social-networks";
 import ReviewsList from "../reviews-list";
-import LeaveComments from "../leaave-comments";
+import LeaveReviews from "../leaave-reviews";
 import Share from "../share/share";
 
 function BlogDetails(props) {
@@ -36,7 +35,7 @@ function BlogDetails(props) {
                 {text}
             </DefaultText>
             <Share/>
-            <LeaveComments/>
+            <LeaveReviews/>
             <ReviewsList postId={blogPostId}/>
         </div>
     );

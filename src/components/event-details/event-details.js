@@ -1,8 +1,8 @@
 import React from 'react';
 import './event-details.scss';
 import sortedEvents from "../../data/events";
-import clockIcon from "../../data/img/clock-regular.svg";
-import mapIcon from "../../data/img/map-icon.svg";
+import clockIcon from "../../img/icons/clock-regular.svg";
+import mapIcon from "../../img/icons/map-icon.svg";
 // Components
 import DefaultText from "../common-components/default-text";
 import Share from "../share/share";

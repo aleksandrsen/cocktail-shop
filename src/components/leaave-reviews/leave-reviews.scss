@@ -1,0 +1,32 @@
+.leave-reviews {
+    border: 1px solid #ffac04;
+    border-radius: 5px;
+    background-color: #8080800d;
+
+    .leave-comments-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 15px;
+
+        .default-button {
+            display: block;
+            min-width: 180px;
+        }
+    }
+
+    .leave-comments-title {
+        font-size: 28px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+
+    .form-wrapper {
+        padding: 50px 15px 15px;
+        border-top: 1px solid #ffac04;
+    }
+
+    .form-wrapper.hide {
+        display: none;
+    }
+}

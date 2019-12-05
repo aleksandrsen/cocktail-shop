@@ -1,8 +1,8 @@
 import React from 'react';
 import './pub-partners-section.scss';
 // Components
-import partner1 from "./img/partner-1.png"
-import partner2 from "./img/partner-2.png"
+import partner1 from "../../img/pub-partners/partner-1.png"
+import partner2 from "../../img/pub-partners/partner-2.png"
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";

@@ -27,15 +27,16 @@ function PubBartendersSection(props) {
                 <Row gutter={32}>
                     {
                         pubBartenders.map(bartender => {
-                          return <BartenderItem
-                              key={bartender.id}
-                              bartender={bartender}
-                              bartenderDetails = {() => {
-                                  let {name, surname} = bartender;
-                                  let bartenderRoute = (name + "-" + surname).toLowerCase();
-                                  history.push(bartenderRoute)}
-                              }
-                          />
+                            return <BartenderItem
+                                key={bartender.id}
+                                bartender={bartender}
+                                bartenderDetails={() => {
+                                        let {name, surname} = bartender;
+                                        let bartenderRoute = (name + "-" + surname).toLowerCase();
+                                        history.push(bartenderRoute)
+                                    }
+                                }
+                            />
                         })
                     }
                 </Row>
