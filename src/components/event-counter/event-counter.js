@@ -11,7 +11,7 @@ function EventCounter(props) {
     useEffect(() => {
         let intervalId = setInterval(() => {
             let dateDifference = new Date(date - new Date());
-            setDays(Math.floor(+dateDifference/(24 * 60 * 60 * 1000)));
+            setDays(Math.floor(+dateDifference / (24 * 60 * 60 * 1000)));
             setHours(dateDifference.getHours());
             setMinutes(dateDifference.getMinutes());
             setSeconds(dateDifference.getSeconds());

@@ -3,18 +3,24 @@ import './next-events-section.scss';
 // Components
 import Container from "../common-components/container";
 import SectionTitle from "../common-components/section-title";
-import NextEventsItem from "../next-events-item";
+import NextEventItem from "../next-event-item";
 import SmallSection from "../common-components/small-section";
+import sortedEvents from "../../data/events";
 
 function NextEventsSection(props) {
+
+    let events = sortedEvents.slice(0, 2);
 
     return (
         <SmallSection className="next-events-section">
             <Container>
                 <SectionTitle>Don't miss our next events</SectionTitle>
                 <div className="next-events-container">
-                    <NextEventsItem/>
-                    <NextEventsItem/>
+                    {
+                        events.map(({id, dateStart, title}) => {
+                            return <NextEventItem key={id} date={dateStart} id={id} title={title}/>
+                        })
+                    }
                 </div>
             </Container>
         </SmallSection>

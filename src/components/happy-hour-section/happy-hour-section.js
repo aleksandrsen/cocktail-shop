@@ -1,6 +1,6 @@
 import React from 'react';
 import './happy-hour-section.scss';
-import logo from './img/logo.png'
+import logo from "../../img/logo.png";
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";

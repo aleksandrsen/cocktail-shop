@@ -10,11 +10,14 @@ import middleEventImg3 from "./img/middle-event-item-3.jpg"
 import middleEventImg4 from "./img/middle-event-item-4.jpg"
 import middleEventImg5 from "./img/middle-event-item-5.jpg"
 
+import bigEventImg from "./img/big-event-item-1.jpg"
+
 let events = [
     {
         title: "Private parties from 20 to 50 guests",
         img: eventImg1,
         middleImg: middleEventImg1,
+        bigImg: bigEventImg,
         id: "5909796d-5030-4e36-adec-68b8f9es2d96",
         dateStart: "2019-12-30T13:00",
         dateEnd: "2019-12-30T19:00",
@@ -36,6 +39,7 @@ let events = [
         title: "Private parties from 20 to 50 guests",
         img: eventImg2,
         middleImg: middleEventImg2,
+        bigImg: bigEventImg,
         id: "5909796d-5030-4e36-adec-68b8f9eaac2d96",
         dateStart: "2019-12-20T19:00",
         dateEnd: "2019-12-20T22:00",
@@ -57,6 +61,7 @@ let events = [
         title: "Every saturday night party in pub",
         img: eventImg3,
         middleImg: middleEventImg3,
+        bigImg: bigEventImg,
         id: "5909716d-5030-4e36-adec-68b8f9ec2d96",
         dateStart: "2020-02-30T17:00",
         dateEnd: "2020-02-30T22:00",
@@ -78,6 +83,7 @@ let events = [
         title: "Private parties from 20 to 50 guests",
         img: eventImg4,
         middleImg: middleEventImg4,
+        bigImg: bigEventImg,
         id: "5909796d-5030-4e76-adec-68b8f9ec2d96",
         dateStart: "2020-01-25T20:00",
         dateEnd: "2020-01-26T02:00",
@@ -99,6 +105,7 @@ let events = [
         title: "Private parties from 20 to 50 guests",
         img: eventImg5,
         middleImg: middleEventImg5,
+        bigImg: bigEventImg,
         id: "5909796d-5030-4e36-adec-65b8f9ec2d96",
         dateStart: "2020-02-05T09:00",
         dateEnd: "2020-02-05T13:00",

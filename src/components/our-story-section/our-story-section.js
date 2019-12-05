@@ -1,6 +1,6 @@
 import React from 'react';
 import './our-story-section.scss';
-import ourStoryBg from "./img/our-story.png"
+import ourStoryImg from "../../img/our-story.png";
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
@@ -8,6 +8,7 @@ import Container from "../common-components/container";
 import DefaultText from "../common-components/default-text";
 import DefaultButton from "../common-components/default-button";
 import SectionSubTitle from "../common-components/section-sub-title";
+import {Link} from "react-router-dom";
 
 function OurStorySection(props) {
 
@@ -19,12 +20,17 @@ function OurStorySection(props) {
                         <SectionTitle>Our Story</SectionTitle>
                         <SectionSubTitle>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </SectionSubTitle>
                         <DefaultText>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae dolorum eos illo quia quibusdam reprehenderit similique voluptate! Atque aut modi odio omnis? Animi assumenda doloremque obcaecati sapiente totam, ut.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae dolorum eos illo quia
+                            quibusdam reprehenderit similique voluptate! Atque aut modi odio omnis? Animi assumenda
+                            doloremque obcaecati sapiente totam, ut.
                         </DefaultText>
-                        <DefaultButton isLink="true" linkPath="/our-story">Cheers</DefaultButton>
+                        <Link to={"/about"} className="default-button">
+                            Read more
+                        </Link>
+                        {/*<DefaultButton isLink="true" linkPath="/our-story">Cheers</DefaultButton>*/}
                     </div>
                 </Container>
-                <img src={ourStoryBg} alt=""/>
+                <img src={ourStoryImg} alt="out story img"/>
             </div>
         </Section>
     );

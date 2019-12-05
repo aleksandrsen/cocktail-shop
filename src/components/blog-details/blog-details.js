@@ -10,6 +10,7 @@ import DefaultText from "../common-components/default-text";
 import SocialNetworks from "../social-networks";
 import ReviewsList from "../reviews-list";
 import LeaveComments from "../leaave-comments";
+import Share from "../share/share";
 
 function BlogDetails(props) {
     let {blogPostId} = props;
@@ -34,10 +35,7 @@ function BlogDetails(props) {
             <DefaultText>
                 {text}
             </DefaultText>
-            <div className="share">
-                <span className="share-title">Share:</span>
-                <SocialNetworks/>
-            </div>
+            <Share/>
             <LeaveComments/>
             <ReviewsList postId={blogPostId}/>
         </div>

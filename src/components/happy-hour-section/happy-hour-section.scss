@@ -1,12 +1,11 @@
 .happy-hour {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), center / cover no-repeat url("img/happy-hour.jpg");
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), center / cover no-repeat url("../../img/happy-hour.jpg");
 
     .content-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
     }
 
     img.logo {

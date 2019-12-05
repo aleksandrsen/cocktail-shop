@@ -14,7 +14,9 @@ function UpcomingEventsSection(props) {
             <Container>
                 <SectionTitle>Upcoming Events</SectionTitle>
                 <DefaultText>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolore quibusdam sequiveritatisvoluptatibus. A consectetur doloremque ex, explicabo ipsa laboriosam neque, pariaturpraesentium quosrecusandae repellat saepe vero voluptatum.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolore quibusdam
+                    sequiveritatisvoluptatibus. A consectetur doloremque ex, explicabo ipsa laboriosam neque,
+                    pariaturpraesentium quosrecusandae repellat saepe vero voluptatum.
                 </DefaultText>
                 <UpcomingEventItem/>
             </Container>

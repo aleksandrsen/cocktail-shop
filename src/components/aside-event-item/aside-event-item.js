@@ -10,7 +10,7 @@ function AsideEventItem(props) {
     let day = formatDate(dateStart, {day: "numeric"});
     let eventMonthYear = formatDate(dateStart, {year: "numeric", month: "short"});
     let timeStart = formatDate(dateStart, {hour: "2-digit", minute: "2-digit"});
-    let timeEnd = formatDate(dateEnd, {hour: "numeric", minute: "numeric"});
+    let timeEnd = formatDate(dateEnd, {hour: "2-digit", minute: "2-digit"});
     return (
 
         <div className="aside-even-item">
