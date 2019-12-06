@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './reviews-list.scss';
-import sortedBlogPosts from "../../data/blog-posts";
+import sortedBlogPosts from "../../normalize-date/blog-posts";
 // Components
 import ReviewListItem from "../review-list-item";
 import DefaultButton from "../common-components/default-button";

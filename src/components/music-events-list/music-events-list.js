@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './music-events-list.scss';
-import sortedEvents from "../../data/events";
+import sortedEvents from "../../normalize-date/events";
 import {withRouter} from "react-router-dom";
 // Components
 import DefaultButton from "../common-components/default-button";

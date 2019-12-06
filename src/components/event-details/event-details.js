@@ -1,6 +1,6 @@
 import React from 'react';
 import './event-details.scss';
-import sortedEvents from "../../data/events";
+import sortedEvents from "../../normalize-date/events";
 import clockIcon from "../../img/icons/clock-regular.svg";
 import mapIcon from "../../img/icons/map-icon.svg";
 // Components

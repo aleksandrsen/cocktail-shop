@@ -5,7 +5,7 @@ import Container from "../common-components/container";
 import SectionTitle from "../common-components/section-title";
 import NextEventItem from "../next-event-item";
 import SmallSection from "../common-components/small-section";
-import sortedEvents from "../../data/events";
+import sortedEvents from "../../normalize-date/events";
 
 function NextEventsSection(props) {
 

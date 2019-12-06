@@ -1,6 +1,6 @@
 import React from 'react';
 import './instagram-gallery.scss';
-import {instagram} from "../../data/instagram"
+import {instagram} from "../../normalize-date/instagram"
 
 function InstagramGallery(props) {
 

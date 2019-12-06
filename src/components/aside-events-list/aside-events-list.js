@@ -1,6 +1,6 @@
 import React from 'react';
 import './aside-events-list.scss';
-import sortedEvents from '../../data/events'
+import sortedEvents from '../../normalize-date/events'
 // Components
 import AsideEventItem from "../aside-event-item";
 
