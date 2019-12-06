@@ -1,6 +1,6 @@
 import React from 'react';
 import './blog-details.scss';
-import sortedBlogPosts from "../../data/blog-posts";
+import sortedBlogPosts from "../../data/events";
 import clockIcon from "../../img/icons/clock-regular.svg";
 import userIcon from "../../img/icons/user-icon.svg";
 import formatDate from "../../functions/format-date";

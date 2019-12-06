@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './music-events-list.scss';
 import sortedEvents from "../../data/events";
 import {withRouter} from "react-router-dom";
@@ -9,6 +9,7 @@ import MusicEventItem from "../music-event-item/music-event-item";
 function MusicEventsList(props) {
     let events = sortedEvents.slice(0, 5);
     let {history} = props;
+
 
     return (
         <div className="music-events-list">

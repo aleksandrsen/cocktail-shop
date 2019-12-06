@@ -10,7 +10,7 @@ import middleEventImg3 from "../img/events/middle-event-item-3.jpg"
 import middleEventImg4 from "../img/events/middle-event-item-4.jpg"
 import middleEventImg5 from "../img/events/middle-event-item-5.jpg"
 
-import bigEventImg from "../img/blog-posts/big-event-item-1.jpg"
+import bigEventImg from "../img/events/big-event-item-1.jpg"
 
 let events = [
     {

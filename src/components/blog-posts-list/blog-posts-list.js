@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './blog-posts-list.scss';
-import sortedBlogPosts from "../../data/blog-posts";
+import sortedBlogPosts from "../../data/events";
 import {withRouter} from "react-router-dom"
 import "./blog-posts-list.scss"
 // Components
@@ -10,6 +10,21 @@ import DefaultButton from "../common-components/default-button";
 function BlogPostsList(props) {
     let {history} = props;
     let blogPosts = sortedBlogPosts.slice(0, 4);
+
+    useEffect(() => {
+       fetch("http://localhost:3001/api/events")
+           .then(res => {
+               return res.json();
+           })
+           .then(events => {
+               console.log(events);
+           })
+           .catch(err => {
+               console.log(err);
+           })
+    });
+
+
 
     return (
         <div className="blog-posts-list">

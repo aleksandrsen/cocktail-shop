@@ -1,6 +1,6 @@
 import React from 'react';
 import './aside-posts-list.scss';
-import sortedBlogPosts from "../../data/blog-posts";
+import sortedBlogPosts from "../../data/events";
 // Components
 import AsidePostItem from "../aside-post-item";
 

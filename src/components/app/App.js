@@ -17,7 +17,6 @@ import BlogDetailsPage from "../pages/blog-details-page";
 import CocktailsPage from "../pages/cocktails-page";
 
 function App(props) {
-
     return (
         <>
             <Header/>
