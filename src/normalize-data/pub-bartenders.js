@@ -7,46 +7,46 @@ import bartender5 from "../img/bartenders/bartender-5.jpg"
 
 let pubBartenders = [
     {
+        id: "d75f762a-eadd-49be-8918-ed0daa8dd024",
         name: "Bruce",
         surname: "Robertson",
         img: bartender0,
-        id: "d75f762a-eadd-49be-8918-ed0daa8dd024",
-        email: "some@gmail.com"
+        email: "bruceRobertson@gmail.com"
     },
     {
+        id: "c3cb8f92-a2ed-4716-92a1-b6ea813e9049",
         name: "Jane",
         surname: "Smith",
         img: bartender1,
-        id: "c3cb8f92-a2ed-4716-92a1-b6ea813e9049",
-        email: "some@gmail.com"
+        email: "janeSmith@gmail.com"
     },
     {
+        id: "bd129641-c0eb-432b-84b6-8b81d2930358",
         name: "Amanda",
         surname: "Brian",
         img: bartender2,
-        id: "bd129641-c0eb-432b-84b6-8b81d2930358",
-        email: "some@gmail.com"
+        email: "amandaBrian@gmail.com"
     },
     {
+        id: "5909796d-5030-4e36-adec-68b8f9ec2d96",
         name: "Allan",
         surname: "Butler",
         img: bartender3,
-        id: "5909796d-5030-4e36-adec-68b8f9ec2d96",
-        email: "some@gmail.com"
+        email: "allanButler@gmail.com"
     },
     {
+        id: "429dea85-11dd-4054-a31e-c60c92e17255",
         name: "Alison",
         surname: "Black",
         img: bartender4,
-        id: "429dea85-11dd-4054-a31e-c60c92e17255",
-        email: "some@gmail.com"
+        email: "alisonBlack@gmail.com"
     },
     {
+        id: "bb8afbec-2fec-491f-93e9-7f13950dd80b",
         name: "Daisy",
         surname: "Nail",
         img: bartender5,
-        id: "bb8afbec-2fec-491f-93e9-7f13950dd80b",
-        email: "some@gmail.com"
+        email: "daisyNail@gmail.com"
     },
 ];
 

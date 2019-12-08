@@ -1,6 +1,6 @@
 import React from 'react';
 import './bartener-details.scss';
-import pubBartenders from "../../normalize-date/pub-bartenders";
+import pubBartenders from "../../normalize-data/pub-bartenders";
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";

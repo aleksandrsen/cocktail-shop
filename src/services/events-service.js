@@ -1,4 +1,4 @@
-import sortedEvents from "../normalize-date/events";
+import sortedEvents from "../normalize-data/events";
 
 export default class EventsService {
     constructor() {
@@ -15,7 +15,7 @@ export default class EventsService {
             setTimeout(() => {
                 let event = sortedEvents.find(({id}) => id === eventId);
                 resolve(event);
-            }, 1000);
+            }, 1300);
         })
     };
 }

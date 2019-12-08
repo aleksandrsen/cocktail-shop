@@ -1,38 +1,61 @@
-import React from 'react';
-import "./upcoming-event-item.scss"
-import eventImg from "../../img/upcoming-event-img.jpg";
+import React, {useEffect} from 'react';
+import "./upcoming-event-item.scss";
+// Actions
+import {loadEventsAndGetNearestEvent} from "../../actions";
 // Components
 import DefaultText from "../common-components/default-text";
 import EventCounter from "../event-counter";
 import UpcomingEventDate from "../upcoming-event-date";
 import DefaultButton from "../common-components/default-button";
+import Spinner from "../spinner";
+// Helpers
+import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {eventsLoadingSelector, eventsLoadedSelector, eventsSelector} from "../../selectors";
+import cutTextContent from "../../functions/cut-text-content";
 
 function UpcomingEventItem(props) {
+    let {loading, loaded, loadEventsAndGetNearestEvent, events} = props;
 
-    let upcomingEventDate = new Date(2020, 0, 1, 5, 30);
+    useEffect(() => {
+        loadEventsAndGetNearestEvent();
+    });
 
-    return (
-        <div className="upcoming-event-item">
-            <div className="event-info">
-                <h3 className="upcoming-event-title">Live music and events</h3>
-                <UpcomingEventDate date={upcomingEventDate}/>
-                <DefaultText>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus enim eum exercitationem, fuga
-                    ipsa laudantium placeat quam ratione sint? At autem ea eius iusto laboriosam magnam magni natus
-                    vitae.
-                </DefaultText>
-                <EventCounter date={upcomingEventDate}/>
-                <div className="upcoming-event-actions">
-                    <Link to={"/music-events/"} className="default-button">Events</Link>
-                    <DefaultButton>Book on event</DefaultButton>
+    if (!loading && loaded) {
+        let {dateStart, title, text, middleImg} = events[0];
+        let eventText = cutTextContent(text, 300);
+        let nearestEventDate = new Date(Date.parse(dateStart));
+
+        return (
+            <div className="upcoming-event-item">
+                <div className="event-info">
+                    <h3 className="upcoming-event-title">{title}</h3>
+                    <UpcomingEventDate date={nearestEventDate}/>
+                    <DefaultText>
+                        {eventText}
+                    </DefaultText>
+                    <EventCounter date={nearestEventDate}/>
+                    <div className="upcoming-event-actions">
+                        <Link to={"/music-events/"} className="default-button">Events</Link>
+                        <DefaultButton>Book on event</DefaultButton>
+                    </div>
+                </div>
+                <div className="event-img">
+                    <img src={middleImg} alt="event-img"/>
                 </div>
             </div>
-            <div className="event-img">
-                <img src={eventImg} alt="event-img"/>
-            </div>
-        </div>
-    );
+        );
+    }
+
+    return <Spinner/>;
 }
 
-export default UpcomingEventItem;
+let mapStateToProps = (state) => {
+    return {
+        loading: eventsLoadingSelector(state),
+        loaded: eventsLoadedSelector(state),
+        events: eventsSelector(state)
+    }
+};
+
+export default connect(mapStateToProps, {loadEventsAndGetNearestEvent})(UpcomingEventItem);

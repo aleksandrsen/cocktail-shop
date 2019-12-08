@@ -1,6 +1,6 @@
 import React from 'react';
 import './pub-bartenders-section.scss';
-import pubBartenders from "../../normalize-date/pub-bartenders";
+import pubBartenders from "../../normalize-data/pub-bartenders";
 import {withRouter} from "react-router-dom";
 // Components
 import {Row} from 'antd';

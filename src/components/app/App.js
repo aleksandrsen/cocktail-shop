@@ -15,23 +15,15 @@ import MusicEventPage from "../pages/music-event-page";
 import EventDetails from "../event-details";
 import BlogDetailsPage from "../pages/blog-details-page";
 import CocktailsPage from "../pages/cocktails-page";
-import reviews from "../../normalize-date/reviews";
 
 function App(props) {
-    let some = '';
-    reviews.forEach(review => {
-        some += '"' + review.id + '"' + ',';
-
-    });
-    console.log(some);
-
 
     return (
         <>
             <Header/>
             <main>
                 <Switch>
-                    <Route path="/home" exact component={HomePage}/>
+                    <Route path="/" exact component={HomePage}/>
                     <Route path="/about" component={AboutUsPage}/>
                     <Route path="/cocktails/" component={CocktailsPage}/>
 

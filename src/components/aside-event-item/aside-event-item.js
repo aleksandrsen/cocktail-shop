@@ -15,7 +15,7 @@ function AsideEventItem(props) {
     let timeEnd = formatDate(dateEnd, {hour: "2-digit", minute: "2-digit"});
     return (
 
-        <div className="aside-even-item" onClick={() => history.push(`/music-events/${id}`)}>
+        <div className="aside-event-item" onClick={() => history.push(`/music-events/${id}`)}>
             <div className="left">
                 <div className="event-day">
                     {day < 10 ? "0" + day : day}

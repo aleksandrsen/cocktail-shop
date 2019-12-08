@@ -1,6 +1,6 @@
 import React from 'react';
 import './blog-news-section.scss';
-import sortedBlogPosts from "../../normalize-date/blog-posts";
+import sortedBlogPosts from "../../normalize-data/blog-posts";
 // Components
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
