@@ -30,7 +30,7 @@ function App(props) {
                     <Route path="/bartenders/" exact component={BartendersPage}/>
                     <Route path="/bartenders/:id" render={({match}) => {
                         const {id} = match.params;
-                        return <BartenderDetails bartenderId={id}/>
+                        return <BartenderDetails id={id}/>
                     }}/>
 
                     <Route path="/music-events/" exact component={MusicEventPage}/>

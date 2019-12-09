@@ -1,7 +1,9 @@
 import {START, SUCCESS, FAIL} from "../constants";
 import EventsService from "../services/events-service";
+import BartendersService from "../services/bartenders-service";
 
 const eventsService = new EventsService();
+const bartendersService = new BartendersService();
 
 export default (store) => (next) => (action) => {
     const {callApi, ...rest} = action;
@@ -10,13 +12,34 @@ export default (store) => (next) => (action) => {
             ...rest,
             type: action.type + START
         });
-        if (callApi) {
+
+        if (callApi === "events") {
             eventsService.getAllEvents()
-                .then(response => {
+                .then(data => {
                     next({
                         ...rest,
                         type: action.type + SUCCESS,
-                        response: response
+                        payload: {
+                            response: data
+                        }
+                    });
+                })
+                .catch(err => {
+                    next({
+                        ...rest,
+                        type: action.type + FAIL,
+                        error: err
+                    })
+                })
+        } else if (callApi === "bartenders") {
+            bartendersService.getAllBartenders()
+                .then(data => {
+                    next({
+                        ...rest,
+                        type: action.type + SUCCESS,
+                        payload: {
+                            response: data
+                        }
                     });
                 })
                 .catch(err => {
