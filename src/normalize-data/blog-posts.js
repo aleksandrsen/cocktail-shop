@@ -286,8 +286,4 @@ let blogPosts = [
     }
 ];
 
-let sortedBlogPosts = blogPosts.sort(({date: dateA}, {date: dateB}) => {
-    return Date.parse(dateB) - Date.parse(dateA);
-});
-
-export default sortedBlogPosts;
+export default blogPosts;

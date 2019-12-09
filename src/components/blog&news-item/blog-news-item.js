@@ -12,6 +12,7 @@ function BlogNewsItem(props) {
 
     let {imgLeft} = props;
     let {title, text, img, date, author, id} = props.post;
+    let {name, surname} = props.post.author;
 
     let blogNewsItemTitle = title.length > maxTitleLength ? cutTextContent(title, maxTitleLength) : title;
     let blogNewsItemText = text.length > maxTextLength ? cutTextContent(text, maxTextLength) : text;
@@ -37,7 +38,7 @@ function BlogNewsItem(props) {
                 <div className="blog-news-item-details">
                     <div className="theme">
                         <i className="material-icons">person</i>
-                        <span>{author}</span>
+                        <span>{name + " " + surname}</span>
                     </div>
                     <Link to={`/blog/${id}`} className="title">
                         {blogNewsItemTitle}

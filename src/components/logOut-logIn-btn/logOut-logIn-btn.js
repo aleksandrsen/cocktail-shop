@@ -1,19 +1,18 @@
 import React from 'react';
 import './logOut-logIn-btn.scss';
 import {connect} from "react-redux"
+import {userLogIn, userLogOut} from "../../actions";
 
 function LogOutLogInBtn(props) {
-    let {isLogin, userLoginAction, userLogOutAction} = props;
+    let {isLogin, userLogIn, userLogOut} = props;
 
     return (
         <a className="logOut-logIn">{isLogin ? 'Log Out' : 'Log In'}</a>
     );
 }
 
-const mapStateToProps = (state) => {
+export default connect((state) => {
     return {
-        isLogin: state.isLogin
+        isLogin: state.user.logIn
     }
-};
-
-export default connect(mapStateToProps)(LogOutLogInBtn);
+}, {userLogIn, userLogOut})(LogOutLogInBtn);

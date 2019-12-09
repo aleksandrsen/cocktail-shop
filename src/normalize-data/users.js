@@ -90,3 +90,5 @@ let users = [
         email: "vivienArchibald@gmail.com"
     }
 ];
+
+export default users;

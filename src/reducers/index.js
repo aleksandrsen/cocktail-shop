@@ -1,10 +1,14 @@
 import {combineReducers} from "redux";
-import userReducer from "./user-reducer";
+import usersReducer from "./users-reducer";
 import eventsReducer from "./events-reducer";
+import blogPostsReducer from "./blog-posts-reducer";
+import userReducer from "./user-reducer";
 
 const reducers = combineReducers({
-    isLogin: userReducer,
-    events: eventsReducer
+    events: eventsReducer,
+    blogPosts: blogPostsReducer,
+    users: usersReducer,
+    user: userReducer
 });
 
 export default reducers;

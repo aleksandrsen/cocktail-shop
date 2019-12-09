@@ -2,7 +2,7 @@ export const resourceStartRecord = () => ({
     loading: false,
     loaded: false,
     error: null,
-    entities: {}
+    entities: []
 });
 
 export const arrToObj = arr => {

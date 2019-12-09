@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import "./upcoming-event-item.scss";
 // Actions
-import {loadEventsAndGetNearestEvent} from "../../actions";
+import {loadAndSortEvents} from "../../actions";
 // Components
 import DefaultText from "../common-components/default-text";
 import EventCounter from "../event-counter";
@@ -15,10 +15,10 @@ import {eventsLoadingSelector, eventsLoadedSelector, eventsSelector} from "../..
 import cutTextContent from "../../functions/cut-text-content";
 
 function UpcomingEventItem(props) {
-    let {loading, loaded, loadEventsAndGetNearestEvent, events} = props;
+    let {loading, loaded, loadAndSortEvents, events} = props;
 
     useEffect(() => {
-        loadEventsAndGetNearestEvent();
+        loadAndSortEvents();
     });
 
     if (!loading && loaded) {
@@ -58,4 +58,4 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {loadEventsAndGetNearestEvent})(UpcomingEventItem);
+export default connect(mapStateToProps, {loadAndSortEvents})(UpcomingEventItem);

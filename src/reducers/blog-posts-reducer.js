@@ -1,9 +1,9 @@
-import {LOAD_EVENTS, START, SUCCESS, FAIL} from "../constants";
+import {LOAD_BLOG_POSTS, START, SUCCESS, FAIL} from "../constants";
 import {resourceStartRecord} from "./utils";
 
-export default (eventsState = resourceStartRecord(), action) => {
+export default (blogPostsState = resourceStartRecord(), action) => {
     switch (action.type) {
-        case LOAD_EVENTS + START:
+        case LOAD_BLOG_POSTS + START:
             return {
                 loading: true,
                 loaded: false,
@@ -11,14 +11,14 @@ export default (eventsState = resourceStartRecord(), action) => {
                 entities: []
             };
 
-        case LOAD_EVENTS + SUCCESS:
+        case LOAD_BLOG_POSTS + SUCCESS:
             return {
                 loading: false,
                 loaded: true,
                 error: null,
                 entities: action.payload.response
             };
-        case LOAD_EVENTS + FAIL:
+        case LOAD_BLOG_POSTS + FAIL:
             return {
                 loading: false,
                 loaded: false,
@@ -26,6 +26,6 @@ export default (eventsState = resourceStartRecord(), action) => {
                 entities: []
             };
         default:
-            return eventsState
+            return blogPostsState
     }
 }

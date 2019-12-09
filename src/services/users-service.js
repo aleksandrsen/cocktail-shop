@@ -1,19 +1,19 @@
-import blogPosts from "../normalize-data/normalize-blog-posts";
+import users from "../normalize-data/users";
 
-export default class BlogPostsService {
+export default class UsersService {
     constructor() {
     }
 
-    getAllBlogPosts() {
+    getAllUsers() {
         return new Promise((resolve, reject) => {
-            setTimeout(() => resolve(blogPosts), 1500);
+            setTimeout(() => resolve(users), 1500);
         })
     };
 
     getBlogPostById(eventId) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                let event = blogPosts.find(({id}) => id === eventId);
+                let event = users.find(({id}) => id === eventId);
                 resolve(event);
             }, 1500);
         })

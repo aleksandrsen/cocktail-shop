@@ -5,6 +5,8 @@
     transition: .3s;
     border-bottom: 1px solid transparent;
     color: #ffad05;
+    display: block;
+    min-width: 95px;
 
     &:hover {
         color: #bc7b05;

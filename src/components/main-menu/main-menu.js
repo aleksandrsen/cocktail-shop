@@ -7,7 +7,7 @@ function MainMenu(props) {
     const navLinks = [
         {
             text: "Home",
-            to: "/"
+            to: "/home"
         },
         {
             text: "About us",
@@ -40,7 +40,7 @@ function MainMenu(props) {
             <div className="nav-wrapper">
                 <ul>
                     {
-                        navLinks.map((navLink, idx) => {
+                        navLinks.map((navLink) => {
                             let {text, to} = navLink;
                             return <MainMenuItem key={text}
                                                  to={to}
