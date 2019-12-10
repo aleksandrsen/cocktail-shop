@@ -1,31 +1,37 @@
-import {LOAD_BARTENDERS, START, SUCCESS, FAIL} from "../constants";
-import {resourceStartRecord} from "./utils";
+import {LOAD_BARTENDER_BY_ID, START, SUCCESS, FAIL} from "../constants";
 
-export default (bartendersState = resourceStartRecord(), action) => {
+let initBartenderItemState = {
+    loading: false,
+    loaded: false,
+    error: null,
+    item: null
+};
+
+export default (bartenderItemState = initBartenderItemState, action) => {
     switch (action.type) {
-        case LOAD_BARTENDERS + START:
+        case LOAD_BARTENDER_BY_ID + START:
             return {
                 loading: true,
                 loaded: false,
                 error: null,
-                entities: []
+                item: null
             };
 
-        case LOAD_BARTENDERS + SUCCESS:
+        case LOAD_BARTENDER_BY_ID + SUCCESS:
             return {
                 loading: false,
                 loaded: true,
                 error: null,
-                entities: action.payload.response
+                item: action.payload.response
             };
-        case LOAD_BARTENDERS + FAIL:
+        case LOAD_BARTENDER_BY_ID + FAIL:
             return {
                 loading: false,
                 loaded: false,
                 error: action.error,
-                entities: []
+                item: null
             };
         default:
-            return bartendersState
+            return bartenderItemState
     }
 }

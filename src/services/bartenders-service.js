@@ -13,8 +13,8 @@ export default class BartendersService {
     getBartenderById(eventId) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                let event = pubBartenders.find(({id}) => id === eventId);
-                resolve(event);
+                let bartender = pubBartenders.find(({id}) => id === eventId);
+                resolve(bartender);
             }, 1500);
         })
     };

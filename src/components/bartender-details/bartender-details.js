@@ -2,12 +2,12 @@ import React, {useEffect} from 'react';
 import './bartener-details.scss';
 import {connect} from "react-redux";
 // Actions
-import {loadBartenderById, loadBartenders} from "../../actions";
+import {loadBartenderById} from "../../actions";
 // Selectors
 import {
-    bartenderSelector,
-    bartendersLoadedSelector,
-    bartendersLoadingSelector
+    bartenderItemLoadedSelector,
+    bartenderItemLoadingSelector,
+    bartenderItemSelector
 } from "../../selectors";
 // Components
 import Section from "../common-components/section";
@@ -28,7 +28,7 @@ function BartenderDetails(props) {
         }
     });
 
-    if (!isLoading && isLoaded && bartender) {
+    if (!isLoading && isLoaded) {
         let {name, surname, img} = bartender;
 
         return (
@@ -68,8 +68,8 @@ function BartenderDetails(props) {
 
 export default connect((state, ownProps) => {
     return {
-        isLoading: bartendersLoadingSelector(state),
-        isLoaded: bartendersLoadedSelector,
-        bartender: bartenderSelector(state, ownProps)
+        isLoading: bartenderItemLoadingSelector(state),
+        isLoaded: bartenderItemLoadedSelector(state),
+        bartender: bartenderItemSelector(state)
     }
 }, {loadBartenderById})(BartenderDetails);

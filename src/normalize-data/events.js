@@ -23,16 +23,6 @@ let events = [
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     },
     {
-        id: "12816e24-dff1-49aa-b6ab-4886f5efc0dg",
-        title: "Thankfulllllllllllllllllllllllllll",
-        smallImg: eventImg2,
-        middleImg: middleEventImg2,
-        bigImg: bigEventImg,
-        dateStart: "2019-05-30T17:00",
-        dateEnd: "2020-05-30T20:00",
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
-    },
-    {
         id: "7c19d39e-c47d-44d9-a723-c54fe1a1a6e0",
         title: "Holiday Survival Guide",
         smallImg: eventImg1,

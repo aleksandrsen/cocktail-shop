@@ -3,6 +3,7 @@ import './blog-post-item.scss';
 import commentsIcon from "../../img/icons/comments.svg"
 import cutTextContent from "../../functions/cut-text-content";
 import formatDate from "../../functions/format-date";
+import {withRouter} from "react-router-dom";
 // Components
 import DefaultText from "../common-components/default-text";
 import SocialNetworks from "../social-networks";
@@ -11,8 +12,8 @@ function BlogPostItem(props) {
     const maxTitleLength = 39;
     const maxTextLength = 248;
 
-    let {title, text, img, date, reviews} = props.post;
-    let {readMore} = props;
+    let {title, text, img, date, reviews, id} = props.post;
+    let {history} = props;
 
     let blogPostTitle = title.length > maxTitleLength ? cutTextContent(title, maxTitleLength) : title;
     let blogPostText = text.length > maxTextLength ? cutTextContent(text, maxTextLength) : text;
@@ -34,7 +35,7 @@ function BlogPostItem(props) {
                 <a className="read-more" href="#"
                    onClick={(e) => {
                        e.preventDefault();
-                       readMore();
+                       history.push(id);
                    }}
                 >Read more</a>
                 <span className="comments">
@@ -47,4 +48,4 @@ function BlogPostItem(props) {
     );
 }
 
-export default BlogPostItem;
+export default withRouter(BlogPostItem);

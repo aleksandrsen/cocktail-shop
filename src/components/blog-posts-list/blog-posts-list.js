@@ -1,30 +1,47 @@
 import React, {useEffect} from 'react';
 import './blog-posts-list.scss';
-import sortedBlogPosts from "../../normalize-data/blog-posts";
-import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+// Actions
+import {loadAndSortBlogPosts} from "../../actions";
+// Selectors
+import {
+    blogPostsSelector,
+    blogPostsLoadedSelector,
+    blogPostsLoadingSelector
+} from "../../selectors";
 // Components
 import BlogPostItem from "../blog-post-item";
 import DefaultButton from "../common-components/default-button";
+import Spinner from "../spinner";
 
 function BlogPostsList(props) {
-    let {history} = props;
-    let blogPosts = sortedBlogPosts.slice(0, 4);
+    let {blogPosts, isLoading, isLoaded, loadAndSortBlogPosts} = props;
 
-    return (
-        <div className="blog-posts-list">
-            {
-                blogPosts.map(item => {
-                    return <BlogPostItem
-                        key={item.id}
-                        post={item}
-                        readMore={() => {
-                            history.push(item.id)
-                        }}/>
-                })
-            }
-            <DefaultButton>More posts</DefaultButton>
-        </div>
-    );
+    useEffect(() => {
+        if (!isLoading && !isLoaded) {
+            loadAndSortBlogPosts();
+        }
+    });
+
+    if (!isLoading && isLoaded) {
+        return (
+            <div className="blog-posts-list">
+                {
+                    blogPosts.map(item => {
+                        return <BlogPostItem key={item.id} post={item}/>
+                    })
+                }
+                <DefaultButton>More posts</DefaultButton>
+            </div>
+        );
+    }
+    return <Spinner/>
 }
 
-export default withRouter(BlogPostsList);
+export default connect((state) => {
+    return {
+        isLoading: blogPostsLoadingSelector(state),
+        isLoaded: blogPostsLoadedSelector(state),
+        blogPosts: blogPostsSelector(state)
+    }
+}, {loadAndSortBlogPosts})(BlogPostsList);

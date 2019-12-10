@@ -10,6 +10,12 @@ function LeaveReviews(props) {
     const btn = <DefaultButton
         onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Close form" : "Write review"}</DefaultButton>;
 
+    let some = (
+        <div>
+            <ContactForm btnPos="right" btnText="Send review"/>
+        </div>
+    );
+
     return (
         <div className="leave-reviews">
             <div className="leave-comments-block">

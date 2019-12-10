@@ -1,13 +1,17 @@
 import React from 'react';
 import './music-event-item.scss';
 import {Row, Col} from "antd";
+import {withRouter} from "react-router-dom";
 import formatDate from "../../functions/format-date";
 import DefaultText from "../common-components/default-text";
+// Components
+import cutTextContent from "../../functions/cut-text-content";
 
 function MusicEventItem(props) {
-    let {title, text, dateStart, middleImg} = props.eventItem;
-    let {showEventDetails} = props;
+    let {title, text, dateStart, middleImg, id} = props.eventItem;
+    let {history} = props;
     let date = formatDate(dateStart, {year: "numeric", month: "long", day: "numeric"});
+    let eventText = cutTextContent(text, 350);
 
     return (
         <div className="music-event-item">
@@ -17,18 +21,18 @@ function MusicEventItem(props) {
                 </Col>
                 <Col span={13}>
                     <h3 className="event-item-title">
-                        <a href="#"
-                        onClick={(e) => {
+                        <a href="#" onClick={(e) => {
                             e.preventDefault();
-                            showEventDetails();
+                            history.push(id);
                         }}
                         >{title}</a>
                     </h3>
                     <div className="event-item-date">{date}</div>
-                    <DefaultText>{text}</DefaultText>
+                    <DefaultText>{eventText}</DefaultText>
                 </Col>
             </Row>
         </div>
     );
 }
-export default MusicEventItem;
+
+export default withRouter(MusicEventItem);

@@ -14,7 +14,6 @@ function NextEventsSection(props) {
     let {loading, loaded, events} = props;
     if (!loading && loaded) {
         let nextEvents = events.slice(0, 2);
-        console.log(events);
         return (
             <SmallSection className="next-events-section">
                 <Container>

@@ -7,6 +7,7 @@ import {
     LOAD_EVENTS,
     LOAD_BLOG_POSTS,
     LOAD_BARTENDERS,
+    LOAD_BARTENDER_BY_ID,
     LOAD_REVIEWS,
     ADD_REVIEW,
     DELETE_REVIEW,
@@ -46,14 +47,33 @@ export const loadBartenders = () => ({
 
 export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
     const state = getState();
-    let isLoading = state.bartenders.loading;
-    let isLoaded = state.bartenders.loaded;
-    if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_BARTENDERS + START});
+    let isLoading = state.bartender.loading;
+    let isLoaded = state.bartender.loaded;
+    let bartenders = state.bartenders.entities;
+    let bartenderItem = state.bartender.item;
+
+    let isBartenderInBartenders = bartenders.find(({id}) => bartenderId === id);
+
+    if (bartenderItem && bartenderItem.id === bartenderId) {
+        dispatch({
+            type: LOAD_BARTENDER_BY_ID + SUCCESS,
+            payload: {
+                response: bartenderItem
+            }
+        });
+    } else if (isBartenderInBartenders) {
+        dispatch({
+            type: LOAD_BARTENDER_BY_ID + SUCCESS,
+            payload: {
+                response: isBartenderInBartenders
+            }
+        });
+    } else if (!isLoading && !isLoaded) {
+        dispatch({type: LOAD_BARTENDER_BY_ID + START});
         bartendersService.getBartenderById(bartenderId)
             .then(data => {
                 dispatch({
-                    type: LOAD_BARTENDERS + SUCCESS,
+                    type: LOAD_BARTENDER_BY_ID + SUCCESS,
                     payload: {
                         response: data
                     }
@@ -61,7 +81,7 @@ export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
             })
             .catch(err => {
                 dispatch({
-                    type: LOAD_BARTENDERS + FAIL,
+                    type: LOAD_BARTENDER_BY_ID + FAIL,
                     payload: {
                         error: err
                     }
@@ -74,7 +94,16 @@ export const loadAndSortEvents = () => (dispatch, getState) => {
     const state = getState();
     let isLoading = state.events.loading;
     let isLoaded = state.events.loaded;
-    if (!isLoading && !isLoaded) {
+    let events = state.events.entities;
+
+    if (events.length) {
+        dispatch({
+            type: LOAD_EVENTS + SUCCESS,
+            payload: {
+                response: events
+            }
+        })
+    } else if (!isLoading && !isLoaded) {
         dispatch({type: LOAD_EVENTS + START});
         eventsService.getAllEvents()
             .then(data => {
@@ -109,11 +138,20 @@ export const loadAndSortBlogPosts = () => (dispatch, getState) => {
     const state = getState();
     let isLoading = state.blogPosts.loading;
     let isLoaded = state.blogPosts.loaded;
-    if (!isLoading && !isLoaded) {
+    let blogPosts = state.blogPosts.entities;
+
+    if (blogPosts.length) {
+        dispatch({
+            type: LOAD_BLOG_POSTS + SUCCESS,
+            payload: {
+                response: blogPosts
+            }
+        })
+    } else if (!isLoading && !isLoaded) {
         dispatch({type: LOAD_BLOG_POSTS + START});
         blogPostsService.getAllBlogPosts()
             .then(data => {
-                let blogPosts = data.sort((firstBlogPost, secondBlogPost) => {
+                let sortedBlogPosts = data.sort((firstBlogPost, secondBlogPost) => {
                     let dateStartFirst = +Date.parse(firstBlogPost.date);
                     let dateStartSecond = +Date.parse(secondBlogPost.date);
                     return dateStartSecond - dateStartFirst;
@@ -121,7 +159,7 @@ export const loadAndSortBlogPosts = () => (dispatch, getState) => {
                 dispatch({
                     type: LOAD_BLOG_POSTS + SUCCESS,
                     payload: {
-                        response: blogPosts
+                        response: sortedBlogPosts
                     }
                 })
             })
@@ -140,7 +178,16 @@ export const loadUsers = () => (dispatch, getState) => {
     const state = getState();
     let isLoading = state.users.loading;
     let isLoaded = state.users.loaded;
-    if (!isLoading && !isLoaded) {
+    let users = state.users.entities;
+
+    if (users.length) {
+        dispatch({
+            type: LOAD_USERS + SUCCESS,
+            payload: {
+                response: users
+            }
+        })
+    } else if (!isLoading && !isLoaded) {
         dispatch({type: LOAD_USERS + START});
         usersService.getAllUsers()
             .then(data => {

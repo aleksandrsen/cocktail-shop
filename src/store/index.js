@@ -7,7 +7,7 @@ import logger from "../middlewares/logger";
 const store = createStore(reducers, applyMiddleware(
     thunk,
     api,
-    // logger
+    logger
 ));
 
 window.store = store;
