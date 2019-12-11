@@ -1,7 +1,15 @@
 import reviews from "../normalize-data/reviews";
 
-export default class ReviewsService {
+export default class BlotPostsReviewsService {
     constructor() {
+    }
+
+    getAllReviews() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(reviews);
+            }, 1500);
+        })
     }
 
     getReviews(blogPostId) {
