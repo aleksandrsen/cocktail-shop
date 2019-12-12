@@ -6,15 +6,10 @@ import DefaultButton from "../common-components/default-button";
 
 function LeaveReviews(props) {
     const [isOpen, setIsOpen] = useState(false);
+    let {id} = props;
 
     const btn = <DefaultButton
         onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Close form" : "Write review"}</DefaultButton>;
-
-    let some = (
-        <div>
-            <ContactForm btnPos="right" btnText="Send review"/>
-        </div>
-    );
 
     return (
         <div className="leave-reviews">
@@ -23,7 +18,7 @@ function LeaveReviews(props) {
                 {btn}
             </div>
             <div className={`form-wrapper ${isOpen ? "" : "hide"}`}>
-                <ContactForm btnPos="right" btnText="Send review"/>
+                <ContactForm btnPos="right" btnText="Send review" reviewGoal={{goal: "blog-post", id: id}}/>
             </div>
         </div>
     );

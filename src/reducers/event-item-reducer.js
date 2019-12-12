@@ -1,13 +1,13 @@
 import {LOAD_EVENT_BY_ID, START, SUCCESS, FAIL} from "../constants";
 
-let initBartenderItemState = {
+let initEventItemState = {
     loading: false,
     loaded: false,
     error: null,
     item: null
 };
 
-export default (eventItemState = initBartenderItemState, action) => {
+export default (eventItemState = initEventItemState, action) => {
     switch (action.type) {
         case LOAD_EVENT_BY_ID + START:
             return {

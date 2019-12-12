@@ -1,4 +1,4 @@
-import {LOAD_BLOG_POSTS, START, SUCCESS, FAIL} from "../constants";
+import {LOAD_BLOG_POSTS, START, SUCCESS, FAIL, ADD_REVIEW_FOR_BLOG_POST} from "../constants";
 import {resourceStartRecord} from "./utils";
 
 export default (blogPostsState = resourceStartRecord(), action) => {
@@ -10,7 +10,6 @@ export default (blogPostsState = resourceStartRecord(), action) => {
                 error: null,
                 entities: []
             };
-
         case LOAD_BLOG_POSTS + SUCCESS:
             return {
                 loading: false,
@@ -24,6 +23,29 @@ export default (blogPostsState = resourceStartRecord(), action) => {
                 loaded: false,
                 error: action.error,
                 entities: []
+            };
+        case  ADD_REVIEW_FOR_BLOG_POST:
+            let reviewId = action.generateId;
+            let blogPostId = action.payload.blogPostId;
+            let blogPostItem = blogPostsState.entities.find(({id}) => id === blogPostId);
+            let {reviews} = blogPostItem;
+
+            let newBlogPostItem = {
+                ...blogPostItem,
+                reviews: [
+                    ...reviews,
+                    reviewId
+                ]
+            };
+            let idx = blogPostsState.entities.findIndex(({id}) => id === blogPostId);
+            let entities = blogPostsState.entities;
+            return {
+                ...blogPostsState,
+                entities: [
+                    ...entities.slice(0, idx),
+                    newBlogPostItem,
+                    ...entities.slice(idx + 1)
+                ]
             };
         default:
             return blogPostsState

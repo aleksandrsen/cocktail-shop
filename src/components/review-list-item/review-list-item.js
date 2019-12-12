@@ -6,14 +6,15 @@ import dislike from "../../img/icons/dislike.svg";
 
 // Components
 function ReviewListItem(props) {
-    let {text, userName, date, likes, dislikes, userSurName} = props.reviews;
+    let {text, date, likes, dislikes, author} = props.review;
+    let {name, surname} = author;
     let reviewDate = formatDate(date, {year: "numeric", month: "long", day: "numeric"});
 
     return (
         <div className="reviews-list-item">
             <div className="review-header">
                 <div className="review-author">
-                    {userName + " " + userSurName}
+                    {name + " " + surname}
                 </div>
                 <div className="review-date">
                     {reviewDate}
@@ -25,11 +26,11 @@ function ReviewListItem(props) {
             <div className="review-footer">
                 <div className="like">
                     <img src={like} alt="like"/>
-                    <span className="rating">{likes}</span>
+                    <span className="rating">{!likes ? '' : likes}</span>
                 </div>
                 <div className="dislike">
                     <img src={dislike} alt="dislike"/>
-                    <span className="rating">{dislikes}</span>
+                    <span className="rating">{!dislikes ? '' : dislikes}</span>
                 </div>
             </div>
         </div>

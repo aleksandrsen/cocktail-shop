@@ -7,7 +7,11 @@ function LogOutLogInBtn(props) {
     let {isLogin, userLogIn, userLogOut} = props;
 
     return (
-        <a className="logOut-logIn">{isLogin ? 'Log Out' : 'Log In'}</a>
+        <>
+            <a className="logOut-logIn">{isLogin ? 'Log Out' : 'Log In'}</a>
+            <button onClick={() => userLogIn()}>log in</button>
+            <button onClick={() => userLogOut()}>log out</button>
+        </>
     );
 }
 

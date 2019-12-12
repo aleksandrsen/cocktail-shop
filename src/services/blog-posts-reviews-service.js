@@ -1,6 +1,6 @@
 import reviews from "../normalize-data/reviews";
 
-export default class BlotPostsReviewsService {
+export default class BlogPostsReviewsService {
     constructor() {
     }
 

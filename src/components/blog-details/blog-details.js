@@ -1,44 +1,71 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './blog-details.scss';
-import sortedBlogPosts from "../../normalize-data/blog-posts";
+import {connect} from "react-redux";
 import clockIcon from "../../img/icons/clock-regular.svg";
 import userIcon from "../../img/icons/user-icon.svg";
 import formatDate from "../../functions/format-date";
-
+// Actions
+import {loadBlogPostById} from "../../actions";
 // Components
 import DefaultText from "../common-components/default-text";
 import ReviewsList from "../reviews-list";
 import LeaveReviews from "../leaave-reviews";
 import Share from "../share/share";
+import Spinner from "../spinner";
+// Selectors
+import {
+    blogPostItemLoadedSelector,
+    blogPostItemLoadingSelector,
+    usersLoadedSelector,
+    blogPostDetailsSelector
+} from "../../selectors";
+
 
 function BlogDetails(props) {
-    let {blogPostId} = props;
-    let blog = sortedBlogPosts.find(blog => blog.id === blogPostId);
-    let {bigImg, title, text, author, date} = blog;
-    let blogPostDate = formatDate(date, {year: "numeric", month: "short", day: "numeric"});
+    let {blogPostId, blogPost, blogPostItemLoading, blogPostItemLoaded, loadBlogPostById, usersLoaded} = props;
 
-    return (
-        <div className="blog-details">
-            <img className="blog-main-img" src={bigImg} alt=""/>
-            <h2 className="event-details-title">{title}</h2>
-            <div className="event-details-info">
-                <div className="author">
-                    <img src={userIcon} alt="user-icon"/>
-                    {author}
+    useEffect(() => {
+        if (!blogPostItemLoading && !blogPostItemLoaded) {
+            loadBlogPostById(blogPostId)
+        }
+    });
+
+    if (!blogPostItemLoading && blogPostItemLoaded && usersLoaded) {
+        let {bigImg, title, text, author, date} = blogPost;
+        let {name, surname} = author;
+        let blogPostDate = formatDate(date, {year: "numeric", month: "short", day: "numeric"});
+
+        return (
+            <div className="blog-details">
+                <img className="blog-main-img" src={bigImg} alt=""/>
+                <h2 className="event-details-title">{title}</h2>
+                <div className="event-details-info">
+                    <div className="author">
+                        <img src={userIcon} alt="user-icon"/>
+                        {name + " " + surname}
+                    </div>
+                    <div className="date">
+                        <img src={clockIcon} alt="user-icon"/>
+                        {blogPostDate}
+                    </div>
                 </div>
-                <div className="date">
-                    <img src={clockIcon} alt="user-icon"/>
-                    {blogPostDate}
-                </div>
+                <DefaultText>
+                    {text}
+                </DefaultText>
+                <Share/>
+                <LeaveReviews id={blogPostId}/>
+                <ReviewsList id={blogPostId}/>
             </div>
-            <DefaultText>
-                {text}
-            </DefaultText>
-            <Share/>
-            <LeaveReviews/>
-            <ReviewsList postId={blogPostId}/>
-        </div>
-    );
+        );
+    }
+    return <Spinner/>
 }
 
-export default BlogDetails;
+export default connect((state) => {
+    return {
+        blogPostItemLoading: blogPostItemLoadingSelector(state),
+        blogPostItemLoaded: blogPostItemLoadedSelector(state),
+        usersLoaded: usersLoadedSelector(state),
+        blogPost: blogPostDetailsSelector(state)
+    }
+}, {loadBlogPostById})(BlogDetails);

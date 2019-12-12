@@ -4,15 +4,21 @@ import eventsReducer from "./events-reducer";
 import blogPostsReducer from "./blog-posts-reducer";
 import userReducer from "./user-reducer";
 import bartendersReducer from "./bartenders-reducer";
-import bartenderReducer from "./bartender-reducer";
+import bartenderItemReducer from "./bartender-item-reducer";
+import eventItemReducer from "./event-item-reducer";
+import blogPostItemReducer from "./blog-post-item-reducer";
+import blogPostsReviewsReducer from "./blog-posts-reviews-reducer";
 
 const reducers = combineReducers({
     events: eventsReducer,
     blogPosts: blogPostsReducer,
     users: usersReducer,
-    user: userReducer,
+    blogPostsReviews: blogPostsReviewsReducer,
     bartenders: bartendersReducer,
-    bartender: bartenderReducer
+    eventItem: eventItemReducer,
+    blogPostItem: blogPostItemReducer,
+    bartenderItem: bartenderItemReducer,
+    user: userReducer
 });
 
 export default reducers;

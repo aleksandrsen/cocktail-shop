@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import './contact-form.scss';
+import {connect} from "react-redux";
+// Actions
+import {addReviewForBlogPost} from "../../actions";
 // Components
 import {Row, Col, Form, Input} from 'antd';
 import DefaultButton from "../common-components/default-button";
 
 function ContactForm(props) {
-    let {btnText, btnPos} = props;
+    let {btnText, btnPos, reviewGoal, addReviewForBlogPost} = props;
+    let {goal, id} = reviewGoal;
+
     let [fullName, setName] = useState('');
     let [email, setEmail] = useState('');
     let [subject, setSubject] = useState('');
@@ -13,7 +18,7 @@ function ContactForm(props) {
     const {TextArea} = Input;
 
     return (
-        <Form onSubmit={handleSubmit} className={`contact-form ${btnPos}`}>
+        <Form onSubmit={handleSubmit} className={`contact-form ${btnPos ? btnPos : ''}`}>
             <Row type="flex" justify="space-between" align="middle">
                 <Col span={7}>
                     <Input
@@ -50,8 +55,10 @@ function ContactForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(fullName, email, subject, message);
+        if (goal === 'blog-post') {
+            addReviewForBlogPost(id, fullName, email, message);
+        }
     }
 }
 
-export default ContactForm;
+export default connect(null, {addReviewForBlogPost})(ContactForm);
