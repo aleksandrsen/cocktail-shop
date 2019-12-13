@@ -58,7 +58,7 @@ function BartenderDetails(props) {
                         <DefaultButton>Awards</DefaultButton>
                     </Container>
                 </Section>
-                <TalkToBartenderSection bartender={bartender}/>
+                <TalkToBartenderSection bartender={bartender} id={id}/>
             </>
         );
     }

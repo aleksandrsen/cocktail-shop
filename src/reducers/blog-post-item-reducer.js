@@ -33,14 +33,15 @@ export default (blogPostItemState = initBlogPostItemState, action) => {
         case ADD_REVIEW_FOR_BLOG_POST: {
             let {item} = blogPostItemState;
             let {reviews} = item;
-            let reviewId = action.generateId;
+            let {id} = action.payload;
             return {
                 ...blogPostItemState,
                 item: {
                     ...item,
                     reviews: [
-                        ...reviews,
-                        reviewId
+                        id,
+                        ...reviews
+
                     ]
                 }
             }

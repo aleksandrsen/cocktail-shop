@@ -1,3 +1,4 @@
+import uuid from "uuid/v4";
 import EventsService from "../services/events-service";
 import BlogPostsService from "../services/blog-posts-service";
 import UsersService from "../services/users-service";
@@ -12,6 +13,7 @@ import {
     LOAD_BLOG_POSTS_REVIEWS,
     LOAD_BLOG_POST_BY_ID,
     ADD_REVIEW_FOR_BLOG_POST,
+    CREATE_NEW_USER,
     DELETE_REVIEW,
     EDIT_REVIEW,
     USER_LOG_IN,
@@ -34,14 +36,6 @@ export const userLogOut = () => ({
     type: USER_LOG_OUT
 });
 
-export const loadEvents = () => ({
-    type: LOAD_EVENTS
-});
-
-export const loadBlogPosts = () => ({
-    type: LOAD_BLOG_POSTS
-});
-
 export const loadBartenders = () => ({
     type: LOAD_BARTENDERS,
     callApi: "bartenders"
@@ -52,16 +46,46 @@ export const loadReviews = () => ({
     callApi: "reviews"
 });
 
-export const addReviewForBlogPost = (id, fullName, email, text) => ({
-    type: ADD_REVIEW_FOR_BLOG_POST,
-    generateId: true,
-    payload: {
-        blogPostId: id,
-        fullName,
-        userEmail: email,
-        reviewText: text
+export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail, message}) => (dispatch, getState) => {
+    let state = getState();
+    let users = state.users.entities;
+    let isUserExist = users.find(({email}) => email === userEmail);
+    let newReviewId = uuid();
+
+    if (isUserExist) {
+        dispatch({
+            type: ADD_REVIEW_FOR_BLOG_POST,
+            payload: {
+                id: newReviewId,
+                userId: isUserExist.id,
+                blogPostId,
+                reviewText: message
+            }
+        });
+    } else {
+        let newUserId = uuid();
+        let newUser = fullName.split(' ');
+        dispatch({
+            type: CREATE_NEW_USER,
+            payload: {
+                id: newUserId,
+                name: newUser[0],
+                surname: newUser[1],
+                email: userEmail
+            }
+        });
+
+        dispatch({
+            type: ADD_REVIEW_FOR_BLOG_POST,
+            payload: {
+                id: newReviewId,
+                userId: newUserId,
+                blogPostId,
+                reviewText: message
+            }
+        });
     }
-});
+};
 
 export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
     const state = getState();
@@ -251,7 +275,6 @@ export const loadEventById = (eventId) => (dispatch, getState) => {
     let events = state.events.entities;
 
     let isEventInEvents = events.find(({id}) => eventId === id);
-    console.log(isEventInEvents);
 
     if (eventItem && eventItem.id === eventId) {
         dispatch({

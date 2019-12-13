@@ -18,15 +18,16 @@ import {loadEventById} from "../../actions";
 import {
     eventItemLoadedSelector,
     eventItemSelector,
-    eventItemLoadingSelector
+    eventItemLoadingSelector,
+    eventItemIdSelector
 } from "../../selectors";
 import Spinner from "../spinner";
 
 function EventDetails(props) {
-    let {eventId, isLoading, isLoaded, eventItem, loadEventById} = props;
+    let {eventId, oldEventItemId, isLoading, isLoaded, eventItem, loadEventById} = props;
 
     useEffect(() => {
-        if (!isLoading && !isLoaded) {
+        if (!isLoading && !isLoaded || (eventId !== oldEventItemId)) {
             loadEventById(eventId);
         }
     });
@@ -47,7 +48,9 @@ function EventDetails(props) {
                 <Container>
                     <SectionTitle>{title}</SectionTitle>
                     <DefaultText>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aperiam dolorem exercitationem fugit in ipsa ipsum libero, maiores minus nihil obcaecati pariatur perspiciatis quas quibusdam sint ullam voluptate voluptatibus?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias aperiam dolorem
+                        exercitationem fugit in ipsa ipsum libero, maiores minus nihil obcaecati pariatur perspiciatis
+                        quas quibusdam sint ullam voluptate voluptatibus?
                     </DefaultText>
                 </Container>
                 <img className="event-img" src={bigImg} alt=""/>
@@ -81,6 +84,7 @@ export default connect((state) => {
     return {
         isLoading: eventItemLoadingSelector(state),
         isLoaded: eventItemLoadedSelector(state),
+        oldEventItemId: eventItemIdSelector(state),
         eventItem: eventItemSelector(state)
     }
 }, {loadEventById})(EventDetails);

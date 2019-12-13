@@ -17,15 +17,24 @@ import {
     blogPostItemLoadedSelector,
     blogPostItemLoadingSelector,
     usersLoadedSelector,
+    blogPostItemIdSelector,
     blogPostDetailsSelector
 } from "../../selectors";
 
 
 function BlogDetails(props) {
-    let {blogPostId, blogPost, blogPostItemLoading, blogPostItemLoaded, loadBlogPostById, usersLoaded} = props;
+    let {
+        blogPostId,
+        blogPost,
+        blogPostItemLoading,
+        blogPostItemLoaded,
+        loadBlogPostById,
+        usersLoaded,
+        oldBlogPostId
+    } = props;
 
     useEffect(() => {
-        if (!blogPostItemLoading && !blogPostItemLoaded) {
+        if (!blogPostItemLoading && !blogPostItemLoaded || (blogPostId !== oldBlogPostId)) {
             loadBlogPostById(blogPostId)
         }
     });
@@ -66,6 +75,7 @@ export default connect((state) => {
         blogPostItemLoading: blogPostItemLoadingSelector(state),
         blogPostItemLoaded: blogPostItemLoadedSelector(state),
         usersLoaded: usersLoadedSelector(state),
+        oldBlogPostId: blogPostItemIdSelector(state),
         blogPost: blogPostDetailsSelector(state)
     }
 }, {loadBlogPostById})(BlogDetails);

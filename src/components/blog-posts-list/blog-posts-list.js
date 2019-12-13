@@ -27,7 +27,7 @@ function BlogPostsList(props) {
         return (
             <div className="blog-posts-list">
                 {
-                    blogPosts.map(item => {
+                    blogPosts.slice(0, 4).map(item => {
                         return <BlogPostItem key={item.id} post={item}/>
                     })
                 }

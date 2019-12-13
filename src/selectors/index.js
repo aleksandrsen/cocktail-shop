@@ -8,6 +8,11 @@ export const eventsSelector = (state) => state.events.entities;
 export const eventItemLoadingSelector = (state) => state.eventItem.loading;
 export const eventItemLoadedSelector = (state) => state.eventItem.loaded;
 export const eventItemSelector = (state) => state.eventItem.item;
+export const eventItemIdSelector = (state) => {
+    let eventItem = state.eventItem.item;
+    if (eventItem) return eventItem.id;
+    return '';
+};
 
 // Bartenders
 export const bartendersLoadingSelector = (state) => state.bartenders.loading;
@@ -28,9 +33,13 @@ export const blogPostsSelector = (state) => state.blogPosts.entities;
 export const blogPostItemLoadingSelector = (state) => state.blogPostItem.loading;
 export const blogPostItemLoadedSelector = (state) => state.blogPostItem.loaded;
 export const blogPostItemSelector = (state) => state.blogPostItem.item;
+export const blogPostItemIdSelector = (state) => {
+    let blogPostItem = state.blogPostItem.item;
+    if (blogPostItem) return blogPostItem.id;
+    return '';
+};
 
 // Users
-export const usersLoadingSelector = (state) => state.users.loading;
 export const usersLoadedSelector = (state) => state.users.loaded;
 export const usersSelector = (state) => state.users.entities;
 

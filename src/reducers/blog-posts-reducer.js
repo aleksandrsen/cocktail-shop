@@ -25,28 +25,29 @@ export default (blogPostsState = resourceStartRecord(), action) => {
                 entities: []
             };
         case  ADD_REVIEW_FOR_BLOG_POST:
-            let reviewId = action.generateId;
-            let blogPostId = action.payload.blogPostId;
-            let blogPostItem = blogPostsState.entities.find(({id}) => id === blogPostId);
-            let {reviews} = blogPostItem;
+            let {entities} = blogPostsState;
+            let {id: newReviewId, blogPostId} = action.payload;
+            let idx = entities.findIndex(({id}) => id === blogPostId);
+            let blogPost = {...entities[idx]};
 
-            let newBlogPostItem = {
-                ...blogPostItem,
+            let {reviews} = blogPost;
+            let updatedBlogPost = {
+                ...blogPost,
                 reviews: [
                     ...reviews,
-                    reviewId
+                    newReviewId
                 ]
             };
-            let idx = blogPostsState.entities.findIndex(({id}) => id === blogPostId);
-            let entities = blogPostsState.entities;
+
             return {
                 ...blogPostsState,
                 entities: [
                     ...entities.slice(0, idx),
-                    newBlogPostItem,
+                    updatedBlogPost,
                     ...entities.slice(idx + 1)
                 ]
             };
+
         default:
             return blogPostsState
     }

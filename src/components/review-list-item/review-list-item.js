@@ -4,7 +4,6 @@ import formatDate from "../../functions/format-date";
 import like from "../../img/icons/like.svg";
 import dislike from "../../img/icons/dislike.svg";
 
-// Components
 function ReviewListItem(props) {
     let {text, date, likes, dislikes, author} = props.review;
     let {name, surname} = author;

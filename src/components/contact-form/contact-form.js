@@ -13,32 +13,24 @@ function ContactForm(props) {
 
     let [fullName, setName] = useState('');
     let [email, setEmail] = useState('');
-    let [subject, setSubject] = useState('');
     let [message, setMessage] = useState('');
     const {TextArea} = Input;
 
     return (
         <Form onSubmit={handleSubmit} className={`contact-form ${btnPos ? btnPos : ''}`}>
             <Row type="flex" justify="space-between" align="middle">
-                <Col span={7}>
+                <Col span={11}>
                     <Input
                         placeholder="Full name"
                         size="large"
                         value={fullName}
                         onChange={(e => setName(e.target.value))}/>
                 </Col>
-                <Col span={7}>
+                <Col span={11}>
                     <Input placeholder="Email"
                            size="large"
                            value={email}
                            onChange={e => setEmail(e.target.value)}/>
-                </Col>
-                <Col span={7}>
-                    <Input
-                        placeholder="Subject"
-                        size="large"
-                        value={subject}
-                        onChange={e => setSubject(e.target.value)}/>
                 </Col>
             </Row>
             <Row>
@@ -55,9 +47,14 @@ function ContactForm(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
+
         if (goal === 'blog-post') {
-            addReviewForBlogPost(id, fullName, email, message);
+            addReviewForBlogPost({id, fullName, email, message});
         }
+
+        setName('');
+        setEmail('');
+        setMessage('');
     }
 }
 

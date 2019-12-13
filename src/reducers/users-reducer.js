@@ -1,7 +1,7 @@
-import {LOAD_USERS, START, SUCCESS, FAIL} from "../constants";
+import {LOAD_USERS, START, SUCCESS, FAIL, CREATE_NEW_USER} from "../constants";
 import {resourceStartRecord} from "./utils";
 
-export default (eventsState = resourceStartRecord(), action) => {
+export default (usersState = resourceStartRecord(), action) => {
     switch (action.type) {
         case LOAD_USERS + START:
             return {
@@ -10,7 +10,6 @@ export default (eventsState = resourceStartRecord(), action) => {
                 error: null,
                 entities: []
             };
-
         case LOAD_USERS + SUCCESS:
             return {
                 loading: false,
@@ -25,7 +24,25 @@ export default (eventsState = resourceStartRecord(), action) => {
                 error: action.error,
                 entities: []
             };
+        case CREATE_NEW_USER:
+            let {id, name, surname, email} = action.payload;
+            let {entities} = usersState;
+            let newUser = {
+                id,
+                name,
+                surname,
+                email
+            };
+
+            return {
+                ...usersState,
+                entities: [
+                    ...entities,
+                    newUser
+                ]
+            };
+
         default:
-            return eventsState
+            return usersState
     }
 }

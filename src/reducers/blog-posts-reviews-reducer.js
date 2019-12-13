@@ -26,18 +26,15 @@ export default (reviewsState = resourceStartRecord(), action) => {
             };
         case ADD_REVIEW_FOR_BLOG_POST:
             let {entities} = reviewsState;
-            let {fullName, userEmail, reviewText} = action.payload;
-            let id = action.generateId;
-            // date: "2019-09-30",
+            let {reviewText, userId, id: newReviewId} = action.payload;
             let date = new Date(Date.now());
             let year = date.getFullYear();
             let month = date.getMonth();
             let day = date.getDate();
 
             let newReview = {
-                id,
-                userId: "e9d1351a-f32f-4d6a-b32c-8c093fb3e2de",
-                fullName,
+                id: newReviewId,
+                userId: userId,
                 date: `${year}-${month + 1}-${day}`,
                 likes: 0,
                 dislikes: 0,
@@ -47,11 +44,10 @@ export default (reviewsState = resourceStartRecord(), action) => {
             return {
                 ...reviewsState,
                 entities: [
-                    ...entities,
-                    newReview
+                    newReview,
+                    ...entities
                 ]
             };
-
 
         default:
             return reviewsState
