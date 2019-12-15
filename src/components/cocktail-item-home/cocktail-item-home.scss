@@ -1,0 +1,61 @@
+.ant-col:nth-child(n + 4) {
+    margin-top: 40px;
+}
+
+.ant-col {
+    display: flex;
+}
+
+.cocktail-item-home {
+    flex-grow: 1;
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .description {
+        background: #000000;
+        padding: 20px;
+        color: #ffac04;
+    }
+
+    .title-rate {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 22px;
+        color: #ffac04;
+    }
+
+    .actions {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            max-height: 15px;
+            width: auto;
+        }
+    }
+
+    .price {
+        font-size: 25px;
+    }
+
+    .right-wrapper {
+        a + a {
+            margin-left: 15px;
+        }
+
+        a i {
+            font-size: 28px;
+            color: #ffac04;
+        }
+    }
+}

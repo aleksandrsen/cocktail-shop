@@ -3,6 +3,7 @@ import EventsService from "../services/events-service";
 import BlogPostsService from "../services/blog-posts-service";
 import UsersService from "../services/users-service";
 import BartendersService from "../services/bartenders-service";
+import CocktailsService from "../services/cocktails-service";
 import {
     LOAD_USERS,
     LOAD_EVENTS,
@@ -16,6 +17,7 @@ import {
     CREATE_NEW_USER,
     DELETE_REVIEW,
     EDIT_REVIEW,
+    LOAD_RANDOM_COCKTAILS,
     USER_LOG_IN,
     USER_LOG_OUT,
     START,
@@ -23,10 +25,12 @@ import {
     FAIL
 } from "../constants";
 
+
 let eventsService = new EventsService();
 let blogPostsService = new BlogPostsService();
 let usersService = new UsersService();
 let bartendersService = new BartendersService();
+let cocktailsService = new CocktailsService();
 
 export const userLogIn = () => ({
     type: USER_LOG_IN
@@ -350,6 +354,44 @@ export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
             .catch(err => {
                 dispatch({
                     type: LOAD_BLOG_POST_BY_ID + FAIL,
+                    payload: {
+                        error: err
+                    }
+                })
+            })
+    }
+};
+
+export const loadRandomCocktails = (blogPostId) => (dispatch, getState) => {
+    const state = getState();
+    let isLoaded = state.randomCocktails.loaded;
+    let isLoading = state.randomCocktails.loading;
+    let randomCocktails = state.randomCocktails.entities;
+
+    if (randomCocktails.length) {
+        dispatch({
+            type: LOAD_RANDOM_COCKTAILS + SUCCESS,
+            payload: {
+                response: randomCocktails
+            }
+        })
+    } else if (!isLoading && !isLoaded) {
+        dispatch({type: LOAD_RANDOM_COCKTAILS + START});
+        cocktailsService.lookUpRandomCocktail()
+            .then(data => {
+                const res = data.map(item => {
+                    return  item.drinks[0];
+                });
+                dispatch({
+                    type: LOAD_RANDOM_COCKTAILS + SUCCESS,
+                    payload: {
+                        response: res
+                    }
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: LOAD_RANDOM_COCKTAILS + FAIL,
                     payload: {
                         error: err
                     }

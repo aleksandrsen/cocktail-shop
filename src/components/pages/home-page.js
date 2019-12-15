@@ -6,6 +6,7 @@ import UpcomingEventsSection from "../upcoming-events-section";
 import NextEventsSection from "../next-events-section";
 import PubsPhotoGallerySection from "../pubs-photo-gallery-section";
 import BlogNewsSection from "../blog&news-section";
+import CocktailsHomeSection from "../cocktails-home-section";
 
 function HomePage(props) {
 
@@ -13,6 +14,7 @@ function HomePage(props) {
         <>
             <Inner/>
             <OurStorySection/>
+            <CocktailsHomeSection/>
             <HappyHourSection/>
             <UpcomingEventsSection/>
             <NextEventsSection/>

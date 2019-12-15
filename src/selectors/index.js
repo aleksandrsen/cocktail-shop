@@ -48,6 +48,11 @@ export const blogPostsReviewsLoadingSelector = (state) => state.blogPostsReviews
 export const blogPostsReviewsLoadedSelector = (state) => state.blogPostsReviews.loaded;
 export const blogPostsReviewsSelector = (state) => state.blogPostsReviews.entities;
 
+// Random Cocktails
+export const randomCocktailsLoadingSelector = (state) => state.randomCocktails.loading;
+export const randomCocktailsLoadedSelector = (state) => state.randomCocktails.loaded;
+export const randomCocktailsSelector = (state) => state.randomCocktails.entities;
+
 // Common
 export const idSelector = (_, ownProps) => ownProps.id;
 

@@ -15,6 +15,7 @@ const USER_LOG_OUT = "USER_LOG_OUT";
 const START = "_START";
 const SUCCESS = "_SUCCESS";
 const FAIL = "_FAIL";
+const LOAD_RANDOM_COCKTAILS = "LOAD_RANDOM_COCKTAILS";
 
 export {
     LOAD_USERS,
@@ -31,6 +32,7 @@ export {
     EDIT_REVIEW,
     USER_LOG_IN,
     USER_LOG_OUT,
+    LOAD_RANDOM_COCKTAILS,
     START,
     SUCCESS,
     FAIL
