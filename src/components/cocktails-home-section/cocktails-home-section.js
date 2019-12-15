@@ -14,9 +14,10 @@ import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import Spinner from "../spinner";
-import {Card, Row} from 'antd';
+import {Carousel, Row} from 'antd';
 import CocktailItemHome from "../cocktail-item-home";
 import DefaultText from "../common-components/default-text";
+import slides from "../../img/main-slider-slides";
 
 function CocktailsHomeSection(props) {
     let {isLoading, isLoaded, cocktails, loadRandomCocktails} = props;
@@ -28,6 +29,24 @@ function CocktailsHomeSection(props) {
     });
 
     if (!isLoading && isLoaded) {
+        console.log(cocktails);
+        let slide1 = (
+            <Row gutter={24} type={"flex"}>
+            {cocktails.slice(0, 4).map(cocktailItem => {
+                return <CocktailItemHome key={cocktailItem.idDrink} cocktail={cocktailItem}/>
+            })}
+            </Row>
+        );
+
+        let slide2 = (
+            <Row gutter={24} type={"flex"}>
+                {cocktails.slice(4, 8).map(cocktailItem => {
+                    return <CocktailItemHome key={cocktailItem.idDrink} cocktail={cocktailItem}/>
+                })}
+            </Row>
+        );
+
+
         return (
             <Section className="cocktails-home-page">
                 <Container>
@@ -37,9 +56,14 @@ function CocktailsHomeSection(props) {
                         dicta doloremque illum nemo nihil nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
                         repudiandae soluta veritatis voluptates.
                     </DefaultText>
-                    <Row gutter={32}>
+                    {/*<Carousel autoplay dots={false}>*/}
+                    {/*    {slide1}*/}
+                    {/*    {slide2}*/}
+                    {/*</Carousel>*/}
+
+                    <Row gutter={24} type={"flex"}>
                         {
-                            cocktails.map(cocktailItem => {
+                            cocktails.slice(0, 4).map(cocktailItem => {
                                 return <CocktailItemHome key={cocktailItem.idDrink} cocktail={cocktailItem}/>
                             })
                         }

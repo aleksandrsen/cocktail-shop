@@ -41,7 +41,6 @@ export default class CocktailsService {
             this.http(`random.php`),
             this.http(`random.php`),
             this.http(`random.php`),
-            this.http(`random.php`),
             this.http(`random.php`)
         ])
     };
