@@ -14,6 +14,10 @@ import {
     LOAD_BLOG_POSTS_REVIEWS,
     LOAD_BLOG_POST_BY_ID,
     ADD_REVIEW_FOR_BLOG_POST,
+    ADD_TO_CART,
+    ADD_TO_WISH_LIST,
+    REMOVE_FROM_WISH_LIST,
+    REMOVE_FROM_CART,
     CREATE_NEW_USER,
     DELETE_REVIEW,
     EDIT_REVIEW,
@@ -31,6 +35,34 @@ let blogPostsService = new BlogPostsService();
 let usersService = new UsersService();
 let bartendersService = new BartendersService();
 let cocktailsService = new CocktailsService();
+
+export const addToCart = (id) => ({
+    type: ADD_TO_CART,
+    payload: {
+        id
+    }
+});
+
+export const removeFromCart = (id) => ({
+    type: REMOVE_FROM_CART,
+    payload: {
+        id
+    }
+});
+
+export const addToWishList = (id) => ({
+    type: ADD_TO_WISH_LIST,
+    payload: {
+        id
+    }
+});
+
+export const removeFromWishList = (id) => ({
+    type: REMOVE_FROM_WISH_LIST,
+    payload: {
+        id
+    }
+});
 
 export const userLogIn = () => ({
     type: USER_LOG_IN
@@ -380,7 +412,7 @@ export const loadRandomCocktails = (blogPostId) => (dispatch, getState) => {
         cocktailsService.lookUpRandomCocktail()
             .then(data => {
                 const res = data.map(item => {
-                    return  item.drinks[0];
+                    return item.drinks[0];
                 });
                 dispatch({
                     type: LOAD_RANDOM_COCKTAILS + SUCCESS,

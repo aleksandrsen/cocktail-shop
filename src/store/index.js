@@ -9,7 +9,7 @@ const store = createStore(reducers, applyMiddleware(
     thunk,
     generateId,
     api,
-    // logger
+    logger
 ));
 
 window.store = store;

@@ -1,18 +1,27 @@
-.ant-col:nth-child(n + 5) {
-    margin-top: 40px;
-}
-
-.ant-col {
-    display: flex;
-}
-
 .cocktail-item-home {
     $br: 10px;
-    $bgColor: rgb(0, 0, 0);
+    $bgColor: #ffac04;
+    $bgColorHover: #e29804;
+    $transition: .4s;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    color: #ffac04;
+    color: #000;
+    transition: $transition;
+
+    &:hover {
+        .title-rate {
+            background-color: $bgColorHover;
+        }
+
+        .ingredients {
+            background-color: $bgColorHover;
+        }
+
+        .actions {
+            background-color: $bgColorHover;
+        }
+    }
 
     img {
         display: block;
@@ -26,14 +35,20 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #ffac04;
+        border-bottom: 1px solid #fff;
         background: $bgColor;
         padding: 10px 15px;
+        transition: $transition;
 
         .title {
             font-size: 22px;
             text-align: center;
-            color: #ffac04;
+            font-weight: 600;
+            color: #000;
+
+            &:hover {
+                color: #3a3a3a;
+            }
         }
 
         .ant-rate {
@@ -47,6 +62,7 @@
         text-align: center;
         padding: 10px 15px;
         background: $bgColor;
+        transition: $transition;
     }
 
     .actions {
@@ -57,6 +73,7 @@
         align-items: center;
         padding: 10px 15px;
         border-radius: 0 0 $br $br;
+        transition: $transition;
 
         img {
             max-height: 15px;
@@ -69,14 +86,29 @@
 
         .right-wrapper {
 
+            a {
+                position: relative;
+            }
+
             a + a {
                 margin-left: 15px;
             }
 
             a i {
                 font-size: 25px;
-                color: #ffac04;
+                color: #000;
                 vertical-align: middle;
+            }
+
+            i.check {
+                color: #09a400;
+            }
+
+            i.done {
+                position: absolute;
+                top: -100%;
+                right: -10px;
+                color: #09a400;
             }
         }
     }

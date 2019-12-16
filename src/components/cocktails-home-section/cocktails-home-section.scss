@@ -1,3 +1,9 @@
 .cocktails-home-page {
+    .ant-carousel .ant-row-flex {
+        display: flex !important;
+    }
 
- }
+    .ant-col {
+        display: flex;
+    }
+}

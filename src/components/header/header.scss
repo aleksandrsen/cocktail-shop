@@ -1,6 +1,6 @@
 header {
     background-color: rgba(0, 0, 0, 0.9);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,6 +36,34 @@ header {
             justify-content: center;
             align-items: center;
 
+            a {
+                cursor: pointer;
+                padding: 0 7px;
+                position: relative;
+
+                .material-icons {
+                    font-size: 27px;
+                    color: #ffad05;
+                    transition: .3s;
+
+                    &:hover {
+                        color: #bc7b05;
+                    }
+                }
+
+                .count {
+                    position: absolute;
+                    top: -50%;
+                    right: 0;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #ffac04;
+                    color: #000;
+                    text-align: center;
+                    line-height: 20px;
+                }
+            }
         }
     }
 }

@@ -54,6 +54,8 @@ export const randomCocktailsLoadedSelector = (state) => state.randomCocktails.lo
 export const randomCocktailsSelector = (state) => state.randomCocktails.entities;
 
 // Common
+export const cartSelector = (state) => state.cart;
+export const wishListSelector = (state) => state.wishList;
 export const idSelector = (_, ownProps) => ownProps.id;
 
 export const getAllDataForBlogPosts = createSelector(
@@ -90,7 +92,6 @@ export const getAllReviewsForBlogPost = createSelector(
     usersSelector,
     idSelector,
     (reviews, users, id) => {
-        // if (!users && !reviews) return [];
 
         return reviews.map(reviewItem => {
             let reviewAuthor = users.find(({id}) => id === reviewItem.userId);
@@ -100,4 +101,14 @@ export const getAllReviewsForBlogPost = createSelector(
             }
         })
     }
+);
+
+export const cartAmountSelector = createSelector(
+    cartSelector,
+    cart => Object.values(cart).reduce((total, cocktails) => total + cocktails, 0)
+);
+
+export const wishListAmountSelector = createSelector(
+    wishListSelector,
+    wishList => wishList.length
 );

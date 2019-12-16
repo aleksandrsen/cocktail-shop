@@ -8,7 +8,9 @@ import bartenderItemReducer from "./bartender-item-reducer";
 import eventItemReducer from "./event-item-reducer";
 import blogPostItemReducer from "./blog-post-item-reducer";
 import blogPostsReviewsReducer from "./blog-posts-reviews-reducer";
-import randomCocktailsState from "./randog-cocktails-reducer";
+import randomCocktailsSReducer from "./randog-cocktails-reducer";
+import cartReducer from "./cart-reducer";
+import wishListReducer from "./wish-list-reducer";
 
 const reducers = combineReducers({
     events: eventsReducer,
@@ -20,7 +22,9 @@ const reducers = combineReducers({
     blogPostItem: blogPostItemReducer,
     bartenderItem: bartenderItemReducer,
     user: userReducer,
-    randomCocktails: randomCocktailsState
+    randomCocktails: randomCocktailsSReducer,
+    cart: cartReducer,
+    wishList: wishListReducer
 });
 
 export default reducers;

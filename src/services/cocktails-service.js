@@ -2,7 +2,7 @@ export default class CocktailsService {
     constructor(prop) {
         this.api_Base = "https://www.thecocktaildb.com/api/json/v1/1/"
     }
-    
+
     http(link) {
         return fetch(`${this.api_Base}${link}`)
             .then(data => data.json())
@@ -41,6 +41,14 @@ export default class CocktailsService {
             this.http(`random.php`),
             this.http(`random.php`),
             this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
+            this.http(`random.php`),
             this.http(`random.php`)
         ])
     };
@@ -67,7 +75,7 @@ export default class CocktailsService {
     }
 
     filterByAlcoholic(AlcParam) {
-        const alc= "Alcoholic";
+        const alc = "Alcoholic";
         const noAlc = "Non_Alcoholic";
         return this.http(`filter.php?a=${AlcParam}`);
     }
