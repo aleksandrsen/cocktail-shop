@@ -1,0 +1,17 @@
+.select-cocktails {
+    width: 70%;
+
+    &.ant-select-open .ant-select-selection {
+        border-color: #ffac04;
+        box-shadow: 0 0 0 2px rgba(255, 167, 8, 0.55);
+
+        &:hover {
+            border-color: #ffac04;
+        }
+    }
+
+    .ant-select-selection:hover {
+        border-color: #ffac04;
+    }
+}
+

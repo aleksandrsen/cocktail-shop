@@ -1,0 +1,10 @@
+.cocktails-list {
+
+    .ant-col {
+        display: flex;
+    }
+
+    .ant-col:nth-child(n + 4) {
+        margin-top: 40px;
+    }
+}

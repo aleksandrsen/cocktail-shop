@@ -21,9 +21,8 @@ function CocktailItemHome(props) {
         strDrink,
         strDrinkThumb,
         strInstructions,
-
     } = props.cocktail;
-    const {addToCart, addToWishList, removeFromCart, removeFromWishList} = props;
+    const {addToCart, addToWishList, removeFromCart, removeFromWishList, col} = props;
 
     let [wishList, setWishList] = useState(false);
     let [cart, setCart] = useState(false);
@@ -34,7 +33,7 @@ function CocktailItemHome(props) {
     let rate = Math.floor(strDrink.length / 4);
 
     return (
-        <Col span={6}>
+        <Col span={col ? col : 6}>
             <div className="cocktail-item-home">
                 <img src={strDrinkThumb} alt={strDrink}/>
                 <div className="title-rate">

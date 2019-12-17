@@ -24,7 +24,7 @@ function ContactForm(props) {
                         placeholder="Full name"
                         size="large"
                         value={fullName}
-                        onChange={(e => setName(e.target.value))}/>
+                        onChange={e => setName(e.target.value)}/>
                 </Col>
                 <Col span={11}>
                     <Input placeholder="Email"
