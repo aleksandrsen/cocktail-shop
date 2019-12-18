@@ -2,25 +2,24 @@ import React, {useEffect} from 'react';
 import './cocktails-list.scss';
 import {connect} from "react-redux";
 // Actions
-import {loadRandomCocktails} from "../../actions";
+import {loadCocktails} from "../../actions";
 // Selectors
 import {
-    randomCocktailsLoadedSelector,
-    randomCocktailsLoadingSelector,
-    randomCocktailsSelector
+    cocktailsLoadingSelector,
+    cocktailsLoadedSelector,
+    cocktailsSelector
 } from "../../selectors";
 // Components
 import Spinner from "../spinner";
 import {Row} from 'antd';
 import CocktailItemHome from "../cocktail-item-home";
-import Section from "../common-components/section";
 
 function CocktailsList(props) {
-    let {isLoading, isLoaded, cocktails, loadRandomCocktails} = props;
+    let {isLoading, isLoaded, cocktails, loadCocktails} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
-            loadRandomCocktails();
+            loadCocktails();
         }
     });
 
@@ -41,8 +40,8 @@ function CocktailsList(props) {
 
 export default connect(state => {
     return {
-        isLoading: randomCocktailsLoadingSelector(state),
-        isLoaded: randomCocktailsLoadedSelector(state),
-        cocktails: randomCocktailsSelector(state)
+        isLoading: cocktailsLoadingSelector(state),
+        isLoaded: cocktailsLoadedSelector(state),
+        cocktails: cocktailsSelector(state)
     }
-}, {loadRandomCocktails})(CocktailsList);
+}, {loadCocktails})(CocktailsList);

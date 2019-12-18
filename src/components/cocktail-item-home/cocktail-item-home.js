@@ -19,6 +19,8 @@ function CocktailItemHome(props) {
         idDrink,
         strAlcoholic,
         strDrink,
+        rate,
+        price,
         strDrinkThumb,
         strInstructions,
     } = props.cocktail;
@@ -29,9 +31,8 @@ function CocktailItemHome(props) {
 
     let cocktail = props.cocktail;
     let title = cutTextContent(strDrink, 23);
-    let ingredients = getCocktailIngredients(cocktail);
-    let rate = Math.floor(strDrink.length / 4);
-
+    let ingredients = getCocktailIngredients(cocktail) || '';
+    // let ingredients = '';
     return (
         <Col span={col ? col : 6}>
             <div className="cocktail-item-home">
@@ -44,7 +45,7 @@ function CocktailItemHome(props) {
                     {ingredients}
                 </div>
                 <div className="actions">
-                    <div className="price">{idDrink[0] + idDrink[2]}$</div>
+                    <div className="price">{price}$</div>
                     <div className="right-wrapper">
                         <a href="" className="add-to-wish-list" onClick={handleAddToWishList}>
                             {
@@ -86,9 +87,10 @@ function CocktailItemHome(props) {
 
     function getCocktailIngredients(obj) {
         let ingredients = [];
-        for (let key in cocktail) {
-            if (key.slice(0, -1) === "strIngredient" && cocktail[key] !== null) {
-                ingredients.push(cocktail[key]);
+        if (!obj.strIngredient1) return null;
+        for (let key in obj) {
+            if (key.slice(0, -1) === "strIngredient" && obj[key] !== null) {
+                ingredients.push(obj[key]);
             }
         }
         let res = ingredients.join(', ').toLowerCase();

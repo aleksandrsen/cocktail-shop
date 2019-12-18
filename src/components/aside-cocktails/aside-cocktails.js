@@ -2,6 +2,8 @@ import React from 'react';
 import './aside-cocktails.scss';
 // Components
 import { Checkbox } from 'antd';
+import { Collapse } from 'antd';
+const { Panel } = Collapse;
 
 function AsideCocktails(props) {
 
@@ -133,36 +135,19 @@ function AsideCocktails(props) {
 
     return (
         <aside className="aside-cocktails">
-            <div className="aside-item">
-                <h2>Alcoholic</h2>
-                <Checkbox.Group options={alcoholic} onChange={onChange} />
-            </div>
-            <div className="aside-item">
-                <h2>Categories</h2>
-                <Checkbox.Group options={categories} onChange={onChange} />
-            </div>
-            <div className="aside-item">
-                <h2>Ingredients</h2>
-                <Checkbox.Group options={ingredients} onChange={onChange} />
-            </div>
+            <Collapse bordered={false} defaultActiveKey={['1']}>
+                <Panel header="Alcoholic" key="1">
+                    <Checkbox.Group options={alcoholic} onChange={onChange} />
+                </Panel>
+                <Panel header="Categories" key="2">
+                    <Checkbox.Group options={categories} onChange={onChange} />
+                </Panel>
+                <Panel header="Ingredients" key="3">
+                    <Checkbox.Group options={ingredients} onChange={onChange} />
+                </Panel>
+            </Collapse>
         </aside>
     );
 }
 
 export default AsideCocktails;
-
-
-
-
-{/*<Checkbox.Group options={plainOptions} defaultValue={['Apple']} onChange={onChange} />*/}
-{/*<br />*/}
-{/*<br />*/}
-{/*<Checkbox.Group options={options} defaultValue={['Pear']} onChange={onChange} />*/}
-{/*<br />*/}
-{/*<br />*/}
-{/*<Checkbox.Group*/}
-{/*    options={optionsWithDisabled}*/}
-{/*    disabled*/}
-{/*    defaultValue={['Apple']}*/}
-{/*    onChange={onChange}*/}
-{/*/>*/}

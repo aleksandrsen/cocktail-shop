@@ -75,8 +75,6 @@ export default class CocktailsService {
     }
 
     filterByAlcoholic(AlcParam) {
-        const alc = "Alcoholic";
-        const noAlc = "Non_Alcoholic";
         return this.http(`filter.php?a=${AlcParam}`);
     }
 
@@ -84,5 +82,13 @@ export default class CocktailsService {
         const ordinary = "Ordinary_Drink";
         const cocktail = "Cocktail";
         return this.http(`filter.php?c=${category}`)
+    }
+
+    async loadCocktails() {
+        return Promise.all([
+            this.filterByAlcoholic('Non_Alcoholic'),
+            this.filterByAlcoholic('Alcoholic'),
+            this.filterByAlcoholic('Optional_Alcohol')
+        ])
     }
 }

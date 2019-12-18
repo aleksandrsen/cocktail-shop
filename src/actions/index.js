@@ -13,6 +13,7 @@ import {
     LOAD_EVENT_BY_ID,
     LOAD_BLOG_POSTS_REVIEWS,
     LOAD_BLOG_POST_BY_ID,
+    LOAD_COCKTAILS,
     ADD_REVIEW_FOR_BLOG_POST,
     ADD_TO_CART,
     ADD_TO_WISH_LIST,
@@ -28,6 +29,7 @@ import {
     SUCCESS,
     FAIL
 } from "../constants";
+import cutTextContent from "../functions/cut-text-content";
 
 
 let eventsService = new EventsService();
@@ -394,7 +396,7 @@ export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
     }
 };
 
-export const loadRandomCocktails = (blogPostId) => (dispatch, getState) => {
+export const loadRandomCocktails = () => (dispatch, getState) => {
     const state = getState();
     let isLoaded = state.randomCocktails.loaded;
     let isLoading = state.randomCocktails.loading;
@@ -412,8 +414,15 @@ export const loadRandomCocktails = (blogPostId) => (dispatch, getState) => {
         cocktailsService.lookUpRandomCocktail()
             .then(data => {
                 const res = data.map(item => {
-                    return item.drinks[0];
+                    let {strDrink, idDrink} = item.drinks[0];
+                    let cocktail = item.drinks[0];
+                    return {
+                        ...cocktail,
+                        rate: Math.floor(strDrink.length / 4),
+                        price: +(idDrink[0] + idDrink[2])
+                    }
                 });
+
                 dispatch({
                     type: LOAD_RANDOM_COCKTAILS + SUCCESS,
                     payload: {
@@ -424,6 +433,54 @@ export const loadRandomCocktails = (blogPostId) => (dispatch, getState) => {
             .catch(err => {
                 dispatch({
                     type: LOAD_RANDOM_COCKTAILS + FAIL,
+                    payload: {
+                        error: err
+                    }
+                })
+            })
+    }
+};
+
+export const loadCocktails = () => (dispatch, getState) => {
+    const state = getState();
+    let isLoaded = state.cocktails.loaded;
+    let isLoading = state.cocktails.loading;
+    let cocktails = state.cocktails.entities;
+
+    if (cocktails.length) {
+        dispatch({
+            type: LOAD_COCKTAILS + SUCCESS,
+            payload: {
+                response: cocktails
+            }
+        })
+    } else if (!isLoading && !isLoaded) {
+        dispatch({type: LOAD_COCKTAILS + START});
+        cocktailsService.loadCocktails()
+            .then(data => {
+                let arr = [];
+                let some = data.forEach(item => {
+                    arr.push(...item.drinks);
+                });
+                let result = arr.map(item => {
+                    let {strDrink, idDrink} = item;
+                   return {
+                       ...item,
+                       rate: Math.floor(strDrink.length / 4),
+                       price: +(idDrink[0] + idDrink[2])
+                   }
+                });
+
+                dispatch({
+                    type: LOAD_COCKTAILS + SUCCESS,
+                    payload: {
+                        response: result
+                    }
+                })
+            })
+            .catch(err => {
+                dispatch({
+                    type: LOAD_COCKTAILS + FAIL,
                     payload: {
                         error: err
                     }

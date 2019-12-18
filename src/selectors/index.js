@@ -53,6 +53,11 @@ export const randomCocktailsLoadingSelector = (state) => state.randomCocktails.l
 export const randomCocktailsLoadedSelector = (state) => state.randomCocktails.loaded;
 export const randomCocktailsSelector = (state) => state.randomCocktails.entities;
 
+// Random Cocktails
+export const cocktailsLoadingSelector = (state) => state.cocktails.loading;
+export const cocktailsLoadedSelector = (state) => state.cocktails.loaded;
+export const cocktailsSelector = (state) => state.cocktails.entities;
+
 // Common
 export const cartSelector = (state) => state.cart;
 export const wishListSelector = (state) => state.wishList;
