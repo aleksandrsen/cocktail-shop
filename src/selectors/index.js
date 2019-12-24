@@ -97,7 +97,6 @@ export const getAllReviewsForBlogPost = createSelector(
     usersSelector,
     idSelector,
     (reviews, users, id) => {
-
         return reviews.map(reviewItem => {
             let reviewAuthor = users.find(({id}) => id === reviewItem.userId);
             return {

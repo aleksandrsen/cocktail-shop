@@ -1,4 +1,4 @@
-.cocktail-item-home {
+.cocktail-item {
     $br: 10px;
     $bgColor: #ffac04;
     $bgColorHover: #e29804;
@@ -9,7 +9,42 @@
     color: #000;
     transition: $transition;
 
+    .cocktails-info {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px 10px 0 0;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: $br $br 0 0;
+    }
+
+    .cocktail-ingredients {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        transition: .6s;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.4em;
+        color: #c9c9c9;
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
     &:hover {
+        .cocktail-ingredients {
+            top: 0;
+        }
+
         .title-rate {
             background-color: $bgColorHover;
         }
@@ -21,13 +56,6 @@
         .actions {
             background-color: $bgColorHover;
         }
-    }
-
-    img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        border-radius: $br $br 0 0;
     }
 
     .title-rate {
@@ -113,3 +141,4 @@
         }
     }
 }
+

@@ -9,7 +9,9 @@ export default class CocktailsService {
             .then(response => {
                 return response;
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                return {status: "Error", message: err}
+            });
     }
 
     searchCocktailByName(name) {
@@ -25,7 +27,7 @@ export default class CocktailsService {
     }
 
     lookUpCocktailDetailsById(id) {
-        return this.http(`search.php?i=${id}`)
+        return this.http(`lookup.php?i=${id}`)
     }
 
     lookUpIngredientById(id) {

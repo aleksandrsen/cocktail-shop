@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import './cocktails-home-section.scss';
+import './random-cocktails-section.scss';
 import {connect} from "react-redux";
 // Actions
 import {loadRandomCocktails} from "../../actions";
@@ -15,11 +15,11 @@ import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import Spinner from "../spinner";
 import {Carousel, Row} from 'antd';
-import CocktailItemHome from "../cocktail-item-home";
+import CocktailItemHome from "../cocktail-item";
 import DefaultText from "../common-components/default-text";
 import slides from "../../img/main-slider-slides";
 
-function CocktailsHomeSection(props) {
+function RandomCocktailsSection(props) {
     let {isLoading, isLoaded, cocktails, loadRandomCocktails} = props;
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function CocktailsHomeSection(props) {
             return (
                 <Row key={item[0].idDrink} gutter={24} type={"flex"}>
                     {item.map(cocktailItem => {
-                        return <CocktailItemHome key={cocktailItem.idDrink} cocktail={cocktailItem}/>
+                        return <CocktailItemHome withIngredients={true} key={cocktailItem.idDrink} cocktail={cocktailItem}/>
                     })}
                 </Row>
             )
@@ -79,4 +79,4 @@ export default connect(state => {
         isLoaded: randomCocktailsLoadedSelector(state),
         cocktails: randomCocktailsSelector(state)
     }
-}, {loadRandomCocktails})(CocktailsHomeSection);
+}, {loadRandomCocktails})(RandomCocktailsSection);

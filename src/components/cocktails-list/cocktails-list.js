@@ -12,7 +12,7 @@ import {
 // Components
 import Spinner from "../spinner";
 import {Row} from 'antd';
-import CocktailItemHome from "../cocktail-item-home";
+import CocktailItemHome from "../cocktail-item";
 
 function CocktailsList(props) {
     let {isLoading, isLoaded, cocktails, loadCocktails} = props;
@@ -27,7 +27,7 @@ function CocktailsList(props) {
 
         return (
             <Row gutter={24} type={"flex"} className="cocktails-list">
-                {cocktails.map(cocktailItem => {
+                {cocktails.slice(0, 25).map(cocktailItem => {
                     return <CocktailItemHome key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
                 })}
             </Row>

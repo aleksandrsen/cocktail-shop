@@ -4,6 +4,7 @@ import BlogPostsService from "../services/blog-posts-service";
 import UsersService from "../services/users-service";
 import BartendersService from "../services/bartenders-service";
 import CocktailsService from "../services/cocktails-service";
+import getCocktailIngredientsFunc from "../functions/getCocktailIngredients";
 import {
     LOAD_USERS,
     LOAD_EVENTS,
@@ -15,6 +16,7 @@ import {
     LOAD_BLOG_POST_BY_ID,
     LOAD_COCKTAILS,
     ADD_REVIEW_FOR_BLOG_POST,
+    LOAD_COCKTAIL_DETAILS,
     ADD_TO_CART,
     ADD_TO_WISH_LIST,
     REMOVE_FROM_WISH_LIST,
@@ -29,8 +31,6 @@ import {
     SUCCESS,
     FAIL
 } from "../constants";
-import cutTextContent from "../functions/cut-text-content";
-
 
 let eventsService = new EventsService();
 let blogPostsService = new BlogPostsService();
@@ -416,10 +416,13 @@ export const loadRandomCocktails = () => (dispatch, getState) => {
                 const res = data.map(item => {
                     let {strDrink, idDrink} = item.drinks[0];
                     let cocktail = item.drinks[0];
+                    let ingredients = getCocktailIngredientsFunc(item.drinks[0]);
+                    let rate = Math.floor(strDrink.length / 4);
                     return {
                         ...cocktail,
-                        rate: Math.floor(strDrink.length / 4),
-                        price: +(idDrink[0] + idDrink[2])
+                        rate: rate < 0 ? 1 : rate > 5 ? 5 : rate,
+                        price: +(idDrink[0] + idDrink[2]),
+                        ingredients
                     }
                 });
 
@@ -446,6 +449,7 @@ export const loadCocktails = () => (dispatch, getState) => {
     let isLoaded = state.cocktails.loaded;
     let isLoading = state.cocktails.loading;
     let cocktails = state.cocktails.entities;
+    let randomCocktails = state.randomCocktails.entities;
 
     if (cocktails.length) {
         dispatch({
@@ -459,16 +463,26 @@ export const loadCocktails = () => (dispatch, getState) => {
         cocktailsService.loadCocktails()
             .then(data => {
                 let arr = [];
-                let some = data.forEach(item => {
+                data.forEach(item => {
                     arr.push(...item.drinks);
                 });
                 let result = arr.map(item => {
-                    let {strDrink, idDrink} = item;
-                   return {
-                       ...item,
-                       rate: Math.floor(strDrink.length / 4),
-                       price: +(idDrink[0] + idDrink[2])
-                   }
+                    let {strDrink, idDrink: cocktailId} = item;
+                    let calcRate = Math.floor(strDrink.length / 4);
+                    let rating = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
+                    let price = +(cocktailId[0] + cocktailId[2]);
+
+                    let cocktailInRandom = randomCocktails.find(({idDrink}) => idDrink === cocktailId);
+                    if (cocktailInRandom) {
+                        return {
+                            ...cocktailInRandom
+                        }
+                    }
+                    return {
+                        ...item,
+                        rate: rating,
+                        price
+                    }
                 });
 
                 dispatch({
@@ -487,4 +501,44 @@ export const loadCocktails = () => (dispatch, getState) => {
                 })
             })
     }
+};
+
+export const loadCocktailDetails = (id) => (dispatch, getState) => {
+    cocktailsService.lookUpCocktailDetailsById(id)
+        .then(data => {
+            if (data.status === "Error") {
+                dispatch({
+                    type: LOAD_COCKTAIL_DETAILS + FAIL,
+                    payload: {
+                        id,
+                        err: data.message
+                    }
+                });
+                return
+            }
+
+            let {idDrink, strDrink} = data.drinks[0];
+            let ingredients = getCocktailIngredientsFunc(data.drinks[0]);
+            let calcRate = Math.floor(strDrink.length / 4);
+            let rate = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
+            let price = +(idDrink[0] + idDrink[2]);
+
+            dispatch({
+                type: LOAD_COCKTAIL_DETAILS + SUCCESS,
+                payload: {
+                    ...data.drinks[0],
+                    rate,
+                    price,
+                    ingredients
+                }
+            })
+        })
+        .catch(err => {
+            dispatch({
+                type: LOAD_COCKTAIL_DETAILS + FAIL,
+                payload: {
+                    err
+                }
+            })
+        })
 };

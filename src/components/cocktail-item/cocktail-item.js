@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './cocktail-item-home.scss';
+import './cocktail-item.scss';
 import cutTextContent from "../../functions/cut-text-content";
 import {connect} from "react-redux";
 // Actions
@@ -7,43 +7,70 @@ import {
     addToCart,
     addToWishList,
     removeFromCart,
-    removeFromWishList
+    removeFromWishList,
+    loadCocktailDetails
 } from "../../actions";
 // Components
 import {Link} from "react-router-dom";
 import {Rate, Col} from 'antd';
+import CocktailHoverIngredients from "../cocktail-hover-ingredients";
 
-
-function CocktailItemHome(props) {
-    let {
+function CocktailItem(props) {
+    const {
         idDrink,
-        strAlcoholic,
         strDrink,
         rate,
         price,
         strDrinkThumb,
-        strInstructions,
+        ingredients,
+        err
     } = props.cocktail;
-    const {addToCart, addToWishList, removeFromCart, removeFromWishList, col} = props;
+    const {
+        addToCart,
+        addToWishList,
+        removeFromCart,
+        removeFromWishList,
+        col,
+        loadCocktailDetails,
+        withIngredients
+    } = props;
 
     let [wishList, setWishList] = useState(false);
     let [cart, setCart] = useState(false);
 
-    let cocktail = props.cocktail;
     let title = cutTextContent(strDrink, 23);
-    let ingredients = getCocktailIngredients(cocktail) || '';
-    // let ingredients = '';
+    let cocktailIngredients = ingredients || '';
+
     return (
         <Col span={col ? col : 6}>
-            <div className="cocktail-item-home">
-                <img src={strDrinkThumb} alt={strDrink}/>
+            <div className="cocktail-item" onMouseEnter={() => loadCocktailDetails(idDrink)}>
+                {/*cocktail-info-start*/}
+                <div className="cocktails-info">
+                    <img src={strDrinkThumb} alt={strDrink}/>
+                    {
+                        !withIngredients ? <CocktailHoverIngredients err={err} ingredients={cocktailIngredients} cocktailId={idDrink}/> : ''
+                    }
+                </div>
+                {/*cocktail-info-end*/}
+
+                {/*cocktail-title-rate-start*/}
                 <div className="title-rate">
                     <Link to={`/cocktails/${idDrink}`} className="title">{title}</Link>
-                    <Rate value={rate < 0 ? 1 : rate > 5 ? 5 : rate}/>
+                    <Rate value={rate}/>
                 </div>
-                <div className="ingredients">
-                    {ingredients}
-                </div>
+                {/*cocktail-title-rate-end*/}
+
+                {/*cocktail-ingredients-start*/}
+                {
+                    withIngredients ? (
+                        <div className="ingredients">
+                            {cocktailIngredients}
+                        </div>
+                    ) : ''
+                }
+                {/*cocktail-ingredients-end*/}
+
+                {/*cocktail-actions-start*/}
                 <div className="actions">
                     <div className="price">{price}$</div>
                     <div className="right-wrapper">
@@ -59,6 +86,7 @@ function CocktailItemHome(props) {
                         </a>
                     </div>
                 </div>
+                {/*cocktail-actions-end*/}
             </div>
         </Col>
     );
@@ -84,18 +112,6 @@ function CocktailItemHome(props) {
             addToWishList(idDrink);
         }
     }
-
-    function getCocktailIngredients(obj) {
-        let ingredients = [];
-        if (!obj.strIngredient1) return null;
-        for (let key in obj) {
-            if (key.slice(0, -1) === "strIngredient" && obj[key] !== null) {
-                ingredients.push(obj[key]);
-            }
-        }
-        let res = ingredients.join(', ').toLowerCase();
-        return res[0].toUpperCase() + res.slice(1);
-    }
 }
 
 export default connect(
@@ -104,6 +120,7 @@ export default connect(
         addToCart,
         addToWishList,
         removeFromCart,
-        removeFromWishList
+        removeFromWishList,
+        loadCocktailDetails
     }
-)(CocktailItemHome);
+)(CocktailItem);

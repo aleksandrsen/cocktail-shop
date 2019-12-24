@@ -6,7 +6,7 @@ import UpcomingEventsSection from "../upcoming-events-section";
 import NextEventsSection from "../next-events-section";
 import PubsPhotoGallerySection from "../pubs-photo-gallery-section";
 import BlogNewsSection from "../blog&news-section";
-import CocktailsHomeSection from "../cocktails-home-section";
+import CocktailsHomeSection from "../random-cocktails-section";
 
 function HomePage(props) {
 
