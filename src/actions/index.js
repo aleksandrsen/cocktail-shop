@@ -100,6 +100,44 @@ export const loadBlogPosts = () => ({
     callApi: `${apiBase}/blog-posts`
 });
 
+export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
+    const state = getState();
+    let isLoading = state.blogPostItem.loading;
+    let isLoaded = state.blogPostItem.loaded;
+    let isUsersLoaded = state.users.loaded;
+    let isUsersLoading = state.users.loading;
+    let isBlogPostsLoaded = state.blogPosts.loaded;
+    let blogPostItem = state.blogPostItem.item;
+    let isBlogPostsReviewsLoaded = state.blogPostsReviews.loaded;
+    let blogPostsArr = state.blogPosts.entities;
+
+    if (!isUsersLoaded && !isUsersLoading) dispatch(loadUsers());
+
+    if (blogPostItem && blogPostItem.id === blogPostId && isUsersLoaded && isBlogPostsReviewsLoaded) {
+        dispatch({
+            type: LOAD_BLOG_POST_BY_ID + SUCCESS,
+            payload: {
+                response: blogPostItem
+            }
+        });
+    } else if (isBlogPostsLoaded) {
+        let blogPostItem = blogPostsArr.find(({id}) => id === blogPostId);
+        dispatch({
+            type: LOAD_BLOG_POST_BY_ID + SUCCESS,
+            payload: {
+                response: blogPostItem
+            }
+        });
+    } else {
+        if (!isLoading && !isLoaded) {
+            dispatch({
+                type: LOAD_BLOG_POST_BY_ID,
+                callApi: `${apiBase}/blog-posts/${blogPostId}`
+            })
+        }
+    }
+};
+
 export const loadAllDataForBlogPosts = () => (dispatch, getState) => {
     const state = getState();
     let isLoadingUsers = state.users.loading;
@@ -120,6 +158,37 @@ export const loadEvents = () => ({
     type: LOAD_EVENTS,
     callApi: `${apiBase}/events`
 });
+
+export const loadEventById = (eventId) => (dispatch, getState) => {
+    const state = getState();
+    let isLoading = state.eventItem.loading;
+    let isLoaded = state.eventItem.loaded;
+    let events = state.events.entities;
+    let eventItem = state.eventItem.item;
+
+    let isEventInEvents = events.find(({id}) => id === eventId);
+
+    if (eventItem && (eventItem.id === eventId)) {
+        dispatch({
+            type: LOAD_EVENT_BY_ID + SUCCESS,
+            payload: {
+                response: eventItem
+            }
+        });
+    } else if (isEventInEvents) {
+        dispatch({
+            type: LOAD_EVENT_BY_ID + SUCCESS,
+            payload: {
+                response: isEventInEvents
+            }
+        });
+    } else if (!isLoading && !isLoaded) {
+        dispatch({
+            type: LOAD_EVENT_BY_ID,
+            callApi: `${apiBase}/events/${eventId}`
+        });
+    }
+};
 
 // Cart events
 export const addToCart = (id) => ({
@@ -347,96 +416,96 @@ export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail
 //     }
 // };
 
-export const loadEventById = (eventId) => (dispatch, getState) => {
-    const state = getState();
-    let isLoading = state.eventItem.loading;
-    let isLoaded = state.eventItem.loaded;
-    let eventItem = state.eventItem.item;
-    let events = state.events.entities;
+// export const loadEventById = (eventId) => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoading = state.eventItem.loading;
+//     let isLoaded = state.eventItem.loaded;
+//     let eventItem = state.eventItem.item;
+//     let events = state.events.entities;
+//
+//     let isEventInEvents = events.find(({id}) => eventId === id);
+//
+//     if (eventItem && eventItem.id === eventId) {
+//         dispatch({
+//             type: LOAD_EVENT_BY_ID + SUCCESS,
+//             payload: {
+//                 response: eventItem
+//             }
+//         });
+//     } else if (isEventInEvents) {
+//         dispatch({
+//             type: LOAD_EVENT_BY_ID + SUCCESS,
+//             payload: {
+//                 response: isEventInEvents
+//             }
+//         });
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_EVENT_BY_ID + START});
+//         eventsService.getEventById(eventId)
+//             .then(data => {
+//                 dispatch({
+//                     type: LOAD_EVENT_BY_ID + SUCCESS,
+//                     payload: {
+//                         response: data
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_EVENT_BY_ID + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
-    let isEventInEvents = events.find(({id}) => eventId === id);
-
-    if (eventItem && eventItem.id === eventId) {
-        dispatch({
-            type: LOAD_EVENT_BY_ID + SUCCESS,
-            payload: {
-                response: eventItem
-            }
-        });
-    } else if (isEventInEvents) {
-        dispatch({
-            type: LOAD_EVENT_BY_ID + SUCCESS,
-            payload: {
-                response: isEventInEvents
-            }
-        });
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_EVENT_BY_ID + START});
-        eventsService.getEventById(eventId)
-            .then(data => {
-                dispatch({
-                    type: LOAD_EVENT_BY_ID + SUCCESS,
-                    payload: {
-                        response: data
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_EVENT_BY_ID + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
-
-export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
-    const state = getState();
-    let isUsersLoaded = state.users.loaded;
-    let isBlogPostsLoaded = state.blogPosts.loaded;
-    let blogPostItem = state.blogPostItem.item;
-    let isBlogPostsReviewsLoaded = state.blogPostsReviews.loaded;
-    let blogPostsArr = state.blogPosts.entities;
-
-    if (!isUsersLoaded) dispatch(loadUsers());
-
-    if (blogPostItem && blogPostItem.id === blogPostId && isUsersLoaded && isBlogPostsReviewsLoaded) {
-        dispatch({
-            type: LOAD_BLOG_POST_BY_ID + SUCCESS,
-            payload: {
-                response: blogPostItem
-            }
-        });
-    } else if (isBlogPostsLoaded) {
-        let blogPostItem = blogPostsArr.find(({id}) => id === blogPostId);
-        dispatch({
-            type: LOAD_BLOG_POST_BY_ID + SUCCESS,
-            payload: {
-                response: blogPostItem
-            }
-        });
-    } else {
-        blogPostsService.getBlogPostById(blogPostId)
-            .then(data => {
-                dispatch({
-                    type: LOAD_BLOG_POST_BY_ID + SUCCESS,
-                    payload: {
-                        response: data
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_BLOG_POST_BY_ID + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
+// export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
+//     const state = getState();
+//     let isUsersLoaded = state.users.loaded;
+//     let isBlogPostsLoaded = state.blogPosts.loaded;
+//     let blogPostItem = state.blogPostItem.item;
+//     let isBlogPostsReviewsLoaded = state.blogPostsReviews.loaded;
+//     let blogPostsArr = state.blogPosts.entities;
+//
+//     if (!isUsersLoaded) dispatch(loadUsers());
+//
+//     if (blogPostItem && blogPostItem.id === blogPostId && isUsersLoaded && isBlogPostsReviewsLoaded) {
+//         dispatch({
+//             type: LOAD_BLOG_POST_BY_ID + SUCCESS,
+//             payload: {
+//                 response: blogPostItem
+//             }
+//         });
+//     } else if (isBlogPostsLoaded) {
+//         let blogPostItem = blogPostsArr.find(({id}) => id === blogPostId);
+//         dispatch({
+//             type: LOAD_BLOG_POST_BY_ID + SUCCESS,
+//             payload: {
+//                 response: blogPostItem
+//             }
+//         });
+//     } else {
+//         blogPostsService.getBlogPostById(blogPostId)
+//             .then(data => {
+//                 dispatch({
+//                     type: LOAD_BLOG_POST_BY_ID + SUCCESS,
+//                     payload: {
+//                         response: data
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_BLOG_POST_BY_ID + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
 // export const loadRandomCocktails = () => (dispatch, getState) => {
 //     const state = getState();

@@ -10,7 +10,7 @@ export default (store) => (next) => (action) => {
 
         fetch(callApi)
             .then(data => {
-                if (data.status === 200) {
+                if (data.status === 200 && data.ok === true) {
                     return data.json();
                 }
             })

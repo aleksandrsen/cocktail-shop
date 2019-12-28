@@ -36,10 +36,8 @@ function AsideEventsList(props) {
     return <Spinner/>
 }
 
-export default connect((state) => {
-    return {
-        isLoading: eventsLoadingSelector(state),
-        isLoaded: eventsLoadedSelector(state),
-        events: eventsSelector(state)
-    }
-}, {loadEvents})(AsideEventsList);
+export default connect((state) => ({
+    isLoading: eventsLoadingSelector(state),
+    isLoaded: eventsLoadedSelector(state),
+    events: eventsSelector(state)
+}), {loadEvents})(AsideEventsList);
