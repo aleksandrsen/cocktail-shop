@@ -38,7 +38,7 @@ let bartendersService = new BartendersService();
 
 const apiBase = 'http://localhost:3000/api';
 
-// Load events
+// Load data
 export const loadCocktails = () => ({
     type: LOAD_COCKTAILS,
     callApi: `${apiBase}/cocktails`
@@ -53,6 +53,37 @@ export const loadBartenders = () => ({
     type: LOAD_BARTENDERS,
     callApi: `${apiBase}/bartenders`
 });
+
+export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
+    const state = getState();
+    let isLoading = state.bartenderItem.loading;
+    let isLoaded = state.bartenderItem.loaded;
+    let bartenders = state.bartenders.entities;
+    let bartenderItem = state.bartenderItem.item;
+
+    let isBartenderInBartenders = bartenders.find(({id}) => id === bartenderId);
+
+    if (bartenderItem && (bartenderItem.id === bartenderId)) {
+        dispatch({
+            type: LOAD_BARTENDER_BY_ID + SUCCESS,
+            payload: {
+                response: bartenderItem
+            }
+        });
+    } else if (isBartenderInBartenders) {
+        dispatch({
+            type: LOAD_BARTENDER_BY_ID + SUCCESS,
+            payload: {
+                response: isBartenderInBartenders
+            }
+        });
+    } else if (!isLoading && !isLoaded) {
+        dispatch({
+            type: LOAD_BARTENDER_BY_ID,
+            callApi: `${apiBase}/bartenders/${bartenderId}`
+        });
+    }
+};
 
 export const loadReviews = () => ({
     type: LOAD_BLOG_POSTS_REVIEWS,
@@ -179,50 +210,7 @@ export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail
     }
 };
 
-export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
-    const state = getState();
-    let isLoading = state.bartenderItem.loading;
-    let isLoaded = state.bartenderItem.loaded;
-    let bartenders = state.bartenders.entities;
-    let bartenderItem = state.bartenderItem.item;
 
-    let isBartenderInBartenders = bartenders.find(({id}) => bartenderId === id);
-
-    if (bartenderItem && bartenderItem.id === bartenderId) {
-        dispatch({
-            type: LOAD_BARTENDER_BY_ID + SUCCESS,
-            payload: {
-                response: bartenderItem
-            }
-        });
-    } else if (isBartenderInBartenders) {
-        dispatch({
-            type: LOAD_BARTENDER_BY_ID + SUCCESS,
-            payload: {
-                response: isBartenderInBartenders
-            }
-        });
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_BARTENDER_BY_ID + START});
-        bartendersService.getBartenderById(bartenderId)
-            .then(data => {
-                dispatch({
-                    type: LOAD_BARTENDER_BY_ID + SUCCESS,
-                    payload: {
-                        response: data
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_BARTENDER_BY_ID + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
 
 // export const loadAndSortEvents = () => (dispatch, getState) => {
 //     const state = getState();
@@ -268,45 +256,45 @@ export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
 //     }
 // };
 
-export const loadAndSortBlogPosts = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoading = state.blogPosts.loading;
-    let isLoaded = state.blogPosts.loaded;
-    let blogPosts = state.blogPosts.entities;
-
-    if (blogPosts.length) {
-        dispatch({
-            type: LOAD_BLOG_POSTS + SUCCESS,
-            payload: {
-                response: blogPosts
-            }
-        })
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_BLOG_POSTS + START});
-        blogPostsService.getAllBlogPosts()
-            .then(data => {
-                let sortedBlogPosts = data.sort((firstBlogPost, secondBlogPost) => {
-                    let dateStartFirst = +Date.parse(firstBlogPost.date);
-                    let dateStartSecond = +Date.parse(secondBlogPost.date);
-                    return dateStartSecond - dateStartFirst;
-                });
-                dispatch({
-                    type: LOAD_BLOG_POSTS + SUCCESS,
-                    payload: {
-                        response: sortedBlogPosts
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_BLOG_POSTS + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
+// export const loadAndSortBlogPosts = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoading = state.blogPosts.loading;
+//     let isLoaded = state.blogPosts.loaded;
+//     let blogPosts = state.blogPosts.entities;
+//
+//     if (blogPosts.length) {
+//         dispatch({
+//             type: LOAD_BLOG_POSTS + SUCCESS,
+//             payload: {
+//                 response: blogPosts
+//             }
+//         })
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_BLOG_POSTS + START});
+//         blogPostsService.getAllBlogPosts()
+//             .then(data => {
+//                 let sortedBlogPosts = data.sort((firstBlogPost, secondBlogPost) => {
+//                     let dateStartFirst = +Date.parse(firstBlogPost.date);
+//                     let dateStartSecond = +Date.parse(secondBlogPost.date);
+//                     return dateStartSecond - dateStartFirst;
+//                 });
+//                 dispatch({
+//                     type: LOAD_BLOG_POSTS + SUCCESS,
+//                     payload: {
+//                         response: sortedBlogPosts
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_BLOG_POSTS + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
 // export const loadUsers = () => (dispatch, getState) => {
 //     const state = getState();

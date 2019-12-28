@@ -23,6 +23,11 @@ export const bartendersSelector = (state) => state.bartenders.entities;
 export const bartenderItemLoadedSelector = (state) => state.bartenderItem.loaded;
 export const bartenderItemLoadingSelector = (state) => state.bartenderItem.loading;
 export const bartenderItemSelector = (state) => state.bartenderItem.item;
+export const bartenderItemIdSelector = (state) => {
+    let bartenderItem = state.bartenderItem.item;
+    if (bartenderItem) return bartenderItem.id;
+    return '';
+};
 
 // BlogPosts
 export const blogPostsLoadingSelector = (state) => state.blogPosts.loading;

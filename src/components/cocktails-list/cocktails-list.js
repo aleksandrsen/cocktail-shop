@@ -24,6 +24,7 @@ function CocktailsList(props) {
     });
 
     if (!isLoading && isLoaded) {
+
         let filteredCocktails = filterCocktails(cocktails, params);
 
         function filterCocktails(cocktails, params) {

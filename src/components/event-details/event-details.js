@@ -80,11 +80,9 @@ function EventDetails(props) {
     return <Spinner/>
 }
 
-export default connect((state) => {
-    return {
-        isLoading: eventItemLoadingSelector(state),
-        isLoaded: eventItemLoadedSelector(state),
-        oldEventItemId: eventItemIdSelector(state),
-        eventItem: eventItemSelector(state)
-    }
-}, {loadEventById})(EventDetails);
+export default connect((state) => ({
+    isLoading: eventItemLoadingSelector(state),
+    isLoaded: eventItemLoadedSelector(state),
+    oldEventItemId: eventItemIdSelector(state),
+    eventItem: eventItemSelector(state)
+}), {loadEventById})(EventDetails);

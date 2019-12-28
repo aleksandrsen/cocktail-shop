@@ -24,7 +24,8 @@ function BartendersList(props) {
         }
     });
 
-    if (isLoaded) {
+    if (!isLoading && isLoaded) {
+
         return (
             <Row gutter={32}>
                 {
@@ -33,9 +34,9 @@ function BartendersList(props) {
                             key={bartender.id}
                             bartender={bartender}
                             bartenderDetails={() => {
-                                    let {id} = bartender;
-                                    history.push(id)
-                                }
+                                let {id} = bartender;
+                                history.push(id)
+                            }
                             }
                         />
                     })
@@ -46,10 +47,8 @@ function BartendersList(props) {
     return <Spinner/>
 }
 
-export default connect((state => {
-    return {
-        isLoading: bartendersLoadingSelector(state),
-        isLoaded: bartendersLoadedSelector(state),
-        bartenders: bartendersSelector(state)
-    }
-}), {loadBartenders})(withRouter(BartendersList));
+export default connect((state => ({
+    isLoading: bartendersLoadingSelector(state),
+    isLoaded: bartendersLoadedSelector(state),
+    bartenders: bartendersSelector(state)
+})), {loadBartenders})(withRouter(BartendersList));

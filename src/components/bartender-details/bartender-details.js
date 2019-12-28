@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {loadBartenderById} from "../../actions";
 // Selectors
 import {
+    bartenderItemIdSelector,
     bartenderItemLoadedSelector,
     bartenderItemLoadingSelector,
     bartenderItemSelector
@@ -20,10 +21,10 @@ import TalkToBartenderSection from "../talk-to-bartender-section";
 import Spinner from "../spinner";
 
 function BartenderDetails(props) {
-    let {isLoading, isLoaded, bartender, loadBartenderById, id} = props;
+    let {isLoading, isLoaded, bartender, oldBartenderId, loadBartenderById, id} = props;
 
     useEffect(() => {
-        if (!isLoading && !isLoaded) {
+        if (!isLoading && !isLoaded || (id !== oldBartenderId)) {
             loadBartenderById(id);
         }
     });
@@ -66,10 +67,9 @@ function BartenderDetails(props) {
     return <Spinner/>;
 }
 
-export default connect((state, ownProps) => {
-    return {
-        isLoading: bartenderItemLoadingSelector(state),
-        isLoaded: bartenderItemLoadedSelector(state),
-        bartender: bartenderItemSelector(state)
-    }
-}, {loadBartenderById})(BartenderDetails);
+export default connect((state) => ({
+    isLoading: bartenderItemLoadingSelector(state),
+    isLoaded: bartenderItemLoadedSelector(state),
+    oldBartenderId: bartenderItemIdSelector(state),
+    bartender: bartenderItemSelector(state)
+}), {loadBartenderById})(BartenderDetails);
