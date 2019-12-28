@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './cocktail-item.scss';
 import cutTextContent from "../../functions/cut-text-content";
 import {connect} from "react-redux";
+import semanticImg from "../../img/semantic.png";
 // Actions
 import {
     addToCart,
@@ -13,7 +14,6 @@ import {
 // Components
 import {Link} from "react-router-dom";
 import {Rate, Col} from 'antd';
-import CocktailHoverIngredients from "../cocktail-hover-ingredients";
 
 function CocktailItem(props) {
     const {
@@ -23,7 +23,6 @@ function CocktailItem(props) {
         price,
         strDrinkThumb,
         ingredients,
-        err
     } = props.cocktail;
     const {
         addToCart,
@@ -31,25 +30,23 @@ function CocktailItem(props) {
         removeFromCart,
         removeFromWishList,
         col,
-        loadCocktailDetails,
-        withIngredients
+        loadCocktailDetails
     } = props;
 
     let [wishList, setWishList] = useState(false);
     let [cart, setCart] = useState(false);
+    let [loadImg, setLoad] = useState(false);
 
     let title = cutTextContent(strDrink, 23);
-    let cocktailIngredients = ingredients || '';
+    let cocktailIngredients = ingredients.join(', ')[0].toUpperCase() + ingredients.join(', ').slice(1);
 
     return (
         <Col span={col ? col : 6}>
             <div className="cocktail-item" onMouseEnter={() => loadCocktailDetails(idDrink)}>
                 {/*cocktail-info-start*/}
                 <div className="cocktails-info">
-                    <img src={strDrinkThumb} alt={strDrink}/>
-                    {
-                        !withIngredients ? <CocktailHoverIngredients err={err} ingredients={cocktailIngredients} cocktailId={idDrink}/> : ''
-                    }
+                    {loadImg ? "" : <img src={semanticImg} alt={strDrink}/>}
+                    <img src={strDrinkThumb} alt={strDrink} onLoad={(e) => setLoad(true)}/>
                 </div>
                 {/*cocktail-info-end*/}
 
@@ -60,15 +57,9 @@ function CocktailItem(props) {
                 </div>
                 {/*cocktail-title-rate-end*/}
 
-                {/*cocktail-ingredients-start*/}
-                {
-                    withIngredients ? (
-                        <div className="ingredients">
-                            {cocktailIngredients}
-                        </div>
-                    ) : ''
-                }
-                {/*cocktail-ingredients-end*/}
+                <div className="ingredients">
+                    {cocktailIngredients}
+                </div>
 
                 {/*cocktail-actions-start*/}
                 <div className="actions">

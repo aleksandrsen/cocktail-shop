@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './aside-events-list.scss';
 import {connect} from "react-redux";
 // Actions
-import {loadAndSortEvents} from "../../actions";
+import {loadEvents} from "../../actions";
 // Selectors
 import {
     eventsLoadedSelector,
@@ -14,11 +14,11 @@ import AsideEventItem from "../aside-event-item";
 import Spinner from "../spinner";
 
 function AsideEventsList(props) {
-    let {isLoading, isLoaded, events, loadAndSortEvents} = props;
+    let {isLoading, isLoaded, events, loadEvents} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
-            loadAndSortEvents();
+            loadEvents();
         }
     });
 
@@ -42,4 +42,4 @@ export default connect((state) => {
         isLoaded: eventsLoadedSelector(state),
         events: eventsSelector(state)
     }
-}, {loadAndSortEvents})(AsideEventsList);
+}, {loadEvents})(AsideEventsList);

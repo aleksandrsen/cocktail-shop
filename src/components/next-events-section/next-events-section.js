@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import './next-events-section.scss';
+// Actions
+import {loadEvents} from "../../actions";
 // Selectors
 import {eventsSelector, eventsLoadedSelector, eventsLoadingSelector} from "../../selectors";
 // Components
@@ -11,7 +13,14 @@ import SmallSection from "../common-components/small-section";
 import Spinner from "../spinner";
 
 function NextEventsSection(props) {
-    let {loading, loaded, events} = props;
+    let {loading, loaded, events, loadEvents} = props;
+
+    useEffect(() => {
+        if (!loading && !loaded) {
+            loadEvents();
+        }
+    });
+
     if (!loading && loaded) {
         let nextEvents = events.slice(0, 2);
         return (
@@ -32,10 +41,8 @@ function NextEventsSection(props) {
     return <Spinner/>
 }
 
-export default connect((state) => {
-    return {
-        loading: eventsLoadingSelector(state),
-        loaded: eventsLoadedSelector(state),
-        events: eventsSelector(state)
-    }
-}, null)(NextEventsSection);
+export default connect((state) => ({
+    loading: eventsLoadingSelector(state),
+    loaded: eventsLoadedSelector(state),
+    events: eventsSelector(state)
+}), {loadEvents})(NextEventsSection);

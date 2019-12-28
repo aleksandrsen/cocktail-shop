@@ -12,10 +12,10 @@ import {
 // Components
 import Spinner from "../spinner";
 import {Row} from 'antd';
-import CocktailItemHome from "../cocktail-item";
+import CocktailItem from "../cocktail-item";
 
 function CocktailsList(props) {
-    let {isLoading, isLoaded, cocktails, loadCocktails} = props;
+    let {isLoading, isLoaded, cocktails, loadCocktails, params} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
@@ -24,24 +24,30 @@ function CocktailsList(props) {
     });
 
     if (!isLoading && isLoaded) {
+        let filteredCocktails = filterCocktails(cocktails, params);
+
+        function filterCocktails(cocktails, params) {
+            if (!params.alcoholic && !params.categories && !params.ingredients) {
+                return cocktails
+            }
+            console.log(params);
+            return cocktails;
+        }
 
         return (
             <Row gutter={24} type={"flex"} className="cocktails-list">
-                {cocktails.slice(0, 25).map(cocktailItem => {
-                    return <CocktailItemHome key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
+                {filteredCocktails.slice(0, 25).map(cocktailItem => {
+                    return <CocktailItem key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
                 })}
             </Row>
-
         )
     }
 
     return <Spinner/>
 }
 
-export default connect(state => {
-    return {
-        isLoading: cocktailsLoadingSelector(state),
-        isLoaded: cocktailsLoadedSelector(state),
-        cocktails: cocktailsSelector(state)
-    }
-}, {loadCocktails})(CocktailsList);
+export default connect(state => ({
+    isLoading: cocktailsLoadingSelector(state),
+    isLoaded: cocktailsLoadedSelector(state),
+    cocktails: cocktailsSelector(state)
+}), {loadCocktails})(CocktailsList);

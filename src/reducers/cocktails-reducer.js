@@ -1,13 +1,7 @@
 import {LOAD_COCKTAIL_DETAILS, LOAD_COCKTAILS, START, SUCCESS, FAIL} from "../constants";
+import {resourceStartRecord} from "./utils";
 
-let initCocktailsState = {
-    loading: false,
-    loaded: false,
-    error: null,
-    entities: []
-};
-
-export default (cocktailsState = initCocktailsState, action) => {
+export default (cocktailsState = resourceStartRecord(), action) => {
     switch (action.type) {
         case LOAD_COCKTAILS + START:
             return {
@@ -55,7 +49,6 @@ export default (cocktailsState = initCocktailsState, action) => {
                 ...cocktailsList[idx],
                 err
             };
-
             return {
                 ...cocktailsState,
                 entities: [

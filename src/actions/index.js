@@ -34,10 +34,63 @@ import {
 
 let eventsService = new EventsService();
 let blogPostsService = new BlogPostsService();
-let usersService = new UsersService();
 let bartendersService = new BartendersService();
-let cocktailsService = new CocktailsService();
 
+const apiBase = 'http://localhost:3000/api';
+
+// Load events
+export const loadCocktails = () => ({
+    type: LOAD_COCKTAILS,
+    callApi: `${apiBase}/cocktails`
+});
+
+export const loadRandomCocktails = () => ({
+    type: LOAD_RANDOM_COCKTAILS,
+    callApi: `${apiBase}/random`
+});
+
+export const loadBartenders = () => ({
+    type: LOAD_BARTENDERS,
+    callApi: `${apiBase}/bartenders`
+});
+
+export const loadReviews = () => ({
+    type: LOAD_BLOG_POSTS_REVIEWS,
+    callApi: `${apiBase}/reviews`
+});
+
+export const loadUsers = () => ({
+    type: LOAD_USERS,
+    callApi: `${apiBase}/users`
+});
+
+export const loadBlogPosts = () => ({
+    type: LOAD_BLOG_POSTS,
+    callApi: `${apiBase}/blog-posts`
+});
+
+export const loadAllDataForBlogPosts = () => (dispatch, getState) => {
+    const state = getState();
+    let isLoadingUsers = state.users.loading;
+    let isLoadedUsers = state.users.loaded;
+    let isLoadingBLogPosts = state.blogPosts.loading;
+    let isLoadedBlogPosts = state.blogPosts.loaded;
+
+    if (!isLoadingBLogPosts && !isLoadedBlogPosts) {
+        dispatch(loadBlogPosts());
+    }
+
+    if (!isLoadingUsers && !isLoadedUsers) {
+        dispatch(loadUsers());
+    }
+};
+
+export const loadEvents = () => ({
+    type: LOAD_EVENTS,
+    callApi: `${apiBase}/events`
+});
+
+// Cart events
 export const addToCart = (id) => ({
     type: ADD_TO_CART,
     payload: {
@@ -52,6 +105,7 @@ export const removeFromCart = (id) => ({
     }
 });
 
+// WishList events
 export const addToWishList = (id) => ({
     type: ADD_TO_WISH_LIST,
     payload: {
@@ -66,6 +120,7 @@ export const removeFromWishList = (id) => ({
     }
 });
 
+// LogIn, LogOut
 export const userLogIn = () => ({
     type: USER_LOG_IN
 });
@@ -74,14 +129,13 @@ export const userLogOut = () => ({
     type: USER_LOG_OUT
 });
 
-export const loadBartenders = () => ({
-    type: LOAD_BARTENDERS,
-    callApi: "bartenders"
-});
 
-export const loadReviews = () => ({
-    type: LOAD_BLOG_POSTS_REVIEWS,
-    callApi: "reviews"
+
+
+
+export const loadCocktailDetails = () => ({
+    type: LOAD_COCKTAIL_DETAILS,
+    callApi: `${apiBase}/cocktails`
 });
 
 export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail, message}) => (dispatch, getState) => {
@@ -170,49 +224,49 @@ export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
     }
 };
 
-export const loadAndSortEvents = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoading = state.events.loading;
-    let isLoaded = state.events.loaded;
-    let events = state.events.entities;
-
-    if (events.length) {
-        dispatch({
-            type: LOAD_EVENTS + SUCCESS,
-            payload: {
-                response: events
-            }
-        })
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_EVENTS + START});
-        eventsService.getAllEvents()
-            .then(data => {
-                let events = data.filter(evenItem => {
-                    let date = Date.now();
-                    let dateEventStart = +Date.parse(evenItem.dateStart);
-                    return date < dateEventStart;
-                }).sort((firstEvent, secondEvent) => {
-                    let dateStartFirst = +Date.parse(firstEvent.dateStart);
-                    let dateStartSecond = +Date.parse(secondEvent.dateStart);
-                    return dateStartFirst - dateStartSecond;
-                });
-                dispatch({
-                    type: LOAD_EVENTS + SUCCESS,
-                    payload: {
-                        response: events
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_EVENTS + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
+// export const loadAndSortEvents = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoading = state.events.loading;
+//     let isLoaded = state.events.loaded;
+//     let events = state.events.entities;
+//
+//     if (events.length) {
+//         dispatch({
+//             type: LOAD_EVENTS + SUCCESS,
+//             payload: {
+//                 response: events
+//             }
+//         })
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_EVENTS + START});
+//         eventsService.getAllEvents()
+//             .then(data => {
+//                 let events = data.filter(evenItem => {
+//                     let date = Date.now();
+//                     let dateEventStart = +Date.parse(evenItem.dateStart);
+//                     return date < dateEventStart;
+//                 }).sort((firstEvent, secondEvent) => {
+//                     let dateStartFirst = +Date.parse(firstEvent.dateStart);
+//                     let dateStartSecond = +Date.parse(secondEvent.dateStart);
+//                     return dateStartFirst - dateStartSecond;
+//                 });
+//                 dispatch({
+//                     type: LOAD_EVENTS + SUCCESS,
+//                     payload: {
+//                         response: events
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_EVENTS + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
 export const loadAndSortBlogPosts = () => (dispatch, getState) => {
     const state = getState();
@@ -254,56 +308,56 @@ export const loadAndSortBlogPosts = () => (dispatch, getState) => {
     }
 };
 
-export const loadUsers = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoading = state.users.loading;
-    let isLoaded = state.users.loaded;
-    let users = state.users.entities;
+// export const loadUsers = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoading = state.users.loading;
+//     let isLoaded = state.users.loaded;
+//     let users = state.users.entities;
+//
+//     if (users.length) {
+//         dispatch({
+//             type: LOAD_USERS + SUCCESS,
+//             payload: {
+//                 response: users
+//             }
+//         })
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_USERS + START});
+//         usersService.getAllUsers()
+//             .then(data => {
+//                 dispatch({
+//                     type: LOAD_USERS + SUCCESS,
+//                     payload: {
+//                         response: data
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_USERS + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
-    if (users.length) {
-        dispatch({
-            type: LOAD_USERS + SUCCESS,
-            payload: {
-                response: users
-            }
-        })
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_USERS + START});
-        usersService.getAllUsers()
-            .then(data => {
-                dispatch({
-                    type: LOAD_USERS + SUCCESS,
-                    payload: {
-                        response: data
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_USERS + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
-
-export const loadAllDataForBlogPosts = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoadingUsers = state.users.loading;
-    let isLoadedUsers = state.users.loaded;
-    let isLoadingBLogPosts = state.blogPosts.loading;
-    let isLoadedBlogPosts = state.blogPosts.loaded;
-
-    if (!isLoadingBLogPosts && !isLoadedBlogPosts) {
-        dispatch(loadAndSortBlogPosts());
-    }
-
-    if (!isLoadingUsers && !isLoadedUsers) {
-        dispatch(loadUsers());
-    }
-};
+// export const loadAllDataForBlogPosts = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoadingUsers = state.users.loading;
+//     let isLoadedUsers = state.users.loaded;
+//     let isLoadingBLogPosts = state.blogPosts.loading;
+//     let isLoadedBlogPosts = state.blogPosts.loaded;
+//
+//     if (!isLoadingBLogPosts && !isLoadedBlogPosts) {
+//         dispatch(loadBlogPosts);
+//     }
+//
+//     if (!isLoadingUsers && !isLoadedUsers) {
+//         dispatch(loadUsers);
+//     }
+// };
 
 export const loadEventById = (eventId) => (dispatch, getState) => {
     const state = getState();
@@ -396,149 +450,149 @@ export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
     }
 };
 
-export const loadRandomCocktails = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoaded = state.randomCocktails.loaded;
-    let isLoading = state.randomCocktails.loading;
-    let randomCocktails = state.randomCocktails.entities;
+// export const loadRandomCocktails = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoaded = state.randomCocktails.loaded;
+//     let isLoading = state.randomCocktails.loading;
+//     let randomCocktails = state.randomCocktails.entities;
+//
+//     if (randomCocktails.length) {
+//         dispatch({
+//             type: LOAD_RANDOM_COCKTAILS + SUCCESS,
+//             payload: {
+//                 response: randomCocktails
+//             }
+//         })
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_RANDOM_COCKTAILS + START});
+//         cocktailsService.lookUpRandomCocktail()
+//             .then(data => {
+//                 const res = data.map(item => {
+//                     let {strDrink, idDrink} = item.drinks[0];
+//                     let cocktail = item.drinks[0];
+//                     let ingredients = getCocktailIngredientsFunc(item.drinks[0]);
+//                     let rate = Math.floor(strDrink.length / 4);
+//                     return {
+//                         ...cocktail,
+//                         rate: rate < 0 ? 1 : rate > 5 ? 5 : rate,
+//                         price: +(idDrink[0] + idDrink[2]),
+//                         ingredients
+//                     }
+//                 });
+//
+//                 dispatch({
+//                     type: LOAD_RANDOM_COCKTAILS + SUCCESS,
+//                     payload: {
+//                         response: res
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_RANDOM_COCKTAILS + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
-    if (randomCocktails.length) {
-        dispatch({
-            type: LOAD_RANDOM_COCKTAILS + SUCCESS,
-            payload: {
-                response: randomCocktails
-            }
-        })
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_RANDOM_COCKTAILS + START});
-        cocktailsService.lookUpRandomCocktail()
-            .then(data => {
-                const res = data.map(item => {
-                    let {strDrink, idDrink} = item.drinks[0];
-                    let cocktail = item.drinks[0];
-                    let ingredients = getCocktailIngredientsFunc(item.drinks[0]);
-                    let rate = Math.floor(strDrink.length / 4);
-                    return {
-                        ...cocktail,
-                        rate: rate < 0 ? 1 : rate > 5 ? 5 : rate,
-                        price: +(idDrink[0] + idDrink[2]),
-                        ingredients
-                    }
-                });
+// export const loadCocktails = () => (dispatch, getState) => {
+//     const state = getState();
+//     let isLoaded = state.cocktails.loaded;
+//     let isLoading = state.cocktails.loading;
+//     let cocktails = state.cocktails.entities;
+//     let randomCocktails = state.randomCocktails.entities;
+//
+//     if (cocktails.length) {
+//         dispatch({
+//             type: LOAD_COCKTAILS + SUCCESS,
+//             payload: {
+//                 response: cocktails
+//             }
+//         })
+//     } else if (!isLoading && !isLoaded) {
+//         dispatch({type: LOAD_COCKTAILS + START});
+//         cocktailsService.loadCocktails()
+//             .then(data => {
+//                 let arr = [];
+//                 data.forEach(item => {
+//                     arr.push(...item.drinks);
+//                 });
+//                 let result = arr.map(item => {
+//                     let {strDrink, idDrink: cocktailId} = item;
+//                     let calcRate = Math.floor(strDrink.length / 4);
+//                     let rating = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
+//                     let price = +(cocktailId[0] + cocktailId[2]);
+//
+//                     let cocktailInRandom = randomCocktails.find(({idDrink}) => idDrink === cocktailId);
+//                     if (cocktailInRandom) {
+//                         return {
+//                             ...cocktailInRandom
+//                         }
+//                     }
+//                     return {
+//                         ...item,
+//                         rate: rating,
+//                         price
+//                     }
+//                 });
+//
+//                 dispatch({
+//                     type: LOAD_COCKTAILS + SUCCESS,
+//                     payload: {
+//                         response: result
+//                     }
+//                 })
+//             })
+//             .catch(err => {
+//                 dispatch({
+//                     type: LOAD_COCKTAILS + FAIL,
+//                     payload: {
+//                         error: err
+//                     }
+//                 })
+//             })
+//     }
+// };
 
-                dispatch({
-                    type: LOAD_RANDOM_COCKTAILS + SUCCESS,
-                    payload: {
-                        response: res
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_RANDOM_COCKTAILS + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
-
-export const loadCocktails = () => (dispatch, getState) => {
-    const state = getState();
-    let isLoaded = state.cocktails.loaded;
-    let isLoading = state.cocktails.loading;
-    let cocktails = state.cocktails.entities;
-    let randomCocktails = state.randomCocktails.entities;
-
-    if (cocktails.length) {
-        dispatch({
-            type: LOAD_COCKTAILS + SUCCESS,
-            payload: {
-                response: cocktails
-            }
-        })
-    } else if (!isLoading && !isLoaded) {
-        dispatch({type: LOAD_COCKTAILS + START});
-        cocktailsService.loadCocktails()
-            .then(data => {
-                let arr = [];
-                data.forEach(item => {
-                    arr.push(...item.drinks);
-                });
-                let result = arr.map(item => {
-                    let {strDrink, idDrink: cocktailId} = item;
-                    let calcRate = Math.floor(strDrink.length / 4);
-                    let rating = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
-                    let price = +(cocktailId[0] + cocktailId[2]);
-
-                    let cocktailInRandom = randomCocktails.find(({idDrink}) => idDrink === cocktailId);
-                    if (cocktailInRandom) {
-                        return {
-                            ...cocktailInRandom
-                        }
-                    }
-                    return {
-                        ...item,
-                        rate: rating,
-                        price
-                    }
-                });
-
-                dispatch({
-                    type: LOAD_COCKTAILS + SUCCESS,
-                    payload: {
-                        response: result
-                    }
-                })
-            })
-            .catch(err => {
-                dispatch({
-                    type: LOAD_COCKTAILS + FAIL,
-                    payload: {
-                        error: err
-                    }
-                })
-            })
-    }
-};
-
-export const loadCocktailDetails = (id) => (dispatch, getState) => {
-    cocktailsService.lookUpCocktailDetailsById(id)
-        .then(data => {
-            if (data.status === "Error") {
-                dispatch({
-                    type: LOAD_COCKTAIL_DETAILS + FAIL,
-                    payload: {
-                        id,
-                        err: data.message
-                    }
-                });
-                return
-            }
-
-            let {idDrink, strDrink} = data.drinks[0];
-            let ingredients = getCocktailIngredientsFunc(data.drinks[0]);
-            let calcRate = Math.floor(strDrink.length / 4);
-            let rate = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
-            let price = +(idDrink[0] + idDrink[2]);
-
-            dispatch({
-                type: LOAD_COCKTAIL_DETAILS + SUCCESS,
-                payload: {
-                    ...data.drinks[0],
-                    rate,
-                    price,
-                    ingredients
-                }
-            })
-        })
-        .catch(err => {
-            dispatch({
-                type: LOAD_COCKTAIL_DETAILS + FAIL,
-                payload: {
-                    err
-                }
-            })
-        })
-};
+// export const loadCocktailDetails = (id) => (dispatch, getState) => {
+//     cocktailsService.lookUpCocktailDetailsById(id)
+//         .then(data => {
+//             if (data.status === "Error") {
+//                 dispatch({
+//                     type: LOAD_COCKTAIL_DETAILS + FAIL,
+//                     payload: {
+//                         id,
+//                         err: data.message
+//                     }
+//                 });
+//                 return
+//             }
+//
+//             let {idDrink, strDrink} = data.drinks[0];
+//             let ingredients = getCocktailIngredientsFunc(data.drinks[0]);
+//             let calcRate = Math.floor(strDrink.length / 4);
+//             let rate = calcRate < 0 ? 1 : calcRate > 5 ? 5 : calcRate;
+//             let price = +(idDrink[0] + idDrink[2]);
+//
+//             dispatch({
+//                 type: LOAD_COCKTAIL_DETAILS + SUCCESS,
+//                 payload: {
+//                     ...data.drinks[0],
+//                     rate,
+//                     price,
+//                     ingredients
+//                 }
+//             })
+//         })
+//         .catch(err => {
+//             dispatch({
+//                 type: LOAD_COCKTAIL_DETAILS + FAIL,
+//                 payload: {
+//                     err
+//                 }
+//             })
+//         })
+// };

@@ -15,9 +15,8 @@ import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
 import Spinner from "../spinner";
 import {Carousel, Row} from 'antd';
-import CocktailItemHome from "../cocktail-item";
+import CocktailItem from "../cocktail-item";
 import DefaultText from "../common-components/default-text";
-import slides from "../../img/main-slider-slides";
 
 function RandomCocktailsSection(props) {
     let {isLoading, isLoaded, cocktails, loadRandomCocktails} = props;
@@ -47,7 +46,7 @@ function RandomCocktailsSection(props) {
             return (
                 <Row key={item[0].idDrink} gutter={24} type={"flex"}>
                     {item.map(cocktailItem => {
-                        return <CocktailItemHome withIngredients={true} key={cocktailItem.idDrink} cocktail={cocktailItem}/>
+                        return <CocktailItem key={cocktailItem.idDrink} cocktail={cocktailItem}/>
                     })}
                 </Row>
             )
@@ -73,10 +72,8 @@ function RandomCocktailsSection(props) {
     return <Spinner/>
 }
 
-export default connect(state => {
-    return {
-        isLoading: randomCocktailsLoadingSelector(state),
-        isLoaded: randomCocktailsLoadedSelector(state),
-        cocktails: randomCocktailsSelector(state)
-    }
-}, {loadRandomCocktails})(RandomCocktailsSection);
+export default connect(state => ({
+    isLoading: randomCocktailsLoadingSelector(state),
+    isLoaded: randomCocktailsLoadedSelector(state),
+    cocktails: randomCocktailsSelector(state)
+}), {loadRandomCocktails})(RandomCocktailsSection);

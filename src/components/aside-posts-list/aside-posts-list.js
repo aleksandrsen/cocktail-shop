@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './aside-posts-list.scss';
 import {connect} from "react-redux";
 // Actions
-import {loadAndSortBlogPosts} from "../../actions";
+import {loadBlogPosts} from "../../actions";
 // Selectors
 import {
     blogPostsLoadedSelector,
@@ -14,11 +14,11 @@ import AsidePostItem from "../aside-post-item";
 import Spinner from "../spinner";
 
 function AsidePostsList(props) {
-    let {isLoading, isLoaded, blogPosts, loadAndSortBlogPosts} = props;
+    let {isLoading, isLoaded, blogPosts, loadBlogPosts} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
-            loadAndSortBlogPosts();
+            loadBlogPosts();
         }
     });
 
@@ -42,4 +42,4 @@ export default connect((state) => {
         isLoaded: blogPostsLoadedSelector(state),
         blogPosts: blogPostsSelector(state)
     }
-}, {loadAndSortBlogPosts})(AsidePostsList);
+}, {loadBlogPosts})(AsidePostsList);

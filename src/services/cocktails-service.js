@@ -5,9 +5,10 @@ export default class CocktailsService {
 
     http(link) {
         return fetch(`${this.api_Base}${link}`)
-            .then(data => data.json())
-            .then(response => {
-                return response;
+            .then(data => {
+                if (data.status === 200) {
+                    return data.json();
+                }
             })
             .catch(err => {
                 return {status: "Error", message: err}

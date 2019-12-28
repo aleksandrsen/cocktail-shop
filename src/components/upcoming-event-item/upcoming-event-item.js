@@ -1,25 +1,24 @@
 import React, {useEffect} from 'react';
 import "./upcoming-event-item.scss";
-// Actions
-import {loadAndSortEvents} from "../../actions";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
+import cutTextContent from "../../functions/cut-text-content";
 // Components
 import DefaultText from "../common-components/default-text";
 import EventCounter from "../event-counter";
 import UpcomingEventDate from "../upcoming-event-date";
 import DefaultButton from "../common-components/default-button";
 import Spinner from "../spinner";
-// Helpers
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import {eventsLoadingSelector, eventsLoadedSelector, eventsSelector} from "../../selectors";
-import cutTextContent from "../../functions/cut-text-content";
+// Selectors
+import {
+    eventsLoadingSelector,
+    eventsLoadedSelector,
+    eventsSelector
+} from "../../selectors";
+
 
 function UpcomingEventItem(props) {
-    let {loading, loaded, loadAndSortEvents, events} = props;
-
-    useEffect(() => {
-        loadAndSortEvents();
-    });
+    let {loading, loaded, events} = props;
 
     if (!loading && loaded) {
         let {dateStart, title, text, middleImg} = events[0];
@@ -50,12 +49,8 @@ function UpcomingEventItem(props) {
     return <Spinner/>;
 }
 
-let mapStateToProps = (state) => {
-    return {
-        loading: eventsLoadingSelector(state),
-        loaded: eventsLoadedSelector(state),
-        events: eventsSelector(state)
-    }
-};
-
-export default connect(mapStateToProps, {loadAndSortEvents})(UpcomingEventItem);
+export default connect((state) => ({
+    loading: eventsLoadingSelector(state),
+    loaded: eventsLoadedSelector(state),
+    events: eventsSelector(state)
+}), null)(UpcomingEventItem);

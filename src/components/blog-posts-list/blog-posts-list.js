@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './blog-posts-list.scss';
 import {connect} from "react-redux";
 // Actions
-import {loadAndSortBlogPosts} from "../../actions";
+import {loadBlogPosts} from "../../actions";
 // Selectors
 import {
     blogPostsSelector,
@@ -15,11 +15,11 @@ import DefaultButton from "../common-components/default-button";
 import Spinner from "../spinner";
 
 function BlogPostsList(props) {
-    let {blogPosts, isLoading, isLoaded, loadAndSortBlogPosts} = props;
+    let {blogPosts, isLoading, isLoaded, loadBlogPosts} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
-            loadAndSortBlogPosts();
+            loadBlogPosts();
         }
     });
 
@@ -44,4 +44,4 @@ export default connect((state) => {
         isLoaded: blogPostsLoadedSelector(state),
         blogPosts: blogPostsSelector(state)
     }
-}, {loadAndSortBlogPosts})(BlogPostsList);
+}, {loadBlogPosts})(BlogPostsList);

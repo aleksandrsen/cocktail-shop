@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './music-events-list.scss';
 import {connect} from "react-redux";
 // Events
-import {loadAndSortEvents} from "../../actions";
+import {loadEvents} from "../../actions";
 // Selectors
 import {
     eventsLoadingSelector,
@@ -15,11 +15,11 @@ import MusicEventItem from "../music-event-item/music-event-item";
 import Spinner from "../spinner";
 
 function MusicEventsList(props) {
-    let {events, loadAndSortEvents, isLoading, isLoaded} = props;
+    let {events, loadEvents, isLoading, isLoaded} = props;
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
-            loadAndSortEvents();
+            loadEvents();
         }
     });
 
@@ -44,4 +44,4 @@ export default connect((state) => {
         isLoaded: eventsLoadedSelector(state),
         events: eventsSelector(state)
     }
-}, {loadAndSortEvents})(MusicEventsList);
+}, {loadEvents})(MusicEventsList);

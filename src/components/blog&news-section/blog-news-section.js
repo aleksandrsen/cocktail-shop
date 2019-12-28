@@ -55,10 +55,8 @@ function BlogNewsSection(props) {
     );
 }
 
-export default connect((state) => {
-    return {
-        isLoadedBLogPosts: blogPostsLoadedSelector(state),
-        isLoadedUsers: usersLoadedSelector(state),
-        blogPosts: getAllDataForBlogPosts(state)
-    }
-}, {loadAllDataForBlogPosts})(BlogNewsSection);
+export default connect((state) => ({
+    isLoadedBLogPosts: blogPostsLoadedSelector(state),
+    isLoadedUsers: usersLoadedSelector(state),
+    blogPosts: getAllDataForBlogPosts(state)
+}), {loadAllDataForBlogPosts})(BlogNewsSection);
