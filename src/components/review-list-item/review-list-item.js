@@ -13,8 +13,6 @@ function ReviewListItem(props) {
     let {name, surname} = author;
     let reviewDate = formatDate(date, {year: "numeric", month: "long", day: "numeric"});
 
-    console.log("render review Item", id);
-
     return (
         <div className="reviews-list-item">
             <div className="review-header">

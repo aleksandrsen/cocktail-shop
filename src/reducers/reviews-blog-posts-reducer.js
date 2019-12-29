@@ -58,44 +58,39 @@ export default (reviewsState = resourceStartRecord(), action) => {
             };
         }
         case LIKE_REVIEW: {
-            let {entities} = reviewsState;
-            let reviewId = action.payload.id;
-            let idx = entities.findIndex(({id}) => id === reviewId);
-            let reviewItem = {...entities[idx]};
-            let newReviewItem = {
-              ...reviewItem,
-              likes: reviewItem.likes + 1
-            };
-
+            let newState = countRating(reviewsState, action);
             return {
-                ...reviewsState,
-                entities: [
-                    ...entities.slice(0, idx),
-                    newReviewItem,
-                    ...entities.slice(idx + 1)
-                ]
-            };
+                ...newState
+            }
         }
         case DISLIKE_REVIEW: {
-            let {entities} = reviewsState;
-            let reviewId = action.payload.id;
-            let idx = entities.findIndex(({id}) => id === reviewId);
-            let reviewItem = {...entities[idx]};
-            let newReviewItem = {
-                ...reviewItem,
-                dislikes: reviewItem.dislikes - 1
-            };
-
+            let newState = countRating(reviewsState, action);
             return {
-                ...reviewsState,
-                entities: [
-                    ...entities.slice(0, idx),
-                    newReviewItem,
-                    ...entities.slice(idx + 1)
-                ]
-            };
+                ...newState
+            }
         }
         default:
             return reviewsState
     }
+}
+
+function countRating(state, action) {
+    let {entities} = state;
+    let field = action.type.split('_')[0].toLowerCase() + 's';
+    let reviewId = action.payload.id;
+    let idx = entities.findIndex(({id}) => id === reviewId);
+    let reviewItem = {...entities[idx]};
+    let newReviewItem = {
+        ...reviewItem,
+        [field]: reviewItem[field] + 1
+    };
+
+    return {
+        ...state,
+        entities: [
+            ...entities.slice(0, idx),
+            newReviewItem,
+            ...entities.slice(idx + 1)
+        ]
+    };
 }

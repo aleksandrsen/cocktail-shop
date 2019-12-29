@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './reviews-list.scss';
 import {connect} from "react-redux";
+import {
+    CSSTransition,
+    TransitionGroup,
+} from 'react-transition-group';
 // Actions
 import {loadReviews} from "../../actions";
 // Components
@@ -26,19 +30,41 @@ function ReviewsList(props) {
     });
 
     if (!isLoading && isLoaded) {
-
         const shortReviewsListLength = 3;
 
-        const shortReviewsList = reviews.slice(0, shortReviewsListLength).map(review => {
-            return <ReviewListItem key={review.id} review={review}/>
-        });
+        const shortReviewsList = (
+            <TransitionGroup>
+                {reviews.slice(0, shortReviewsListLength).map(review => (
+                    <CSSTransition
+                        key={review.id}
+                        timeout={500}
+                        classNames="item"
+                    >
+                        <ReviewListItem key={review.id} review={review}/>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
+        );
 
-        const allReviewsList = reviews.map(review => {
-            return <ReviewListItem key={review.id} review={review}/>
-        });
+        const allReviewsList = (
+            <TransitionGroup>
+                {reviews.map(review => (
+                    <CSSTransition
+                        key={review.id}
+                        timeout={500}
+                        classNames="item"
+                    >
+                        <ReviewListItem key={review.id} review={review}/>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
+        );
 
         const showAllCommentsBtn = !isShort ||
-            <DefaultButton onClick={() => setShort(false)}>Show all reviews</DefaultButton>;
+            <DefaultButton
+                onClick={() => setShort(false)}>
+                Show all reviews
+            </DefaultButton>;
 
         return (
             <div className="reviews-list">

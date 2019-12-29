@@ -247,7 +247,7 @@ export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail
             payload: {
                 id: newUserId,
                 name: newUser[0],
-                surname: newUser[1],
+                surname: newUser[1] || '',
                 email: userEmail
             }
         });
@@ -282,6 +282,3 @@ export const loadCocktailDetails = () => ({
     type: LOAD_COCKTAIL_DETAILS,
     callApi: `${apiBase}/cocktails`
 });
-
-
-
