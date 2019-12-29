@@ -2,8 +2,9 @@
     border: 1px solid #ffac04;
     border-radius: 5px;
     background-color: #8080800d;
+    transition: .2s;
 
-    .leave-comments-block {
+    .leave-reviews-block {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -15,37 +16,32 @@
         }
     }
 
-    .leave-comments-title {
+    .leave-reviews-title {
         font-size: 28px;
         text-transform: uppercase;
         margin-bottom: 0;
     }
 
-    .form-wrapper {
-        padding: 30px 30px 25px;
+    .ant-form {
+        padding: 30px 15px 25px;
         border-top: 1px solid #ffac04;
     }
 
-    .form-wrapper.hide {
-        display: none;
+    .form-enter {
+        opacity: 0.01;
     }
-}
 
+    .form-enter.form-enter-active {
+        opacity: 1;
+        transition: opacity 300ms ease-in;
+    }
 
+    .form-exit {
+        opacity: 1;
+    }
 
-
-
-.item-enter {
-    opacity: 0;
-}
-.item-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-}
-.item-exit {
-    opacity: 1;
-}
-.item-exit-active {
-    opacity: 0;
-    transition: opacity 500ms ease-in;
+    .form-exit.form-exit-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
 }
