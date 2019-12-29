@@ -1,4 +1,12 @@
-import {LOAD_BLOG_POSTS_REVIEWS, START, SUCCESS, FAIL, ADD_REVIEW_FOR_BLOG_POST} from "../constants";
+import {
+    LOAD_BLOG_POSTS_REVIEWS,
+    START,
+    SUCCESS,
+    FAIL,
+    ADD_REVIEW_FOR_BLOG_POST,
+    LIKE_REVIEW,
+    DISLIKE_REVIEW
+} from "../constants";
 import {resourceStartRecord} from "./utils";
 
 export default (reviewsState = resourceStartRecord(), action) => {
@@ -46,6 +54,44 @@ export default (reviewsState = resourceStartRecord(), action) => {
                 entities: [
                     newReview,
                     ...entities
+                ]
+            };
+        }
+        case LIKE_REVIEW: {
+            let {entities} = reviewsState;
+            let reviewId = action.payload.id;
+            let idx = entities.findIndex(({id}) => id === reviewId);
+            let reviewItem = {...entities[idx]};
+            let newReviewItem = {
+              ...reviewItem,
+              likes: reviewItem.likes + 1
+            };
+
+            return {
+                ...reviewsState,
+                entities: [
+                    ...entities.slice(0, idx),
+                    newReviewItem,
+                    ...entities.slice(idx + 1)
+                ]
+            };
+        }
+        case DISLIKE_REVIEW: {
+            let {entities} = reviewsState;
+            let reviewId = action.payload.id;
+            let idx = entities.findIndex(({id}) => id === reviewId);
+            let reviewItem = {...entities[idx]};
+            let newReviewItem = {
+                ...reviewItem,
+                dislikes: reviewItem.dislikes - 1
+            };
+
+            return {
+                ...reviewsState,
+                entities: [
+                    ...entities.slice(0, idx),
+                    newReviewItem,
+                    ...entities.slice(idx + 1)
                 ]
             };
         }
