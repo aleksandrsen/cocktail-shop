@@ -7,8 +7,8 @@ import bartendersReducer from "./bartenders-reducer";
 import bartenderItemReducer from "./bartender-item-reducer";
 import eventItemReducer from "./event-item-reducer";
 import blogPostItemReducer from "./blog-post-item-reducer";
-import blogPostsReviewsReducer from "./blog-posts-reviews-reducer";
-import randomCocktailsSReducer from "./randog-cocktails-reducer";
+import reviewsBlogPostsReducer from "./reviews-blog-posts-reducer";
+import randomCocktailsSReducer from "./random-cocktails-reducer";
 import cartReducer from "./cart-reducer";
 import wishListReducer from "./wish-list-reducer";
 import cocktailsReducer from "./cocktails-reducer";
@@ -17,7 +17,7 @@ const reducers = combineReducers({
     events: eventsReducer,
     blogPosts: blogPostsReducer,
     users: usersReducer,
-    blogPostsReviews: blogPostsReviewsReducer,
+    reviewsBlogPosts: reviewsBlogPostsReducer,
     bartenders: bartendersReducer,
     eventItem: eventItemReducer,
     blogPostItem: blogPostItemReducer,

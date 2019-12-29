@@ -37,7 +37,8 @@ function ReviewsList(props) {
             return <ReviewListItem key={review.id} review={review}/>
         });
 
-        const showAllCommentsBtn = !isShort || <DefaultButton onClick={() =>  setShort(false)}>Show all reviews</DefaultButton>;
+        const showAllCommentsBtn = !isShort ||
+            <DefaultButton onClick={() => setShort(false)}>Show all reviews</DefaultButton>;
 
         return (
             <div className="reviews-list">
@@ -50,10 +51,8 @@ function ReviewsList(props) {
     return <Spinner/>
 }
 
-export default connect((state, ownProps) => {
-    return {
-        isLoading: blogPostsReviewsLoadingSelector(state),
-        isLoaded: blogPostsReviewsLoadedSelector(state),
-        reviews: getAllReviewsForBlogPost(state, ownProps)
-    }
-}, {loadReviews})(ReviewsList);
+export default connect((state, ownProps) => ({
+    isLoading: blogPostsReviewsLoadingSelector(state),
+    isLoaded: blogPostsReviewsLoadedSelector(state),
+    reviews: getAllReviewsForBlogPost(state, ownProps)
+}), {loadReviews})(ReviewsList);

@@ -1,13 +1,7 @@
 import {LOAD_BLOG_POST_BY_ID, START, SUCCESS, FAIL, ADD_REVIEW_FOR_BLOG_POST} from "../constants";
+import {itemStartRecord} from "./utils";
 
-let initBlogPostItemState = {
-    loading: false,
-    loaded: false,
-    error: null,
-    item: null
-};
-
-export default (blogPostItemState = initBlogPostItemState, action) => {
+export default (blogPostItemState = itemStartRecord(), action) => {
     switch (action.type) {
         case LOAD_BLOG_POST_BY_ID + START:
             return {
@@ -41,7 +35,6 @@ export default (blogPostItemState = initBlogPostItemState, action) => {
                     reviews: [
                         id,
                         ...reviews
-
                     ]
                 }
             }

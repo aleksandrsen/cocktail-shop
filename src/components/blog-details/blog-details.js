@@ -62,7 +62,7 @@ function BlogDetails(props) {
                     {text}
                 </DefaultText>
                 <Share/>
-                <LeaveReviews id={blogPostId}/>
+                <LeaveReviews blogPostId={blogPostId}/>
                 <ReviewsList id={blogPostId}/>
             </div>
         );
@@ -70,12 +70,10 @@ function BlogDetails(props) {
     return <Spinner/>
 }
 
-export default connect((state) => {
-    return {
-        blogPostItemLoading: blogPostItemLoadingSelector(state),
-        blogPostItemLoaded: blogPostItemLoadedSelector(state),
-        usersLoaded: usersLoadedSelector(state),
-        oldBlogPostId: blogPostItemIdSelector(state),
-        blogPost: blogPostDetailsSelector(state)
-    }
-}, {loadBlogPostById})(BlogDetails);
+export default connect((state) => ({
+    blogPostItemLoading: blogPostItemLoadingSelector(state),
+    blogPostItemLoaded: blogPostItemLoadedSelector(state),
+    usersLoaded: usersLoadedSelector(state),
+    oldBlogPostId: blogPostItemIdSelector(state),
+    blogPost: blogPostDetailsSelector(state)
+}), {loadBlogPostById})(BlogDetails);

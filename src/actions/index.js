@@ -32,9 +32,6 @@ import {
     FAIL
 } from "../constants";
 
-let eventsService = new EventsService();
-let blogPostsService = new BlogPostsService();
-let bartendersService = new BartendersService();
 
 const apiBase = 'http://localhost:3000/api';
 
@@ -108,7 +105,7 @@ export const loadBlogPostById = (blogPostId) => (dispatch, getState) => {
     let isUsersLoading = state.users.loading;
     let isBlogPostsLoaded = state.blogPosts.loaded;
     let blogPostItem = state.blogPostItem.item;
-    let isBlogPostsReviewsLoaded = state.blogPostsReviews.loaded;
+    let isBlogPostsReviewsLoaded = state.reviewsBlogPosts.loaded;
     let blogPostsArr = state.blogPosts.entities;
 
     if (!isUsersLoaded && !isUsersLoading) dispatch(loadUsers());
@@ -229,15 +226,7 @@ export const userLogOut = () => ({
     type: USER_LOG_OUT
 });
 
-
-
-
-
-export const loadCocktailDetails = () => ({
-    type: LOAD_COCKTAIL_DETAILS,
-    callApi: `${apiBase}/cocktails`
-});
-
+// Reviews events
 export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail, message}) => (dispatch, getState) => {
     let state = getState();
     let users = state.users.entities;
@@ -278,6 +267,15 @@ export const addReviewForBlogPost = ({id: blogPostId, fullName, email: userEmail
         });
     }
 };
+
+
+
+export const loadCocktailDetails = () => ({
+    type: LOAD_COCKTAIL_DETAILS,
+    callApi: `${apiBase}/cocktails`
+});
+
+
 
 
 

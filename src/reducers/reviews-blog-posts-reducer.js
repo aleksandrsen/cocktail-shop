@@ -24,7 +24,7 @@ export default (reviewsState = resourceStartRecord(), action) => {
                 error: action.error,
                 entities: []
             };
-        case ADD_REVIEW_FOR_BLOG_POST:
+        case ADD_REVIEW_FOR_BLOG_POST: {
             let {entities} = reviewsState;
             let {reviewText, userId, id: newReviewId} = action.payload;
             let date = new Date(Date.now());
@@ -34,7 +34,7 @@ export default (reviewsState = resourceStartRecord(), action) => {
 
             let newReview = {
                 id: newReviewId,
-                userId: userId,
+                userId,
                 date: `${year}-${month + 1}-${day}`,
                 likes: 0,
                 dislikes: 0,
@@ -48,7 +48,7 @@ export default (reviewsState = resourceStartRecord(), action) => {
                     ...entities
                 ]
             };
-
+        }
         default:
             return reviewsState
     }

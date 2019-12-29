@@ -1,13 +1,7 @@
 import {LOAD_RANDOM_COCKTAILS, START, SUCCESS, FAIL} from "../constants";
+import {resourceStartRecord} from "./utils";
 
-let initRandomCocktailsState = {
-    loading: false,
-    loaded: false,
-    error: null,
-    entities: []
-};
-
-export default (randomCocktailsState = initRandomCocktailsState, action) => {
+export default (randomCocktailsState = resourceStartRecord(), action) => {
     switch (action.type) {
         case LOAD_RANDOM_COCKTAILS + START:
             return {

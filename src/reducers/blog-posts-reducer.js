@@ -24,7 +24,7 @@ export default (blogPostsState = resourceStartRecord(), action) => {
                 error: action.error,
                 entities: []
             };
-        case  ADD_REVIEW_FOR_BLOG_POST:
+        case  ADD_REVIEW_FOR_BLOG_POST: {
             let {entities} = blogPostsState;
             let {id: newReviewId, blogPostId} = action.payload;
             let idx = entities.findIndex(({id}) => id === blogPostId);
@@ -47,6 +47,7 @@ export default (blogPostsState = resourceStartRecord(), action) => {
                     ...entities.slice(idx + 1)
                 ]
             };
+        }
 
         default:
             return blogPostsState

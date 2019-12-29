@@ -6,6 +6,7 @@ import {CSSTransition} from 'react-transition-group';
 import ContactForm from "../contact-form";
 
 function LeaveReviews(props) {
+    let {blogPostId} = props;
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -17,7 +18,7 @@ function LeaveReviews(props) {
                 </DefaultButton>
             </div>
             <CSSTransition unmountOnExit in={isOpen} timeout={500} classNames="form">
-                <ContactForm reviewGoal={{id: 'asdfasdf', goal: 'bloads;lfkja'}} btnPos="right"/>
+                <ContactForm reviewGoal={{id: blogPostId, goal: 'blog-post'}} btnPos="right"/>
             </CSSTransition>
         </div>
     )

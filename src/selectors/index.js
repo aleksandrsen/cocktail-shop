@@ -49,9 +49,9 @@ export const usersLoadedSelector = (state) => state.users.loaded;
 export const usersSelector = (state) => state.users.entities;
 
 // Reviews
-export const blogPostsReviewsLoadingSelector = (state) => state.blogPostsReviews.loading;
-export const blogPostsReviewsLoadedSelector = (state) => state.blogPostsReviews.loaded;
-export const blogPostsReviewsSelector = (state) => state.blogPostsReviews.entities;
+export const blogPostsReviewsLoadingSelector = (state) => state.reviewsBlogPosts.loading;
+export const blogPostsReviewsLoadedSelector = (state) => state.reviewsBlogPosts.loaded;
+export const blogPostsReviewsSelector = (state) => state.reviewsBlogPosts.entities;
 
 // Random Cocktails
 export const randomCocktailsLoadingSelector = (state) => state.randomCocktails.loading;

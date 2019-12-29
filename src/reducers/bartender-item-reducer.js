@@ -1,13 +1,7 @@
 import {LOAD_BARTENDER_BY_ID, START, SUCCESS, FAIL} from "../constants";
+import {itemStartRecord} from "./utils";
 
-let initBartenderItemState = {
-    loading: false,
-    loaded: false,
-    error: null,
-    item: null
-};
-
-export default (bartenderItemState = initBartenderItemState, action) => {
+export default (bartenderItemState = itemStartRecord(), action) => {
     switch (action.type) {
         case LOAD_BARTENDER_BY_ID + START:
             return {

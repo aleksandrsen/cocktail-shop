@@ -24,7 +24,7 @@ export default (usersState = resourceStartRecord(), action) => {
                 error: action.error,
                 entities: []
             };
-        case CREATE_NEW_USER:
+        case CREATE_NEW_USER: {
             let {id, name, surname, email} = action.payload;
             let {entities} = usersState;
             let newUser = {
@@ -37,10 +37,11 @@ export default (usersState = resourceStartRecord(), action) => {
             return {
                 ...usersState,
                 entities: [
+                    newUser,
                     ...entities,
-                    newUser
                 ]
             };
+        }
 
         default:
             return usersState
