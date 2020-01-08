@@ -8,8 +8,7 @@ import {
     addToCart,
     addToWishList,
     removeFromCart,
-    removeFromWishList,
-    loadCocktailDetails
+    removeFromWishList
 } from "../../actions";
 // Components
 import {Link} from "react-router-dom";
@@ -29,8 +28,7 @@ function CocktailItem(props) {
         addToWishList,
         removeFromCart,
         removeFromWishList,
-        col,
-        loadCocktailDetails
+        col
     } = props;
 
     let [wishList, setWishList] = useState(false);
@@ -42,7 +40,7 @@ function CocktailItem(props) {
 
     return (
         <Col span={col ? col : 6}>
-            <div className="cocktail-item" onMouseEnter={() => loadCocktailDetails(idDrink)}>
+            <div className="cocktail-item">
                 {/*cocktail-info-start*/}
                 <div className="cocktails-info">
                     {loadImg ? "" : <img src={semanticImg} alt={strDrink}/>}
@@ -111,7 +109,6 @@ export default connect(
         addToCart,
         addToWishList,
         removeFromCart,
-        removeFromWishList,
-        loadCocktailDetails
+        removeFromWishList
     }
 )(CocktailItem);

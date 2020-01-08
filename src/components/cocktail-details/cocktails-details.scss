@@ -1,0 +1,77 @@
+.cocktail-details {
+    img.cocktail-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .section-title {
+        font-size: 38px;
+        line-height: 1em;
+    }
+
+    .alc-type {
+        font-size: 22px;
+        font-weight: 400;
+        font-style: italic;
+        color: #ffac04;
+    }
+
+    .cocktail-info {
+        margin-bottom: 40px;
+    }
+
+    .cocktail-info-item {
+        & + .cocktail-info-item {
+            margin-top: 20px;
+        }
+
+        border-bottom: 1px solid #ffac04;
+        padding: 0 15px 5px;
+    }
+
+    .title,
+    .info {
+        font-size: 28px;
+        font-weight: 400;
+    }
+
+    .title {
+        color: #000;
+        font-weight: 500;
+    }
+
+    .info {
+        font-size: 24px;
+        color: #ffac04;
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        padding: 20px 15px;
+        border: 1px solid #dddddd;
+    }
+
+    .price {
+        font-size: 50px;
+        color: #ffac04;
+        margin-right: 50px;
+        line-height: 1em;
+    }
+
+    .default-button + .default-button {
+        margin-left: 25px;
+    }
+
+    .ant-row-flex:first-child {
+        margin-bottom: 50px;
+    }
+
+    .instructions {
+        text-indent: 30px;
+        font-size: 28px;
+        line-height: 1.5em;
+        color: #000;
+    }
+}

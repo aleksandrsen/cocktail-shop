@@ -6,6 +6,7 @@ export default function getCocktailIngredientsFunc(obj) {
             ingredients.push(obj[key]);
         }
     }
-    let res = ingredients.join(', ').toLowerCase();
-    return res[0].toUpperCase() + res.slice(1);
+    // let res = ingredients.join(', ').toLowerCase();
+    // return res[0].toUpperCase() + res.slice(1);
+    return ingredients;
 }

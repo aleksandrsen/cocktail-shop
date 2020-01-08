@@ -28,12 +28,53 @@ function CocktailsList(props) {
         let filteredCocktails = filterCocktails(cocktails, params);
 
         function filterCocktails(cocktails, params) {
-            if (!params.alcoholic && !params.categories && !params.ingredients) {
+            let result = [];
+            let some;
+            if (!params.strAlcoholic && !params.strCategory && !params.ingredients) {
                 return cocktails
+            } else {
+
+                if (params.strAlcoholic) {
+                    some = cocktails.filter(cocktailItem => {
+                        let response;
+                        // for (let paramName in params) {
+                        //     if (!params[paramName] || !params[paramName].length) return;
+                        //
+                        //     let cocktailParam = cocktailItem[paramName];
+                        //
+                        //     response = params[paramName].filter(param => {
+                        //         // console.log(param.toLowerCase() === cocktailParam.toLowerCase());
+                        //         return param.toLowerCase() === cocktailParam.toLowerCase();
+                        //     });
+                        //     // console.log(response);
+                        // }
+                        response = params.strAlcoholic.filter(param => {
+                            return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
+                        });
+                        return response.length;
+                    });
+                } else if (params.strCategory) {
+                    some = cocktails.filter(cocktailItem => {
+                        let response;
+                        response = params.strAlcoholic.filter(param => {
+                            return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
+                        });
+                        return response.length;
+                    });
+                }
+                console.log(some);
             }
-            console.log(params);
             return cocktails;
         }
+
+        // idDrink: "12560"
+        // strDrink: "Afterglow"
+        // strCategory: "Cocktail"
+        // strAlcoholic: "Non alcoholic"
+        // strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/vuquyv1468876052.jpg"
+        // rate: 2
+        // price: 15
+        // ingredients: (3) ["grenadine", "orange juice", "pineapple juice"]
 
         return (
             <Row gutter={24} type={"flex"} className="cocktails-list">

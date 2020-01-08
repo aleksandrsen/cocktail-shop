@@ -9,10 +9,10 @@ import {
     LOAD_BLOG_POSTS_REVIEWS,
     LOAD_BLOG_POST_BY_ID,
     LOAD_COCKTAILS,
+    LOAD_COCKTAIL_BY_ID,
     ADD_REVIEW_FOR_BLOG_POST,
     LIKE_REVIEW,
     DISLIKE_REVIEW,
-    LOAD_COCKTAIL_DETAILS,
     ADD_TO_CART,
     ADD_TO_WISH_LIST,
     REMOVE_FROM_WISH_LIST,
@@ -30,8 +30,10 @@ import {
 
 
 const apiBase = 'http://localhost:3000/api';
+// const apiBase = 'api';
 
 // Load data
+// Cocktails
 export const loadCocktails = () => ({
     type: LOAD_COCKTAILS,
     callApi: `${apiBase}/cocktails`
@@ -42,6 +44,39 @@ export const loadRandomCocktails = () => ({
     callApi: `${apiBase}/random`
 });
 
+export const loadCocktailById = (cocktailId) => (dispatch, getState) => {
+    const state = getState();
+    const callApi = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`;
+    let isLoading = state.cocktailItem.loading;
+    let isLoaded = state.cocktailItem.loaded;
+    let cocktails = state.cocktails.entities;
+    let cocktailItem = state.cocktailItem.item;
+
+    let isCocktailInCocktails = cocktails.find(({idDrink}) => idDrink === cocktailId);
+
+    if (cocktailItem && (cocktailItem.idDrink === cocktailId)) {
+        dispatch({
+            type: LOAD_COCKTAIL_BY_ID + SUCCESS,
+            payload: {
+                response: cocktailItem
+            }
+        });
+    } else if (isCocktailInCocktails && isCocktailInCocktails.strInstructions) {
+        dispatch({
+            type: LOAD_COCKTAIL_BY_ID + SUCCESS,
+            payload: {
+                response: isCocktailInCocktails
+            }
+        });
+    } else if (!isLoading && !isLoaded) {
+        dispatch({
+            type: LOAD_COCKTAIL_BY_ID,
+            callApi: callApi
+        });
+    }
+};
+
+// Bartenders
 export const loadBartenders = () => ({
     type: LOAD_BARTENDERS,
     callApi: `${apiBase}/bartenders`
@@ -78,16 +113,19 @@ export const loadBartenderById = (bartenderId) => (dispatch, getState) => {
     }
 };
 
+// Reviews
 export const loadReviews = () => ({
     type: LOAD_BLOG_POSTS_REVIEWS,
     callApi: `${apiBase}/reviews`
 });
 
+// Users
 export const loadUsers = () => ({
     type: LOAD_USERS,
     callApi: `${apiBase}/users`
 });
 
+// Blog posts
 export const loadBlogPosts = () => ({
     type: LOAD_BLOG_POSTS,
     callApi: `${apiBase}/blog-posts`
@@ -147,6 +185,7 @@ export const loadAllDataForBlogPosts = () => (dispatch, getState) => {
     }
 };
 
+// Events
 export const loadEvents = () => ({
     type: LOAD_EVENTS,
     callApi: `${apiBase}/events`
@@ -276,9 +315,4 @@ export const disLikeReview = (id) => ({
     payload: {
         id
     }
-});
-
-export const loadCocktailDetails = () => ({
-    type: LOAD_COCKTAIL_DETAILS,
-    callApi: `${apiBase}/cocktails`
 });

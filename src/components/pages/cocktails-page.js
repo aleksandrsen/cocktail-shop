@@ -9,8 +9,8 @@ import SelectCocktails from "../select-cocktails";
 
 class CocktailsPage extends Component {
     state = {
-        alcoholic: null,
-        categories: null,
+        strAlcoholic: null,
+        strCategory: null,
         ingredients: null
     };
 
@@ -27,7 +27,6 @@ class CocktailsPage extends Component {
     };
 
     render() {
-        console.log(this.state);
         return (
             <Section>
                 <Container>

@@ -12,21 +12,21 @@ function AsideCocktails(props) {
 
     const alcoholic = [
         {label: 'Alcoholic', value: 'Alcoholic'},
-        {label: 'Non alcoholic', value: 'Non_Alcoholic'},
-        {label: 'Optional alcohol', value: 'Optional_alcohol'},
+        {label: 'Non alcoholic', value: 'Non Alcoholic'},
+        {label: 'Optional alcohol', value: 'Optional alcohol'},
     ];
 
     const categories = [
-        {label: 'Ordinary Drink', value: 'Ordinary_Drink'},
+        {label: 'Ordinary Drink', value: 'Ordinary Drink'},
         {label: 'Cocktail', value: 'Cocktail'},
-        {label: 'Milk / Float / Shake', value: 'Milk_Float_Shake'},
+        {label: 'Milk / Float / Shake', value: 'Milk Float Shake'},
         {label: 'Cocoa', value: 'Cocoa'},
         {label: 'Shot', value: 'Shot'},
-        {label: 'Coffee / Tea', value: 'Coffee_Tea'},
-        {label: 'Homemade Liqueur', value: 'Homemade_Liqueur'},
-        {label: 'Punch / Party Drink', value: 'Punch_Party_Drink'},
+        {label: 'Coffee / Tea', value: 'Coffee Tea'},
+        {label: 'Homemade Liqueur', value: 'Homemade Liqueur'},
+        {label: 'Punch / Party Drink', value: 'Punch Party Drink'},
         {label: 'Beer', value: 'Beer'},
-        {label: 'Soft Drink / Soda', value: 'Soft Drink_Soda'},
+        {label: 'Soft Drink / Soda', value: 'Soft Drink Soda'},
     ];
 
     let ingredients = [
@@ -136,10 +136,10 @@ function AsideCocktails(props) {
         <aside className="aside-cocktails">
             <Collapse bordered={false} defaultActiveKey={['1']}>
                 <Panel header="Alcoholic" key="1">
-                    <Checkbox.Group options={alcoholic} onChange={(checkedValue) => setFilter("alcoholic", checkedValue)}/>
+                    <Checkbox.Group options={alcoholic} onChange={(checkedValue) => setFilter("strAlcoholic", checkedValue)}/>
                 </Panel>
                 <Panel header="Categories" key="2">
-                    <Checkbox.Group options={categories} onChange={(checkedValue) => setFilter("categories", checkedValue)}/>
+                    <Checkbox.Group options={categories} onChange={(checkedValue) => setFilter("strCategory", checkedValue)}/>
                 </Panel>
                 <Panel header="Ingredients" key="3">
                     <Checkbox.Group options={ingredients} onChange={(checkedValue) => setFilter("ingredients", checkedValue)}/>

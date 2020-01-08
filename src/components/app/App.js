@@ -15,7 +15,7 @@ import MusicEventPage from "../pages/music-event-page";
 import EventDetails from "../event-details";
 import BlogDetailsPage from "../pages/blog-details-page";
 import CocktailsPage from "../pages/cocktails-page";
-import CocktailDetails from "../pages/cocktails-details";
+import CocktailDetails from "../cocktail-details";
 
 function App(props) {
 

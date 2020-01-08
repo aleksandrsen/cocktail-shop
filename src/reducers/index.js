@@ -12,6 +12,7 @@ import randomCocktailsSReducer from "./random-cocktails-reducer";
 import cartReducer from "./cart-reducer";
 import wishListReducer from "./wish-list-reducer";
 import cocktailsReducer from "./cocktails-reducer";
+import cocktailItemReducer from "./cocktail-item-reducer";
 
 const reducers = combineReducers({
     events: eventsReducer,
@@ -23,6 +24,7 @@ const reducers = combineReducers({
     blogPostItem: blogPostItemReducer,
     bartenderItem: bartenderItemReducer,
     cocktails: cocktailsReducer,
+    cocktailItem: cocktailItemReducer,
     user: userReducer,
     randomCocktails: randomCocktailsSReducer,
     cart: cartReducer,
