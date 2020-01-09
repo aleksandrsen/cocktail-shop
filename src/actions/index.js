@@ -51,6 +51,7 @@ export const loadCocktailById = (cocktailId) => (dispatch, getState) => {
     let isLoaded = state.cocktailItem.loaded;
     let cocktails = state.cocktails.entities;
     let cocktailItem = state.cocktailItem.item;
+    let oldId = cocktailItem ? cocktailItem.idDrink : '';
 
     let isCocktailInCocktails = cocktails.find(({idDrink}) => idDrink === cocktailId);
 
@@ -68,7 +69,7 @@ export const loadCocktailById = (cocktailId) => (dispatch, getState) => {
                 response: isCocktailInCocktails
             }
         });
-    } else if (!isLoading && !isLoaded) {
+    } else if (!isLoading && !isLoaded || (cocktailId !== oldId)) {
         dispatch({
             type: LOAD_COCKTAIL_BY_ID,
             callApi: callApi

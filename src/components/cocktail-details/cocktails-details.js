@@ -22,8 +22,9 @@ function CocktailDetails(props) {
     let {id, addToCart, addToWishList, loaded, loading, cocktail, oldItemId, loadCocktailById} = props;
 
     useEffect(() => {
-        console.log(id, oldItemId);
+        console.log(!loading && !loaded || (id !== oldItemId), id, oldItemId);
         if (!loading && !loaded || (id !== oldItemId)) {
+            console.log('inside effect');
             loadCocktailById(id);
         }
     });
