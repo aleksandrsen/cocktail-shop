@@ -12,7 +12,7 @@ function ContactUsSection(props) {
         <Section className="contact-us-section">
             <Container>
                 <SectionTitle>Contact us</SectionTitle>
-                <ContactForm btnText="Send us"/>
+                <ContactForm btnText="Send us" reviewGoal={{id: '1111', goal: 'blog-post'}}/>
             </Container>
         </Section>
     );

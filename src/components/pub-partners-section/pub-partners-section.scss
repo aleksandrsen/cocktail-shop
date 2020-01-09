@@ -1,13 +1,7 @@
-.about-us-section {
-
-    .about-us-section-content {
+.pub-partners-section {
+    .partners {
         display: flex;
-        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
     }
-
-    .partners img {
-        margin-bottom: 50px;
-    }
 }
-

@@ -28,7 +28,7 @@ function AboutUsSection(props) {
                         consectetur adipisicing elit. Adipisci alias autem blanditiis cupiditate, eius ex fugiat impedit
                         iure iusto molestias placeat provident repudiandae rerum sapiente sit tempore tenetur unde vel.
                     </DefaultText>
-                    <img src={newBottle} alt="new bottle"/>
+                    <img src={newBottle} alt="new bottle" className='preview-img'/>
                     <DefaultText>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aspernatur assumenda at cumque est
                         illo

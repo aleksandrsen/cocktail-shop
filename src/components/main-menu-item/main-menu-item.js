@@ -7,9 +7,7 @@ function MainMenuItem(props) {
 
     return (
         <li key={text} className="main-menu-item">
-            <NavLink to={to}
-                  activeClassName="active"
-            >
+            <NavLink exact to={to} activeClassName="active">
                 {text}
             </NavLink>
         </li>

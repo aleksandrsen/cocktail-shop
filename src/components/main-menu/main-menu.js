@@ -7,7 +7,7 @@ function MainMenu(props) {
     const navLinks = [
         {
             text: "Home",
-            to: "/home"
+            to: "/"
         },
         {
             text: "About us",

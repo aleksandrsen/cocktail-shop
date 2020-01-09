@@ -1,8 +1,11 @@
-.pub-partners-section {
-    .partners {
+.about-us-section {
+    .about-us-section-content {
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
     }
-}
 
+    .preview-img {
+        margin-bottom: 50px;
+    }
+}

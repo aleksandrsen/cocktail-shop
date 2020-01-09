@@ -24,8 +24,8 @@ function App(props) {
             <Header/>
             <main>
                 <Switch>
-                    <Route path="/home" exact component={HomePage}/>
-                    <Route path="/about" component={AboutUsPage}/>
+                    <Route path="/" exact component={HomePage}/>
+                    <Route path="/about" exact component={AboutUsPage}/>
                     <Route path="/cocktails/" exact component={CocktailsPage}/>
                     <Route path="/cocktails/:id" render={({match}) => {
                         const {id} = match.params;
@@ -50,7 +50,7 @@ function App(props) {
                         return <BlogDetailsPage blogPostId={id}/>
                     }}/>
 
-                    <Route path="/contact" component={ContactPage}/>
+                    <Route path="/contact" exact component={ContactPage}/>
                 </Switch>
             </main>
             <Footer/>
