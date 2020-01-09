@@ -5,14 +5,14 @@ import formatDate from "../../functions/format-date";
 import {Link} from "react-router-dom";
 // Components
 import DefaultText from "../common-components/default-text";
-import {Row} from "antd";
+import {Col, Row} from "antd";
 
 function BlogNewsItem(props) {
-    const maxTitleLength = 33;
+    const maxTitleLength = 37;
     const maxTextLength = 127;
 
     let {imgLeft} = props;
-    let {title, text, img, date, author, id} = props.post;
+    let {title, text, img, date, id} = props.post;
     let {name, surname} = props.post.author;
 
     let blogNewsItemTitle = title.length > maxTitleLength ? cutTextContent(title, maxTitleLength) : title;
@@ -30,33 +30,39 @@ function BlogNewsItem(props) {
     });
 
     return (
-        <div className="blog-news-item">
-            <div className="blog-news-item-info">
-                <div className="blog-news-item-date">
-                    <div className="main-date">{dayNumber < 10 ? "0" + dayNumber : dayNumber}</div>
-                    <div className="month">{shortMonth}</div>
-                </div>
-                <div className="blog-news-item-details">
-                    <div className="theme">
-                        <i className="material-icons">person</i>
-                        <span>{name + " " + surname}</span>
+        <Col span={24} className="blog-news-item">
+            <Row type="flex" gutter={30} justify="space-between" align="middle">
+                <Col span={12} order={imgLeft ? 1 : 0}>
+                    <div className="blog-news-item-info">
+                        <div className="blog-news-item-date">
+                            <div className="main-date">{dayNumber < 10 ? "0" + dayNumber : dayNumber}</div>
+                            <div className="month">{shortMonth}</div>
+                        </div>
+                        <div className="blog-news-item-details">
+                            <div className="theme">
+                                <i className="material-icons">person</i>
+                                <span>{name + " " + surname}</span>
+                            </div>
+                            <Link to={`/blog/${id}`} className="title">
+                                {blogNewsItemTitle}
+                            </Link>
+                            <DefaultText>
+                                {blogNewsItemText}
+                            </DefaultText>
+                            <div className="date">
+                                <i className="material-icons">query_builder</i>
+                                <span>{blogDate}</span>
+                            </div>
+                        </div>
                     </div>
-                    <Link to={`/blog/${id}`} className="title">
-                        {blogNewsItemTitle}
-                    </Link>
-                    <DefaultText>
-                        {blogNewsItemText}
-                    </DefaultText>
-                    <div className="date">
-                        <i className="material-icons">query_builder</i>
-                        <span>{blogDate}</span>
+                </Col>
+                <Col span={12}>
+                    <div className="blog-news-item-photo">
+                        <img src={img} alt={title}/>
                     </div>
-                </div>
-            </div>
-            <div className={`blog-news-item-photo ${imgLeft ? "img-left" : ""}`}>
-                <img src={img} alt={title}/>
-            </div>
-        </div>
+                </Col>
+            </Row>
+        </Col>
     );
 }
 

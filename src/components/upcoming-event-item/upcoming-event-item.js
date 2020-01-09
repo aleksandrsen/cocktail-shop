@@ -16,6 +16,7 @@ import {
     eventsSelector
 } from "../../selectors";
 
+import {Row, Col} from 'antd';
 
 function UpcomingEventItem(props) {
     let {loading, loaded, events} = props;
@@ -26,8 +27,8 @@ function UpcomingEventItem(props) {
         let nearestEventDate = new Date(Date.parse(dateStart));
 
         return (
-            <div className="upcoming-event-item">
-                <div className="event-info">
+            <Row type='flex' gutter={0} className="upcoming-event-item">
+                <Col span={10} className="event-info">
                     <h3 className="upcoming-event-title">{title}</h3>
                     <UpcomingEventDate date={nearestEventDate}/>
                     <DefaultText>
@@ -38,11 +39,11 @@ function UpcomingEventItem(props) {
                         <Link to={"/music-events/"} className="default-button">Events</Link>
                         <DefaultButton>Book on event</DefaultButton>
                     </div>
-                </div>
-                <div className="event-img">
+                </Col>
+                <Col span={14} className="event-img">
                     <img src={middleImg} alt="event-img"/>
-                </div>
-            </div>
+                </Col>
+            </Row>
         );
     }
 

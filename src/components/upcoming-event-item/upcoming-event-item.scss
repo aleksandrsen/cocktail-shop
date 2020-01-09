@@ -1,9 +1,5 @@
 .upcoming-event-item {
-    display: flex;
-    justify-content: space-between;
-
     .event-info {
-        width: 40%;
         padding: 20px;
         background: center / cover no-repeat url("../../img/upcoming-event-bg.jpg");
     }
@@ -16,13 +12,9 @@
         margin-bottom: 15px;
     }
 
-    .event-img {
-        width: 60%;
-
-        img {
-            object-fit: cover;
-            width: 100%;
-        }
+    img {
+        object-fit: cover;
+        width: 100%;
     }
 
     .default-text {

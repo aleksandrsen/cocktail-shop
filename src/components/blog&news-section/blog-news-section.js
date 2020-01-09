@@ -16,6 +16,7 @@ import Container from "../common-components/container";
 import DefaultText from "../common-components/default-text";
 import BlogNewsItem from "../blog&news-item";
 import Spinner from "../spinner";
+import {Row} from "antd";
 
 function BlogNewsSection(props) {
     let {
@@ -47,9 +48,9 @@ function BlogNewsSection(props) {
                     labore magni nobis omnis rerum, soluta? Delectus id impedit velit veniam vero voluptates.
                     Aliasamet doloribus fuga impedit modi quia
                 </DefaultText>
-                <div className="blog-news-list">
+                <Row type="flex" gutter={30} justify="space-between">
                     {recentBlogPosts ? recentBlogPosts : <Spinner/>}
-                </div>
+                </Row>
             </Container>
         </Section>
     );
