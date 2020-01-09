@@ -2,7 +2,11 @@ import React, {useEffect} from "react";
 import './cocktails-details.scss'
 import {connect} from "react-redux";
 // Actions
-import {addToCart, addToWishList, loadCocktailById} from "../../actions";
+import {
+    addToCart,
+    addToWishList,
+    loadCocktailById
+} from "../../actions";
 // Selectors
 import {
     cocktailItemIdSelector,
@@ -17,14 +21,14 @@ import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import DefaultButton from "../common-components/default-button";
 import Spinner from "../spinner";
+import LeaveReviews from "../leaave-reviews";
+import ReviewsList from "../reviews-list/reviews-list";
 
 function CocktailDetails(props) {
     let {id, addToCart, addToWishList, loaded, loading, cocktail, oldItemId, loadCocktailById} = props;
 
     useEffect(() => {
-        console.log(!loading && !loaded || (id !== oldItemId), id, oldItemId);
         if (!loading && !loaded || (id !== oldItemId)) {
-            console.log('inside effect');
             loadCocktailById(id);
         }
     });
@@ -82,9 +86,18 @@ function CocktailDetails(props) {
                     </Row>
                     <Row type="flex" gutter={30} justify="space-between">
                         <Col span={24}>
-                            <p className='instructions'>
-                                {strInstructions}
-                            </p>
+                            <div className="cocktail-instructions">
+                                <h3>Instructions</h3>
+                                <p className='instructions'>
+                                    {strInstructions}
+                                </p>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row type="flex" gutter={30} justify="space-between">
+                        <Col span={24}>
+                            <LeaveReviews blogPostId={'1111'}/>
+                            {/*<ReviewsList id={blogPostId}/>*/}
                         </Col>
                     </Row>
                 </Container>
@@ -94,6 +107,9 @@ function CocktailDetails(props) {
 
     return <Spinner/>
 }
+
+
+
 
 export default connect(state => ({
     loaded: cocktailItemLoadedSelector(state),

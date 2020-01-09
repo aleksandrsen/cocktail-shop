@@ -64,13 +64,25 @@
         margin-left: 25px;
     }
 
-    .ant-row-flex:first-child {
-        margin-bottom: 50px;
+    .ant-row-flex + .ant-row-flex {
+        margin-top: 50px;
+    }
+
+    .cocktail-instructions {
+        padding: 20px 15px;
+        border: 1px solid #dddddd;
+    }
+
+    .cocktail-instructions h3 {
+        font-size: 30px;
+        color: #000;
+        font-weight: 500;
+        border-bottom: 1px solid #ffac04;
     }
 
     .instructions {
         text-indent: 30px;
-        font-size: 28px;
+        font-size: 26px;
         line-height: 1.5em;
         color: #000;
     }
