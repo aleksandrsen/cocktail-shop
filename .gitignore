@@ -9,7 +9,7 @@ notepad.js
 /normalize-date
 # testing
 /coverage
-
+.idea
 # production
 /build
 
