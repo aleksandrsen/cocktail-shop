@@ -29,7 +29,7 @@ import {
 } from "../constants";
 
 
-const apiBase = '/api';
+const apiBase = 'http://localhost:3000/api';
 // const apiBase = 'api';
 
 // Load data

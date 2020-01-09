@@ -5,9 +5,10 @@ import formatDate from "../../functions/format-date";
 import {Link} from "react-router-dom";
 // Components
 import DefaultText from "../common-components/default-text";
+import {Row} from "antd";
 
 function BlogNewsItem(props) {
-    const maxTitleLength = 39;
+    const maxTitleLength = 33;
     const maxTextLength = 127;
 
     let {imgLeft} = props;
