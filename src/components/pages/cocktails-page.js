@@ -9,24 +9,26 @@ import SelectCocktails from "../select-cocktails";
 
 class CocktailsPage extends Component {
     state = {
-        strAlcoholic: null,
-        strCategory: null,
-        ingredients: null
+        strAlcoholic: [],
+        strCategory: [],
+        ingredients: []
     };
 
     setFilter = (param, value) => {
-        if (value.length) {
-            this.setState({
-                [param]: value
-            })
-        } else if (!value.length) {
-            this.setState({
-                [param]: null
-            })
-        }
+        this.setState({
+            [param]: value
+        });
     };
 
     render() {
+        let state = {...this.state};
+        let params = [];
+        for (let key in state) {
+            if (Array.isArray(state[key])) {
+                state[key].forEach(item => params.push({[key]: item}));
+            }
+        }
+
         return (
             <Section>
                 <Container>
@@ -35,7 +37,8 @@ class CocktailsPage extends Component {
                             <AsideCocktails setFilter={this.setFilter}/>
                         </Col>
                         <Col span={18}>
-                            <Row type="flex" gutter={24} justify="space-between" align="middle" style={{marginBottom: "40px"}}>
+                            <Row type="flex" gutter={24} justify="space-between" align="middle"
+                                 style={{marginBottom: "40px"}}>
                                 <Col span={12}>
                                     <SelectCocktails/>
                                 </Col>
@@ -43,7 +46,7 @@ class CocktailsPage extends Component {
                                     <SearchCocktailsForm/>
                                 </Col>
                             </Row>
-                            <CocktailsList params={this.state}/>
+                            <CocktailsList params={params}/>
                         </Col>
                     </Row>
                 </Container>

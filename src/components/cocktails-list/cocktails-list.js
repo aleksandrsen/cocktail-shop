@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './cocktails-list.scss';
 import {connect} from "react-redux";
 // Actions
@@ -17,6 +17,8 @@ import CocktailItem from "../cocktail-item";
 function CocktailsList(props) {
     let {isLoading, isLoaded, cocktails, loadCocktails, params} = props;
 
+    let [cocktailsList, setCocktailsList] = useState([]);
+
     useEffect(() => {
         if (!isLoading && !isLoaded) {
             loadCocktails();
@@ -28,59 +30,46 @@ function CocktailsList(props) {
         let filteredCocktails = filterCocktails(cocktails, params);
 
         function filterCocktails(cocktails, params) {
+            if (!params.length) return cocktails;
             let result = [];
-            let some;
-            if (!params.strAlcoholic && !params.strCategory && !params.ingredients) {
-                return cocktails
-            } else {
+            params.forEach(filterItem => {
+               let paramName = Object.keys(filterItem)[0];
+               let paramValue = filterItem[paramName];
+               let res = [];
 
-                if (params.strAlcoholic) {
-                    some = cocktails.filter(cocktailItem => {
-                        let response;
-                        // for (let paramName in params) {
-                        //     if (!params[paramName] || !params[paramName].length) return;
-                        //
-                        //     let cocktailParam = cocktailItem[paramName];
-                        //
-                        //     response = params[paramName].filter(param => {
-                        //         // console.log(param.toLowerCase() === cocktailParam.toLowerCase());
-                        //         return param.toLowerCase() === cocktailParam.toLowerCase();
-                        //     });
-                        //     // console.log(response);
-                        // }
-                        response = params.strAlcoholic.filter(param => {
-                            return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
-                        });
-                        return response.length;
-                    });
-                } else if (params.strCategory) {
-                    some = cocktails.filter(cocktailItem => {
-                        let response;
-                        response = params.strAlcoholic.filter(param => {
-                            return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
-                        });
-                        return response.length;
-                    });
+                if (result.length) {
+                    res = [];
+                    result.forEach(cocktail => {
+                        if (Array.isArray(cocktail[paramName])) {
+                            let arr = cocktail[paramName];
+                            arr.forEach(item => {
+                                if (item.toLowerCase() === paramValue.toLowerCase()) res.push(cocktail);
+                            })
+                        } else if (!Array.isArray(cocktail[paramName]) && cocktail[paramName] === paramValue) {
+                            res.push(cocktail);
+                        }
+                    })
+                } else {
+                    cocktails.forEach(cocktail => {
+                        if (cocktail[paramName] === paramValue) {
+                            res.push(cocktail);
+                        }
+                    })
                 }
-                console.log(some);
-            }
-            return cocktails;
+                result = res;
+            });
+            return result;
         }
 
-        // idDrink: "12560"
-        // strDrink: "Afterglow"
-        // strCategory: "Cocktail"
-        // strAlcoholic: "Non alcoholic"
-        // strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/vuquyv1468876052.jpg"
-        // rate: 2
-        // price: 15
-        // ingredients: (3) ["grenadine", "orange juice", "pineapple juice"]
+        let renderCocktails = filteredCocktails.slice(0, 25).map(cocktailItem => {
+            return <CocktailItem key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
+        });
 
         return (
             <Row gutter={24} type={"flex"} className="cocktails-list">
-                {filteredCocktails.slice(0, 25).map(cocktailItem => {
-                    return <CocktailItem key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
-                })}
+                {
+                    filteredCocktails.length === 0 ? <h2 className="info-message">We could not find cocktails with this parameters</h2> : renderCocktails
+                }
             </Row>
         )
     }
@@ -93,3 +82,46 @@ export default connect(state => ({
     isLoaded: cocktailsLoadedSelector(state),
     cocktails: cocktailsSelector(state)
 }), {loadCocktails})(CocktailsList);
+
+
+
+
+// function filterCocktails(cocktails, params) {
+//     let result = [];
+//     let some;
+//     if (!params.strAlcoholic && !params.strCategory && !params.ingredients) {
+//         return cocktails
+//     } else {
+//
+//         if (params.strAlcoholic) {
+//             some = cocktails.filter(cocktailItem => {
+//                 let response;
+                // for (let paramName in params) {
+                //     if (!params[paramName] || !params[paramName].length) return;
+                //
+                //     let cocktailParam = cocktailItem[paramName];
+                //
+                //     response = params[paramName].filter(param => {
+                //         // console.log(param.toLowerCase() === cocktailParam.toLowerCase());
+                //         return param.toLowerCase() === cocktailParam.toLowerCase();
+                //     });
+                //     // console.log(response);
+                // }
+//                 response = params.strAlcoholic.filter(param => {
+//                     return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
+//                 });
+//                 return response.length;
+//             });
+//         } else if (params.strCategory) {
+//             some = cocktails.filter(cocktailItem => {
+//                 let response;
+//                 response = params.strAlcoholic.filter(param => {
+//                     return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
+//                 });
+//                 return response.length;
+//             });
+//         }
+//         console.log(some);
+//     }
+//     return cocktails;
+// }

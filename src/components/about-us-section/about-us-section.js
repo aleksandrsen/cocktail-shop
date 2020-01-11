@@ -11,6 +11,7 @@ import SectionSubTitle from "../common-components/section-sub-title";
 
 function AboutUsSection(props) {
 
+
     return (
         <Section className="about-us-section">
             <Container>
@@ -19,10 +20,8 @@ function AboutUsSection(props) {
                 <div className="about-us-section-content">
                     <DefaultText>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae dolorum eos illo quia
-                        quibusdam
-                        reprehenderit similique voluptate! Atque aut modi odio omnis? Animi assumenda doloremque
-                        obcaecati
-                        sapiente totam, ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur,
+                        quibusdam reprehenderit similique voluptate! Atque aut modi odio omnis? Animi assumenda doloremque
+                        obcaecat sapiente totam, ut. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur,
                         commodi consectetur cupiditate error esse eum incidunt inventore labore necessitatibus officia
                         pariatur praesentium quaerat rerum sint, tempora unde ut veritatis? Lorem ipsum dolor sit amet,
                         consectetur adipisicing elit. Adipisci alias autem blanditiis cupiditate, eius ex fugiat impedit

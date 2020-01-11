@@ -22,7 +22,9 @@ import SectionTitle from "../common-components/section-title";
 import DefaultButton from "../common-components/default-button";
 import Spinner from "../spinner";
 import LeaveReviews from "../leaave-reviews";
-import ReviewsList from "../reviews-list/reviews-list";
+import { Button} from 'antd';
+
+
 
 function CocktailDetails(props) {
     let {id, addToCart, addToWishList, loaded, loading, cocktail, oldItemId, loadCocktailById} = props;
@@ -45,6 +47,7 @@ function CocktailDetails(props) {
             ingredientsWithMeasure
         } = cocktail;
 
+        const ButtonGroup = Button.Group;
         let ingredients = ingredientsWithMeasure.map(item => {
             return item.ingredient + ' ' + '(' + item.measure + ')';
         }).join(', ');
@@ -76,9 +79,14 @@ function CocktailDetails(props) {
                             </div>
                             <div className="actions">
                                 <div className="price">{+strDrink.length + +idDrink[0]}$</div>
-                                <DefaultButton size='large' onClick={() => addToCart(idDrink)}>Add to
+                                <div className='count'>
+                                    <button>-</button>
+                                    <span>5</span>
+                                    <button>+</button>
+                                </div>
+                                <DefaultButton onClick={() => addToCart(idDrink)}>Add to
                                     card</DefaultButton>
-                                <DefaultButton size='large' onClick={() => addToWishList(idDrink)}>Add to wish
+                                <DefaultButton onClick={() => addToWishList(idDrink)}>Add to wish
                                     list</DefaultButton>
                             </div>
 
