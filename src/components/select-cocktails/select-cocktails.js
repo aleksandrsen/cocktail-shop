@@ -10,39 +10,25 @@ function SelectCocktails(props) {
 
     return (
         <Select className="select-cocktails"
-                showSearch
                 dropdownClassName={"select-cocktails-dropdown"}
+                defaultActiveFirstOption={true}
                 placeholder="Sort by name"
                 optionFilterProp="children"
-                onChange={onChange}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                onSearch={onSearch}
+                onChange={props.setSortBy}
                 filterOption={(input, option) =>
                     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }
         >
-            <Option value="price-h-to-l">By price: hight to low</Option>
-            <Option value="price-l-to-h">By price: low to hight</Option>
-            <Option value="rating">By rating</Option>
+            <Option value="strDrink">By name</Option>
+            <Option value="rate">By rating</Option>
             <Option value="popular">By popularity</Option>
+            <Option value="price-h-to-l">By price: high to low</Option>
+            <Option value="price-l-to-h">By price: low to high</Option>
         </Select>
     );
 
     function onChange(value) {
         console.log(`selected ${value}`);
-    }
-
-    function onBlur() {
-        console.log('blur');
-    }
-
-    function onFocus() {
-        console.log('focus');
-    }
-
-    function onSearch(val) {
-        console.log('search:', val);
     }
 }
 

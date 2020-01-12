@@ -11,7 +11,8 @@ class CocktailsPage extends Component {
     state = {
         strAlcoholic: [],
         strCategory: [],
-        ingredients: []
+        ingredients: [],
+        sortBy: null
     };
 
     setFilter = (param, value) => {
@@ -20,12 +21,18 @@ class CocktailsPage extends Component {
         });
     };
 
+    setSortBy = (param) => {
+        this.setState({
+            sortBy: param
+        })
+    };
+
     render() {
-        let state = {...this.state};
+        let {sortBy, ...rest} = {...this.state};
         let params = [];
-        for (let key in state) {
-            if (Array.isArray(state[key])) {
-                state[key].forEach(item => params.push({[key]: item}));
+        for (let key in rest) {
+            if (Array.isArray(rest[key])) {
+                rest[key].forEach(item => params.push({[key]: item}));
             }
         }
 
@@ -40,13 +47,13 @@ class CocktailsPage extends Component {
                             <Row type="flex" gutter={24} justify="space-between" align="middle"
                                  style={{marginBottom: "40px"}}>
                                 <Col span={12}>
-                                    <SelectCocktails/>
+                                    <SelectCocktails setSortBy={this.setSortBy}/>
                                 </Col>
                                 <Col span={12}>
                                     <SearchCocktailsForm/>
                                 </Col>
                             </Row>
-                            <CocktailsList params={params}/>
+                            <CocktailsList params={params} sortBy={this.state.sortBy}/>
                         </Col>
                     </Row>
                 </Container>
