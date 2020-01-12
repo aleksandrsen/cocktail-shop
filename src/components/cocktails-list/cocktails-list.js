@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './cocktails-list.scss';
 import {connect} from "react-redux";
 // Actions
@@ -16,8 +16,6 @@ import CocktailItem from "../cocktail-item";
 
 function CocktailsList(props) {
     let {isLoading, isLoaded, cocktails, loadCocktails, params} = props;
-
-    let [cocktailsList, setCocktailsList] = useState([]);
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
@@ -48,7 +46,7 @@ function CocktailsList(props) {
                 result = res;
             } else if (result.length) {
                 res = [];
-                cocktails.forEach(cocktail => {
+                result.forEach(cocktail => {
                     if (Array.isArray(cocktail[paramName])) {
                         let arr = cocktail[paramName];
                         arr.forEach(item => {
@@ -58,12 +56,6 @@ function CocktailsList(props) {
                         res.push(cocktail);
                     }
                 });
-            } else {
-                cocktails.forEach(cocktail => {
-                    if (cocktail[paramName] === paramValue) {
-                        res.push(cocktail);
-                    }
-                })
             }
             result = res;
         });
@@ -79,7 +71,8 @@ function CocktailsList(props) {
         return (
             <Row gutter={24} type={"flex"} className="cocktails-list">
                 {
-                    filteredCocktails.length === 0 ? <h2 className="info-message">We could not find cocktails with this parameters</h2> : renderCocktails
+                    filteredCocktails.length === 0 ?
+                        <h2 className="info-message">We could not find cocktails with this parameters</h2> : renderCocktails
                 }
             </Row>
         )
@@ -93,46 +86,3 @@ export default connect(state => ({
     isLoaded: cocktailsLoadedSelector(state),
     cocktails: cocktailsSelector(state)
 }), {loadCocktails})(CocktailsList);
-
-
-
-
-// function filterCocktails(cocktails, params) {
-//     let result = [];
-//     let some;
-//     if (!params.strAlcoholic && !params.strCategory && !params.ingredients) {
-//         return cocktails
-//     } else {
-//
-//         if (params.strAlcoholic) {
-//             some = cocktails.filter(cocktailItem => {
-//                 let response;
-                // for (let paramName in params) {
-                //     if (!params[paramName] || !params[paramName].length) return;
-                //
-                //     let cocktailParam = cocktailItem[paramName];
-                //
-                //     response = params[paramName].filter(param => {
-                //         // console.log(param.toLowerCase() === cocktailParam.toLowerCase());
-                //         return param.toLowerCase() === cocktailParam.toLowerCase();
-                //     });
-                //     // console.log(response);
-                // }
-//                 response = params.strAlcoholic.filter(param => {
-//                     return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
-//                 });
-//                 return response.length;
-//             });
-//         } else if (params.strCategory) {
-//             some = cocktails.filter(cocktailItem => {
-//                 let response;
-//                 response = params.strAlcoholic.filter(param => {
-//                     return param.toLowerCase() === cocktailItem.strAlcoholic.toLowerCase();
-//                 });
-//                 return response.length;
-//             });
-//         }
-//         console.log(some);
-//     }
-//     return cocktails;
-// }

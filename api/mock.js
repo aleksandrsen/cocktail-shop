@@ -27,7 +27,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12862",
         "strDrink": "Aloha Fruit punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wsyvrt1468876267.jpg",
         "rate": 4,
@@ -77,7 +77,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12654",
         "strDrink": "Banana Milk Shake",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rtwwsx1472720307.jpg",
         "rate": 4,
@@ -87,7 +87,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12656",
         "strDrink": "Banana Strawberry Shake",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vqquwx1472720634.jpg",
         "rate": 5,
@@ -97,7 +97,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12658",
         "strDrink": "Banana Strawberry Shake Daiquiri-type",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uvypss1472720581.jpg",
         "rate": 5,
@@ -147,7 +147,7 @@ let normalizeCocktails = [
     {
         "idDrink": "17108",
         "strDrink": "Coke and Drops",
-        "strCategory": "Soft Drink / Soda",
+        "strCategory": "Soft Drink Soda",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yrtxxp1472719367.jpg",
         "rate": 3,
@@ -157,7 +157,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12890",
         "strDrink": "Cranberry Punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/mzgaqu1504389248.jpg",
         "rate": 3,
@@ -187,7 +187,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12768",
         "strDrink": "Frappé",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vqwryq1441245927.jpg",
         "rate": 1,
@@ -237,7 +237,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12954",
         "strDrink": "Holloween Punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/lfeoe41504888925.jpg",
         "rate": 3,
@@ -257,7 +257,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12770",
         "strDrink": "Iced Coffee",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/ytprxy1454513855.jpg",
         "rate": 2,
@@ -277,7 +277,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12688",
         "strDrink": "Just a Moonmint",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/znald61487604035.jpg",
         "rate": 3,
@@ -387,7 +387,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12774",
         "strDrink": "Masala Chai",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uyrpww1441246384.jpg",
         "rate": 2,
@@ -397,7 +397,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12776",
         "strDrink": "Melya",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xwtptq1441247579.jpg",
         "rate": 1,
@@ -487,7 +487,7 @@ let normalizeCocktails = [
     {
         "idDrink": "13032",
         "strDrink": "Spiced Peach Punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qxvypq1468924331.jpg",
         "rate": 4,
@@ -497,7 +497,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12780",
         "strDrink": "Spiking coffee",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/isql6y1487602375.jpg",
         "rate": 3,
@@ -507,7 +507,7 @@ let normalizeCocktails = [
     {
         "idDrink": "13036",
         "strDrink": "Strawberry Lemonade",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/spvvxp1468924425.jpg",
         "rate": 4,
@@ -527,7 +527,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12724",
         "strDrink": "Sweet Bananas",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sxpcj71487603345.jpg",
         "rate": 3,
@@ -537,7 +537,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12782",
         "strDrink": "Thai Coffee",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wquwxs1441247025.jpg",
         "rate": 2,
@@ -547,7 +547,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12784",
         "strDrink": "Thai Iced Coffee",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rqpypv1441245650.jpg",
         "rate": 4,
@@ -557,7 +557,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12786",
         "strDrink": "Thai Iced Tea",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Non alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/trvwpu1441245568.jpg",
         "rate": 3,
@@ -617,7 +617,7 @@ let normalizeCocktails = [
     {
         "idDrink": "14588",
         "strDrink": "151 Florida Bushwacker",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rvwrvv1468877323.jpg",
         "rate": 5,
@@ -1037,7 +1037,7 @@ let normalizeCocktails = [
     {
         "idDrink": "16333",
         "strDrink": "Adam Bomb",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tpxurs1454513016.jpg",
         "rate": 2,
@@ -1167,7 +1167,7 @@ let normalizeCocktails = [
     {
         "idDrink": "13162",
         "strDrink": "Afternoon",
-        "strCategory": "Coffee / Tea",
+        "strCategory": "Coffee Tea",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vyrurp1472667777.jpg",
         "rate": 2,
@@ -1407,7 +1407,7 @@ let normalizeCocktails = [
     {
         "idDrink": "16202",
         "strDrink": "Amaretto Sweet & Sour",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vswwus1472668546.jpg",
         "rate": 5,
@@ -1457,7 +1457,7 @@ let normalizeCocktails = [
     {
         "idDrink": "16289",
         "strDrink": "Apple Grande",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wqrptx1472668622.jpg",
         "rate": 3,
@@ -1517,7 +1517,7 @@ let normalizeCocktails = [
     {
         "idDrink": "15849",
         "strDrink": "Apricot punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tuxxtp1472668667.jpg",
         "rate": 3,
@@ -1547,7 +1547,7 @@ let normalizeCocktails = [
     {
         "idDrink": "14622",
         "strDrink": "Arctic Fish",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg",
         "rate": 2,
@@ -1557,7 +1557,7 @@ let normalizeCocktails = [
     {
         "idDrink": "17118",
         "strDrink": "Arctic Mouthwash",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Alcoholic",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wqstwv1478963735.jpg",
         "rate": 4,
@@ -1587,7 +1587,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12864",
         "strDrink": "Apple Cider Punch #1",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xrqxuv1454513218.jpg",
         "rate": 5,
@@ -1597,7 +1597,7 @@ let normalizeCocktails = [
     {
         "idDrink": "15615",
         "strDrink": "Chocolate Monkey",
-        "strCategory": "Milk / Float / Shake",
+        "strCategory": "Milk Float Shake",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tyvpxt1468875212.jpg",
         "rate": 4,
@@ -1607,7 +1607,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12910",
         "strDrink": "Egg Nog #4",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wpspsy1468875747.jpg",
         "rate": 2,
@@ -1617,7 +1617,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12916",
         "strDrink": "Egg Nog - Healthy",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qxuppv1468875308.jpg",
         "rate": 4,
@@ -1627,7 +1627,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12914",
         "strDrink": "Egg-Nog - Classic Cooked",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/quxsvt1468875505.jpg",
         "rate": 5,
@@ -1647,7 +1647,7 @@ let normalizeCocktails = [
     {
         "idDrink": "12944",
         "strDrink": "Gluehwein",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg",
         "rate": 2,
@@ -1657,7 +1657,7 @@ let normalizeCocktails = [
     {
         "idDrink": "13042",
         "strDrink": "Sunny Holiday Punch",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rywtwy1468924758.jpg",
         "rate": 4,
@@ -1667,7 +1667,7 @@ let normalizeCocktails = [
     {
         "idDrink": "13056",
         "strDrink": "Wine Cooler",
-        "strCategory": "Punch / Party Drink",
+        "strCategory": "Punch Party Drink",
         "strAlcoholic": "Optional alcohol",
         "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yutxtv1473344210.jpg",
         "rate": 2,
