@@ -25,42 +25,53 @@ function CocktailsList(props) {
         }
     });
 
-    if (!isLoading && isLoaded) {
+    function filterCocktails(cocktails, params) {
+        if (!params.length) return cocktails;
+        let result = [];
+        params.forEach(filterItem => {
+            let paramName = Object.keys(filterItem)[0];
+            let paramValue = filterItem[paramName];
+            let res = [];
 
-        let filteredCocktails = filterCocktails(cocktails, params);
-
-        function filterCocktails(cocktails, params) {
-            if (!params.length) return cocktails;
-            let result = [];
-            params.forEach(filterItem => {
-               let paramName = Object.keys(filterItem)[0];
-               let paramValue = filterItem[paramName];
-               let res = [];
-
-                if (result.length) {
-                    res = [];
-                    result.forEach(cocktail => {
-                        if (Array.isArray(cocktail[paramName])) {
-                            let arr = cocktail[paramName];
-                            arr.forEach(item => {
-                                if (item.toLowerCase() === paramValue.toLowerCase()) res.push(cocktail);
-                            })
-                        } else if (!Array.isArray(cocktail[paramName]) && cocktail[paramName] === paramValue) {
-                            res.push(cocktail);
-                        }
-                    })
-                } else {
-                    cocktails.forEach(cocktail => {
-                        if (cocktail[paramName] === paramValue) {
-                            res.push(cocktail);
-                        }
-                    })
-                }
+            if (!result.length) {
+                res = [];
+                cocktails.forEach(cocktail => {
+                    if (Array.isArray(cocktail[paramName])) {
+                        let arr = cocktail[paramName];
+                        arr.forEach(item => {
+                            if (item.toLowerCase() === paramValue.toLowerCase()) res.push(cocktail);
+                        })
+                    } else if (!Array.isArray(cocktail[paramName]) && cocktail[paramName] === paramValue) {
+                        res.push(cocktail);
+                    }
+                });
                 result = res;
-            });
-            return result;
-        }
+            } else if (result.length) {
+                res = [];
+                cocktails.forEach(cocktail => {
+                    if (Array.isArray(cocktail[paramName])) {
+                        let arr = cocktail[paramName];
+                        arr.forEach(item => {
+                            if (item.toLowerCase() === paramValue.toLowerCase()) res.push(cocktail);
+                        })
+                    } else if (!Array.isArray(cocktail[paramName]) && cocktail[paramName] === paramValue) {
+                        res.push(cocktail);
+                    }
+                });
+            } else {
+                cocktails.forEach(cocktail => {
+                    if (cocktail[paramName] === paramValue) {
+                        res.push(cocktail);
+                    }
+                })
+            }
+            result = res;
+        });
+        return result;
+    }
 
+    if (!isLoading && isLoaded) {
+        let filteredCocktails = filterCocktails(cocktails, params);
         let renderCocktails = filteredCocktails.slice(0, 25).map(cocktailItem => {
             return <CocktailItem key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
         });
