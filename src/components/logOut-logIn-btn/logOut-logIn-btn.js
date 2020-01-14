@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './logOut-logIn-btn.scss';
 import {connect} from "react-redux"
+// Actions
 import {userLogIn, userLogOut} from "../../actions";
+// Components
+import Modal from "../modal";
+import LoginForm from "../login-form";
 
 function LogOutLogInBtn(props) {
     let {isLogin, userLogIn, userLogOut} = props;
+    let [visible, setVisible] = useState(false);
 
     return (
         <>
-            <a className="logOut-logIn">{isLogin ? 'Log Out' : 'Log In'}</a>
+            <button className="logOut-logIn" onClick={() => setVisible(true)}>{isLogin ? 'Log Out' : 'Log In'}</button>
+            <Modal visible={visible} setVisible={setVisible} okText="Submit">
+                <LoginForm/>
+            </Modal>
         </>
     );
 }
 
-export default connect((state) => {
-    return {
-        isLogin: state.user.logIn
-    }
-}, {userLogIn, userLogOut})(LogOutLogInBtn);
+export default connect((state) => ({
+    isLogin: state.user.logIn
+}), {userLogIn, userLogOut})(LogOutLogInBtn);

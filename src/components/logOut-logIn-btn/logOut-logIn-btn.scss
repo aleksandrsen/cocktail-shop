@@ -3,10 +3,14 @@
     padding: 24px 15px;
     font-size: 16px;
     transition: .3s;
+    border: none;
     border-bottom: 1px solid transparent;
     color: #ffad05;
     display: block;
     min-width: 95px;
+    background-color: transparent;
+    outline: none;
+
 
     &:hover {
         color: #bc7b05;
