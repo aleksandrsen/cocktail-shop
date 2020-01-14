@@ -14,4 +14,11 @@
         width: 100%;
         color: #a97409;
     }
+
+    & + .show-more-wrapper {
+        padding: 15px;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
 }

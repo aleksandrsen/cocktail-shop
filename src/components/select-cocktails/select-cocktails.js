@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './select-cocktails.scss';
 // Components
 import {Select} from 'antd';
-
 const {Option} = Select;
 
 function SelectCocktails(props) {
-    let [searchText, setSearchText] = useState('');
 
     return (
         <Select className="select-cocktails"
@@ -26,10 +24,6 @@ function SelectCocktails(props) {
             <Option value="price-l-to-h">By price: low to high</Option>
         </Select>
     );
-
-    function onChange(value) {
-        console.log(`selected ${value}`);
-    }
 }
 
 export default SelectCocktails;

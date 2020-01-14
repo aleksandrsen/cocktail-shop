@@ -12,7 +12,8 @@ class CocktailsPage extends Component {
         strAlcoholic: [],
         strCategory: [],
         ingredients: [],
-        sortBy: null
+        sortBy: null,
+        searchText: ''
     };
 
     setFilter = (param, value) => {
@@ -25,6 +26,12 @@ class CocktailsPage extends Component {
         this.setState({
             sortBy: param
         })
+    };
+
+    setSearchText = (value) => {
+        this.setState({
+            searchText: value
+        });
     };
 
     render() {
@@ -50,10 +57,10 @@ class CocktailsPage extends Component {
                                     <SelectCocktails setSortBy={this.setSortBy}/>
                                 </Col>
                                 <Col span={12}>
-                                    <SearchCocktailsForm/>
+                                    <SearchCocktailsForm search={this.setSearchText}/>
                                 </Col>
                             </Row>
-                            <CocktailsList params={params} sortBy={this.state.sortBy}/>
+                            <CocktailsList params={params} sortBy={this.state.sortBy} searchText={this.state.searchText}/>
                         </Col>
                     </Row>
                 </Container>

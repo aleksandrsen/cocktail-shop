@@ -6,31 +6,6 @@
         padding-right: 85px;
     }
 
-    button {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        font-size: 14px;
-        padding: 0 15px;
-        background-color: #ffac04;
-        border-color: #ffac04;
-        border-radius: 0 4px 4px 0;
-        color: #fff;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-        cursor: pointer;
-
-        &:hover {
-            background-color: #db9304;
-            border-color: #ffac04;
-        }
-
-        &:focus {
-            outline: 0;
-        }
-    }
-
     .ant-input:focus,
     .ant-input:hover {
         border-color: #ffac04;
@@ -39,6 +14,14 @@
         button {
             box-shadow: 0 0 0 2px rgba(255, 172, 4, 0.2);
         }
+    }
+
+    .ant-input::placeholder {
+        transition: opacity .3s;
+    }
+
+    .ant-input:focus::placeholder {
+        opacity: 0;
     }
 }
 

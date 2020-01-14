@@ -17,9 +17,7 @@ function LeaveReviews(props) {
                     onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Close form" : "Write review"}
                 </DefaultButton>
             </div>
-            <CSSTransition unmountOnExit in={isOpen} timeout={500} classNames="form">
-                <ContactForm reviewGoal={{id: blogPostId, goal: 'blog-post'}} btnPos="right"/>
-            </CSSTransition>
+            {isOpen ? <ContactForm reviewGoal={{id: blogPostId, goal: 'blog-post'}} btnPos="right"/> : ''}
         </div>
     )
 }

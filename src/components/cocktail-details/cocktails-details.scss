@@ -43,34 +43,19 @@
 
     .info {
         font-size: 24px;
-        color: #ffac04;
+        color: #3c3c3c;
     }
 
     .actions {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: center;
         padding: 20px 15px;
         border: 1px solid #dddddd;
     }
 
-    .count {
-        border: 1px solid #ffac04;
-        border-radius: 2px;
-
-        span {
-            padding: 0 10px;
-        }
-
-        button {
-            background-color: #ffac04;
-            color: black;
-            border: none;
-            padding: 3px 10px;
-        }
-    }
-
     .price {
+        flex-grow: 1;
         font-size: 50px;
         color: #ffac04;
         margin-right: 50px;

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './cocktails-list.scss';
 import {connect} from "react-redux";
 // Actions
@@ -13,15 +13,27 @@ import {
 import Spinner from "../spinner";
 import {Row, Select} from 'antd';
 import CocktailItem from "../cocktail-item";
+import DefaultButton from "../common-components/default-button";
 
 function CocktailsList(props) {
-    let {isLoading, isLoaded, cocktails, loadCocktails, params, sortBy} = props;
+    let {isLoading, isLoaded, cocktails, loadCocktails, params, sortBy, searchText} = props;
+    const cocktailsOnPage = 27;
+
+    let [pageSize, setPageSize] = useState(cocktailsOnPage);
 
     useEffect(() => {
         if (!isLoading && !isLoaded) {
             loadCocktails();
         }
     });
+
+    function findMatches(wordToMatch, cocktails) {
+        if (wordToMatch === '') return cocktails;
+        return cocktails.filter(cocktailItem => {
+            const regex = new RegExp(wordToMatch, 'gi');
+            return cocktailItem.strDrink.match(regex);
+        })
+    }
 
     function filterCocktails(cocktails, params) {
         if (!params.length) return cocktails;
@@ -91,19 +103,27 @@ function CocktailsList(props) {
     }
 
     if (!isLoading && isLoaded) {
-        let filteredCocktails = filterCocktails(sort(cocktails, sortBy), params);
-        let renderCocktails = filteredCocktails.slice(0, 25).map(cocktailItem => {
+        let filteredCocktails = findMatches(searchText, filterCocktails(sort(cocktails, sortBy), params));
+        let renderCocktails = filteredCocktails.slice(0, pageSize).map(cocktailItem => {
             return <CocktailItem key={cocktailItem.idDrink} col={8} cocktail={cocktailItem}/>
         });
 
         return (
-            <Row gutter={24} type={"flex"} className="cocktails-list">
+            <>
+                <Row gutter={24} type={"flex"} className="cocktails-list">
+                    {
+                        filteredCocktails.length === 0 ?
+                            <h2 className="info-message">We could not find cocktails with this
+                                parameters</h2> : renderCocktails
+                    }
+                </Row>
                 {
-                    filteredCocktails.length === 0 ?
-                        <h2 className="info-message">We could not find cocktails with this
-                            parameters</h2> : renderCocktails
+                    filteredCocktails.length < pageSize ? '' :
+                        <div className='show-more-wrapper'>
+                            <DefaultButton size='large' onClick={() => setPageSize(pageSize + cocktailsOnPage)}>Show more</DefaultButton>
+                        </div>
                 }
-            </Row>
+            </>
         )
     }
 

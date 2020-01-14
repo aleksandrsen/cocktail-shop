@@ -22,8 +22,7 @@ import SectionTitle from "../common-components/section-title";
 import DefaultButton from "../common-components/default-button";
 import Spinner from "../spinner";
 import LeaveReviews from "../leaave-reviews";
-import { Button} from 'antd';
-
+import {Button} from 'antd';
 
 
 function CocktailDetails(props) {
@@ -79,15 +78,8 @@ function CocktailDetails(props) {
                             </div>
                             <div className="actions">
                                 <div className="price">{+strDrink.length + +idDrink[0]}$</div>
-                                <div className='count'>
-                                    <button>-</button>
-                                    <span>5</span>
-                                    <button>+</button>
-                                </div>
-                                <DefaultButton onClick={() => addToCart(idDrink)}>Add to
-                                    card</DefaultButton>
-                                <DefaultButton onClick={() => addToWishList(idDrink)}>Add to wish
-                                    list</DefaultButton>
+                                <DefaultButton onClick={() => addToCart(idDrink)}>Add to card</DefaultButton>
+                                <DefaultButton onClick={() => addToWishList(idDrink)}>Add to wish list</DefaultButton>
                             </div>
 
                         </Col>
@@ -105,7 +97,6 @@ function CocktailDetails(props) {
                     <Row type="flex" gutter={30} justify="space-between">
                         <Col span={24}>
                             <LeaveReviews blogPostId={'1111'}/>
-                            {/*<ReviewsList id={blogPostId}/>*/}
                         </Col>
                     </Row>
                 </Container>
@@ -115,8 +106,6 @@ function CocktailDetails(props) {
 
     return <Spinner/>
 }
-
-
 
 
 export default connect(state => ({
