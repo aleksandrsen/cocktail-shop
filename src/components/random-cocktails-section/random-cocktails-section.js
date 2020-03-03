@@ -43,7 +43,6 @@ function RandomCocktailsSection(props) {
         let cuttedArray = cutArray(cocktails, 4);
 
         let slides = cuttedArray.map(item => {
-            console.log(item);
             return (
                 <Row key={item[1].strDrink} gutter={24} type={"flex"}>
                     {item.map(cocktailItem => {

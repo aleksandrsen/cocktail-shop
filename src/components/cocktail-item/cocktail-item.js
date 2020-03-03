@@ -11,7 +11,7 @@ import {
     removeFromWishList
 } from "../../actions";
 // Components
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {Rate, Col} from 'antd';
 
 function CocktailItem(props) {
@@ -50,7 +50,7 @@ function CocktailItem(props) {
 
                 {/*cocktail-title-rate-start*/}
                 <div className="title-rate">
-                    <Link to={`/cocktails/${idDrink}`} className="title">{title}</Link>
+                    <NavLink to={`${idDrink}`} className="title">{title}</NavLink>
                     <Rate value={rate}/>
                 </div>
                 {/*cocktail-title-rate-end*/}

@@ -4,17 +4,21 @@ import './talk-to-bartender-section.scss';
 import Section from "../common-components/section";
 import SectionTitle from "../common-components/section-title";
 import Container from "../common-components/container";
-import ContactForm from "../contact-form";
+import TalkToBartenderForm from "../talk-to-bartender-form/talk-to-bartender-form";
 
 function TalkToBartenderSection(props) {
 
     let {name, surname, id} = props.bartender;
 
+    const handleSubmit = values => {
+        console.log(values);
+    };
+
     return (
         <Section className="talk-to-bartender-section">
             <Container>
                 <SectionTitle>Talk to {name + " " + surname}</SectionTitle>
-                <ContactForm reviewGoal={{goal: "bartender", id: id}}/>
+                <TalkToBartenderForm onSubmit={handleSubmit}/>
             </Container>
         </Section>
     );

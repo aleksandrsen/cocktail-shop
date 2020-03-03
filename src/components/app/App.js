@@ -27,7 +27,7 @@ function App(props) {
                     <Route path="/" exact component={HomePage}/>
                     <Route path="/about" exact component={AboutUsPage}/>
                     <Route path="/cocktails/" exact component={CocktailsPage}/>
-                    <Route path="/cocktails/:id" render={({match}) => {
+                    <Route path="/cocktails/:id" render={({match, location, history}) => {
                         const {id} = match.params;
                         return <CocktailDetails id={id}/>
                     }}/>
