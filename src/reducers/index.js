@@ -13,6 +13,8 @@ import cartReducer from "./cart-reducer";
 import wishListReducer from "./wish-list-reducer";
 import cocktailsReducer from "./cocktails-reducer";
 import cocktailItemReducer from "./cocktail-item-reducer";
+import {reducer as formReducer} from "redux-form";
+
 
 const reducers = combineReducers({
     events: eventsReducer,
@@ -28,7 +30,8 @@ const reducers = combineReducers({
     user: userReducer,
     randomCocktails: randomCocktailsSReducer,
     cart: cartReducer,
-    wishList: wishListReducer
+    wishList: wishListReducer,
+    form: formReducer
 });
 
 export default reducers;
