@@ -1,0 +1,90 @@
+.blog-posts-reviews-form {
+    padding: 40px 50px;
+
+    .formControl {
+        position: relative;
+
+        & + .formControl {
+            margin-top: 30px;
+        }
+    }
+
+    label {
+        display: block;
+        padding-left: 15px;
+        font-weight: 600;
+        color: #000;
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    input,
+    textarea {
+        display: block;
+        width: 100%;
+        padding: 0 15px;
+        margin: 5px 0 15px;
+        font-family: "OpenSans", sans-serif;
+        border-radius: 20px;
+        color: #000;
+        background: rgba(255, 255, 255, .3);
+        border: 1px solid #ffac04;
+    }
+
+    input {
+        line-height: 40px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: rgba(0, 0, 0, 0.62);
+        transition: .5s;
+    }
+
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+        opacity: 0;
+    }
+
+    textarea {
+        resize: none;
+        min-height: 120px;
+        line-height: 1.5em;
+        padding: 15px;
+    }
+
+    button {
+        display: block;
+        margin-top: 60px;
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        color: #ffac04;
+        background: #000;
+    }
+
+    .error {
+        position: absolute;
+        left: 15px;
+        bottom: -20px;
+        color: #e64545;
+    }
+
+    input[data-state="valid"] {
+        border: 1px solid green;
+    }
+
+    input[data-state="invalid"] {
+        border: 1px solid #e64545;
+    }
+
+    textarea[data-state="valid"] {
+        border: 1px solid green;
+    }
+
+    textarea[data-state="invalid"] {
+        border: 1px solid #e64545;
+    }
+}
+

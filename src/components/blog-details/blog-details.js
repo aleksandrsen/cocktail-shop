@@ -14,24 +14,22 @@ import Share from "../share/share";
 import Spinner from "../spinner";
 // Selectors
 import {
+    blogPostDetailsSelector,
+    blogPostItemIdSelector,
     blogPostItemLoadedSelector,
     blogPostItemLoadingSelector,
-    usersLoadedSelector,
-    blogPostItemIdSelector,
-    blogPostDetailsSelector
+    usersLoadedSelector
 } from "../../selectors";
 
-
-function BlogDetails(props) {
-    let {
-        blogPostId,
-        blogPost,
-        blogPostItemLoading,
-        blogPostItemLoaded,
-        loadBlogPostById,
-        usersLoaded,
-        oldBlogPostId
-    } = props;
+const BlogDetails = ({
+     blogPostId,
+     blogPost,
+     blogPostItemLoading,
+     blogPostItemLoaded,
+     loadBlogPostById,
+     usersLoaded,
+     oldBlogPostId
+ }) => {
 
     useEffect(() => {
         if (!blogPostItemLoading && !blogPostItemLoaded || (blogPostId !== oldBlogPostId)) {
@@ -68,7 +66,7 @@ function BlogDetails(props) {
         );
     }
     return <Spinner/>
-}
+};
 
 export default connect((state) => ({
     blogPostItemLoading: blogPostItemLoadingSelector(state),

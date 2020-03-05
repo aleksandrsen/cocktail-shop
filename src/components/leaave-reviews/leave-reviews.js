@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import './leave-reviews.scss';
 import DefaultButton from "../common-components/default-button";
-import {CSSTransition} from 'react-transition-group';
 // Components
-import ContactForm from "../contact-form";
+import BlogPostsReviewForm from "../blog-posts-reviews-form/blog-posts-review-form";
 
-function LeaveReviews(props) {
+const LeaveReviews = (props) => {
     let {blogPostId} = props;
     const [isOpen, setIsOpen] = useState(false);
 
@@ -17,9 +16,9 @@ function LeaveReviews(props) {
                     onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Close form" : "Write review"}
                 </DefaultButton>
             </div>
-            {isOpen ? <ContactForm reviewGoal={{id: blogPostId, goal: 'blog-post'}} btnPos="right"/> : ''}
+            {isOpen ? <BlogPostsReviewForm/> : ''}
         </div>
     )
-}
+};
 
 export default LeaveReviews;
