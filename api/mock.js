@@ -1,7 +1,8 @@
-const eventsBase = '/img/events';
-const bartendersBase = '/img/bartenders';
-const blogPostsBase = '/img/blog-posts';
-const instagramBase = '/img/instagram';
+// http://localhost:3000/img/bartenders/bartender-0.jpg
+const eventsBase = 'http://localhost:3000/img/events';
+const bartendersBase = 'http://localhost:3000/img/bartenders';
+const blogPostsBase = 'http://localhost:3000/img/blog-posts';
+const instagramBase = 'http://localhost:3000/img/instagram';
 
 let normalizeCocktails = [
     {
@@ -1683,8 +1684,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-1.jpg`,
         middleImg: `${eventsBase}/middle-event-item-1.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-02-30T17:00",
-        dateEnd: "2020-02-30T20:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     },
     {
@@ -1693,8 +1694,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-2.jpg`,
         middleImg: `${eventsBase}/middle-event-item-2.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2019-12-31T13:00",
-        dateEnd: "2019-12-31T19:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, m ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet exceexercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
     },
     {
@@ -1703,8 +1704,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-3.jpg`,
         middleImg: `${eventsBase}/middle-event-item-3.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-02-01T11:00",
-        dateEnd: "2020-02-01T22:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationemam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
     },
     {
@@ -1713,8 +1714,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-4.jpg`,
         middleImg: `${eventsBase}/middle-event-item-4.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-01-17T15:00",
-        dateEnd: "2020-01-17T20:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem  excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates! excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     },
     {
@@ -1723,8 +1724,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-5.jpg`,
         middleImg: `${eventsBase}/middle-event-item-5.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-01-22T21:00",
-        dateEnd: "2020-01-22T23:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exerciamet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exerciamet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exerciamet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
     },
     {
@@ -1733,8 +1734,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-1.jpg`,
         middleImg: `${eventsBase}/middle-event-item-1.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-05-07T17:00",
-        dateEnd: "2020-06-07T05:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehendericepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatcepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatcepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatcepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatt tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     },
     {
@@ -1743,8 +1744,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-2.jpg`,
         middleImg: `${eventsBase}/middle-event-item-2.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-03-19T11:00",
-        dateEnd: "2020-03-19T17:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet exceendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
     },
     {
@@ -1753,19 +1754,21 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-3.jpg`,
         middleImg: `${eventsBase}/middle-event-item-3.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-04-10T15:00",
-        dateEnd: "2020-04-10T20:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corssimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commossimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commossimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commossimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commoporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     },
     {
         id: "12bb0862-55a8-4f12-8098-2f0e96240f40",
         title: "Life Lessons from a Bad Passenger",
-        smallImg: `${eventsBase}/event-item-4.jpg`,
-        middleImg: `${eventsBase}/middle-event-item-4.jpg`,
+        smallImg: `${eventsBase}/event-item-5.jpg`,
+        middleImg: `${eventsBase}/middle-event-item-5.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-01-11T20:00",
-        dateEnd: "2020-01-11T23:00",
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
+        text: "Lorem ipsum dolor sit amet, consectetur  adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto \n laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam" +
+            " iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum" +
+            ", magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsumi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit amet",
     },
     {
         id: "35eba734-676e-48d6-8282-86bf07142f3c",
@@ -1773,8 +1776,8 @@ let normalizeEvents = [
         smallImg: `${eventsBase}/event-item-5.jpg`,
         middleImg: `${eventsBase}/middle-event-item-5.jpg`,
         bigImg: `${eventsBase}/big-event-item-1.jpg`,
-        dateStart: "2020-02-15T17:00",
-        dateEnd: "2020-02-15T20:00",
+        dateStart: "2020-07-30T17:00",
+        dateEnd: "2020-08-30T20:00",
         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi corporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodi cossimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur voluptates!Lorem ipsum dolor sit ametdolor sit amet, consectetur adipisicing elit. Accusamus, autem commodirporis cumdignissimos eligendi eveniet excepturi, exercitationem ipsam iusto laborum, magnam nemo nulla omnisperspiciatis quas reprehenderit tenetur volup",
     }
 ];
