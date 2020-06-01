@@ -1,8 +1,7 @@
-// http://localhost:3000/img/bartenders/bartender-0.jpg
-const eventsBase = 'http://localhost:3000/img/events';
-const bartendersBase = 'http://localhost:3000/img/bartenders';
-const blogPostsBase = 'http://localhost:3000/img/blog-posts';
-const instagramBase = 'http://localhost:3000/img/instagram';
+const eventsBase = '/img/events';
+const bartendersBase = '/img/bartenders';
+const blogPostsBase = '/img/blog-posts';
+const instagramBase = '/img/instagram';
 
 let normalizeCocktails = [
     {
