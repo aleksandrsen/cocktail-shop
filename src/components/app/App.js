@@ -6,15 +6,15 @@ import Header from "../header"
 import Footer from "../footer";
 import BartenderDetails from "../bartender-details";
 // Pages
-import HomePage from "../pages/home-page";
-import AboutUsPage from "../pages/about-us-page";
-import ContactPage from "../pages/contact-page";
-import BartendersPage from "../pages/bartenders-page";
-import BlogPage from "../pages/blog-page";
-import MusicEventPage from "../pages/music-event-page";
+import Home from "../pages/home";
+import AboutUs from "../pages/about-us";
+import Contacts from "../pages/contacts";
+import Bartenders from "../pages/bartenders";
+import BlogPage from "../pages/blog/blog-page";
+import MusicEvents from "../pages/music-events";
 import EventDetails from "../event-details";
-import BlogDetailsPage from "../pages/blog-details-page";
-import CocktailsPage from "../pages/cocktails-page";
+import BlogDetailsPage from "../pages/blog/blog-details-page";
+import Cocktails from "../pages/cocktails";
 import CocktailDetails from "../cocktail-details";
 
 function App(props) {
@@ -24,21 +24,21 @@ function App(props) {
             <Header/>
             <main>
                 <Switch>
-                    <Route path="/" exact component={HomePage}/>
-                    <Route path="/about" exact component={AboutUsPage}/>
-                    <Route path="/cocktails/" exact component={CocktailsPage}/>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/about" exact component={AboutUs}/>
+                    <Route path="/cocktails/" exact component={Cocktails}/>
                     <Route path="/cocktails/:id" render={({match, location, history}) => {
                         const {id} = match.params;
                         return <CocktailDetails id={id}/>
                     }}/>
 
-                    <Route path="/bartenders/" exact component={BartendersPage}/>
+                    <Route path="/bartenders/" exact component={Bartenders}/>
                     <Route path="/bartenders/:id" render={({match}) => {
                         const {id} = match.params;
                         return <BartenderDetails id={id}/>
                     }}/>
 
-                    <Route path="/music-events/" exact component={MusicEventPage}/>
+                    <Route path="/music-events/" exact component={MusicEvents}/>
                     <Route path="/music-events/:id" render={({match}) => {
                         let {id} = match.params;
                         return <EventDetails eventId={id}/>
@@ -50,7 +50,7 @@ function App(props) {
                         return <BlogDetailsPage blogPostId={id}/>
                     }}/>
 
-                    <Route path="/contact" exact component={ContactPage}/>
+                    <Route path="/contact" exact component={Contacts}/>
                 </Switch>
             </main>
             <Footer/>

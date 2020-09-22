@@ -33,7 +33,7 @@ import {
 const apiBase = '/api';
 
 // Load data
-// Cocktails
+// Index
 export const loadCocktails = () => ({
     type: LOAD_COCKTAILS,
     callApi: `${apiBase}/cocktails`

@@ -29,7 +29,7 @@ router.get("/users", function (req, res, next) {
     reply(res, users);
 });
 
-// Cocktails
+// Index
 router.get("/cocktails", function (req, res, next) {
     reply(res, cocktails);
 });

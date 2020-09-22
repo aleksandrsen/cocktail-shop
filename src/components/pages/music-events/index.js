@@ -1,22 +1,21 @@
 import React from "react";
-// Components
-import Section from "../common-components/section";
-import Container from "../common-components/container";
-import BlogPostsList from "../blog-posts-list";
-import Aside from "../aside";
+import Section from "../../common-components/section";
+import Container from "../../common-components/container";
+import AsideEventPostsContainer from "../../aside";
+import MusicEventsList from "../../music-events-list";
 import {Row, Col} from "antd";
 
-function BlogPage(props) {
+function MusicEvents(props) {
 
     return (
         <Section>
             <Container>
                 <Row type="flex" justify="space-between">
                     <Col span={17}>
-                        <BlogPostsList/>
+                        <MusicEventsList/>
                     </Col>
                     <Col span={6}>
-                        <Aside/>
+                        <AsideEventPostsContainer/>
                     </Col>
                 </Row>
             </Container>
@@ -24,4 +23,4 @@ function BlogPage(props) {
     )
 }
 
-export default BlogPage;
+export default MusicEvents;
