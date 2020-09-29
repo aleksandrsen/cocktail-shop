@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import Container from "../common-components/container";
+import Container from "../../common-components/container";
 import {Col, Row} from "antd";
-import Section from "../common-components/section";
-import AsideCocktails from "../aside-cocktails";
-import CocktailsList from "../cocktails-list";
-import SearchCocktailsForm from "../search-cocktails-form";
-import SelectCocktails from "../select-cocktails";
+import Section from "../../common-components/section";
+import AsideCocktails from "../../aside-cocktails";
+import CocktailsList from "../../cocktails-list";
+import SearchCocktailsForm from "../../search-cocktails-form";
+import SelectCocktails from "../../select-cocktails";
 
-class CocktailsPage extends Component {
+class Cocktails extends Component {
     state = {
         strAlcoholic: [],
         strCategory: [],
@@ -69,4 +69,4 @@ class CocktailsPage extends Component {
     }
 }
 
-export default CocktailsPage;
+export default Cocktails;
