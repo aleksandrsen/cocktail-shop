@@ -1,47 +1,55 @@
-import React, {useEffect, useState} from 'react';
-import './event-counter.scss';
+import React, { useEffect, useState } from "react";
+import "./event-counter.scss";
 
-function EventCounter(props) {
-    let {date} = props;
-    const [days, setDays] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+const EventCounter = ({ date: eventDate }) => {
+  const [date, setDate] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
-    useEffect(() => {
-        let intervalId = setInterval(() => {
-            let dateDifference = new Date(date - new Date());
-            setDays(Math.floor(+dateDifference / (24 * 60 * 60 * 1000)));
-            setHours(dateDifference.getHours());
-            setMinutes(dateDifference.getMinutes());
-            setSeconds(dateDifference.getSeconds());
-        }, 1000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const dateDifference = new Date(eventDate - new Date());
 
-        return () => {
-            clearInterval(intervalId);
-        }
-    });
+      setDate({
+        days: formatNumber(Math.floor(+dateDifference / (24 * 60 * 60 * 1000))),
+        hours: formatNumber(dateDifference.getHours()),
+        minutes: formatNumber(dateDifference.getMinutes()),
+        seconds: formatNumber(dateDifference.getSeconds()),
+      });
+    }, 1000);
 
-    function formatNumber(number) {
-        return number < 10 ? `0${number}` : number;
-    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
-    return (
-        <div className="event-counter">
-            <div className="count-item days active">
-                <span>{formatNumber(days)}</span><span>days</span>
-            </div>
-            <div className="count-item hours">
-                <span>{formatNumber(hours)}</span><span>hours</span>
-            </div>
-            <div className="count-item minutes">
-                <span>{formatNumber(minutes)}</span><span>minutes</span>
-            </div>
-            <div className="count-item seconds">
-                <span>{formatNumber(seconds)}</span><span>seconds</span>
-            </div>
-        </div>
-    );
-}
+  const formatNumber = (number) => {
+    return number < 10 ? `0${number}` : number;
+  };
+
+  return (
+    <div className="event-counter">
+      <div className="count-item days active">
+        <span>{date.days}</span>
+        <span>days</span>
+      </div>
+      <div className="count-item hours">
+        <span>{date.hours}</span>
+        <span>hours</span>
+      </div>
+      <div className="count-item minutes">
+        <span>{date.minutes}</span>
+        <span>minutes</span>
+      </div>
+      <div className="count-item seconds">
+        <span>{date.seconds}</span>
+        <span>seconds</span>
+      </div>
+    </div>
+  );
+};
 
 export default EventCounter;

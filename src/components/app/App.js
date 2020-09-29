@@ -6,12 +6,12 @@ import Header from "../header"
 import Footer from "../footer";
 import BartenderDetails from "../bartender-details";
 // Pages
-import Home from "../pages/home";
-import AboutUs from "../pages/about-us";
-import Contacts from "../pages/contacts";
-import Bartenders from "../pages/bartenders";
-import BlogPage from "../pages/blog/blog-page";
-import MusicEvents from "../pages/music-events";
+import HomePage from "../pages/home/home-page";
+import AboutUsPage from "../pages/about-us-page";
+import ContactPage from "../pages/contact-page";
+import BartendersPage from "../pages/bartenders-page";
+import BlogPage from "../pages/blog-page";
+import MusicEventPage from "../pages/music-event-page";
 import EventDetails from "../event-details";
 import BlogDetailsPage from "../pages/blog/blog-details-page";
 import Cocktails from "../pages/cocktails";
