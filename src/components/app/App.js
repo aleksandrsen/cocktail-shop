@@ -6,7 +6,7 @@ import Header from "../header"
 import Footer from "../footer";
 import BartenderDetails from "../bartender-details";
 // Pages
-import HomePage from "../pages/home-page";
+import HomePage from "../pages/home/home-page";
 import AboutUsPage from "../pages/about-us-page";
 import ContactPage from "../pages/contact-page";
 import BartendersPage from "../pages/bartenders-page";

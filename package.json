@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "prettier": "2.1.2"
   }
 }
