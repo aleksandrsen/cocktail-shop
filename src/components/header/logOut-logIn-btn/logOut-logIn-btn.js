@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { userLogIn, userLogOut } from "../../../actions";
 // Components
 import Modal from "../../modal";
-import LoginForm from "../../login-form";
+import LoginForm from "../../auth/login-form";
 
 const LogOutLogInBtn = ({ isLogin, userLogIn, userLogOut }) => {
   let [visible, setVisible] = useState(false);

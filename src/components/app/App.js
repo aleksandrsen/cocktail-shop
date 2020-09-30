@@ -4,18 +4,21 @@ import {Route, Switch} from "react-router-dom"
 // Components
 import Header from "../header"
 import Footer from "../footer";
-import BartenderDetails from "../bartender-details";
+import BartenderDetails from "../pages/bartenders/bartender-details";
 // Pages
-import HomePage from "../pages/home/home-page";
-import AboutUsPage from "../pages/about-us-page";
-import ContactPage from "../pages/contact-page";
-import BartendersPage from "../pages/bartenders-page";
-import BlogPage from "../pages/blog-page";
-import MusicEventPage from "../pages/music-event-page";
-import EventDetails from "../event-details";
 import BlogDetailsPage from "../pages/blog/blog-details-page";
 import Cocktails from "../pages/cocktails";
-import CocktailDetails from "../cocktail-details";
+
+import Home from "../pages/home/home";
+import About from "../pages/about/about";
+import Contacts from "../pages/contact/contact-page";
+import Bartenders from "../pages/bartenders/bartenders";
+import BlogPage from "../pages/blog/blog-page";
+import MusicEvents from "../pages/music&events/music-event-page";
+import EventDetails from "../pages/music&events/event-details";
+import CocktailsPage from "../pages/cocktails/cocktails-page";
+import CocktailDetails from "../pages/cocktails/cocktail-details";
+
 
 function App(props) {
 
@@ -25,8 +28,9 @@ function App(props) {
             <main>
                 <Switch>
                     <Route path="/" exact component={Home}/>
-                    <Route path="/about" exact component={AboutUs}/>
                     <Route path="/cocktails/" exact component={Cocktails}/>
+                    <Route path="/about" exact component={About}/>
+                    <Route path="/cocktails/" exact component={CocktailsPage}/>
                     <Route path="/cocktails/:id" render={({match, location, history}) => {
                         const {id} = match.params;
                         return <CocktailDetails id={id}/>

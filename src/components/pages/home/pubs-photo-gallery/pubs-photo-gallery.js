@@ -10,7 +10,7 @@ import Section from "../../../common-components/section";
 import SectionTitle from "../../../common-components/section-title";
 import Container from "../../../common-components/container";
 import DefaultText from "../../../common-components/default-text";
-import JoinMailingList from "../../../join-mailing-list";
+import JoinMailingList from "../join-mailing-list";
 
 const PubsPhotoGallery = (props) => (
   <Section className="pubs-photo-section">

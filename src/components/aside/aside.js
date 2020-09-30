@@ -1,10 +1,10 @@
 import React from 'react';
 import './aside.scss';
 // Components
-import AsideSearchForm from "../aside-search-form";
-import AsidePostsList from "../aside-posts-list";
-import AsideEventsList from "../aside-events-list";
-import InstagramGallery from "../instagram-gallery";
+import AsideSearchForm from "./aside-search-form";
+import AsidePostsList from "./aside-posts-list";
+import AsideEventsList from "./aside-events-list";
+import InstagramGallery from "./instagram-gallery";
 
 function Aside(props) {
 
