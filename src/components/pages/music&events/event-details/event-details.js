@@ -4,11 +4,11 @@ import clockIcon from "../../../../img/icons/clock-regular.svg";
 import { connect } from "react-redux";
 import mapIcon from "../../../../img/icons/map-icon.svg";
 // Components
-import DefaultText from "../../../common-components/default-text";
+import DefaultText from "../../../layout-components/default-text";
 import Share from "../../../share/share";
-import Section from "../../../common-components/section";
-import Container from "../../../common-components/container";
-import SectionTitle from "../../../common-components/section-title";
+import Section from "../../../layout-components/section";
+import Container from "../../../layout-components/container";
+import SectionTitle from "../../../layout-components/section-title";
 import formatDate from "../../../../functions/format-date";
 import Map from "../../contact/map";
 import PubPartnersSection from "../../../pub-partners-section";

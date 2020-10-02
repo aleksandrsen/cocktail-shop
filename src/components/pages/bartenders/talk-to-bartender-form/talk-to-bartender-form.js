@@ -3,7 +3,7 @@ import "./talk-to-bartender-form.scss";
 import validate from "./validate";
 // Components
 import { Field, reduxForm } from "redux-form";
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 
 const renderField = ({ input, meta: { touched, error, valid }, label }) => {
   const condition = touched && error ? "invalid" : valid ? "valid" : "";

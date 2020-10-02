@@ -6,10 +6,10 @@ import photo3 from "../../../../img/pubs-photo-gallery/photo-gallery-img-3.jpg";
 import photo4 from "../../../../img/pubs-photo-gallery/photo-gallery-img-4.jpg";
 import photo5 from "../../../../img/pubs-photo-gallery/photo-gallery-img-5.jpg";
 // Components
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
-import DefaultText from "../../../common-components/default-text";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
+import DefaultText from "../../../layout-components/default-text";
 import JoinMailingList from "../join-mailing-list";
 
 const PubsPhotoGallery = (props) => (

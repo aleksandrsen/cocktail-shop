@@ -10,10 +10,10 @@ import {
   eventsLoadingSelector,
 } from "../../../../selectors";
 // Components
-import Container from "../../../common-components/container";
-import SectionTitle from "../../../common-components/section-title";
+import Container from "../../../layout-components/container";
+import SectionTitle from "../../../layout-components/section-title";
 import NextEventItem from "./next-event-item";
-import SmallSection from "../../../common-components/small-section";
+import SmallSection from "../../../layout-components/small-section";
 import Spinner from "../../../spinner";
 
 const NextEvents = ({loading, loaded, events, loadEvents}) => {

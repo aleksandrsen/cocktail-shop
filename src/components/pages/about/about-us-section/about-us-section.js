@@ -3,11 +3,11 @@ import "./about-us-section.scss";
 import { Link } from "react-router-dom";
 // Components
 import newBottle from "../../../../img/new-bottle.jpg";
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
-import DefaultText from "../../../common-components/default-text";
-import SectionSubTitle from "../../../common-components/section-sub-title";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
+import DefaultText from "../../../layout-components/default-text";
+import SectionSubTitle from "../../../layout-components/section-sub-title";
 
 const AboutUsSection = (props) => (
   <Section className="about-us-section">

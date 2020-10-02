@@ -5,22 +5,23 @@ import logo from "../../img/logo.png";
 import MainMenu from "./main-menu";
 import ShoppingCart from "./shopping-cart";
 import WishList from "./wish-list";
-import LogOutLogInBtn from "./logOut-logIn-btn";
-// Antd
-import { PageHeader } from "antd";
+import Login from "./logOut-logIn-btn";
+import ContainerFluid from "../layout-components/container-fluid";
 
 const Header = (props) => (
-  <header>
-    <PageHeader title="Title">
-      <img className="logo" src={logo} alt="" />
+
+    <header className="header">
+        <ContainerFluid>
+      <img className="header__logo" src={logo} alt="" />
       <MainMenu />
       <div className="right-block">
         <WishList />
         <ShoppingCart />
-        <LogOutLogInBtn />
+        <Login />
       </div>
-    </PageHeader>
-  </header>
+        </ContainerFluid>
+    </header>
+
 );
 
 export default Header;

@@ -15,11 +15,11 @@ import {
   cocktailItemSelector,
 } from "../../../../selectors";
 // Components
-import Container from "../../../common-components/container";
+import Container from "../../../layout-components/container";
 import { Col, Row } from "antd";
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import DefaultButton from "../../../common-components/default-button";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import DefaultButton from "../../../layout-components/default-button";
 import Spinner from "../../../spinner";
 import LeaveReviews from "../../blog/leaave-reviews";
 import { Button } from "antd";

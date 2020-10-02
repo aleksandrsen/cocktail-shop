@@ -1,4 +1,5 @@
-header {
+.header {
+
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     top: 0;
@@ -6,64 +7,18 @@ header {
     width: 100%;
     z-index: 100;
 
-    .logo {
-        max-width: 55px;
-        height: auto;
+    .container-fluid {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .ant-page-header {
-        $padding-top: 17px;
-        $header-font-size: 16px;
-        $header-text-color: #ffad05;
-        $header-text-hover-color: #bc7b05;
-        $header-transition: .3s;
-        padding: 0 15px;
-
-        .ant-page-header-heading {
-            display: none;
-        }
-
-        .ant-page-header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-            line-height: 1;
-        }
-
-        .right-block {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            a {
-                cursor: pointer;
-                padding: 0 7px;
-                position: relative;
-
-                .material-icons {
-                    font-size: 27px;
-                    color: #ffad05;
-                    transition: .3s;
-
-                    &:hover {
-                        color: #bc7b05;
-                    }
-                }
-
-                .count {
-                    position: absolute;
-                    top: -50%;
-                    right: 0;
-                    width: 20px;
-                    height: 20px;
-                    border-radius: 50%;
-                    background-color: #ffac04;
-                    color: #000;
-                    text-align: center;
-                    line-height: 20px;
-                }
-            }
-        }
+    &__logo {
+        display: block;
+        width: 55px;
     }
+
+
+
 }

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { addReviewForBlogPost } from "../../../../actions";
 // Components
 import { Row, Col, Form, Input } from "antd";
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 
 const ContactForm = ({
   btnText,

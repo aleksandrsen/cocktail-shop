@@ -2,10 +2,10 @@ import React from "react";
 import "./happy-hour.scss";
 import logo from "../../../../src_/img/logo.png";
 // Components
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
-import SectionSubTitle from "../../../common-components/section-sub-title";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
+import SectionSubTitle from "../../../layout-components/section-sub-title";
 
 const HappyHour = (props) => (
   <Section className="happy-hour">

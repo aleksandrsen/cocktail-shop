@@ -3,7 +3,7 @@ import "./blog-news-item.scss";
 import { cutTextContent, formatDate } from "../../../../../utils";
 import { Link } from "react-router-dom";
 // Components
-import DefaultText from "../../../../common-components/default-text";
+import DefaultText from "../../../../layout-components/default-text";
 import { Col, Row } from "antd";
 
 const BlogNewsItem = ({

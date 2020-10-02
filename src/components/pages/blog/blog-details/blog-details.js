@@ -7,7 +7,7 @@ import formatDate from "../../../../functions/format-date";
 // Actions
 import {loadBlogPostById} from "../../../../actions";
 // Components
-import DefaultText from "../../../common-components/default-text";
+import DefaultText from "../../../layout-components/default-text";
 import ReviewsList from "../reviews-list";
 import LeaveReviews from "../leaave-reviews";
 import Share from "../../../share/share";

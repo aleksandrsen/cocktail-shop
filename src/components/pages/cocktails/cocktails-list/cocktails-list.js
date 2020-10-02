@@ -13,7 +13,7 @@ import {
 import Spinner from "../../../spinner";
 import { Row, Select } from "antd";
 import CocktailItem from "../cocktail-item";
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 
 const CocktailsList = ({
   isLoading,

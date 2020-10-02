@@ -10,7 +10,7 @@ import {
   eventsSelector,
 } from "../../../../selectors";
 // Components
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 import MusicEventItem from "../music-event-item/music-event-item";
 import Spinner from "../../../spinner";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./join-mailing-list.scss";
 // Components
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 
 const JoinMailingList = (props) => {
   let [email, changeEmail] = useState("");

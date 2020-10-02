@@ -3,7 +3,7 @@ import "./music-event-item.scss";
 import { Row, Col } from "antd";
 import { withRouter } from "react-router-dom";
 import formatDate from "../../../../functions/format-date";
-import DefaultText from "../../../common-components/default-text";
+import DefaultText from "../../../layout-components/default-text";
 // Components
 import cutTextContent from "../../../../functions/cut-text-content";
 

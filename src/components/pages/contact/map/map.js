@@ -7,7 +7,7 @@ import {
   Marker,
 } from "react-google-maps";
 // Components
-import Section from "../../../common-components/section";
+import Section from "../../../layout-components/section";
 
 const Map = (props) => {
   const MyMapComponent = withScriptjs(

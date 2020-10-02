@@ -11,12 +11,12 @@ import {
   bartenderItemSelector,
 } from "../../../../selectors";
 // Components
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
-import DefaultText from "../../../common-components/default-text";
-import SectionSubTitle from "../../../common-components/section-sub-title";
-import DefaultButton from "../../../common-components/default-button";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
+import DefaultText from "../../../layout-components/default-text";
+import SectionSubTitle from "../../../layout-components/section-sub-title";
+import DefaultButton from "../../../layout-components/default-button";
 import TalkToBartenderSection from "../talk-to-bartender-section";
 import Spinner from "../../../spinner";
 

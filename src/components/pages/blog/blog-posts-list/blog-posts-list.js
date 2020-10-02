@@ -11,7 +11,7 @@ import {
 } from "../../../../selectors";
 // Components
 import BlogPostItem from "./blog-post-item";
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 import Spinner from "../../../spinner";
 
 const BlogPostsList = ({ blogPosts, isLoading, isLoaded, loadBlogPosts }) => {

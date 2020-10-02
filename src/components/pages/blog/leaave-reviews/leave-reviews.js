@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./leave-reviews.scss";
-import DefaultButton from "../../../common-components/default-button";
+import DefaultButton from "../../../layout-components/default-button";
 // Components
 import BlogPostsReviewForm from "../blog-posts-reviews-form/blog-posts-review-form";
 

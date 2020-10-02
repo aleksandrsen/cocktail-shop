@@ -5,9 +5,9 @@ import phoneIcon from "../../../../img/icons/phone-icon.svg";
 import mapIcon from "../../../../img/icons/map-icon.svg";
 // Components
 import { Row, Col } from "antd";
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
 
 const GetInTouchSection = (props) => (
   <Section className="get-in-touch-section">

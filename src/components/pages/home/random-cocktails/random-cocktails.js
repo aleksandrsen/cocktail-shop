@@ -10,13 +10,13 @@ import {
     randomCocktailsSelector
 } from "../../../../selectors";
 // Components
-import Section from "../../../common-components/section";
-import SectionTitle from "../../../common-components/section-title";
-import Container from "../../../common-components/container";
+import Section from "../../../layout-components/section";
+import SectionTitle from "../../../layout-components/section-title";
+import Container from "../../../layout-components/container";
 import Spinner from "../../../spinner";
 import {Carousel, Row} from 'antd';
 import CocktailItem from "../../cocktails/cocktail-item";
-import DefaultText from "../../../common-components/default-text";
+import DefaultText from "../../../layout-components/default-text";
 
 const RandomCocktails = ({isLoading, isLoaded, cocktails, loadRandomCocktails}) => {
 

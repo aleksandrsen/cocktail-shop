@@ -1,9 +1,9 @@
 import React from "react";
-import Section from "../../common-components/section";
-import Container from "../../common-components/container";
+import Section from "../../layout-components/section";
+import Container from "../../layout-components/container";
 import AsideEventPostsContainer from "../../aside";
 import {Row, Col} from "antd";
-import BlogDetails from "../../blog-details";
+import BlogDetails from "./blog-details";
 
 function BlogDetailsPage(props) {
     let {blogPostId} = props;

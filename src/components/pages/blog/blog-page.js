@@ -1,9 +1,9 @@
 import React from "react";
 // Components
-import Section from "../../common-components/section";
-import Container from "../../common-components/container";
-import BlogPostsList from "../../blog-posts-list";
+import Section from "../../layout-components/section";
+import Container from "../../layout-components/container";
 import Aside from "../../aside";
+import BlogPostsList from "./blog-posts-list";
 import {Row, Col} from "antd";
 
 function BlogPage(props) {

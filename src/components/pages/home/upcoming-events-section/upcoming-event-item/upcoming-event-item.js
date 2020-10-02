@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { cutTextContent } from "../../../../../utils";
 // Components
-import DefaultText from "../../../../common-components/default-text";
-import EventCounter from "../../../../event-counter";
+import DefaultText from "../../../../layout-components/default-text";
+import EventCounter from "../event-counter";
 import UpcomingEventDate from "../upcoming-event-date";
-import DefaultButton from "../../../../common-components/default-button";
+import DefaultButton from "../../../../layout-components/default-button";
 import Spinner from "../../../../spinner";
 // Selectors
 import {

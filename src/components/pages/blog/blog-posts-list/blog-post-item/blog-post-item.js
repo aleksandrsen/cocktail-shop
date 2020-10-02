@@ -5,7 +5,7 @@ import cutTextContent from "../../../../../functions/cut-text-content";
 import formatDate from "../../../../../functions/format-date";
 import { withRouter } from "react-router-dom";
 // Components
-import DefaultText from "../../../../common-components/default-text";
+import DefaultText from "../../../../layout-components/default-text";
 import SocialNetworks from "../../../../social-networks";
 
 const BlogPostItem = ({

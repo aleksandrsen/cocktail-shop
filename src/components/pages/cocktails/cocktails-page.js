@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import Container from "../../common-components/container";
+import Container from "../../layout-components/container";
 import {Col, Row} from "antd";
-import Section from "../../common-components/section";
+import Section from "../../layout-components/section";
 import AsideCocktails from "./aside-cocktails";
 import CocktailsList from "./cocktails-list";
 import SearchCocktailsForm from "./search-cocktails-form";
