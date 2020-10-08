@@ -7,8 +7,9 @@ const MainMenu = (props) => (
   <nav className="mainMenu">
     {Object.values(routes).map(({ link, label }) => (
       <NavLink
-        exact
         to={link}
+        key={label}
+        exact={link === "/"}
         activeClassName="active"
         className="mainMenu__item"
       >
