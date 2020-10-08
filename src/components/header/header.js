@@ -5,23 +5,21 @@ import logo from "../../img/logo.png";
 import MainMenu from "./main-menu";
 import ShoppingCart from "./shopping-cart";
 import WishList from "./wish-list";
-import Login from "./logOut-logIn-btn";
+import Login from "../auth/Login";
 import ContainerFluid from "../layout-components/container-fluid";
 
 const Header = (props) => (
-
-    <header className="header">
-        <ContainerFluid>
+  <header className="header">
+    <ContainerFluid>
       <img className="header__logo" src={logo} alt="" />
       <MainMenu />
-      <div className="right-block">
+      <div className="header__wrapper">
         <WishList />
         <ShoppingCart />
         <Login />
       </div>
-        </ContainerFluid>
-    </header>
-
+    </ContainerFluid>
+  </header>
 );
 
 export default Header;

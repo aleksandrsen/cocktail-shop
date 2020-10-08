@@ -1,4 +1,12 @@
 .shopping-cart {
-
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    color: var(--main-color);
+    cursor: pointer;
+  }
 }
-
