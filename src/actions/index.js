@@ -29,11 +29,11 @@ import {
 } from "../constants";
 
 
-const apiBase = 'http://localhost:3001/api';
-// const apiBase = '/api';
+// const apiBase = 'http://localhost:3000/api';
+const apiBase = '/api';
 
 // Load data
-// Index
+// Cocktails
 export const loadCocktails = () => ({
     type: LOAD_COCKTAILS,
     callApi: `${apiBase}/cocktails`

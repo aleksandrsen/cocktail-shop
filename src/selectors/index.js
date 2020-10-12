@@ -53,12 +53,12 @@ export const blogPostsReviewsLoadingSelector = (state) => state.reviewsBlogPosts
 export const blogPostsReviewsLoadedSelector = (state) => state.reviewsBlogPosts.loaded;
 export const blogPostsReviewsSelector = (state) => state.reviewsBlogPosts.entities;
 
-// Random Index
+// Random Cocktails
 export const randomCocktailsLoadingSelector = (state) => state.randomCocktails.loading;
 export const randomCocktailsLoadedSelector = (state) => state.randomCocktails.loaded;
 export const randomCocktailsSelector = (state) => state.randomCocktails.entities;
 
-// Index
+// Cocktails
 export const cocktailsLoadingSelector = (state) => state.cocktails.loading;
 export const cocktailsLoadedSelector = (state) => state.cocktails.loaded;
 export const cocktailsSelector = (state) => state.cocktails.entities;
