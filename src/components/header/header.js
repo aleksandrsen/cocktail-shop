@@ -1,29 +1,25 @@
-import React from 'react';
-import './header.scss';
-import logo from "../../img/logo.png"
+import React from "react";
+import "./header.scss";
+import logo from "../../img/logo.png";
 // Components
-import MainMenu from "../main-menu";
-import ShoppingCart from "../shopping-cart";
-import WishList from "../wish-list"
-import LogOutLogInBtn from "../logOut-logIn-btn";
-// Antd
-import {PageHeader} from 'antd';
+import MainMenu from "./main-menu";
+import ShoppingCart from "./shopping-cart";
+import WishList from "./wish-list";
+import Login from "../auth/Login";
+import ContainerFluid from "../layout-components/container-fluid";
 
-function Header(props) {
-
-    return (
-        <header>
-            <PageHeader title="Title">
-                <img className="logo" src={logo} alt=""/>
-                <MainMenu/>
-                <div className="right-block">
-                    <WishList/>
-                    <ShoppingCart/>
-                    <LogOutLogInBtn/>
-                </div>
-            </PageHeader>
-        </header>
-    );
-}
+const Header = (props) => (
+  <header className="header">
+    <ContainerFluid>
+      <img className="header__logo" src={logo} alt="" />
+      <MainMenu />
+      <div className="header__wrapper">
+        <WishList />
+        <ShoppingCart />
+        <Login />
+      </div>
+    </ContainerFluid>
+  </header>
+);
 
 export default Header;

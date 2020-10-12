@@ -1,0 +1,25 @@
+.default-button {
+    font-size: 16px;
+    padding: 10px 35px;
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    border: 1px solid #ffac04;
+    transition: .3s;
+
+    &:hover {
+        background-color: #ffac04;
+        color: #000;
+    }
+
+    &.small {
+        font-size: 14px;
+        padding: 8px 25px;
+    }
+
+    &.large {
+        font-size: 18px;
+        padding: 12px 45px;
+    }
+}
+
