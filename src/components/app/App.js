@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
 import "../../src_/var.scss";
+import "../../src_/common.scss";
 import { Route, Switch } from "react-router-dom";
 // Components
 import Header from "../header";
@@ -26,45 +27,45 @@ const App = (props) => (
     <main>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/cocktails/" exact component={Cocktails} />
-        <Route path="/about" exact component={About} />
-        <Route path="/cocktails/" exact component={CocktailsPage} />
-        <Route
-          path="/cocktails/:id"
-          render={({ match, location, history }) => {
-            const { id } = match.params;
-            return <CocktailDetails id={id} />;
-          }}
-        />
+        {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
+        {/*<Route path="/about" exact component={About} />*/}
+        {/*<Route path="/cocktails/" exact component={CocktailsPage} />*/}
+        {/*<Route*/}
+        {/*  path="/cocktails/:id"*/}
+        {/*  render={({ match, location, history }) => {*/}
+        {/*    const { id } = match.params;*/}
+        {/*    return <CocktailDetails id={id} />;*/}
+        {/*  }}*/}
+        {/*/>*/}
 
-        <Route path="/bartenders/" exact component={Bartenders} />
-        <Route
-          path="/bartenders/:id"
-          render={({ match }) => {
-            const { id } = match.params;
-            return <BartenderDetails id={id} />;
-          }}
-        />
+        {/*<Route path="/bartenders/" exact component={Bartenders} />*/}
+        {/*<Route*/}
+        {/*  path="/bartenders/:id"*/}
+        {/*  render={({ match }) => {*/}
+        {/*    const { id } = match.params;*/}
+        {/*    return <BartenderDetails id={id} />;*/}
+        {/*  }}*/}
+        {/*/>*/}
 
-        <Route path="/music-events/" exact component={MusicEvents} />
-        <Route
-          path="/music-events/:id"
-          render={({ match }) => {
-            let { id } = match.params;
-            return <EventDetails eventId={id} />;
-          }}
-        />
+        {/*<Route path="/music-events/" exact component={MusicEvents} />*/}
+        {/*<Route*/}
+        {/*  path="/music-events/:id"*/}
+        {/*  render={({ match }) => {*/}
+        {/*    let { id } = match.params;*/}
+        {/*    return <EventDetails eventId={id} />;*/}
+        {/*  }}*/}
+        {/*/>*/}
 
-        <Route path="/blog/" exact component={BlogPage} />
-        <Route
-          path="/blog/:id"
-          render={({ match }) => {
-            const { id } = match.params;
-            return <BlogDetailsPage blogPostId={id} />;
-          }}
-        />
+        {/*<Route path="/blog/" exact component={BlogPage} />*/}
+        {/*<Route*/}
+        {/*  path="/blog/:id"*/}
+        {/*  render={({ match }) => {*/}
+        {/*    const { id } = match.params;*/}
+        {/*    return <BlogDetailsPage blogPostId={id} />;*/}
+        {/*  }}*/}
+        {/*/>*/}
 
-        <Route path="/contact" exact component={Contacts} />
+        {/*<Route path="/contact" exact component={Contacts} />*/}
       </Switch>
     </main>
     <Footer />

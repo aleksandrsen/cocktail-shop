@@ -1,9 +1,6 @@
 import React from "react";
 import "./talk-to-bartender-section.scss";
 // Components
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
 import TalkToBartenderForm from "../talk-to-bartender-form/talk-to-bartender-form";
 
 const TalkToBartenderSection = ({ bartender: { name, surname, id } }) => {
@@ -12,12 +9,12 @@ const TalkToBartenderSection = ({ bartender: { name, surname, id } }) => {
   };
 
   return (
-    <Section className="talk-to-bartender-section">
-      <Container>
-        <SectionTitle>Talk to {name + " " + surname}</SectionTitle>
+    <section className="default-section talk-to-bartender-section">
+      <div className="container">
+        <h2 className="section-title">Talk to {name + " " + surname}</h2>
         <TalkToBartenderForm onSubmit={handleSubmit} />
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 };
 

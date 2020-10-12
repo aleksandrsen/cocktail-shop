@@ -6,23 +6,19 @@ import photo3 from "../../../../img/pubs-photo-gallery/photo-gallery-img-3.jpg";
 import photo4 from "../../../../img/pubs-photo-gallery/photo-gallery-img-4.jpg";
 import photo5 from "../../../../img/pubs-photo-gallery/photo-gallery-img-5.jpg";
 // Components
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
-import DefaultText from "../../../layout-components/default-text";
 import JoinMailingList from "../join-mailing-list";
 
 const PubsPhotoGallery = (props) => (
-  <Section className="pubs-photo-section">
-    <Container>
-      <SectionTitle>Pubs photo gallery</SectionTitle>
-      <DefaultText>
+  <div className="default-section pubs-photo-section">
+    <div className="container">
+      <h2 className="section-title">Pubs photo gallery</h2>
+      <p className="default-text">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi, aut
         distinctio dolore fugiat itaque nulla, obcaecati omnis perspiciatis
         placeat quas quasi, quia quos sint voluptatem! Aperiam, debitis minima.
         Accusamus?
-      </DefaultText>
-    </Container>
+      </p>
+    </div>
     <div className="photo-gallery">
       <div className="left">
         <img src={photo1} alt="photo-gallery-img" />
@@ -35,7 +31,7 @@ const PubsPhotoGallery = (props) => (
       </div>
     </div>
     <JoinMailingList />
-  </Section>
+  </div>
 );
 
 export default PubsPhotoGallery;

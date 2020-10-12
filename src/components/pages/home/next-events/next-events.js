@@ -10,13 +10,10 @@ import {
   eventsLoadingSelector,
 } from "../../../../selectors";
 // Components
-import Container from "../../../layout-components/container";
-import SectionTitle from "../../../layout-components/section-title";
 import NextEventItem from "./next-event-item";
-import SmallSection from "../../../layout-components/small-section";
 import Spinner from "../../../spinner";
 
-const NextEvents = ({loading, loaded, events, loadEvents}) => {
+const NextEvents = ({ loading, loaded, events, loadEvents }) => {
   useEffect(() => {
     if (!loading && !loaded) {
       loadEvents();
@@ -25,27 +22,20 @@ const NextEvents = ({loading, loaded, events, loadEvents}) => {
 
   if (!loading && loaded) {
     return (
-      <SmallSection className="next-events-section">
-        <Container>
-          <SectionTitle>Don't miss our next events</SectionTitle>
+      <div className="small-section next-events-section">
+        <div className="container">
+          <h2 className="section-title">Don't miss our next events</h2>
           <div className="next-events-container">
-            {events.slice(0, 2).map(({ id, dateStart, title }) => {
-              return (
-                <NextEventItem
-                  key={id}
-                  date={dateStart}
-                  id={id}
-                  title={title}
-                />
-              );
-            })}
+            {events.slice(0, 2).map(({ id, dateStart, title }) => (
+              <NextEventItem key={id} date={dateStart} id={id} title={title} />
+            ))}
           </div>
-        </Container>
-      </SmallSection>
+        </div>
+      </div>
     );
   }
   return <Spinner />;
-}
+};
 
 export default connect(
   (state) => ({

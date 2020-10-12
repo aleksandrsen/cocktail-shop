@@ -3,7 +3,6 @@ import "./blog-news-item.scss";
 import { cutTextContent, formatDate } from "../../../../../utils";
 import { Link } from "react-router-dom";
 // Components
-import DefaultText from "../../../../layout-components/default-text";
 import { Col, Row } from "antd";
 
 const BlogNewsItem = ({
@@ -54,7 +53,7 @@ const BlogNewsItem = ({
               <Link to={`/blog/${id}`} className="title">
                 {blogNewsItemTitle}
               </Link>
-              <DefaultText>{blogNewsItemText}</DefaultText>
+              <p className="default-text">{blogNewsItemText}</p>
               <div className="date">
                 <i className="material-icons">query_builder</i>
                 <span>

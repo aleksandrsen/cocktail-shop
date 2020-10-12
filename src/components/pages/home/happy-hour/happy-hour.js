@@ -1,22 +1,17 @@
 import React from "react";
 import "./happy-hour.scss";
 import logo from "../../../../src_/img/logo.png";
-// Components
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
-import SectionSubTitle from "../../../layout-components/section-sub-title";
 
 const HappyHour = (props) => (
-  <Section className="happy-hour">
-    <Container>
+  <div className="default-section happy-hour">
+    <div className="container">
       <div className="content-wrapper">
         <img className="logo" src={logo} alt="" />
-        <SectionTitle>Happy hour is here</SectionTitle>
-        <SectionSubTitle>Weekdays 6.00 pm to 9.00 pm</SectionSubTitle>
+        <div className="section-title">Happy hour is here</div>
+        <div className="section-sub-title">Weekdays 6.00 pm to 9.00 pm</div>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </div>
 );
 
 export default HappyHour;

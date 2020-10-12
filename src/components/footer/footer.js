@@ -1,12 +1,11 @@
 import React from "react";
 import "./footer.scss";
 import logo from "../../img/logo.png";
-import Container from "../layout-components/container";
 import SocialNetworks from "../social-networks";
 
 const Footer = (props) => (
   <footer>
-    <Container>
+    <div className="container">
       <div className="footer-content">
         <div className="contact-us">
           <h4 className="footer-title">Contact us</h4>
@@ -40,7 +39,7 @@ const Footer = (props) => (
         <i className="material-icons">copyright</i>
         {new Date().getFullYear()} - Hub on pubs - All Rights Reserved
       </div>
-    </Container>
+    </div>
   </footer>
 );
 

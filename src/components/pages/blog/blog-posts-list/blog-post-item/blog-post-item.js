@@ -5,7 +5,6 @@ import cutTextContent from "../../../../../functions/cut-text-content";
 import formatDate from "../../../../../functions/format-date";
 import { withRouter } from "react-router-dom";
 // Components
-import DefaultText from "../../../../layout-components/default-text";
 import SocialNetworks from "../../../../social-networks";
 
 const BlogPostItem = ({
@@ -32,7 +31,7 @@ const BlogPostItem = ({
       <h3 className="blog-post-title">{blogPostTitle}</h3>
       <div className="blog-post-date">{blogPostDate}</div>
       <img className="blog-post-img" src={img} alt="" />
-      <DefaultText>{blogPostText}</DefaultText>
+      <p className="default-text">{blogPostText}</p>
       <div className="blog-post-controls">
         <a
           className="read-more"

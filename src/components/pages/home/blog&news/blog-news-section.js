@@ -10,10 +10,6 @@ import {
   getAllDataForBlogPosts,
 } from "../../../../selectors";
 // Components
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
-import DefaultText from "../../../layout-components/default-text";
 import BlogNewsItem from "./blog&news-item";
 import Spinner from "../../../spinner";
 import { Row } from "antd";
@@ -39,19 +35,19 @@ const BlogNewsSection = ({
   }
 
   return (
-    <Section className="blog-news-section">
-      <Container>
-        <SectionTitle>Blog & News</SectionTitle>
-        <DefaultText>
+    <div className="default-section blog-news-section">
+      <div className="container">
+        <div className="section-title">Blog & News</div>
+        <p className="default-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque
           labore magni nobis omnis rerum, soluta? Delectus id impedit velit
           veniam vero voluptates. Aliasamet doloribus fuga impedit modi quia
-        </DefaultText>
+        </p>
         <Row type="flex" gutter={30} justify="space-between">
           {recentBlogPosts ? recentBlogPosts : <Spinner />}
         </Row>
-      </Container>
-    </Section>
+      </div>
+    </div>
   );
 };
 
