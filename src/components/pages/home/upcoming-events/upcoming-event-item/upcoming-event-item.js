@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { cutTextContent } from "../../../../../utils";
 // Components
 import EventCounter from "../event-counter";
-import UpcomingEventDate from "../upcoming-event-date";
+// import UpcomingEventDate from "../upcoming-event-date";
 import Spinner from "../../../../spinner";
 // Selectors
 import {
@@ -24,7 +24,7 @@ const UpcomingEventItem = ({ loading, loaded, events }) => {
       <div className="row upcoming-event-item">
         <div className="col event-info">
           <h3 className="upcoming-event-title">{title}</h3>
-          <UpcomingEventDate date={nearestEventDate} />
+          {/*<UpcomingEventDate date={nearestEventDate} />*/}
           <p className="default-text">{eventText}</p>
           <EventCounter date={nearestEventDate} />
           <div className="upcoming-event-actions">

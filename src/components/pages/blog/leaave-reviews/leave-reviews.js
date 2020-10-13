@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./leave-reviews.scss";
-import DefaultButton from "../../../layout-components/default-button";
 // Components
 import BlogPostsReviewForm from "../blog-posts-reviews-form/blog-posts-review-form";
 
@@ -11,9 +10,9 @@ const LeaveReviews = ({ blogPostId }) => {
     <div className="leave-reviews">
       <div className="leave-reviews-block">
         <h3 className="leave-reviews-title">Leave your review</h3>
-        <DefaultButton onClick={() => setIsOpen(!isOpen)}>
+        <button className="default-button" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? "Close form" : "Write review"}
-        </DefaultButton>
+        </button>
       </div>
       {isOpen ? <BlogPostsReviewForm /> : ""}
     </div>

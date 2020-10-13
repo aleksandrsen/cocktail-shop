@@ -6,7 +6,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { loadReviews } from "../../../../actions";
 // Components
 import ReviewListItem from "./review-list-item";
-import DefaultButton from "../../../layout-components/default-button";
 import Spinner from "../../../spinner";
 // Selectors
 import {
@@ -48,9 +47,9 @@ const ReviewsList = ({ postId, isLoading, isLoaded, reviews, loadReviews }) => {
     );
 
     const showAllCommentsBtn = !isShort || (
-      <DefaultButton onClick={() => setShort(false)}>
+      <button className="default-button" onClick={() => setShort(false)}>
         Show all reviews
-      </DefaultButton>
+      </button>
     );
 
     return (

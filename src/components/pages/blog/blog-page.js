@@ -1,7 +1,5 @@
 import React from "react";
 // Components
-import Section from "../../layout-components/section";
-import Container from "../../layout-components/container";
 import Aside from "../../aside";
 import BlogPostsList from "./blog-posts-list";
 import {Row, Col} from "antd";
@@ -9,8 +7,8 @@ import {Row, Col} from "antd";
 function BlogPage(props) {
 
     return (
-        <Section>
-            <Container>
+        <section className="default-section">
+            <div className="container">
                 <Row type="flex" justify="space-between">
                     <Col span={17}>
                         <BlogPostsList/>
@@ -19,8 +17,8 @@ function BlogPage(props) {
                         <Aside/>
                     </Col>
                 </Row>
-            </Container>
-        </Section>
+            </div>
+        </section>
     )
 }
 

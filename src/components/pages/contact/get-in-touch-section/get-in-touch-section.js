@@ -5,14 +5,11 @@ import phoneIcon from "../../../../img/icons/phone-icon.svg";
 import mapIcon from "../../../../img/icons/map-icon.svg";
 // Components
 import { Row, Col } from "antd";
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
 
 const GetInTouchSection = (props) => (
-  <Section className="get-in-touch-section">
-    <SectionTitle>Get in touch</SectionTitle>
-    <Container>
+  <section className="default-section get-in-touch-section">
+    <h2 className="section-title">Get in touch</h2>
+    <div className="container">
       <Row type="flex" justify="space-between" align="middle">
         <Col span={8}>
           <div className="contact-item">
@@ -47,8 +44,8 @@ const GetInTouchSection = (props) => (
           </div>
         </Col>
       </Row>
-    </Container>
-  </Section>
+    </div>
+  </section>
 );
 
 export default GetInTouchSection;

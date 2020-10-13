@@ -15,11 +15,8 @@ import {
   cocktailItemSelector,
 } from "../../../../selectors";
 // Components
-import Container from "../../../layout-components/container";
+
 import { Col, Row } from "antd";
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import DefaultButton from "../../../layout-components/default-button";
 import Spinner from "../../../spinner";
 import LeaveReviews from "../../blog/leaave-reviews";
 import { Button } from "antd";
@@ -60,17 +57,17 @@ const CocktailDetails = ({
       .join(", ");
 
     return (
-      <Section className="cocktail-details">
-        <Container>
+      <section className="default-section cocktail-details">
+        <div className="container">
           <Row type="flex" gutter={30} justify="space-between">
             <Col span={10}>
               <img className="cocktail-img" src={strDrinkThumb} alt="" />
             </Col>
             <Col span={14}>
-              <SectionTitle>
+              <h2 className="section-title">
                 {strDrink}{" "}
                 <span className="alc-type">{`(${strAlcoholic.toLowerCase()})`}</span>
-              </SectionTitle>
+              </h2>
               <div className="cocktail-info">
                 <div className="cocktail-info-item">
                   <span className="title">Category - </span>
@@ -87,12 +84,12 @@ const CocktailDetails = ({
               </div>
               <div className="actions">
                 <div className="price">{+strDrink.length + +idDrink[0]}$</div>
-                <DefaultButton onClick={() => addToCart(idDrink)}>
+                <button className="default-button" onClick={() => addToCart(idDrink)}>
                   Add to card
-                </DefaultButton>
-                <DefaultButton onClick={() => addToWishList(idDrink)}>
+                </button>
+                <button className="default-button" onClick={() => addToWishList(idDrink)}>
                   Add to wish list
-                </DefaultButton>
+                </button>
               </div>
             </Col>
           </Row>
@@ -109,8 +106,8 @@ const CocktailDetails = ({
               <LeaveReviews blogPostId={"1111"} />
             </Col>
           </Row>
-        </Container>
-      </Section>
+        </div>
+      </section>
     );
   }
 

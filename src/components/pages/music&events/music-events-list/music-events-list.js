@@ -10,7 +10,6 @@ import {
   eventsSelector,
 } from "../../../../selectors";
 // Components
-import DefaultButton from "../../../layout-components/default-button";
 import MusicEventItem from "../music-event-item/music-event-item";
 import Spinner from "../../../spinner";
 
@@ -27,7 +26,7 @@ const MusicEventsList = ({ events, loadEvents, isLoading, isLoaded }) => {
         {events.map((eventItem) => {
           return <MusicEventItem key={eventItem.id} eventItem={eventItem} />;
         })}
-        <DefaultButton>More events</DefaultButton>
+        <button className="default-button">More events</button>
       </div>
     );
   }

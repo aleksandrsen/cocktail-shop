@@ -11,7 +11,6 @@ import {
 } from "../../../../selectors";
 // Components
 import BlogPostItem from "./blog-post-item";
-import DefaultButton from "../../../layout-components/default-button";
 import Spinner from "../../../spinner";
 
 const BlogPostsList = ({ blogPosts, isLoading, isLoaded, loadBlogPosts }) => {
@@ -27,7 +26,7 @@ const BlogPostsList = ({ blogPosts, isLoading, isLoaded, loadBlogPosts }) => {
         {blogPosts.slice(0, 4).map((item) => {
           return <BlogPostItem key={item.id} post={item} />;
         })}
-        <DefaultButton>More posts</DefaultButton>
+        <button className="default-button">More posts</button>
       </div>
     );
   }

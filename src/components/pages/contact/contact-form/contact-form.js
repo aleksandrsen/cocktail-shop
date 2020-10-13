@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { addReviewForBlogPost } from "../../../../actions";
 // Components
 import { Row, Col, Form, Input } from "antd";
-import DefaultButton from "../../../layout-components/default-button";
 
 const ContactForm = ({
   btnText,
@@ -51,9 +50,9 @@ const ContactForm = ({
           />
         </Col>
       </Row>
-      <DefaultButton type="submit">
+      <button className="default-button" type="submit">
         {btnText ? btnText : "Submit"}
-      </DefaultButton>
+      </button>
     </Form>
   );
 

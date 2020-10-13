@@ -7,7 +7,6 @@ import {
   Marker,
 } from "react-google-maps";
 // Components
-import Section from "../../../layout-components/section";
 
 const Map = (props) => {
   const MyMapComponent = withScriptjs(
@@ -24,7 +23,7 @@ const Map = (props) => {
   );
 
   return (
-    <Section className="get-in-touch-section">
+    <section className="default-section get-in-touch-section">
       <MyMapComponent
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?key="
@@ -32,7 +31,7 @@ const Map = (props) => {
         containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
-    </Section>
+    </section>
   );
 };
 

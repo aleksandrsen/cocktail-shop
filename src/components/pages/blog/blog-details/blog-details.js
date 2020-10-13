@@ -7,7 +7,6 @@ import formatDate from "../../../../functions/format-date";
 // Actions
 import {loadBlogPostById} from "../../../../actions";
 // Components
-import DefaultText from "../../../layout-components/default-text";
 import ReviewsList from "../reviews-list";
 import LeaveReviews from "../leaave-reviews";
 import Share from "../../../share/share";
@@ -56,9 +55,9 @@ const BlogDetails = ({
                         {blogPostDate}
                     </div>
                 </div>
-                <DefaultText>
+                <p className="default-text">
                     {text}
-                </DefaultText>
+                </p>
                 <Share/>
                 <LeaveReviews blogPostId={blogPostId}/>
                 <ReviewsList id={blogPostId}/>

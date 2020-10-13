@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
 import "../../src_/var.scss";
+import "../../src_/grid.scss";
 import "../../src_/common.scss";
 import { Route, Switch } from "react-router-dom";
 // Components

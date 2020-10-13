@@ -1,29 +1,11 @@
-.our-story {
-    .grey {
-        padding: 40px 0;
-        position: relative;
-        background-color: #f1f1f1;
-    }
+.ourStory {
+  background-color: #f1f1f1;
+  text-align: center;
 
-    .left {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-
-        .default-text {
-            text-align: left;
-        }
-    }
-
-    .right {
-        position: relative;
-    }
-
-    img {
-        position: absolute;
-        height: 140%;
-        top: -20%;
-        left: 30%;
-    }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+  }
 }
