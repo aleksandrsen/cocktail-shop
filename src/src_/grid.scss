@@ -15,8 +15,6 @@
 
 .row {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
 
   &.space-between {
@@ -25,6 +23,19 @@
 
   &.space-around {
     justify-content: space-around;
+  }
+
+  &.align-items-center {
+    align-items: center;
+  }
+
+  &.justify-content-center {
+    justify-content: center;
+  }
+
+  &.center {
+    align-items: center;
+    justify-content: center;
   }
 
   &.noWrap {

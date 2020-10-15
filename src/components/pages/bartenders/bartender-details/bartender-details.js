@@ -53,7 +53,7 @@ const BartenderDetails = ({
         {/*      necessitatibus nostrum nulla porro quae quidem repellat soluta*/}
         {/*      tempora, veniam veritatis!*/}
         {/*    </DefaultText>*/}
-        {/*    <DefaultButton>Awards</DefaultButton>*/}
+        {/*    <Button>Awards</Button>*/}
         {/*  </Container>*/}
         {/*</Section>*/}
         {/*<TalkToBartenderSection bartender={bartender} id={id} />*/}

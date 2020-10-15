@@ -45,6 +45,7 @@
   text-transform: uppercase;
   border: 1px solid var(--main-color);
   transition: 0.3s;
+  border-radius: 10px;
 
   &:hover {
     background-color: var(--main-color);
