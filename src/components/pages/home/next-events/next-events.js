@@ -13,29 +13,25 @@ import {
 import NextEventItem from "./next-event-item";
 import Spinner from "../../../spinner";
 
-const NextEvents = ({ loading, loaded, events, loadEvents }) => {
-  useEffect(() => {
-    if (!loading && !loaded) {
-      loadEvents();
-    }
-  });
-
-  if (!loading && loaded) {
-    return (
-      <div className="small-section next-events-section">
-        <div className="container">
-          <h2 className="section-title">Don't miss our next events</h2>
-          <div className="next-events-container">
-            {events.slice(0, 2).map(({ id, dateStart, title }) => (
-              <NextEventItem key={id} date={dateStart} id={id} title={title} />
-            ))}
-          </div>
-        </div>
+const NextEvents = (props) => (
+  <div className="small-section nextEvents">
+    <div className="container">
+      <h2 className="section-title">Don't miss our next events</h2>
+      <div className="nextEvents__list">
+        {[0, 1].map((item) => (
+          <NextEventItem
+            key={item}
+            event={{
+                id: item,
+                date: "2021-08-30T20:00",
+                title: "adsfasdf"
+            }}
+          />
+        ))}
       </div>
-    );
-  }
-  return <Spinner />;
-};
+    </div>
+  </div>
+);
 
 export default connect(
   (state) => ({

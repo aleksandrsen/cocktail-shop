@@ -9,24 +9,34 @@ import photo5 from "../../../../img/pubs-photo-gallery/photo-gallery-img-5.jpg";
 import JoinMailingList from "../join-mailing-list";
 
 const PubsPhotoGallery = (props) => (
-  <div className="default-section pubs-photo-section">
+  <div className="default-section pubGallery">
     <div className="container">
       <h2 className="section-title">Pubs photo gallery</h2>
       <p className="default-text">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi, aut
         distinctio dolore fugiat itaque nulla, obcaecati omnis perspiciatis
         placeat quas quasi, quia quos sint voluptatem! Aperiam, debitis minima.
-        Accusamus?
+        Accusamus
       </p>
     </div>
-    <div className="photo-gallery">
-      <div className="left">
-        <img src={photo1} alt="photo-gallery-img" />
-        <img src={photo2} alt="photo-gallery-img" />
-        <img src={photo3} alt="photo-gallery-img" />
-        <img src={photo4} alt="photo-gallery-img" />
+    <div className="row">
+      <div className="col col-6">
+        <div className="row">
+          <div className="col col-6">
+            <img src={photo1} alt="photo-gallery-img" />
+          </div>
+          <div className="col col-6">
+            <img src={photo2} alt="photo-gallery-img" />
+          </div>
+          <div className="col col-6">
+            <img src={photo3} alt="photo-gallery-img" />
+          </div>
+          <div className="col col-6">
+            <img src={photo4} alt="photo-gallery-img" />
+          </div>
+        </div>
       </div>
-      <div className="right">
+      <div className="col col-6">
         <img src={photo5} alt="photo-gallery-img" />
       </div>
     </div>

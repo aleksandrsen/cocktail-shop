@@ -4,6 +4,7 @@ import img from "../../../../src_/img/upcoming-event-img.jpg";
 // Components
 import EventCounter from "./event-counter";
 import { Link } from "react-router-dom";
+import RippleButton from "../../../reusable-components/Button";
 
 const UpcomingEvents = ({ event }) => (
   <section className="default-section upcomingEvent">
@@ -32,7 +33,7 @@ const UpcomingEvents = ({ event }) => (
             <Link to={"/music-events/"} className="default-button">
               Events
             </Link>
-            <button className="default-button">Book on event</button>
+            <RippleButton>Book on event</RippleButton>
           </div>
         </div>
         <div className="col col-6 upcomingEvent__img">

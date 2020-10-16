@@ -2,6 +2,11 @@
   background-color: #f1f1f1;
   text-align: center;
 
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
   img {
     display: block;
     max-width: 100%;

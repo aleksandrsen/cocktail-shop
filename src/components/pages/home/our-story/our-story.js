@@ -3,7 +3,6 @@ import "./our-story.scss";
 import ourStoryImg from "../../../../img/our-story.png";
 // Components
 import { Link } from "react-router-dom";
-import Button from "../../../reusable-components/Button";
 
 const OurStory = (props) => (
   <div className="default-section ourStory">
@@ -24,12 +23,9 @@ const OurStory = (props) => (
             laborum maxime nulla odio possimus quas repudiandae voluptas
             voluptate.
           </p>
-          <Button>
+          <Link to={"/about"} className="default-button">
             Read more
-          </Button>
-          {/*<Link to={"/about"} className="default-button">*/}
-          {/*  Read more*/}
-          {/*</Link>*/}
+          </Link>
         </div>
         <div className="col col-5">
           <img src={ourStoryImg} alt="Our story img" />

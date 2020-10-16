@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 
-const Button = ({ children, onClick }) => {
+const RippleButton = ({ children, onClick }) => {
   const createRipple = (e) => {
     if (onClick) onClick(e);
 
@@ -17,9 +17,9 @@ const Button = ({ children, onClick }) => {
     circle.style.top = `${
       e.clientY + window.scrollY - button.offsetTop - radius
     }px`;
-    circle.classList.add("ripple");
+    circle.classList.add("rippleButton__ripple");
 
-    const ripple = button.getElementsByClassName("ripple")[0];
+    const ripple = button.getElementsByClassName("rippleButton__ripple")[0];
 
     if (ripple) {
       ripple.remove();
@@ -28,7 +28,11 @@ const Button = ({ children, onClick }) => {
     button.appendChild(circle);
   };
 
-  return <button onClick={createRipple}>{children}</button>;
+  return (
+    <button onClick={createRipple} className="rippleButton">
+      {children}
+    </button>
+  );
 };
 
-export default Button;
+export default RippleButton;
