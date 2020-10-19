@@ -1,84 +1,104 @@
-$main-color: #ffac04;
-$margin-bottom: 5px;
+.blogNewsItem {
+  & + .blogNewsItem {
+    margin-top: 32px;
+  }
 
-.blog-news-item {
+  &__info {
+    display: flex;
+    align-items: center;
+  }
 
-    .blog-news-item-info {
-        display: flex;
-        align-items: center;
+  &__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__dateDay {
+    font-family: "Roboto", sans-serif;
+    line-height: 1;
+    font-size: 110px;
+    color: var(--main-color);
+  }
+
+  &__dateMonth {
+    line-height: 1;
+    font-size: 50px;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 35px;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 5px;
+
+    span {
+      margin-left: 10px;
     }
 
-    .blog-news-item-date {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--main-color);
+    margin-bottom: 5px;
+    outline: none;
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--link-hover-color);
+    }
+  }
+
+  .default-text {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  &__fullDate {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+
+    span {
+      font-size: 16px;
+      color: #000;
     }
 
-    .blog-news-item-details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-left: 45px;
+    span {
+      line-height: 16px;
+      margin-left: 10px;
+      font-style: italic;
     }
 
-    .main-date {
-        font-family: 'Roboto', sans-serif;
-        line-height: 1;
-        font-size: 110px;
-        color: $main-color;
+    svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+      color: var(--main-color);
     }
+  }
 
-    .month {
-        line-height: 1;
-        font-size: 50px;
-        color: #000;
-        text-transform: uppercase;
-    }
-
-    .theme {
-        display: flex;
-        align-items: center;
-        font-size: 18px;
-        text-transform: uppercase;
-        color: #000;
-        margin-bottom: $margin-bottom;
-
-        span {
-            margin-left: 10px;
-        }
-    }
-
-    .title {
-        font-size: 20px;
-        text-transform: uppercase;
-        color: $main-color;
-        margin-bottom: $margin-bottom;
-        outline: none;
-    }
-
-    .default-text {
-        text-align: left;
-        margin-bottom: $margin-bottom;
-    }
-
-    .date {
-        i, span {
-            font-size: 16px;
-            color: #000;
-            vertical-align: middle;
-        }
-
-        span {
-            margin-left: 7px;
-            font-style: italic;
-        }
-    }
-
-    .blog-news-item-photo {
-        img {
-            max-height: 220px;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
+  &__preview {
+    max-height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
 }
