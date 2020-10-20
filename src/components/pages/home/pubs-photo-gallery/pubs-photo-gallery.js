@@ -1,10 +1,11 @@
 import React from "react";
 import "./pubs-photo-gallery.scss";
-import photo1 from "../../../../img/pubs-photo-gallery/photo-gallery-img-1.jpg";
-import photo2 from "../../../../img/pubs-photo-gallery/photo-gallery-img-2.jpg";
-import photo3 from "../../../../img/pubs-photo-gallery/photo-gallery-img-3.jpg";
-import photo4 from "../../../../img/pubs-photo-gallery/photo-gallery-img-4.jpg";
-import photo5 from "../../../../img/pubs-photo-gallery/photo-gallery-img-5.jpg";
+import photo1 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-1.jpg";
+import photo2 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-2.jpg";
+import photo3 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-3.jpg";
+import photo4 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-4.jpg";
+import photo5 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-5.jpg";
+
 // Components
 import JoinMailingList from "../join-mailing-list";
 

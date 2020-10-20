@@ -1,6 +1,6 @@
 import React from "react";
 import "./our-story.scss";
-import ourStoryImg from "../../../../img/our-story.png";
+import ourStory from "../../../../src_/img/our-story.png";
 // Components
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const OurStory = (props) => (
           </Link>
         </div>
         <div className="col col-5">
-          <img src={ourStoryImg} alt="Our story img" />
+          <img src={ourStory} alt="Our story img" />
         </div>
       </div>
     </div>
