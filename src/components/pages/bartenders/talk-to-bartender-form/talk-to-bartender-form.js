@@ -2,7 +2,6 @@ import React from "react";
 import "./talk-to-bartender-form.scss";
 import validate from "./validate";
 // Components
-import { Field, reduxForm } from "redux-form";
 
 const renderField = ({ input, meta: { touched, error, valid }, label }) => {
   const condition = touched && error ? "invalid" : valid ? "valid" : "";
@@ -33,18 +32,18 @@ const renderFieldTextarea = ({
 let TalkToBartenderForm = ({ btnText, btnPos, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className="talk-to-bartender-form" noValidate>
-      <Field component={renderField} name="name" label="Full name" />
-      <Field component={renderField} name="email" label="Email" />
-      <Field component={renderFieldTextarea} name="message" label="Message" />
-      <button className="default-button" type="submit">Send message</button>
+      {/*<Field component={renderField} name="name" label="Full name" />*/}
+      {/*<Field component={renderField} name="email" label="Email" />*/}
+      {/*<Field component={renderFieldTextarea} name="message" label="Message" />*/}
+      {/*<button className="default-button" type="submit">Send message</button>*/}
     </form>
   );
 };
 
-TalkToBartenderForm = reduxForm({
-  form: "talkToBartender",
-  validate,
-})(TalkToBartenderForm);
+// TalkToBartenderForm = reduxForm({
+//   form: "talkToBartender",
+//   validate,
+// })(TalkToBartenderForm);
 
 export default TalkToBartenderForm;
 

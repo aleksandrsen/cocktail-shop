@@ -2,7 +2,6 @@ import React from 'react';
 import './blot-posts-review-form.scss';
 import validate from "./validate";
 // Components
-import {Field, reduxForm} from "redux-form";
 
 const renderField = ({input, meta: {touched, error, valid}, label, placeholder}) => {
 
@@ -30,18 +29,18 @@ const renderFieldTextarea = ({input, meta: {touched, error, valid}, label, place
 let BlogPostsReviewForm = ({btnText, btnPos, handleSubmit}) => {
     return (
         <form onSubmit={handleSubmit} className='blog-posts-reviews-form' noValidate>
-            <Field component={renderField} name="name" label='Full name' placeholder="Enter full name"/>
-            <Field component={renderField} name="email" label='Email' placeholder="Enter email"/>
-            <Field component={renderFieldTextarea} name="message" label='Message' placeholder="Type your message"/>
-            <button className="default-button" type="submit">Send message</button>
+            {/*<Field component={renderField} name="name" label='Full name' placeholder="Enter full name"/>*/}
+            {/*<Field component={renderField} name="email" label='Email' placeholder="Enter email"/>*/}
+            {/*<Field component={renderFieldTextarea} name="message" label='Message' placeholder="Type your message"/>*/}
+            {/*<button className="default-button" type="submit">Send message</button>*/}
         </form>
     );
 };
 
-BlogPostsReviewForm = reduxForm({
-    form: 'talkToBartender',
-    validate
-})(BlogPostsReviewForm);
+// BlogPostsReviewForm = reduxForm({
+//     form: 'talkToBartender',
+//     validate
+// })(BlogPostsReviewForm);
 
 export default BlogPostsReviewForm;
 
