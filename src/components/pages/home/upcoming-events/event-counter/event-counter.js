@@ -11,7 +11,7 @@ const EventCounter = ({ date: eventDate }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const dateDifference = new Date(eventDate - new Date());
+      const dateDifference = new Date(new Date(eventDate) - new Date());
 
       setDate({
         days: Math.floor(+dateDifference / (24 * 60 * 60 * 1000)),

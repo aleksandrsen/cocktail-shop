@@ -1,38 +1,37 @@
 import React from 'react';
 import './spinner.css';
 
-function Spinner(props) {
-
+function SmallSpinner(props) {
     return (
         <div className="lds-css ng-scope">
             <div className="lds-spin">
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
                 <div>
-                    <div></div>
+                    <div/>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Spinner;
+export default SmallSpinner;

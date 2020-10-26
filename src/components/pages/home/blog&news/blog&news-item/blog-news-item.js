@@ -6,20 +6,9 @@ import { Icons } from "../../../../../src_/icons";
 
 const BlogNewsItem = ({
   imgLeft,
-  post: {
-    title,
-    text,
-    img,
-    date,
-    id,
-    author: { name, surname },
-  },
+  post: { id, date, title, content, previewSrc, authorFullName },
 }) => {
-  const blogNewsItemTitle =
-    title.length > 35 ? cutTextContent(title, 35) : title;
-  const blogNewsItemText = text.length > 140 ? cutTextContent(text, 140) : text;
-
-  const dayNumber = formatDate(date, {
+  const dayNum = formatDate(date, {
     day: "numeric",
   });
 
@@ -30,7 +19,7 @@ const BlogNewsItem = ({
           <div className="blogNewsItem__info">
             <div className="blogNewsItem__date">
               <div className="blogNewsItem__dateDay">
-                {dayNumber < 10 ? "0" + dayNumber : dayNumber}
+                {dayNum < 10 ? "0" + dayNum : dayNum}
               </div>
               <div className="blogNewsItem__dateMonth">
                 {formatDate(date, {
@@ -41,12 +30,14 @@ const BlogNewsItem = ({
             <div className="blogNewsItem__details">
               <div className="blogNewsItem__author">
                 {Icons.home_blogNewsUser}
-                <span>{`${name} ${surname}`}</span>
+                <span>{`${authorFullName}`}</span>
               </div>
               <Link to={`/blog/${id}`} className="blogNewsItem__title">
-                {blogNewsItemTitle}
+                {title.length > 35 ? cutTextContent(title, 35) : title}
               </Link>
-              <p className="default-text">{blogNewsItemText}</p>
+              <p className="default-text">
+                {content.length > 140 ? cutTextContent(content, 140) : content}
+              </p>
               <div className="blogNewsItem__fullDate">
                 {Icons.home_blogNewsClock}
                 <span>
@@ -61,7 +52,7 @@ const BlogNewsItem = ({
           </div>
         </div>
         <div className="col col-5">
-          <img className="blogNewsItem__preview" src={img} alt={title} />
+          <img className="blogNewsItem__preview" src={previewSrc} alt={title} />
         </div>
       </div>
     </div>

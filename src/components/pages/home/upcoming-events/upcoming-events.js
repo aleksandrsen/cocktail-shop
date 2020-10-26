@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import "./upcoming-events.scss";
-import img from "../../../../src_/img/upcoming-event-img.jpg";
+// Actions
 import { fetchUpcomingEvent } from "../../../../actions/events";
+// Utils
 import { connect } from "react-redux";
+import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import EventCounter from "./event-counter";
-import { Link } from "react-router-dom";
 import RippleButton from "../../../reusable-components/Button";
+import SmallSpinner from "../../../spinner";
+import { Link } from "react-router-dom";
+import {Icons} from "../../../../src_/icons";
 
 const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
   useEffect(() => {
     fetchUpcomingEvent();
   }, []);
 
-  return (
+  return event ? (
     <section className="default-section upcomingEvent">
       <div className="container">
         <div className="upcomingEvent__header">
@@ -27,17 +31,15 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
         </div>
         <div className="row justify-content-center">
           <div className="col col-4 upcomingEvent__info">
-            <h3 className="upcomingEvent__title">THANKFUL</h3>
+            <h3 className="upcomingEvent__title">{event.title}</h3>
             <div className="upcomingEvent__date">
-              ICON JUL 30, 2021, 05:00 PM
+              {Icons.calendar}
+              {formatDate(event.dateStart)}
             </div>
             <p className="default-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-              at autem deleniti esse expedita hic id illo ipsam iusto laborum
-              minus nobis non officiis perferendis porro provident sed ullam
-              voluptatibus!
+              {cutTextContent(event.description, 100)}
             </p>
-            <EventCounter date={new Date("2021-08-30T20:00")} />
+            <EventCounter date={event.dateStart} />
             <div className="upcomingEvent__actions">
               <Link to={"/music-events/"} className="default-button">
                 Events
@@ -46,12 +48,16 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
             </div>
           </div>
           <div className="col col-6 upcomingEvent__img">
-            <img src={img} alt="event-img" />
+            <img src={event.previewSrc} alt="event-img" />
           </div>
         </div>
       </div>
     </section>
+  ) : (
+    <SmallSpinner />
   );
 };
 
-export default connect(null, { fetchUpcomingEvent })(UpcomingEvents);
+export default connect((state) => ({ event: state.events.upcomingEvent }), {
+  fetchUpcomingEvent,
+})(UpcomingEvents);
