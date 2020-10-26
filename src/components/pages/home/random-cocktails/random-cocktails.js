@@ -2,82 +2,61 @@ import React, { useEffect } from "react";
 import "./random-cocktails..scss";
 import { connect } from "react-redux";
 // Actions
-import { loadRandomCocktails } from "../../../../actions";
-// Selectors
-import {
-  randomCocktailsLoadedSelector,
-  randomCocktailsLoadingSelector,
-  randomCocktailsSelector,
-} from "../../../../selectors";
+import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
 import Spinner from "../../../spinner";
 import CocktailItem from "../../cocktails/cocktail-item";
-import {Carousel} from "antd";
+import { Carousel } from "antd";
+import SmallSpinner from "../../../spinner";
 
-const RandomCocktails = ({
-  isLoading,
-  isLoaded,
-  cocktails,
-  loadRandomCocktails,
-}) => {
+const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
   useEffect(() => {
-    if (!isLoading && !isLoaded) {
-      loadRandomCocktails();
+    fetchRandomCocktails();
+  }, []);
+
+  const cutArray = (arr, itemArrLength) => {
+    if (!arr || !arr.length) return [];
+    let res = [];
+    let j = 0;
+    for (let i = 0; i < Math.ceil(arr.length / itemArrLength); ) {
+      res.push(cocktails.slice(j, j + itemArrLength));
+      i += 1;
+      j += itemArrLength;
     }
-  });
+    return res;
+  };
 
-  if (!isLoading && isLoaded) {
-    function cutArray(arr, c) {
-      let res = new Array(c);
-      for (let i = 0; i < c; ++i) {
-        res[i] = [];
-      }
-      for (let i = 0; i < arr.length; ++i) {
-        res[i % c].push(arr[i]);
-      }
-      return res;
-    }
-
-    let cuttedArray = cutArray(cocktails, 4);
-
-    let slides = cuttedArray.map((item, idx) => {
-      return (
-        <div className="row">
-          {item.map((cocktailItem) => {
-            return (
-              <CocktailItem key={cocktailItem.name} cocktail={cocktailItem} />
-            );
-          })}
-        </div>
-      );
-    });
-
-    return (
-      <div className="cocktails-home-page">
-        <div className="container">
-          <div className="section-title">Our cocktails</div>
-          <p className="default-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            architecto at atque corporis, dicta doloremque illum nemo nihil
-            nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
-            repudiandae soluta veritatis voluptates.
-          </p>
+  return (
+    <div className="cocktails-home-page">
+      <div className="container">
+        <div className="section-title">Our cocktails</div>
+        <p className="default-text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+          architecto at atque corporis, dicta doloremque illum nemo nihil
+          nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
+          repudiandae soluta veritatis voluptates.
+        </p>
+        {cocktails && cocktails.length ? (
           <Carousel autoplay autoplaySpeed={5000} dots={false}>
-            {slides}
+            {cutArray(cocktails, 4).map((itemArr) => (
+              <div key={itemArr[0].idDrink} className="row">
+                {itemArr.map((cocktail) => (
+                  <CocktailItem key={cocktail.idDrink} cocktail={cocktail} />
+                ))}
+              </div>
+            ))}
           </Carousel>
-        </div>
+        ) : (
+          <SmallSpinner />
+        )}
       </div>
-    );
-  }
-
-  return <Spinner />;
+    </div>
+  );
 };
 
+// return <Spinner />
+
 export default connect(
-  (state) => ({
-    isLoading: randomCocktailsLoadingSelector(state),
-    isLoaded: randomCocktailsLoadedSelector(state),
-    cocktails: randomCocktailsSelector(state),
-  }),
-  { loadRandomCocktails }
+  (state) => ({ cocktails: state.cocktails.randomCocktails }),
+  { fetchRandomCocktails }
 )(RandomCocktails);

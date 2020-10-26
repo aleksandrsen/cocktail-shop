@@ -12,7 +12,7 @@ const Home = (props) => (
     <>
         <MainSlider />
         <OurStory />
-        {/*<CocktailsHomeSection />*/}
+        <CocktailsHomeSection />
         <HappyHour />
         <UpcomingEvents />
         <NextEvents />
