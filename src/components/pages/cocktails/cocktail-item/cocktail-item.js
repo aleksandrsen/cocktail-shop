@@ -1,113 +1,69 @@
 import React, { useState } from "react";
 import "./cocktail-item.scss";
-import cutTextContent from "../../../../functions/cut-text-content";
+// Utils
+import {cutTextContent} from "../../../../utils";
 import { connect } from "react-redux";
-import semanticImg from "../../../../img/semantic.png";
 // Actions
-import {
-  addToCart,
-  addToWishList,
-  removeFromCart,
-  removeFromWishList,
-} from "../../../../actions";
+
 // Components
 import { NavLink } from "react-router-dom";
-import { Rate, Col } from "antd";
+import { Rate } from "antd";
+import SmallSpinner from "../../../spinner";
+import semanticImg from "../../../../src_/img/semantic.png";
+import Tippy from '@tippyjs/react';
 
 const CocktailItem = ({
-  addToCart,
-  addToWishList,
-  removeFromCart,
-  removeFromWishList,
-  cocktail: { idDrink, strDrink, rate, price, strDrinkThumb, ingredients },
   col,
+  cocktail: { idDrink, strDrink, rate, price, strDrinkThumb, ingredients },
 }) => {
-  const [wishList, setWishList] = useState(false);
-  const [cart, setCart] = useState(false);
-  const [loadImg, setLoad] = useState(false);
+  const [isLoad, setIsLoad] = useState({ load: false, error: false });
 
-  let cocktailIngredients =
-    ingredients.join(", ")[0].toUpperCase() + ingredients.join(", ").slice(1);
+  // wrap all block to link ?????????????
 
   return (
-    <Col span={col ? col : 6}>
-      <div className="cocktail-item">
-        {/*cocktail-info-start*/}
-        <div className="cocktails-info">
-          {loadImg ? "" : <img src={semanticImg} alt={strDrink} />}
+    <div className={`col col-${col}`}>
+      <div className="cocktailItem">
+        <div className="cocktailItem__imgWrap">
+          {!isLoad.load ? (
+            <SmallSpinner />
+          ) : isLoad.error ? (
+            <img src={semanticImg} alt="" />
+          ) : (
+            ""
+          )}
           <img
             src={strDrinkThumb}
             alt={strDrink}
-            onLoad={(e) => setLoad(true)}
+            onLoad={(e) => setIsLoad({ ...isLoad, load: true })}
+            onError={(e) => setIsLoad({ ...isLoad, error: true })}
           />
         </div>
-        {/*cocktail-info-end*/}
+        <div className="cocktailItem__info">
+          <div className="cocktailItem__title">
+            <Tippy content={"text"} >
+              <span>
 
-        {/*cocktail-title-rate-start*/}
-        <div className="title-rate">
-          <NavLink to={`${idDrink}`} className="title">
-            {cutTextContent(strDrink, 23)}
-          </NavLink>
-          <Rate value={rate} />
-        </div>
-        {/*cocktail-title-rate-end*/}
-
-        <div className="ingredients">{cocktailIngredients}</div>
-
-        {/*cocktail-actions-start*/}
-        <div className="actions">
-          <div className="price">{price}$</div>
-          <div className="right-wrapper">
-            <a
-              href=""
-              className="add-to-wish-list"
-              onClick={handleAddToWishList}
-            >
-              {wishList ? (
-                <i className="material-icons check">favorite</i>
-              ) : (
-                <i className="material-icons">favorite_border</i>
-              )}
-            </a>
-            <a href="#" className="add-to-cart" onClick={handleAddToCart}>
-              <i className={"material-icons " + `${cart && "check"}`}>
-                shopping_cart
-              </i>
-              {cart && <i className="material-icons done">done</i>}
-            </a>
+              asdfasdfasdf
+                {cutTextContent(strDrink, 21)}
+              </span>
+            </Tippy>
           </div>
+          <Rate value={rate} />
+
+          <div className="cocktailItem__ingredients">
+            {cutTextContent(
+              `${ingredients.join("")[0].toUpperCase()}${ingredients
+                .join(", ")
+                .slice(1)}`,
+              40
+            )}
+          </div>
+
+            <div className="cocktailItem__price">{price}$</div>
         </div>
-        {/*cocktail-actions-end*/}
       </div>
-    </Col>
+    </div>
   );
-
-  function handleAddToCart(e) {
-    e.preventDefault();
-    if (cart) {
-      setCart(false);
-      removeFromCart(idDrink);
-    } else {
-      setCart(true);
-      addToCart(idDrink);
-    }
-  }
-
-  function handleAddToWishList(e) {
-    e.preventDefault();
-    if (wishList) {
-      setWishList(false);
-      removeFromWishList(idDrink);
-    } else {
-      setWishList(true);
-      addToWishList(idDrink);
-    }
-  }
 };
 
-export default connect(null, {
-  addToCart,
-  addToWishList,
-  removeFromCart,
-  removeFromWishList,
-})(CocktailItem);
+export default CocktailItem;

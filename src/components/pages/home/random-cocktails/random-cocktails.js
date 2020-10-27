@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import "./random-cocktails..scss";
+// Utils
 import { connect } from "react-redux";
 // Actions
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
-import Spinner from "../../../spinner";
 import CocktailItem from "../../cocktails/cocktail-item";
 import { Carousel } from "antd";
 import SmallSpinner from "../../../spinner";
@@ -27,7 +27,7 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
   };
 
   return (
-    <div className="cocktails-home-page">
+    <div className="cocktailsHome default-section">
       <div className="container">
         <div className="section-title">Our cocktails</div>
         <p className="default-text">
@@ -37,12 +37,14 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
           repudiandae soluta veritatis voluptates.
         </p>
         {cocktails && cocktails.length ? (
-          <Carousel autoplay autoplaySpeed={5000} dots={false}>
+          <Carousel autoplay autoplaySpeed={50000000} dots={false}>
             {cutArray(cocktails, 4).map((itemArr) => (
-              <div key={itemArr[0].idDrink} className="row">
-                {itemArr.map((cocktail) => (
-                  <CocktailItem key={cocktail.idDrink} cocktail={cocktail} />
-                ))}
+              <div className="slideWrapper">
+                <div key={itemArr[0].idDrink} className="row noWrap">
+                  {itemArr.map((cocktail) => (
+                    <CocktailItem key={cocktail.idDrink} cocktail={cocktail} col={3} />
+                  ))}
+                </div>
               </div>
             ))}
           </Carousel>
@@ -53,8 +55,6 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
     </div>
   );
 };
-
-// return <Spinner />
 
 export default connect(
   (state) => ({ cocktails: state.cocktails.randomCocktails }),
