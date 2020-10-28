@@ -39,11 +39,6 @@ export const loadCocktails = () => ({
     callApi: `${apiBase}/cocktails`
 });
 
-export const loadRandomCocktails = () => ({
-    type: LOAD_RANDOM_COCKTAILS,
-    callApi: `${apiBase}/random`
-});
-
 export const loadCocktailById = (cocktailId) => (dispatch, getState) => {
     const state = getState();
     const callApi = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`;

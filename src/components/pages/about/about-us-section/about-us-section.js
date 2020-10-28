@@ -1,15 +1,14 @@
 import React from "react";
 import "./about-us-section.scss";
-import { Link } from "react-router-dom";
 // Components
-import newBottle from "../../../../img/new-bottle.jpg";
+import { Link } from "react-router-dom";
+import newBottle from "../../../../src_/img/new-bottle.jpg";
 
 const AboutUsSection = (props) => (
-  <div className="section about-us-section">
+  <div className="default-section about">
     <div className="container">
-      <section className="default-section">About us story</section>
       <h2 className="section-title">The best of history</h2>
-      <div className="about-us-section-content">
+      <div className="about__history">
         <p className="default-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae
           dolorum eos illo quia quibusdam reprehenderit similique voluptate!

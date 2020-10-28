@@ -28,8 +28,8 @@ const App = (props) => (
     <main>
       <Switch>
         <Route path="/" exact component={Home} />
-        {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
-        {/*<Route path="/about" exact component={About} />*/}
+          <Route path="/about" exact component={About} />
+          {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
         {/*<Route path="/cocktails/" exact component={CocktailsPage} />*/}
         {/*<Route*/}
         {/*  path="/cocktails/:id"*/}

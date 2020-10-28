@@ -22,7 +22,7 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
           veniam vero voluptates. Aliasamet doloribus fuga impedit modi quia
         </p>
         <div className="row center">
-          {blogPosts ? (
+          {blogPosts && blogPosts.length ? (
             blogPosts.map((post, idx) => (
               <BlogNewsItem key={post.id} imgLeft={idx % 2} post={post} />
             ))
