@@ -1,24 +1,20 @@
 import React, { useState } from "react";
 import "./cocktail-item.scss";
+import "tippy.js/dist/tippy.css";
 // Utils
-import {cutTextContent} from "../../../../utils";
-import { connect } from "react-redux";
+import { cutTextContent } from "../../../../utils";
 // Actions
-
 // Components
-import { NavLink } from "react-router-dom";
 import { Rate } from "antd";
 import SmallSpinner from "../../../spinner";
 import semanticImg from "../../../../src_/img/semantic.png";
-import Tippy from '@tippyjs/react';
+import Tippy from "@tippyjs/react";
 
 const CocktailItem = ({
   col,
   cocktail: { idDrink, strDrink, rate, price, strDrinkThumb, ingredients },
 }) => {
   const [isLoad, setIsLoad] = useState({ load: false, error: false });
-
-  // wrap all block to link ?????????????
 
   return (
     <div className={`col col-${col}`}>
@@ -27,7 +23,7 @@ const CocktailItem = ({
           {!isLoad.load ? (
             <SmallSpinner />
           ) : isLoad.error ? (
-            <img src={semanticImg} alt="" />
+            <img src={semanticImg} alt="" className="semantic" />
           ) : (
             ""
           )}
@@ -40,12 +36,12 @@ const CocktailItem = ({
         </div>
         <div className="cocktailItem__info">
           <div className="cocktailItem__title">
-            <Tippy content={"text"} >
-              <span>
-
-              asdfasdfasdf
-                {cutTextContent(strDrink, 21)}
-              </span>
+            <Tippy
+              content={strDrink}
+              theme="bootstrap"
+              disabled={strDrink.length <= 21}
+            >
+              <span>{cutTextContent(strDrink, 21)}</span>
             </Tippy>
           </div>
           <Rate value={rate} />
@@ -58,8 +54,7 @@ const CocktailItem = ({
               40
             )}
           </div>
-
-            <div className="cocktailItem__price">{price}$</div>
+          <div className="cocktailItem__price">{price}$</div>
         </div>
       </div>
     </div>
