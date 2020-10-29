@@ -1,10 +1,10 @@
 import React from "react";
 import "./bartenders.scss";
 // Components
-import BartendersList from "../bartenders-list";
+import BartendersList from "./bartenders-list";
 
-const Bartenders = (props) => (
-  <section className="default-section pub-bartenders-section">
+const PubBartenders = (props) => (
+  <section className="default-section pubBartenders">
     <div className="container">
       <h2 className="section-title">Our team</h2>
       <h3 className="section-sub-title">Pub bartenders</h3>
@@ -19,4 +19,4 @@ const Bartenders = (props) => (
   </section>
 );
 
-export default Bartenders;
+export default PubBartenders;

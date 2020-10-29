@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import "./bartener-details.scss";
 import { connect } from "react-redux";
 // Actions
-import { loadBartenderById } from "../../../../actions";
+import { loadBartenderById } from "../../../actions";
 // Selectors
 import {
   bartenderItemIdSelector,
   bartenderItemLoadedSelector,
   bartenderItemLoadingSelector,
   bartenderItemSelector,
-} from "../../../../selectors";
+} from "../../../selectors";
 // Components
-import TalkToBartenderSection from "../talk-to-bartender-section";
-import Spinner from "../../../spinner";
+import TalkToBartenderSection from "./talk-to-bartender-section";
+import Spinner from "../../spinner";
 
 const BartenderDetails = ({
   isLoading,

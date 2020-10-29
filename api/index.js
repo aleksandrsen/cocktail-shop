@@ -44,11 +44,11 @@ router.get("/random", function (req, res, next) {
 });
 
 // Bartenders
-router.get("/bartenders", function (req, res, next) {
+router.get("/bartenders-section", function (req, res, next) {
     reply(res, bartenders);
 });
 
-router.get("/bartenders/:id", function (req, res, next) {
+router.get("/bartenders-section/:id", function (req, res, next) {
     let bartenderId = req.params.id;
     let response = bartenders.find(({id}) => id === bartenderId);
     reply(res, response);

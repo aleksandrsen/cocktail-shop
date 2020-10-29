@@ -7,7 +7,7 @@ import { Route, Switch } from "react-router-dom";
 // Components
 import Header from "../header";
 import Footer from "../footer";
-import BartenderDetails from "../pages/bartenders/bartender-details";
+import BartenderDetails from "../pages/bartender-details";
 // Pages
 import BlogDetailsPage from "../pages/blog/blog-details-page";
 import Cocktails from "../pages/cocktails";
@@ -15,12 +15,14 @@ import Cocktails from "../pages/cocktails";
 import Home from "../pages/home/home";
 import About from "../pages/about/about";
 import Contacts from "../pages/contact/contact-page";
-import Bartenders from "../pages/bartenders/bartenders";
+// import Bartenders from "../pages/bartenders-section/bartenders-section";
 import BlogPage from "../pages/blog/blog-page";
 import MusicEvents from "../pages/music&events/music-event-page";
 import EventDetails from "../pages/music&events/event-details";
 import CocktailsPage from "../pages/cocktails/cocktails-page";
+
 import CocktailDetails from "../pages/cocktails/cocktail-details";
+import Bartenders from "../pages/bartenders";
 
 const App = (props) => (
   <>
@@ -39,9 +41,9 @@ const App = (props) => (
         {/*  }}*/}
         {/*/>*/}
 
-        {/*<Route path="/bartenders/" exact component={Bartenders} />*/}
+        <Route path="/bartenders/" exact component={Bartenders} />
         {/*<Route*/}
-        {/*  path="/bartenders/:id"*/}
+        {/*  path="/bartenders-section/:id"*/}
         {/*  render={({ match }) => {*/}
         {/*    const { id } = match.params;*/}
         {/*    return <BartenderDetails id={id} />;*/}

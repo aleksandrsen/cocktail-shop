@@ -7,7 +7,7 @@ import mapIcon from "../../../../img/icons/map-icon.svg";
 import Share from "../../../share/share";
 import formatDate from "../../../../functions/format-date";
 import Map from "../../contact/map";
-import PubPartnersSection from "../../../pub-partners-section";
+import PubPartners from "../../bartenders/pub-partners";
 // Actions
 import { loadEventById } from "../../../../actions";
 // Selectors
@@ -71,7 +71,7 @@ const EventDetails = ({
           <Share />
         </div>
         <Map />
-        <PubPartnersSection />
+        <PubPartners />
       </section>
     );
   }
