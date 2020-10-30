@@ -30,8 +30,8 @@ const App = (props) => (
     <main>
       <Switch>
         <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={About} />
-          {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
+        <Route path="/about" exact component={About} />
+        {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
         {/*<Route path="/cocktails/" exact component={CocktailsPage} />*/}
         {/*<Route*/}
         {/*  path="/cocktails/:id"*/}
@@ -42,13 +42,7 @@ const App = (props) => (
         {/*/>*/}
 
         <Route path="/bartenders/" exact component={Bartenders} />
-        {/*<Route*/}
-        {/*  path="/bartenders-section/:id"*/}
-        {/*  render={({ match }) => {*/}
-        {/*    const { id } = match.params;*/}
-        {/*    return <BartenderDetails id={id} />;*/}
-        {/*  }}*/}
-        {/*/>*/}
+        <Route path="/bartenders/:id" component={BartenderDetails} />
 
         {/*<Route path="/music-events/" exact component={MusicEvents} />*/}
         {/*<Route*/}
