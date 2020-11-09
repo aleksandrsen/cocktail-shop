@@ -49,15 +49,13 @@ const BartenderDetails = ({
                 tempora, veniam veritatis!
               </p>
               <RippleButton>Awards</RippleButton>
+              <TalkToBartender bartenderDetails={bartenderDetails} />
             </>
           ) : (
             <SmallSpinner />
           )}
         </div>
       </div>
-      {bartenderDetails && (
-        <TalkToBartender bartenderDetails={bartenderDetails} />
-      )}
     </>
   );
 };
