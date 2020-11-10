@@ -6,8 +6,14 @@ import {
   FETCH_BARTENDERS_DETAILS_REQUEST,
   FETCH_BARTENDERS_DETAILS_SUCCESS,
   FETCH_BARTENDERS_DETAILS_FAIL,
+  SEND_MESSAGE_TO_BARTENDER_REQUEST,
+  SEND_MESSAGE_TO_BARTENDER_SUCCESS,
+  SEND_MESSAGE_TO_BARTENDER_FAIL,
 } from "../constants/bartenders";
 import callApi from "../api";
+
+const wait = () =>
+  new Promise((resolve) => setTimeout(() => resolve({}), 1500));
 
 // workers
 function* fetchBartendersWorker() {
@@ -28,6 +34,15 @@ function* fetchBartenderDetailsWorker(action) {
   }
 }
 
+function* sendMessageToBartenderWorker(action) {
+  try {
+    const data = yield wait();
+    yield put({ type: SEND_MESSAGE_TO_BARTENDER_SUCCESS, payload: data });
+  } catch (err) {
+    yield put({ type: SEND_MESSAGE_TO_BARTENDER_FAIL, payload: err });
+  }
+}
+
 // watchers
 function* fetchBartenders() {
   yield takeLatest(FETCH_BARTENDERS_REQUEST, fetchBartendersWorker);
@@ -40,6 +55,17 @@ function* fetchBartenderDetails() {
   );
 }
 
+function* sendMessageToBartender() {
+  yield takeLatest(
+    SEND_MESSAGE_TO_BARTENDER_REQUEST,
+    sendMessageToBartenderWorker
+  );
+}
+
 export function* bartendersSagas() {
-  yield all([fetchBartenders(), fetchBartenderDetails()]);
+  yield all([
+    fetchBartenders(),
+    fetchBartenderDetails(),
+    sendMessageToBartender(),
+  ]);
 }

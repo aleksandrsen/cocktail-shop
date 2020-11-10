@@ -1,14 +1,20 @@
 import React from "react";
 import "./talk-to-bartender.scss";
+// Actions
+import { sendMessageToBartender } from "../../../../actions/bartenders";
 // Components
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import TextInput from "../../../reusable-components/TextInput";
 import RippleButton from "../../../reusable-components/Button";
+import * as Yup from "yup";
+// Utils
+import { connect } from "react-redux";
 
-const TalkToBartender = ({ bartenderDetails: { name, surname, id } }) => {
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
+const TalkToBartender = ({
+  sendMessageToBartender,
+  bartenderDetails: { name, surname, id },
+}) => {
+  const handleSubmit = (values) => sendMessageToBartender(id, values);
 
   return (
     <section className="default-section talkToBartender">
@@ -22,23 +28,38 @@ const TalkToBartender = ({ bartenderDetails: { name, surname, id } }) => {
             email: "",
             message: "",
           }}
+          validationSchema={Yup.object({
+            name: Yup.string()
+              .min(3, "Must be at least 3 characters")
+              .required("This field is required"),
+            email: Yup.string()
+              .email("Invalid email address")
+              .required("This field is required"),
+            message: Yup.string()
+              .min(10, "Must be at least 10 characters")
+              .required("This field is required"),
+          })}
           onSubmit={handleSubmit}
         >
-          <Form className="talkToBartenderForm" noValidate>
-            <TextInput name="name" type="text" placeholder="Name" />
-            <TextInput name="email" type="email" placeholder="Email" />
-            <TextInput
-              name="message"
-              type="text"
-              placeholder="Message"
-              textarea={true}
-            />
-            <RippleButton type="submit">Send Message</RippleButton>
-          </Form>
+          {({ isValid, dirty }) => (
+            <Form className="talkToBartenderForm" noValidate>
+              <TextInput name="name" type="text" placeholder="Name" />
+              <TextInput name="email" type="email" placeholder="Email" />
+              <TextInput
+                name="message"
+                type="text"
+                placeholder="Message"
+                textarea={true}
+              />
+              <RippleButton type="submit" disabled={!isValid || !dirty}>
+                Send Message
+              </RippleButton>
+            </Form>
+          )}
         </Formik>
       </div>
     </section>
   );
 };
 
-export default TalkToBartender;
+export default connect(null, { sendMessageToBartender })(TalkToBartender);

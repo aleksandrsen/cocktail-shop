@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 // Actions
 import { fetchBartendersDetails } from "../../../actions/bartenders";
 // Components
-import TalkToBartender from "./talk-to-bartender";
 import SmallSpinner from "../../spinner";
+import TalkToBartender from "./talk-to-bartender";
 import RippleButton from "../../reusable-components/Button";
 
 const BartenderDetails = ({

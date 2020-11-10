@@ -17,6 +17,11 @@
     background-color: var(--main-color);
   }
 
+  &:disabled {
+    color: #fff;
+    background-color: #a3a2a2;
+  }
+
   &__ripple {
     position: absolute;
     border-radius: 50%;
