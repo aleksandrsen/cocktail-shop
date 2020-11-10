@@ -62,7 +62,7 @@ const App = (props) => (
         {/*  }}*/}
         {/*/>*/}
 
-        {/*<Route path="/contact" exact component={Contacts} />*/}
+        <Route path="/contact" exact component={Contacts} />
       </Switch>
     </main>
     <Footer />

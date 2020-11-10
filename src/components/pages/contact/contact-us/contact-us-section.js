@@ -1,7 +1,7 @@
 import React from "react";
 import "./contact-us-section.scss";
 // Components
-import ContactForm from "../contact-form";
+import ContactForm from "./contact-form";
 
 const ContactUsSection = (props) => (
   <section className="default-section contact-us-section">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./contact-form.scss";
 import { connect } from "react-redux";
 // Actions
-import { addReviewForBlogPost } from "../../../../actions";
+import { addReviewForBlogPost } from "../../../../../actions";
 // Components
 import { Row, Col, Form, Input } from "antd";
 
