@@ -1,51 +1,37 @@
 import React from "react";
 import "./blog-post-item.scss";
-import commentsIcon from "../../../../../img/icons/comments.svg";
-import cutTextContent from "../../../../../functions/cut-text-content";
-import formatDate from "../../../../../functions/format-date";
-import { withRouter } from "react-router-dom";
+// Utils
+import { Icons } from "../../../../../src_/icons";
+import { useRouteMatch } from "react-router-dom";
+import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
+import { Link } from "react-router-dom";
 import SocialNetworks from "../../../../social-networks";
 
 const BlogPostItem = ({
-  post: { title, text, img, date, reviews, id },
-  history,
+  post: { id, title, previewSrc, date, content, reviews },
 }) => {
-  const maxTitleLength = 39;
-  const maxTextLength = 248;
-
-  let blogPostTitle =
-    title.length > maxTitleLength
-      ? cutTextContent(title, maxTitleLength)
-      : title;
-  let blogPostText =
-    text.length > maxTextLength ? cutTextContent(text, maxTextLength) : text;
-  let blogPostDate = formatDate(date, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const match = useRouteMatch();
 
   return (
-    <div className="blog-post-item">
-      <h3 className="blog-post-title">{blogPostTitle}</h3>
-      <div className="blog-post-date">{blogPostDate}</div>
-      <img className="blog-post-img" src={img} alt="" />
-      <p className="default-text">{blogPostText}</p>
-      <div className="blog-post-controls">
-        <a
-          className="read-more"
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            history.push(id);
-          }}
-        >
-          Read more
-        </a>
-        <span className="comments">
-          <img src={commentsIcon} alt="" />
-          <span className="reviews-count">{reviews.length}</span>
+    <div className="blogPostItem">
+      <h3 className="blogPostItem__title">{title}</h3>
+      <div className="blogPostItem__date">
+        {formatDate(date, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </div>
+      <img className="blogPostItem__img" src={previewSrc} alt={title} />
+      <p className="default-text">
+        {content.length > 250 ? cutTextContent(content, 250) : content}
+      </p>
+      <div className="blogPostItem__controls">
+        <Link to={`${match.url}/${id}`}>Read more</Link>
+        <span className="blogPostItem__reviewsWrap">
+          {Icons.reviews}
+          <span className="blogPostItem__reviews">{reviews.length}</span>
         </span>
         <SocialNetworks exclude="youtube" />
       </div>
@@ -53,4 +39,4 @@ const BlogPostItem = ({
   );
 };
 
-export default withRouter(BlogPostItem);
+export default BlogPostItem;

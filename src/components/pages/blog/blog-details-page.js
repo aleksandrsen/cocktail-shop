@@ -1,7 +1,7 @@
 import React from "react";
 import AsideEventPostsContainer from "../../aside";
 import {Row, Col} from "antd";
-import BlogDetails from "./blog-details";
+import BlogDetails from "../blog-details";
 
 function BlogDetailsPage(props) {
     let {blogPostId} = props;

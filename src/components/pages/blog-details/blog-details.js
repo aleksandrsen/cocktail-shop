@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
 import './blog-details.scss';
 import {connect} from "react-redux";
-import clockIcon from "../../../../img/icons/clock-regular.svg";
-import userIcon from "../../../../img/icons/user-icon.svg";
-import formatDate from "../../../../functions/format-date";
+import clockIcon from "../../../img/icons/clock-regular.svg";
+import userIcon from "../../../img/icons/user-icon.svg";
+import formatDate from "../../../functions/format-date";
 // Actions
-import {loadBlogPostById} from "../../../../actions";
+import {loadBlogPostById} from "../../../actions";
 // Components
-import ReviewsList from "../reviews-list";
-import LeaveReviews from "../leaave-reviews";
-import Share from "../../../share/share";
-import Spinner from "../../../spinner";
+import ReviewsList from "../blog/reviews-list";
+import LeaveReviews from "../blog/leaave-reviews";
+import Share from "../../share/share";
+import Spinner from "../../spinner";
 // Selectors
 import {
     blogPostDetailsSelector,
@@ -18,7 +18,7 @@ import {
     blogPostItemLoadedSelector,
     blogPostItemLoadingSelector,
     usersLoadedSelector
-} from "../../../../selectors";
+} from "../../../selectors";
 
 const BlogDetails = ({
      blogPostId,

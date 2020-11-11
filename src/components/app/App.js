@@ -53,7 +53,7 @@ const App = (props) => (
         {/*  }}*/}
         {/*/>*/}
 
-        {/*<Route path="/blog/" exact component={BlogPage} />*/}
+        <Route path="/blog/" exact component={BlogPage} />
         {/*<Route*/}
         {/*  path="/blog/:id"*/}
         {/*  render={({ match }) => {*/}
