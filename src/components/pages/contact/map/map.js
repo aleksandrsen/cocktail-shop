@@ -1,12 +1,11 @@
 import React from "react";
 import "./map.scss";
 import {
+  Marker,
+  GoogleMap,
   withScriptjs,
   withGoogleMap,
-  GoogleMap,
-  Marker,
 } from "react-google-maps";
-// Components
 
 const Map = (props) => {
   const MyMapComponent = withScriptjs(
@@ -23,7 +22,7 @@ const Map = (props) => {
   );
 
   return (
-    <section className="default-section get-in-touch-section">
+    <section className="default-section">
       <MyMapComponent
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?key="

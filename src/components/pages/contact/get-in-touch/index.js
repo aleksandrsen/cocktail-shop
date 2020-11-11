@@ -1,1 +1,1 @@
-export {default} from "./get-in-touch-section";
+export {default} from "./get-in-touch";

@@ -1,1 +1,1 @@
-export {default} from "./contact-us-section";
+export {default} from "./contact-us";
