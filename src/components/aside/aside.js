@@ -1,32 +1,45 @@
-import React from 'react';
-import './aside.scss';
+import React, { useState } from "react";
+import "./aside.scss";
 // Components
-import AsideSearchForm from "./aside-search-form";
 import AsidePostsList from "./aside-posts-list";
 import AsideEventsList from "./aside-events-list";
 import InstagramGallery from "./instagram-gallery";
+// Utils
+import { Icons } from "../../src_/icons";
 
-function Aside(props) {
+const SidePanel = (props) => {
+  const [searchValue, setSearchValue] = useState("");
 
-    return (
-        <aside className="aside">
-            <div className="aside-item">
-                <AsideSearchForm/>
-            </div>
-            <div className="aside-item">
-                <h3 className="title">Upcoming events</h3>
-                <AsideEventsList/>
-            </div>
-            <div className="aside-item">
-                <h3 className="title">Recent Posts</h3>
-                <AsidePostsList/>
-            </div>
-            <div className="aside-item">
-                <h3 className="title">Instagram</h3>
-                <InstagramGallery/>
-            </div>
-        </aside>
-    );
-}
+  const handleSearch = ({ target: { value } }) => setSearchValue(value);
 
-export default Aside;
+  return (
+    <aside className="sidePanel">
+      <div className="sidePanel__item">
+        <h3 className="sidePanel__title search">Search</h3>
+        <div className="sidePanel__searchWrapper">
+          {Icons.searchIcon}
+          <input
+            type="text"
+            placeholder="Enter key words"
+            value={searchValue}
+            onChange={handleSearch}
+          />
+        </div>
+      </div>
+      {/*<div className="aside-item">*/}
+      {/*    <h3 className="title">Upcoming events</h3>*/}
+      {/*    <AsideEventsList/>*/}
+      {/*</div>*/}
+      {/*<div className="aside-item">*/}
+      {/*    <h3 className="title">Recent Posts</h3>*/}
+      {/*    <AsidePostsList/>*/}
+      {/*</div>*/}
+      {/*<div className="aside-item">*/}
+      {/*    <h3 className="title">Instagram</h3>*/}
+      {/*    <InstagramGallery/>*/}
+      {/*</div>*/}
+    </aside>
+  );
+};
+
+export default SidePanel;

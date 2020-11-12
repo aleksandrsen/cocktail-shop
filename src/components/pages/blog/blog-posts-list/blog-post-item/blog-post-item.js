@@ -33,7 +33,7 @@ const BlogPostItem = ({
           {Icons.reviews}
           <span className="blogPostItem__reviews">{reviews.length}</span>
         </span>
-        <SocialNetworks exclude="youtube" />
+        <SocialNetworks exclude="Youtube" />
       </div>
     </div>
   );

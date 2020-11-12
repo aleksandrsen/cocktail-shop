@@ -10,8 +10,8 @@ const BlogPage = (props) => (
         <div className="col col-5">
           <BlogPostsList />
         </div>
-        <div className="col col-2">
-          {/*<Aside />*/}
+        <div className="col col-3">
+          <Aside />
         </div>
       </div>
     </div>
