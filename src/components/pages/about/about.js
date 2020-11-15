@@ -1,11 +1,11 @@
 import React from "react";
 import AboutUsSection from "./about-us-section";
-import PubPartnersSection from "../../pub-partners-section";
+import PubPartners from "../bartenders/pub-partners";
 
 const About = (props) => (
   <>
     <AboutUsSection />
-    <PubPartnersSection />
+    <PubPartners />
   </>
 );
 

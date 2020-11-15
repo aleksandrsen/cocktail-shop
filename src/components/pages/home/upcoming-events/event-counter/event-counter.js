@@ -11,13 +11,13 @@ const EventCounter = ({ date: eventDate }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const dateDifference = new Date(eventDate - new Date());
+      const dateDifference = new Date(new Date(eventDate) - new Date());
 
       setDate({
-        days: formatNumber(Math.floor(+dateDifference / (24 * 60 * 60 * 1000))),
-        hours: formatNumber(dateDifference.getHours()),
-        minutes: formatNumber(dateDifference.getMinutes()),
-        seconds: formatNumber(dateDifference.getSeconds()),
+        days: Math.floor(+dateDifference / (24 * 60 * 60 * 1000)),
+        hours: dateDifference.getHours(),
+        minutes: dateDifference.getMinutes(),
+        seconds: dateDifference.getSeconds(),
       });
     }, 1000);
 
@@ -26,28 +26,17 @@ const EventCounter = ({ date: eventDate }) => {
     };
   }, []);
 
-  const formatNumber = (number) => {
-    return number < 10 ? `0${number}` : number;
-  };
-
   return (
-    <div className="event-counter">
-      <div className="count-item days active">
-        <span>{date.days}</span>
-        <span>days</span>
-      </div>
-      <div className="count-item hours">
-        <span>{date.hours}</span>
-        <span>hours</span>
-      </div>
-      <div className="count-item minutes">
-        <span>{date.minutes}</span>
-        <span>minutes</span>
-      </div>
-      <div className="count-item seconds">
-        <span>{date.seconds}</span>
-        <span>seconds</span>
-      </div>
+    <div className="eventCounter">
+      {Object.entries(date).map(([key, value], idx) => (
+        <div
+          className={`eventCounter__item ${key === "days" ? "active" : ""}`}
+          key={key}
+        >
+          <span>{value < 10 ? `0${value}` : value}</span>
+          <span>{`${key[0].toUpperCase()}${key.slice(1)}`}</span>
+        </div>
+      ))}
     </div>
   );
 };

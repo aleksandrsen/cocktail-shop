@@ -6,11 +6,10 @@ import MainMenu from "./main-menu";
 import ShoppingCart from "./shopping-cart";
 import WishList from "./wish-list";
 import Login from "../auth/Login";
-import ContainerFluid from "../layout-components/container-fluid";
 
 const Header = (props) => (
   <header className="header">
-    <ContainerFluid>
+    <div className="container-fluid">
       <img className="header__logo" src={logo} alt="" />
       <MainMenu />
       <div className="header__wrapper">
@@ -18,7 +17,7 @@ const Header = (props) => (
         <ShoppingCart />
         <Login />
       </div>
-    </ContainerFluid>
+    </div>
   </header>
 );
 

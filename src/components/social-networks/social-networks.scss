@@ -1,12 +1,14 @@
 .social-networks {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 
-    img {
-        height: 17px;
-    }
+  svg {
+    color: var(--main-color);
+    width: 16px;
+    height: 16px;
+  }
 
-    a + a {
-        margin-left: 20px;
-    }
+  a + a {
+    margin-left: 20px;
+  }
 }

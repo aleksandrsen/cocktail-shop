@@ -1,42 +1,38 @@
 import React from "react";
 import "./our-story.scss";
-import ourStoryImg from "../../../../img/our-story.png";
+import ourStory from "../../../../src_/img/our-story.png";
 // Components
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
-import DefaultText from "../../../layout-components/default-text";
-import SectionSubTitle from "../../../layout-components/section-sub-title";
 import { Link } from "react-router-dom";
-import { Row, Col } from "antd";
 
 const OurStory = (props) => (
-  <Section className="our-story">
-    <div className="grey">
-      <Container>
-        <Row type="flex" gutter={30}>
-          <Col span={12} className="left">
-            <SectionTitle>Our Story</SectionTitle>
-            <SectionSubTitle>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.{" "}
-            </SectionSubTitle>
-            <DefaultText>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae
-              dolorum eos illo quia quibusdam reprehenderit similique voluptate!
-              Atque aut modi odio omnis? Animi assumenda doloremque obcaecati
-              sapiente totam, ut.
-            </DefaultText>
-            <Link to={"/about"} className="default-button">
-              Read more
-            </Link>
-          </Col>
-          <Col span={12} className="right">
-            <img src={ourStoryImg} alt="out story img" />
-          </Col>
-        </Row>
-      </Container>
+  <div className="default-section ourStory">
+    <div className="container">
+      <div className="row space-between align-items-center">
+        <div className="col col-5">
+          <div className="section-title">Our Story</div>
+          <h2 className="section-sub-title">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </h2>
+          <p className="default-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae
+            dolorum eos illo quia quibusdam reprehenderit similique voluptate!
+            Atque aut modi odio omnis? Animi assumenda doloremque obcaecati
+            sapiente totam, ut. Lorem ipsum dolor sit amet, consectetur
+            adipisicing elit. Adipisci consectetur doloremque ea eligendi
+            eveniet molestias mollitia reprehenderit! Accusamus atque, esse hic
+            laborum maxime nulla odio possimus quas repudiandae voluptas
+            voluptate.
+          </p>
+          <Link to={"/about"} className="default-button">
+            Read more
+          </Link>
+        </div>
+        <div className="col col-5">
+          <img src={ourStory} alt="Our story img" />
+        </div>
+      </div>
     </div>
-  </Section>
+  </div>
 );
 
 export default OurStory;

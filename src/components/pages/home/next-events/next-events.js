@@ -2,56 +2,34 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./next-events.scss";
 // Actions
-import { loadEvents } from "../../../../actions";
-// Selectors
-import {
-  eventsSelector,
-  eventsLoadedSelector,
-  eventsLoadingSelector,
-} from "../../../../selectors";
+import { fetchNextEvents } from "../../../../actions/events";
 // Components
-import Container from "../../../layout-components/container";
-import SectionTitle from "../../../layout-components/section-title";
 import NextEventItem from "./next-event-item";
-import SmallSection from "../../../layout-components/small-section";
-import Spinner from "../../../spinner";
+import SmallSpinner from "../../../spinner";
 
-const NextEvents = ({loading, loaded, events, loadEvents}) => {
+const NextEvents = ({ events, fetchNextEvents }) => {
   useEffect(() => {
-    if (!loading && !loaded) {
-      loadEvents();
-    }
-  });
+    fetchNextEvents();
+  }, []);
 
-  if (!loading && loaded) {
-    return (
-      <SmallSection className="next-events-section">
-        <Container>
-          <SectionTitle>Don't miss our next events</SectionTitle>
-          <div className="next-events-container">
-            {events.slice(0, 2).map(({ id, dateStart, title }) => {
-              return (
-                <NextEventItem
-                  key={id}
-                  date={dateStart}
-                  id={id}
-                  title={title}
-                />
-              );
-            })}
-          </div>
-        </Container>
-      </SmallSection>
-    );
-  }
-  return <Spinner />;
-}
+  return (
+    <div className="small-section nextEvents">
+      <div className="container">
+        <h2 className="section-title">Don't miss our next events</h2>
+        <div className="nextEvents__list">
+          {events && events.length ? (
+            events.map((event) => (
+              <NextEventItem key={event.id} event={event} />
+            ))
+          ) : (
+            <SmallSpinner />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default connect(
-  (state) => ({
-    loading: eventsLoadingSelector(state),
-    loaded: eventsLoadedSelector(state),
-    events: eventsSelector(state),
-  }),
-  { loadEvents }
-)(NextEvents);
+export default connect((state) => ({ events: state.events.nextEvents }), {
+  fetchNextEvents,
+})(NextEvents);

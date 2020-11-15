@@ -1,7 +1,5 @@
 import React from "react";
 import "./shopping-cart.scss";
-import { connect } from "react-redux";
-import { cartAmountSelector } from "../../../selectors";
 import {Icons} from "../../../src_/icons";
 
 const ShoppingCart = ({ amount }) => (
@@ -11,8 +9,4 @@ const ShoppingCart = ({ amount }) => (
   </div>
 );
 
-export default connect((state) => {
-  return {
-    amount: cartAmountSelector(state),
-  };
-})(ShoppingCart);
+export default ShoppingCart;

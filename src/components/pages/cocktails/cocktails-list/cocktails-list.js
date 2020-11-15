@@ -13,7 +13,6 @@ import {
 import Spinner from "../../../spinner";
 import { Row, Select } from "antd";
 import CocktailItem from "../cocktail-item";
-import DefaultButton from "../../../layout-components/default-button";
 
 const CocktailsList = ({
   isLoading,
@@ -152,12 +151,12 @@ const CocktailsList = ({
           ""
         ) : (
           <div className="show-more-wrapper">
-            <DefaultButton
+            <button className="default-button"
               size="large"
               onClick={() => setPageSize(pageSize + cocktailsOnPage)}
             >
               Show more
-            </DefaultButton>
+            </button>
           </div>
         )}
       </>

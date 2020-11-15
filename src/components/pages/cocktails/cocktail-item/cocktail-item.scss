@@ -1,145 +1,66 @@
-.cocktail-item {
-    $br: 10px;
-    $bgColor: #ffac04;
-    $bgColorHover: #e29804;
-    $transition: .4s;
+.cocktailItem {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  color: #000;
+  transition: 0.3s;
+
+  &__imgWrap {
+    position: relative;
+    border-radius: 10px 10px 0 0;
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .semantic,
+    .smallSpinner {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &__info {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 16px 0;
+    background-color: var(--main-color);
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__ingredients {
+    padding: 16px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.4em;
     color: #000;
-    transition: $transition;
+  }
 
-    .cocktails-info {
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px 10px 0 0;
-    }
+  &__title {
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0 16px;
+    margin-bottom: 16px;
+    line-height: 1.2em;
+    color: #000;
+    text-align: center;
+  }
 
-    img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        border-radius: $br $br 0 0;
-    }
+  .ant-rate {
+    text-align: center;
+    padding: 0 16px 16px;
+    border-bottom: 1px solid #fff;
+  }
 
-    .cocktail-ingredients {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 15px;
-        transition: .6s;
-        text-align: center;
-        font-size: 18px;
-        line-height: 1.4em;
-        color: #c9c9c9;
-        background-color: rgba(0, 0, 0, 0.85);
-    }
-
-    &:hover {
-        .cocktail-ingredients {
-            top: 0;
-        }
-
-        .title-rate {
-            background-color: $bgColorHover;
-        }
-
-        .ingredients {
-            background-color: $bgColorHover;
-        }
-
-        .actions {
-            background-color: $bgColorHover;
-        }
-    }
-
-    .title-rate {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #fff;
-        background: $bgColor;
-        padding: 10px 15px;
-        transition: $transition;
-
-        .title {
-            font-size: 21px;
-            text-align: center;
-            margin-bottom: 15px;
-            font-weight: 600;
-            color: #000;
-
-            &:hover {
-                color: #3a3a3a;
-            }
-        }
-
-        .ant-rate {
-            padding: 0 15px 10px;
-        }
-    }
-
-    .ingredients {
-        flex-grow: 1;
-        font-size: 16px;
-        text-align: center;
-        padding: 10px 15px;
-        background: $bgColor;
-        transition: $transition;
-    }
-
-    .actions {
-        background: $bgColor;
-        margin-top: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 15px;
-        border-radius: 0 0 $br $br;
-        transition: $transition;
-
-        img {
-            max-height: 15px;
-            width: auto;
-        }
-
-        .price {
-            font-size: 25px;
-        }
-
-        .right-wrapper {
-
-            a {
-                position: relative;
-            }
-
-            a + a {
-                margin-left: 15px;
-            }
-
-            a i {
-                font-size: 25px;
-                color: #000;
-                vertical-align: middle;
-            }
-
-            i.check {
-                color: #09a400;
-            }
-
-            i.done {
-                position: absolute;
-                top: -100%;
-                right: -10px;
-                color: #09a400;
-            }
-        }
-    }
+  &__price {
+    margin-top: auto;
+    padding: 0 16px;
+    text-align: right;
+    font-size: 25px;
+  }
 }
-

@@ -1,27 +1,21 @@
 import React from "react";
 // Components
-import Section from "../../layout-components/section";
-import Container from "../../layout-components/container";
 import Aside from "../../aside";
 import BlogPostsList from "./blog-posts-list";
-import {Row, Col} from "antd";
 
-function BlogPage(props) {
-
-    return (
-        <Section>
-            <Container>
-                <Row type="flex" justify="space-between">
-                    <Col span={17}>
-                        <BlogPostsList/>
-                    </Col>
-                    <Col span={6}>
-                        <Aside/>
-                    </Col>
-                </Row>
-            </Container>
-        </Section>
-    )
-}
+const BlogPage = (props) => (
+  <section className="default-section">
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col col-5">
+          <BlogPostsList />
+        </div>
+        <div className="col col-2">
+          {/*<Aside />*/}
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default BlogPage;

@@ -1,0 +1,52 @@
+.bartenderItem {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+
+  &__imgWrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      .bartenderItem__frame {
+        transform: rotate(4deg) scale(0.97);
+      }
+
+      .bartenderItem__img {
+        box-shadow: 0 0 17px 2px var(--main-color);
+      }
+    }
+  }
+
+  &__imgWrapper:hover + .bartenderItem__name {
+    color: #ffac04;
+  }
+
+  &__frame {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: calc(100% + 60px);
+    height: calc(100% + 60px);
+    background-color: transparent;
+    border: 30px solid var(--main-color);
+    transition: 0.5s;
+  }
+
+  &__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: 0.3s;
+  }
+
+  &__name {
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #000;
+    transition: 0.3s;
+    font-weight: 600;
+  }
+}

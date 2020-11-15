@@ -1,7 +1,5 @@
 import React, {Component} from "react";
-import Container from "../../layout-components/container";
 import {Col, Row} from "antd";
-import Section from "../../layout-components/section";
 import AsideCocktails from "./aside-cocktails";
 import CocktailsList from "./cocktails-list";
 import SearchCocktailsForm from "./search-cocktails-form";
@@ -44,8 +42,8 @@ class Cocktails extends Component {
         }
 
         return (
-            <Section>
-                <Container>
+            <section className="default-section">
+                <div className="container">
                     <Row type="flex" gutter={24} justify="space-between">
                         <Col span={6}>
                             <AsideCocktails setFilter={this.setFilter}/>
@@ -63,8 +61,8 @@ class Cocktails extends Component {
                             <CocktailsList params={params} sortBy={this.state.sortBy} searchText={this.state.searchText}/>
                         </Col>
                     </Row>
-                </Container>
-            </Section>
+                </div>
+            </section>
         )
     }
 }

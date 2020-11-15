@@ -1,11 +1,11 @@
 import React from "react";
-import PubBartendersSection from "./bartenders";
-import PubPartnersSection from "../../pub-partners-section";
+import PubBartenders from "./pub-bartenders";
+import PubPartners from "./pub-partners";
 
 const Bartenders = (props) => (
   <>
-    <PubBartendersSection />
-    <PubPartnersSection />
+    <PubBartenders />
+    <PubPartners />
   </>
 );
 

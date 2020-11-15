@@ -1,5 +1,5 @@
 const eventsBase = '/img/events';
-const bartendersBase = '/img/bartenders';
+const bartendersBase = '/img/bartenders-section';
 const blogPostsBase = '/img/blog-posts';
 const instagramBase = '/img/instagram';
 

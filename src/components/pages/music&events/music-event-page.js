@@ -1,6 +1,4 @@
 import React from "react";
-import Section from "../../layout-components/section";
-import Container from "../../layout-components/container";
 import AsideEventPostsContainer from "../../aside";
 import MusicEventsList from "./music-events-list";
 import {Row, Col} from "antd";
@@ -8,8 +6,8 @@ import {Row, Col} from "antd";
 function MusicEventPage(props) {
 
     return (
-        <Section>
-            <Container>
+        <section className="default-section">
+            <div className="container">
                 <Row type="flex" justify="space-between">
                     <Col span={17}>
                         <MusicEventsList/>
@@ -18,8 +16,8 @@ function MusicEventPage(props) {
                         <AsideEventPostsContainer/>
                     </Col>
                 </Row>
-            </Container>
-        </Section>
+            </div>
+        </section>
     )
 }
 

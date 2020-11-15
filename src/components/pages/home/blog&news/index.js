@@ -1,1 +1,1 @@
-export {default} from "./blog-news-section";
+export {default} from "./blog-news";

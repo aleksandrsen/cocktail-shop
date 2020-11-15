@@ -1,21 +1,15 @@
 import React from "react";
 import "./about-us-section.scss";
-import { Link } from "react-router-dom";
 // Components
-import newBottle from "../../../../img/new-bottle.jpg";
-import Section from "../../../layout-components/section";
-import SectionTitle from "../../../layout-components/section-title";
-import Container from "../../../layout-components/container";
-import DefaultText from "../../../layout-components/default-text";
-import SectionSubTitle from "../../../layout-components/section-sub-title";
+import { Link } from "react-router-dom";
+import newBottle from "../../../../src_/img/new-bottle.jpg";
 
 const AboutUsSection = (props) => (
-  <Section className="about-us-section">
-    <Container>
-      <SectionSubTitle>About us story</SectionSubTitle>
-      <SectionTitle>The best of history</SectionTitle>
-      <div className="about-us-section-content">
-        <DefaultText>
+  <div className="default-section about">
+    <div className="container">
+      <h2 className="section-title">The best of history</h2>
+      <div className="about__history">
+        <p className="default-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae
           dolorum eos illo quia quibusdam reprehenderit similique voluptate!
           Atque aut modi odio omnis? Animi assumenda doloremque obcaecat
@@ -27,22 +21,22 @@ const AboutUsSection = (props) => (
           alias autem blanditiis cupiditate, eius ex fugiat impedit iure iusto
           molestias placeat provident repudiandae rerum sapiente sit tempore
           tenetur unde vel.
-        </DefaultText>
+        </p>
         <img src={newBottle} alt="new bottle" className="preview-img" />
-        <DefaultText>
+        <p className="default-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
           aspernatur assumenda at cumque est illo laborum, molestias neque quae
           quaerat qui quidem ullam voluptate? Aliquid animi eligendi nemo
           numquam veniam? Lorem ipsum dolor sit amet, consectetur adipisicing
           elit. Atque autem doloremque eligendi ipsum iste laudantium magni
           maiores perspiciatis placeat sint.
-        </DefaultText>
+        </p>
         <Link to={"/cocktails/"} className="default-button">
           Our menu
         </Link>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </div>
 );
 
 export default AboutUsSection;

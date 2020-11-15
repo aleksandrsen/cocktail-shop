@@ -7,7 +7,7 @@ const MainSlider = (props) => (
   <section className="mainSlider">
     <Carousel autoplay>
       {slides.map(({ name, img }) => (
-        <img src={img} alt={name} />
+        <img src={img} alt={name} key={name}/>
       ))}
     </Carousel>
   </section>

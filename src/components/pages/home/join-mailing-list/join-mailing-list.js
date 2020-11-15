@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import "./join-mailing-list.scss";
-// Components
-import DefaultButton from "../../../layout-components/default-button";
+import RippleButton from "../../../reusable-components/Button";
 
 const JoinMailingList = (props) => {
-  let [email, changeEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
-    <form className="join-mailing-list">
-      <label htmlFor="join-list">Join mailing list</label>
+    <form className="joinMailingList">
+      <label htmlFor="joinListLabel">Join mailing list</label>
       <input
-        onChange={(e) => changeEmail((email = e.target.value))}
         type="email"
         value={email}
-        id="join-list"
+        id="joinListLabel"
+        onChange={(e) => setEmail(e.target.value)}
       />
-      <DefaultButton>Sign up</DefaultButton>
+      <RippleButton>Sign up</RippleButton>
     </form>
   );
 };

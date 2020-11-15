@@ -1,0 +1,19 @@
+.contactUs {
+  .section-title {
+    margin-bottom: 50px;
+  }
+
+  &__form {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 550px;
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      margin-top: 30px;
+    }
+  }
+}

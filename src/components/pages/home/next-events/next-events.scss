@@ -1,3 +1,11 @@
-.next-events-section {
+.nextEvents {
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
+  &__list {
+    width: 100%;
+  }
 }

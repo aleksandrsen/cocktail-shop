@@ -1,13 +1,13 @@
 import React from "react";
-import GetInTouchSection from "./get-in-touch-section";
 import Map from "./map";
-import ContactUsSection from "./contact-us-section";
+import ContactUs from "./contact-us";
+import GetInTouch from "./get-in-touch";
 
 const ContactPage = (props) => (
   <>
-    <GetInTouchSection />
+    <GetInTouch />
     <Map />
-    <ContactUsSection />
+    <ContactUs />
   </>
 );
 

@@ -3,7 +3,6 @@ import "./music-event-item.scss";
 import { Row, Col } from "antd";
 import { withRouter } from "react-router-dom";
 import formatDate from "../../../../functions/format-date";
-import DefaultText from "../../../layout-components/default-text";
 // Components
 import cutTextContent from "../../../../functions/cut-text-content";
 
@@ -36,7 +35,7 @@ const MusicEventItem = ({
             </a>
           </h3>
           <div className="event-item-date">{date}</div>
-          <DefaultText>{cutTextContent(text, 350)}</DefaultText>
+          <p className="default-text">{cutTextContent(text, 350)}</p>
         </Col>
       </Row>
     </div>
