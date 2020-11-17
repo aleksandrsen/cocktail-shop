@@ -1,5 +1,8 @@
 import { takeLatest, put, all } from "redux-saga/effects";
 import {
+  FETCH_EVENTS_LIST_FAIL,
+  FETCH_EVENTS_LIST_REQUEST,
+  FETCH_EVENTS_LIST_SUCCESS,
   FETCH_NEXT_EVENTS_FAIL,
   FETCH_NEXT_EVENTS_REQUEST,
   FETCH_NEXT_EVENTS_SUCCESS,
@@ -28,6 +31,15 @@ function* fetchNextEventsWorker() {
   }
 }
 
+function* fetchEventsListWorker() {
+  try {
+    const { data } = yield callApi("/events");
+    yield put({ type: FETCH_EVENTS_LIST_SUCCESS, payload: data });
+  } catch (err) {
+    yield put({ type: FETCH_EVENTS_LIST_FAIL, payload: err });
+  }
+}
+
 // watchers
 export function* fetchUpcomingEvent() {
   yield takeLatest(FETCH_UPCOMING_EVENT_REQUEST, upcomingEventWorker);
@@ -37,6 +49,10 @@ export function* fetchNextEvents() {
   yield takeLatest(FETCH_NEXT_EVENTS_REQUEST, fetchNextEventsWorker);
 }
 
+export function* fetchEventsList() {
+  yield takeLatest(FETCH_EVENTS_LIST_REQUEST, fetchEventsListWorker);
+}
+
 export function* eventsSagas() {
-  yield all([fetchUpcomingEvent(), fetchNextEvents()]);
+  yield all([fetchUpcomingEvent(), fetchNextEvents(), fetchEventsList()]);
 }

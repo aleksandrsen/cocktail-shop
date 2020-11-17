@@ -1,5 +1,5 @@
 import React from "react";
-import AsideEventPostsContainer from "../../aside";
+// import AsideEventPostsContainer from "../../aside";
 import {Row, Col} from "antd";
 import BlogDetails from "../blog-details";
 
@@ -14,7 +14,7 @@ function BlogDetailsPage(props) {
                         <BlogDetails blogPostId={blogPostId}/>
                     </Col>
                     <Col span={6}>
-                        <AsideEventPostsContainer/>
+                        {/*<AsideEventPostsContainer/>*/}
                     </Col>
                 </Row>
             </div>

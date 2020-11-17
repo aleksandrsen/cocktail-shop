@@ -1,0 +1,66 @@
+.asideEventItem {
+  display: flex;
+  transition: 0.3s;
+  padding: 5px;
+  outline: none;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #c8c8c845;
+    cursor: pointer;
+  }
+
+  & + .aside-event-item {
+    margin-top: 20px;
+  }
+
+  &__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    padding-right: 15px;
+    border-right: 1px solid #3a3a3a;
+  }
+
+  &__day {
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--main-color);
+  }
+
+  &__month {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #000;
+    font-size: 15px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 65%;
+    padding: 7px 0 7px 15px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 16px;
+  }
+
+  &__time {
+    display: flex;
+    align-items: center;
+    color: var(--main-color);
+    text-transform: lowercase;
+
+    svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+    }
+  }
+}

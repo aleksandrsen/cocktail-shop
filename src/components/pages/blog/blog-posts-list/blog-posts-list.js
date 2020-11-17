@@ -3,13 +3,11 @@ import "./blog-posts-list.scss";
 // Actions
 import { fetchBlogPosts } from "../../../../actions/blog";
 // Components
+import SmallSpinner from "../../../spinner";
 import BlogPostItem from "./blog-post-item";
-import Spinner from "../../../spinner";
+import RippleButton from "../../../reusable-components/Button";
 // Utils
 import { connect } from "react-redux";
-
-import RippleButton from "../../../reusable-components/Button";
-import SmallSpinner from "../../../spinner";
 
 const BlogPostsList = ({ blogPosts, fetchBlogPosts }) => {
   useEffect(() => {
@@ -17,7 +15,7 @@ const BlogPostsList = ({ blogPosts, fetchBlogPosts }) => {
   }, []);
 
   return (
-    <div className="blog-posts-list">
+    <div className="blogPostsList">
       {!blogPosts ? (
         <SmallSpinner />
       ) : (
