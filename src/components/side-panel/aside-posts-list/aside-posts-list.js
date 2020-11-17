@@ -2,43 +2,27 @@ import React, { useEffect } from "react";
 import "./aside-posts-list.scss";
 import { connect } from "react-redux";
 // Actions
-import { loadBlogPosts } from "../../../actions";
-// Selectors
-import {
-  blogPostsLoadedSelector,
-  blogPostsLoadingSelector,
-  blogPostsSelector,
-} from "../../../selectors";
+import { fetchBlogPosts } from "../../../actions/blog";
 // Components
 import AsidePostItem from "./aside-post-item";
-import Spinner from "../../spinner";
+import SmallSpinner from "../../spinner";
 
-const AsidePostsList = ({ isLoading, isLoaded, blogPosts, loadBlogPosts }) => {
+const AsidePostsList = ({ fetchBlogPosts, blogPosts }) => {
   useEffect(() => {
-    if (!isLoading && !isLoaded) {
-      loadBlogPosts();
-    }
-  });
+    fetchBlogPosts();
+  }, []);
 
-  if (!isLoading && isLoaded) {
-    return (
-      <div className="aside-posts-list">
-        {blogPosts.slice(0, 4).map((postItem) => {
-          return <AsidePostItem key={postItem.id} postItem={postItem} />;
-        })}
-      </div>
-    );
-  }
-  return <Spinner />;
+  return blogPosts ? (
+    <div className="asidePostsList">
+      {blogPosts.slice(0, 4).map((postItem) => (
+        <AsidePostItem key={postItem.id} postItem={postItem} />
+      ))}
+    </div>
+  ) : (
+    <SmallSpinner />
+  );
 };
 
-export default connect(
-  (state) => {
-    return {
-      isLoading: blogPostsLoadingSelector(state),
-      isLoaded: blogPostsLoadedSelector(state),
-      blogPosts: blogPostsSelector(state),
-    };
-  },
-  { loadBlogPosts }
-)(AsidePostsList);
+export default connect((state) => ({ blogPosts: state.blogPosts.blogPosts }), {
+  fetchBlogPosts,
+})(AsidePostsList);

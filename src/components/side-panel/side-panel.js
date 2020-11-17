@@ -27,13 +27,13 @@ const SidePanel = (props) => {
         </div>
       </div>
       <div className="sidePanel__item">
-          <h3 className="sidePanel__title">Upcoming events</h3>
-          <SidePanelEventsList/>
+        <h3 className="sidePanel__title">Upcoming events</h3>
+        <SidePanelEventsList />
       </div>
-      {/*<div className="aside-item">*/}
-      {/*    <h3 className="title">Recent Posts</h3>*/}
-      {/*    <AsidePostsList/>*/}
-      {/*</div>*/}
+      <div className="sidePanel__item">
+        <h3 className="sidePanel__title">Recent Posts</h3>
+        <AsidePostsList />
+      </div>
       {/*<div className="aside-item">*/}
       {/*    <h3 className="title">Instagram</h3>*/}
       {/*    <InstagramGallery/>*/}
