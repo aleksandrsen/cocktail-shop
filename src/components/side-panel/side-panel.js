@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./aside.scss";
+import "./side-panel.scss";
 // Components
 import AsidePostsList from "./aside-posts-list";
-import AsideEventsList from "./aside-events-list";
 import InstagramGallery from "./instagram-gallery";
+import SidePanelEventsList from "./side-panel-events-list";
 // Utils
 import { Icons } from "../../src_/icons";
 
@@ -26,10 +26,10 @@ const SidePanel = (props) => {
           />
         </div>
       </div>
-      {/*<div className="aside-item">*/}
-      {/*    <h3 className="title">Upcoming events</h3>*/}
-      {/*    <AsideEventsList/>*/}
-      {/*</div>*/}
+      <div className="sidePanel__item">
+          <h3 className="sidePanel__title">Upcoming events</h3>
+          <SidePanelEventsList/>
+      </div>
       {/*<div className="aside-item">*/}
       {/*    <h3 className="title">Recent Posts</h3>*/}
       {/*    <AsidePostsList/>*/}

@@ -1,6 +1,6 @@
 import React from "react";
 // Components
-import Aside from "../../aside";
+import SidePanel from "../../side-panel";
 import BlogPostsList from "./blog-posts-list";
 
 const BlogPage = (props) => (
@@ -11,7 +11,7 @@ const BlogPage = (props) => (
           <BlogPostsList />
         </div>
         <div className="col col-3">
-          <Aside />
+          <SidePanel />
         </div>
       </div>
     </div>

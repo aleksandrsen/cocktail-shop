@@ -1,5 +1,5 @@
 import React from "react";
-import AsideEventPostsContainer from "../../aside";
+// import AsideEventPostsContainer from "../../aside";
 import MusicEventsList from "./music-events-list";
 import {Row, Col} from "antd";
 
@@ -13,7 +13,7 @@ function MusicEventPage(props) {
                         <MusicEventsList/>
                     </Col>
                     <Col span={6}>
-                        <AsideEventPostsContainer/>
+                        {/*<AsideEventPostsContainer/>*/}
                     </Col>
                 </Row>
             </div>
