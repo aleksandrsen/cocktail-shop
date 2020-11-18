@@ -34,10 +34,10 @@ const SidePanel = (props) => {
         <h3 className="sidePanel__title">Recent Posts</h3>
         <AsidePostsList />
       </div>
-      {/*<div className="aside-item">*/}
-      {/*    <h3 className="title">Instagram</h3>*/}
-      {/*    <InstagramGallery/>*/}
-      {/*</div>*/}
+      <div className="sidePanel__item">
+        <h3 className="sidePanel__title">Instagram</h3>
+        <InstagramGallery />
+      </div>
     </aside>
   );
 };
