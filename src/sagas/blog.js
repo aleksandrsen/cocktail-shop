@@ -6,6 +6,8 @@ import {
   FETCH_BLOG_POSTS_SUCCESS,
   FETCH_BLOG_POSTS_FAIL,
   FETCH_BLOG_POSTS_REQUEST,
+  FETCH_BLOG_POST_DETAILS_REQUEST,
+  FETCH_BLOG_POST_DETAILS_SUCCESS,
 } from "../constants/blog";
 import callApi from "../api";
 
@@ -28,6 +30,15 @@ function* fetchBlogPostsWorker() {
   }
 }
 
+function* fetchBlogPostDetailsWorker({ payload: { id } }) {
+  try {
+    const { data } = yield callApi(`/blog-posts/${id}`);
+    yield put({ type: FETCH_BLOG_POST_DETAILS_SUCCESS, payload: data });
+  } catch (err) {
+    yield put({ type: FETCH_BLOG_POST_DETAILS_SUCCESS, err });
+  }
+}
+
 // watchers
 export function* fetchLatestBlogPosts() {
   yield takeLatest(FETCH_LATEST_BLOG_POSTS_REQUEST, fetchLatestBlogPostsWorker);
@@ -37,6 +48,10 @@ export function* fetchBlogPosts() {
   yield takeLatest(FETCH_BLOG_POSTS_REQUEST, fetchBlogPostsWorker);
 }
 
+export function* fetchBlogPostDetails() {
+  yield takeLatest(FETCH_BLOG_POST_DETAILS_REQUEST, fetchBlogPostDetailsWorker);
+}
+
 export function* blogSagas() {
-  yield all([fetchLatestBlogPosts(), fetchBlogPosts()]);
+  yield all([fetchLatestBlogPosts(), fetchBlogPosts(), fetchBlogPostDetails()]);
 }

@@ -9,8 +9,10 @@ import Header from "../header";
 import Footer from "../footer";
 import BartenderDetails from "../pages/bartender-details";
 // Pages
-import BlogDetailsPage from "../pages/blog/blog-details-page";
+// import BlogDetails from "../pages/blog-details/blog-details";
 import Cocktails from "../pages/cocktails";
+
+import BlogDetails from "../pages/blog-details/blog-details";
 
 import Home from "../pages/home/home";
 import About from "../pages/about/about";
@@ -24,13 +26,15 @@ import CocktailsPage from "../pages/cocktails/cocktails-page";
 import CocktailDetails from "../pages/cocktails/cocktail-details";
 import Bartenders from "../pages/bartenders";
 
+import { routes } from "../../routes";
+
 const App = (props) => (
   <>
     <Header />
     <main>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" exact component={About} />
+        <Route path={routes.home.link} exact component={Home} />
+        <Route path={routes.about.link} exact component={About} />
         {/*<Route path="/cocktails/" exact component={Cocktails} />*/}
         {/*<Route path="/cocktails/" exact component={CocktailsPage} />*/}
         {/*<Route*/}
@@ -41,8 +45,8 @@ const App = (props) => (
         {/*  }}*/}
         {/*/>*/}
 
-        <Route path="/bartenders/" exact component={Bartenders} />
-        <Route path="/bartenders/:id" component={BartenderDetails} />
+        <Route path={routes.bartenders.link} exact component={Bartenders} />
+        <Route path={routes.bartenders.details} component={BartenderDetails} />
 
         {/*<Route path="/music-events/" exact component={MusicEvents} />*/}
         {/*<Route*/}
@@ -53,16 +57,10 @@ const App = (props) => (
         {/*  }}*/}
         {/*/>*/}
 
-        <Route path="/blog/" exact component={BlogPage} />
-        {/*<Route*/}
-        {/*  path="/blog/:id"*/}
-        {/*  render={({ match }) => {*/}
-        {/*    const { id } = match.params;*/}
-        {/*    return <BlogDetailsPage blogPostId={id} />;*/}
-        {/*  }}*/}
-        {/*/>*/}
+        <Route path={routes.blog.link} exact component={BlogPage} />
+        <Route path={routes.blog.details} component={BlogDetails} />
 
-        <Route path="/contact" exact component={Contacts} />
+        <Route path={routes.contact.link} exact component={Contacts} />
       </Switch>
     </main>
     <Footer />

@@ -17,10 +17,12 @@ export const routes = {
     },
     bartenders: {
         link: "/bartenders/",
+        details: "/bartenders/:id",
         label: "Bartenders"
     },
     blog: {
         link: "/blog/",
+        details: "/blog/:id",
         label: "Blog"
     },
     contact: {

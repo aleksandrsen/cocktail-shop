@@ -17,7 +17,7 @@ const InstagramGallery = ({ photos, fetchInstagramPhotos }) => {
       {!photos ? (
         <SmallSpinner />
       ) : (
-        photos.map((url) => <img src={url} alt="instagram photo" />)
+        photos.map((url) => <img key={url} src={url} alt="instagram photo" />)
       )}
     </div>
   );

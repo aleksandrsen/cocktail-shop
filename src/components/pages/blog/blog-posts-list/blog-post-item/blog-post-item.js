@@ -28,7 +28,7 @@ const BlogPostItem = ({
         {content.length > 250 ? cutTextContent(content, 250) : content}
       </p>
       <div className="blogPostItem__controls">
-        <Link to={`${match.url}/${id}`}>Read more</Link>
+        <Link to={`${match.url}${id}`}>Read more</Link>
         <span className="blogPostItem__reviewsWrap">
           {Icons.reviews}
           <span className="blogPostItem__reviews">{reviews.length}</span>
