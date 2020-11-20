@@ -1,47 +1,24 @@
-.leave-reviews {
-    border: 1px solid #ffac04;
-    border-radius: 5px;
-    background-color: #8080800d;
-    transition: .2s;
+.reviewFormWrapper {
+  margin-top: 32px;
+  padding: 16px;
+  border-radius: 5px;
+  background-color: #8080800d;
+  //border: 1px solid #ffac04;
 
-    .leave-reviews-block {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 15px;
+  &__title {
+    margin-bottom: 32px;
+    font-size: 24px;
+    color: var(--secondary-color);
+  }
 
-        .default-button {
-            display: block;
-            min-width: 180px;
-        }
+  &__form {
+    text-align: right;
+    button {
+      margin-top: 32px;
     }
+  }
 
-    .leave-reviews-title {
-        font-size: 28px;
-        text-transform: uppercase;
-        margin-bottom: 0;
-    }
-
-    .ant-form {
-        padding: 30px 15px 25px;
-        border-top: 1px solid #ffac04;
-    }
-
-    .form-enter {
-        opacity: 0.01;
-    }
-
-    .form-enter.form-enter-active {
-        opacity: 1;
-        transition: opacity 300ms ease-in;
-    }
-
-    .form-exit {
-        opacity: 1;
-    }
-
-    .form-exit.form-exit-active {
-        opacity: 0.01;
-        transition: opacity 300ms ease-in;
-    }
+  textarea {
+    resize: none;
+  }
 }

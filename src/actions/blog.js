@@ -2,6 +2,7 @@ import {
   FETCH_BLOG_POSTS_REQUEST,
   FETCH_BLOG_POST_DETAILS_REQUEST,
   FETCH_LATEST_BLOG_POSTS_REQUEST,
+  SEND_BLOG_POST_REVIEW_REQUEST,
 } from "../constants/blog";
 
 export const fetchLatestBlogPosts = () => ({
@@ -14,5 +15,10 @@ export const fetchBlogPosts = () => ({
 
 export const fetchBlogPostDetails = (id) => ({
   type: FETCH_BLOG_POST_DETAILS_REQUEST,
-  payload: id,
+  id,
+});
+
+export const sendBlogPostReview = (id, data) => ({
+  type: SEND_BLOG_POST_REVIEW_REQUEST,
+  payload: { id, data },
 });

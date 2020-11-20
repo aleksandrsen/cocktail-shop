@@ -5,14 +5,22 @@ import { connect } from "react-redux";
 import { Icons } from "../../../../src_/icons";
 import { formatDate } from "../../../../utils";
 // Actions
-import { fetchBlogPostDetails } from "../../../../actions/blog";
+import {
+  sendBlogPostReview,
+  fetchBlogPostDetails,
+} from "../../../../actions/blog";
 // Components
-import ReviewsList from "../../blog/reviews-list";
-import LeaveReviews from "../../blog/leaave-reviews";
 import SmallSpinner from "../../../spinner";
+import ReviewsList from "../../blog/reviews-list";
+import ReviewForm from "../../blog/leaave-reviews";
 import SocialNetworks from "../../../social-networks";
 
-const BlogPostDetails = ({ details, blogPostId, fetchBlogPostDetails }) => {
+const BlogPostDetails = ({
+  details,
+  blogPostId,
+  sendBlogPostReview,
+  fetchBlogPostDetails,
+}) => {
   useEffect(() => {
     fetchBlogPostDetails(blogPostId);
   }, []);
@@ -37,7 +45,9 @@ const BlogPostDetails = ({ details, blogPostId, fetchBlogPostDetails }) => {
       </div>
       <p className="default-text">{details.content}</p>
       <SocialNetworks />
-      {/*<LeaveReviews blogPostId={blogPostId}/>*/}
+      <ReviewForm
+        handleSubmit={(values) => sendBlogPostReview(blogPostId, values)}
+      />
       {/*<ReviewsList id={blogPostId}/>*/}
     </div>
   ) : (
@@ -48,6 +58,7 @@ const BlogPostDetails = ({ details, blogPostId, fetchBlogPostDetails }) => {
 export default connect(
   (state) => ({ details: state.blogPosts.blogPostDetails }),
   {
+    sendBlogPostReview,
     fetchBlogPostDetails,
   }
 )(BlogPostDetails);

@@ -1,22 +1,50 @@
 import React, { useState } from "react";
 import "./leave-reviews.scss";
 // Components
-import BlogPostsReviewForm from "../blog-posts-reviews-form/blog-posts-review-form";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import TextInput from "../../../reusable-components/TextInput";
+import RippleButton from "../../../reusable-components/Button";
 
-const LeaveReviews = ({ blogPostId }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ReviewForm = ({ handleSubmit }) => (
+  <div className="reviewFormWrapper">
+    <h3 className="reviewFormWrapper__title">Leave review</h3>
+    <Formik
+      initialValues={{
+        name: "",
+        email: "",
+        message: "",
+      }}
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .min(3, "Must be at least 3 characters")
+          .required("This field is required"),
+        email: Yup.string()
+          .email("Invalid email address")
+          .required("This field is required"),
+        message: Yup.string()
+          .min(10, "Must be at least 10 characters")
+          .required("This field is required"),
+      })}
+      onSubmit={handleSubmit}
+    >
+      {({ isValid, dirty }) => (
+        <Form className="reviewFormWrapper__form" noValidate>
+          <TextInput name="name" type="text" placeholder="Name" />
+          <TextInput name="email" type="email" placeholder="Email" />
+          <TextInput
+            name="message"
+            type="text"
+            placeholder="Message"
+            textarea={true}
+          />
+          <RippleButton type="submit" disabled={!isValid || !dirty}>
+            Send Message
+          </RippleButton>
+        </Form>
+      )}
+    </Formik>
+  </div>
+);
 
-  return (
-    <div className="leave-reviews">
-      <div className="leave-reviews-block">
-        <h3 className="leave-reviews-title">Leave your review</h3>
-        <button className="default-button" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? "Close form" : "Write review"}
-        </button>
-      </div>
-      {isOpen ? <BlogPostsReviewForm /> : ""}
-    </div>
-  );
-};
-
-export default LeaveReviews;
+export default ReviewForm;
