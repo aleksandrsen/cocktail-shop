@@ -4,7 +4,7 @@ import "./reviews-list.scss";
 import { formatDate } from "../../../../utils";
 import { Icons } from "../../../../src_/icons";
 
-const ReviewsList = ({ reviews }) => (
+const ReviewsList = ({ reviews, setDislike, setLike }) => (
   <section className="reviewsList">
     {reviews.map(({ author, id, date, likes, dislikes, text }) => (
       <div className="reviewsListItem" key={id}>
@@ -20,17 +20,16 @@ const ReviewsList = ({ reviews }) => (
         </div>
         <div className="reviewsListItem__text">{text}</div>
         <div className="reviewsListItem__footer">
-          <div className="reviewsListItem__like">
+          <div className="reviewsListItem__like" onClick={(e) => setLike(id)}>
             {Icons.like}
-            <span className="reviewsListItem__rating">
-              {!likes ? "" : likes}
-            </span>
+            <span className="reviewsListItem__rating">{likes || ""}</span>
           </div>
-          <div className="reviewsListItem__dislike">
+          <div
+            className="reviewsListItem__dislike"
+            onClick={(e) => setDislike(id)}
+          >
             {Icons.dislike}
-            <span className="reviewsListItem__rating">
-              {!dislikes ? "" : dislikes}
-            </span>
+            <span className="reviewsListItem__rating">{dislikes || ""}</span>
           </div>
         </div>
       </div>

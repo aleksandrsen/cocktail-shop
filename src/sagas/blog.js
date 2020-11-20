@@ -1,4 +1,4 @@
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, takeEvery, put, all, select } from "redux-saga/effects";
 import {
   FETCH_LATEST_BLOG_POSTS_REQUEST,
   FETCH_LATEST_BLOG_POSTS_SUCCESS,
@@ -12,6 +12,12 @@ import {
   SEND_BLOG_POST_REVIEW_REQUEST,
   SEND_BLOG_POST_REVIEW_SUCCESS,
   SEND_BLOG_POST_REVIEW_FAIL,
+  LIKE_BLOG_POST_REVIEW_REQUEST,
+  DISLIKE_BLOG_POST_REVIEW_REQUEST,
+  LIKE_BLOG_POST_REVIEW_SUCCESS,
+  LIKE_BLOG_POST_REVIEW_FAIL,
+  DISLIKE_BLOG_POST_REVIEW_SUCCESS,
+  DISLIKE_BLOG_POST_REVIEW_FAIL,
 } from "../constants/blog";
 import callApi from "../api";
 
@@ -45,11 +51,99 @@ function* fetchBlogPostDetailsWorker({ id }) {
 
 function* sendBlogPostReviewWorker({ payload: { id, data } }) {
   try {
-    const {data: {id: reviewId}} = yield callApi(`/blog-posts/${id}/review`, "POST", data);
+    const {
+      data: { id: reviewId },
+    } = yield callApi(`/blog-posts/${id}/review`, "POST", data);
 
-    // yield put({ type: SEND_BLOG_POST_REVIEW_SUCCESS, payload: data });
+    const {
+      blogPosts: { blogPostDetails },
+    } = yield select();
+
+    yield put({
+      type: SEND_BLOG_POST_REVIEW_SUCCESS,
+      payload: {
+        ...blogPostDetails,
+        reviews: [
+          {
+            id: reviewId,
+            author: data.name,
+            likes: 0,
+            dislikes: 0,
+            date: Date.now(),
+            text: data.message,
+          },
+          ...blogPostDetails.reviews,
+        ],
+      },
+    });
   } catch (err) {
     yield put({ type: SEND_BLOG_POST_REVIEW_FAIL, err });
+  }
+}
+
+function* setLikeBlogPostReviewWorker({ id }) {
+  try {
+    // const {
+    //   data: { id: reviewId },
+    // } = yield callApi(`/blog-posts/${id}/review`, "POST", data);
+
+    const {
+      blogPosts: { blogPostDetails },
+    } = yield select();
+
+    const updatedDetails = {
+      ...blogPostDetails,
+      reviews: [
+        ...blogPostDetails.reviews.map((review) =>
+          review.id !== id
+            ? review
+            : {
+                ...review,
+                likes: ++review.likes,
+              }
+        ),
+      ],
+    };
+
+    yield put({
+      type: LIKE_BLOG_POST_REVIEW_SUCCESS,
+      payload: updatedDetails,
+    });
+  } catch (err) {
+    yield put({ type: LIKE_BLOG_POST_REVIEW_FAIL, err });
+  }
+}
+
+function* setDislikeBlogPostReviewWorker({ id }) {
+  try {
+    // const {
+    //   data: { id: reviewId },
+    // } = yield callApi(`/blog-posts/${id}/review`, "POST", data);
+
+    const {
+      blogPosts: { blogPostDetails },
+    } = yield select();
+
+    const updatedDetails = {
+      ...blogPostDetails,
+      reviews: [
+        ...blogPostDetails.reviews.map((review) =>
+          review.id !== id
+            ? review
+            : {
+                ...review,
+                dislikes: --review.dislikes,
+              }
+        ),
+      ],
+    };
+
+    yield put({
+      type: DISLIKE_BLOG_POST_REVIEW_SUCCESS,
+      payload: updatedDetails,
+    });
+  } catch (err) {
+    yield put({ type: DISLIKE_BLOG_POST_REVIEW_FAIL, err });
   }
 }
 
@@ -70,11 +164,24 @@ export function* sendBlogPostReview() {
   yield takeLatest(SEND_BLOG_POST_REVIEW_REQUEST, sendBlogPostReviewWorker);
 }
 
+export function* setLikeBlogPostReview() {
+  yield takeEvery(LIKE_BLOG_POST_REVIEW_REQUEST, setLikeBlogPostReviewWorker);
+}
+
+export function* setDislikeBlotPostReview() {
+  yield takeEvery(
+    DISLIKE_BLOG_POST_REVIEW_REQUEST,
+    setDislikeBlogPostReviewWorker
+  );
+}
+
 export function* blogSagas() {
   yield all([
     fetchLatestBlogPosts(),
     fetchBlogPosts(),
     fetchBlogPostDetails(),
     sendBlogPostReview(),
+    setLikeBlogPostReview(),
+    setDislikeBlotPostReview(),
   ]);
 }

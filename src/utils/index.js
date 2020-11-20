@@ -18,7 +18,7 @@ export const cutTextContent = (text, maxLength) => {
   return text;
 };
 
-export const formatDate = (dateString, optionsObj) => {
+export const formatDate = (date, optionsObj) => {
   const defaultOptions = {
     year: "numeric",
     month: "short",
@@ -27,7 +27,7 @@ export const formatDate = (dateString, optionsObj) => {
     minute: "numeric",
   };
 
-  const date = new Date(Date.parse(dateString));
+  const date_ = typeof date === "string" ? new Date(Date.parse(date)) : date;
   const formatter = new Intl.DateTimeFormat("en", optionsObj || defaultOptions);
-  return formatter.format(date);
+  return formatter.format(date_);
 };

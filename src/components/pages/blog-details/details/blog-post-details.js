@@ -8,6 +8,8 @@ import { formatDate } from "../../../../utils";
 import {
   sendBlogPostReview,
   fetchBlogPostDetails,
+  setLikeBlogPostReview,
+  setDislikeBlogPostReview,
 } from "../../../../actions/blog";
 // Components
 import ReviewForm from "../review-form";
@@ -20,10 +22,17 @@ const BlogPostDetails = ({
   blogPostId,
   sendBlogPostReview,
   fetchBlogPostDetails,
+  setLikeBlogPostReview,
+  setDislikeBlogPostReview,
 }) => {
   useEffect(() => {
     fetchBlogPostDetails(blogPostId);
   }, []);
+
+  const handleSubmit = (values, { resetForm }) => {
+    sendBlogPostReview(blogPostId, values);
+    resetForm();
+  };
 
   return details ? (
     <div className="blogPostDetails">
@@ -45,10 +54,12 @@ const BlogPostDetails = ({
       </div>
       <p className="default-text">{details.content}</p>
       <SocialNetworks />
-      <ReviewForm
-        handleSubmit={(values) => sendBlogPostReview(blogPostId, values)}
+      <ReviewForm handleSubmit={handleSubmit} />
+      <ReviewsList
+        reviews={details.reviews}
+        setLike={setLikeBlogPostReview}
+        setDislike={setDislikeBlogPostReview}
       />
-      <ReviewsList reviews={details.reviews} />
     </div>
   ) : (
     <SmallSpinner />
@@ -60,5 +71,7 @@ export default connect(
   {
     sendBlogPostReview,
     fetchBlogPostDetails,
+    setLikeBlogPostReview,
+    setDislikeBlogPostReview,
   }
 )(BlogPostDetails);
