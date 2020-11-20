@@ -1,0 +1,68 @@
+.reviewsList {
+  margin-top: 40px;
+
+  .reviewsListItem {
+    background-color: #8080800d;
+
+    & + .reviewsListItem {
+      margin-top: 30px;
+    }
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border-bottom: 1px solid var(--main-color);
+    }
+
+    &__author {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    &__date {
+      font-size: 16px;
+      color: #666;
+    }
+
+    &__text {
+      font-size: 16px;
+      line-height: 1.4em;
+      word-wrap: break-word;
+      word-break: break-all;
+      padding: 16px;
+      color: #242424cc;
+    }
+
+    &__footer {
+      padding: 0 15px 15px;
+      display: flex;
+      justify-content: flex-end;
+      color: var(--main-color);
+
+      svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+
+      span {
+        font-size: 15px;
+      }
+    }
+
+    &__dislike {
+      margin-left: 30px;
+    }
+
+    &__like,
+    &__dislike {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

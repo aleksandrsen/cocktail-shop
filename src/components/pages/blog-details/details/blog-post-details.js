@@ -10,9 +10,9 @@ import {
   fetchBlogPostDetails,
 } from "../../../../actions/blog";
 // Components
+import ReviewForm from "../review-form";
+import ReviewsList from "../reviews-list";
 import SmallSpinner from "../../../spinner";
-import ReviewsList from "../../blog/reviews-list";
-import ReviewForm from "../../blog/leaave-reviews";
 import SocialNetworks from "../../../social-networks";
 
 const BlogPostDetails = ({
@@ -48,7 +48,7 @@ const BlogPostDetails = ({
       <ReviewForm
         handleSubmit={(values) => sendBlogPostReview(blogPostId, values)}
       />
-      {/*<ReviewsList id={blogPostId}/>*/}
+      <ReviewsList reviews={details.reviews} />
     </div>
   ) : (
     <SmallSpinner />

@@ -35,7 +35,8 @@
   &__date {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 1em;
   }
 
   &__author {
@@ -43,6 +44,6 @@
   }
 
   .socialNetworks {
-    text-align: left;
+    text-align: right;
   }
 }

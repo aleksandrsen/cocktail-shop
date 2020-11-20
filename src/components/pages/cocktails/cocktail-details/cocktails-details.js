@@ -18,7 +18,7 @@ import {
 
 import { Col, Row } from "antd";
 import Spinner from "../../../spinner";
-import LeaveReviews from "../../blog/leaave-reviews";
+import LeaveReviews from "../../blog-details/review-form";
 import { Button } from "antd";
 
 const CocktailDetails = ({
