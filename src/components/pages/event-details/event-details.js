@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
 import "./event-details.scss";
-import clockIcon from "../../../../img/icons/clock-regular.svg";
+import clockIcon from "../../../img/icons/clock-regular.svg";
 import { connect } from "react-redux";
-import mapIcon from "../../../../img/icons/map-icon.svg";
+import mapIcon from "../../../img/icons/map-icon.svg";
 // Components
-import Share from "../../../share/share";
-import formatDate from "../../../../functions/format-date";
-import Map from "../../contact/map";
-import PubPartners from "../../bartenders/pub-partners";
+import Share from "../../share/share";
+import formatDate from "../../../functions/format-date";
+import Map from "../contact/map";
+import PubPartners from "../bartenders/pub-partners";
 // Actions
-import { loadEventById } from "../../../../actions";
+import { loadEventById } from "../../../actions";
 // Selectors
 import {
   eventItemLoadedSelector,
   eventItemSelector,
   eventItemLoadingSelector,
   eventItemIdSelector,
-} from "../../../../selectors";
-import Spinner from "../../../spinner";
+} from "../../../selectors";
+import Spinner from "../../spinner";
 
 const EventDetails = ({
   eventId,

@@ -19,14 +19,16 @@ import About from "../pages/about/about";
 import Contacts from "../pages/contact/contact-page";
 // import Bartenders from "../pages/bartenders-section/bartenders-section";
 import BlogPage from "../pages/blog/blog-page";
-import MusicEvents from "../pages/music&events/music-event-page";
-import EventDetails from "../pages/music&events/event-details";
+// import MusicEvents from "../pages/music&events/music-event-page";
+// import EventDetails from "../pages/music&events/event-details";
 import CocktailsPage from "../pages/cocktails/cocktails-page";
+import MusicEvents from "../pages/music-events/music-events";
 
 import CocktailDetails from "../pages/cocktails/cocktail-details";
 import Bartenders from "../pages/bartenders";
 
 import { routes } from "../../routes";
+import EventDetails from "../pages/event-details";
 
 const App = (props) => (
   <>
@@ -47,19 +49,10 @@ const App = (props) => (
 
         <Route path={routes.bartenders.link} exact component={Bartenders} />
         <Route path={routes.bartenders.details} component={BartenderDetails} />
-
-        {/*<Route path="/music-events/" exact component={MusicEvents} />*/}
-        {/*<Route*/}
-        {/*  path="/music-events/:id"*/}
-        {/*  render={({ match }) => {*/}
-        {/*    let { id } = match.params;*/}
-        {/*    return <EventDetails eventId={id} />;*/}
-        {/*  }}*/}
-        {/*/>*/}
-
+        <Route path={routes.musicEvents.link} exact component={MusicEvents} />
+        <Route path={routes.musicEvents.details} component={EventDetails} />
         <Route path={routes.blog.link} exact component={BlogPage} />
         <Route path={routes.blog.details} component={BlogDetails} />
-
         <Route path={routes.contact.link} exact component={Contacts} />
       </Switch>
     </main>
