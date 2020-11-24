@@ -1,70 +1,44 @@
-import React, {Component} from "react";
-import {Col, Row} from "antd";
-import AsideCocktails from "./aside-cocktails";
+import React, { useState } from "react";
+// Components
+import CocktailsFilters from "./cocktails-filters";
 import CocktailsList from "./cocktails-list";
 import SearchCocktailsForm from "./search-cocktails-form";
 import SelectCocktails from "./select-cocktails";
 
-class CocktailsPage extends Component {
-    state = {
-        strAlcoholic: [],
-        strCategory: [],
-        ingredients: [],
-        sortBy: null,
-        searchText: ''
-    };
+const CocktailsPage = (props) => {
+  const [filters, setFilters] = useState({});
 
-    setFilter = (param, value) => {
-        this.setState({
-            [param]: value
-        });
-    };
+  const setFilter = (type, value) => setFilters({ ...filters, [type]: value });
 
-    setSortBy = (param) => {
-        this.setState({
-            sortBy: param
-        })
-    };
-
-    setSearchText = (value) => {
-        this.setState({
-            searchText: value
-        });
-    };
-
-    render() {
-        let {sortBy, ...rest} = {...this.state};
-        let params = [];
-        for (let key in rest) {
-            if (Array.isArray(rest[key])) {
-                rest[key].forEach(item => params.push({[key]: item}));
-            }
-        }
-
-        return (
-            <section className="default-section">
-                <div className="container">
-                    <Row type="flex" gutter={24} justify="space-between">
-                        <Col span={6}>
-                            <AsideCocktails setFilter={this.setFilter}/>
-                        </Col>
-                        <Col span={18}>
-                            <Row type="flex" gutter={24} justify="space-between" align="middle"
-                                 style={{marginBottom: "40px"}}>
-                                <Col span={12}>
-                                    <SelectCocktails setSortBy={this.setSortBy}/>
-                                </Col>
-                                <Col span={12}>
-                                    <SearchCocktailsForm search={this.setSearchText}/>
-                                </Col>
-                            </Row>
-                            <CocktailsList params={params} sortBy={this.state.sortBy} searchText={this.state.searchText}/>
-                        </Col>
-                    </Row>
-                </div>
-            </section>
-        )
-    }
-}
+  return (
+    <section className="default-section cocktails">
+      <div className="container">
+        <div className="row">
+          <div className="col col-3">
+            <CocktailsFilters setFilter={setFilter} />
+          </div>
+          {/*<Col span={18}>*/}
+          {/*  <Row*/}
+          {/*    type="flex"*/}
+          {/*    gutter={24}*/}
+          {/*    justify="space-between"*/}
+          {/*    align="middle"*/}
+          {/*    style={{ marginBottom: "40px" }}*/}
+          {/*  >*/}
+          {/*    <Col span={12}>*/}
+          {/*      <SelectCocktails setSortBy={this.setSortBy} />*/}
+          {/*    </Col>*/}
+          {/*    <Col span={12}>*/}
+          {/*      <SearchCocktailsForm search={this.setSearchText} />*/}
+          {/*    </Col>*/}
+          {/*  </Row>*/}
+          {/*  /!*<CocktailsList params={params} sortBy={this.state.sortBy} searchText={this.state.searchText}/>*!/*/}
+          {/*</Col>*/}
+        </div>
+      </div>
+    </section>
+  );
+  // }
+};
 
 export default CocktailsPage;

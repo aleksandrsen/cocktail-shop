@@ -1,0 +1,30 @@
+.aside-cocktails {
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    font-size: 18px;
+    color: var(--main-color);
+  }
+
+  .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ant-checkbox-group-item:nth-child(n + 2) {
+    margin-top: 10px;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+  }
+
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner {
+    border-color: var(--main-color);
+  }
+
+  .ant-checkbox-wrapper-checked:hover {
+    .ant-checkbox-checked::after {
+      border-color: var(--main-color);
+    }
+  }
+}

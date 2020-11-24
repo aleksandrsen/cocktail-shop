@@ -23,8 +23,6 @@ const EventDetails = ({
     fetchEventDetails(id);
   }, []);
 
-  let address = "New York, 345 Park AveNY 10154, USA";
-
   return !eventDetails ? (
     <SmallSpinner />
   ) : (
@@ -57,7 +55,7 @@ const EventDetails = ({
           </div>
           <div className="eventDetails__item">
             {Icons.location}
-            {address}
+            {eventDetails.address}
           </div>
           <div className="eventDetails__item">
             <SocialNetworks exclude="youtube" />
