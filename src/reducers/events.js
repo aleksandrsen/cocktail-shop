@@ -1,4 +1,5 @@
 import {
+  FETCH_EVENT_DETAILS_SUCCESS,
   FETCH_EVENTS_LIST_SUCCESS,
   FETCH_NEXT_EVENTS_SUCCESS,
   FETCH_UPCOMING_EVENT_SUCCESS,
@@ -8,6 +9,7 @@ const initialState = {
   events: null,
   upcomingEvent: null,
   nextEvents: null,
+  eventDetails: null,
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +22,8 @@ export default (state = initialState, action) => {
 
     case FETCH_EVENTS_LIST_SUCCESS:
       return { ...state, events: action.payload };
+    case FETCH_EVENT_DETAILS_SUCCESS:
+      return { ...state, eventDetails: action.payload };
 
     default:
       return state;
