@@ -11,7 +11,14 @@ const CocktailsPage = (props) => {
   const [sortParam, setSortParam] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
-  const setFilter = (type, value) => setFilters({ ...filters, [type]: value });
+  const setFilter = (type, value) => {
+    const value_ = value.reduce((obj, field) => {
+      obj[field.toLowerCase()] = field;
+      return obj;
+    }, {});
+
+    setFilters({ ...filters, [type]: value_ })
+  };
 
   const handleSort = (value) => setSortParam(value);
 
