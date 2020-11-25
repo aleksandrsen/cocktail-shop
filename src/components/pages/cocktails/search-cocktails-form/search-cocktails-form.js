@@ -3,12 +3,9 @@ import "./search-cocktails-form.scss";
 // Components
 import { Input } from "antd";
 
-const SearchCocktailsForm = (props) => (
+const SearchCocktailsForm = ({ handleSearch }) => (
   <form className="search-cocktails-form">
-    <Input
-      onChange={(e) => props.search(e.target.value)}
-      placeholder="Type to search cocktails"
-    />
+    <Input onChange={handleSearch} placeholder="Type to search cocktails" />
   </form>
 );
 

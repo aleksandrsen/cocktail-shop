@@ -1,176 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./cocktails-list.scss";
-import { connect } from "react-redux";
 // Actions
-import { loadCocktails } from "../../../../actions";
-// Selectors
-import {
-  cocktailsLoadingSelector,
-  cocktailsLoadedSelector,
-  cocktailsSelector,
-} from "../../../../selectors";
+import { fetchCocktailsList } from "../../../../actions/cocktails";
 // Components
-import Spinner from "../../../spinner";
-import { Row, Select } from "antd";
 import CocktailItem from "../cocktail-item";
+import SmallSpinner from "../../../spinner";
+import RippleButton from "../../../reusable-components/Button";
+// Utils
+import { connect } from "react-redux";
+import {searchByFields} from "../../../../utils";
 
-const CocktailsList = ({
-  isLoading,
-  isLoaded,
-  cocktails,
-  loadCocktails,
-  params,
-  sortBy,
-  searchText,
-}) => {
-  const cocktailsOnPage = 27;
-
-  let [pageSize, setPageSize] = useState(cocktailsOnPage);
-
+const CocktailsList = ({ fetchCocktailsList, cocktails, params: {filters, sort, searchValue} }) => {
   useEffect(() => {
-    if (!isLoading && !isLoaded) {
-      loadCocktails();
+    fetchCocktailsList();
+  }, []);
+
+
+// "id": "12560",
+//     "name": "Afterglow",
+//     "category": "Cocktail",
+//     "alcoholic": "Non alcoholic",
+//     "previewSrc": "https://www.thecocktaildb.com/images/media/drink/vuquyv1468876052.jpg",
+//     "rate": 2,
+//     "price": 15,
+//     "ingredients": ["grenadine", "orange juice", "pineapple juice"]
+
+    console.log(filters)
+
+    // alcoholic: ["alcoholic"]
+    // category: (2) ["Cocktail", "Cocoa"]
+    // ingredients: (2) ["Ale", "Amaretto"]
+
+
+    const getFilteredCocktails = (cocktails, filters) => {
+        return Object.entries(filters).filter(([field, value]) => {
+
+
+
+
+        })
     }
-  });
 
-  function findMatches(wordToMatch, cocktails) {
-    if (wordToMatch === "") return cocktails;
-    return cocktails.filter((cocktailItem) => {
-      const regex = new RegExp(wordToMatch, "gi");
-      return cocktailItem.strDrink.match(regex);
-    });
-  }
 
-  function filterCocktails(cocktails, params) {
-    if (!params.length) return cocktails;
-    let result = [];
-    params.forEach((filterItem) => {
-      let paramName = Object.keys(filterItem)[0];
-      let paramValue = filterItem[paramName];
-      let res = [];
-
-      if (!result.length) {
-        res = [];
-        cocktails.forEach((cocktail) => {
-          if (Array.isArray(cocktail[paramName])) {
-            let arr = cocktail[paramName];
-            arr.forEach((item) => {
-              if (item.toLowerCase() === paramValue.toLowerCase())
-                res.push(cocktail);
-            });
-          } else if (
-            !Array.isArray(cocktail[paramName]) &&
-            cocktail[paramName] === paramValue
-          ) {
-            res.push(cocktail);
-          }
-        });
-        result = res;
-      } else if (result.length) {
-        res = [];
-        result.forEach((cocktail) => {
-          if (Array.isArray(cocktail[paramName])) {
-            let arr = cocktail[paramName];
-            arr.forEach((item) => {
-              if (item.toLowerCase() === paramValue.toLowerCase())
-                res.push(cocktail);
-            });
-          } else if (
-            !Array.isArray(cocktail[paramName]) &&
-            cocktail[paramName] === paramValue
-          ) {
-            res.push(cocktail);
-          }
-        });
-      }
-      result = res;
-    });
-    return result;
-  }
-
-  function sort(arr, sortParam) {
-    if (!sortParam) return arr;
-    let cocktails = [...arr];
-    switch (sortParam) {
-      case "strDrink":
-        cocktails.sort(
-          ({ strDrink: a }, { strDrink: b }) =>
-            a.toLowerCase() - b.toLowerCase()
-        );
-        break;
-      case "rate":
-        cocktails.sort(({ rate: a }, { rate: b }) => b - a);
-        break;
-
-      case "popular":
-        cocktails.sort(({ rate: a }, { rate: b }) => a - b);
-        break;
-
-      case "price-h-to-l":
-        cocktails.sort(({ price: a }, { price: b }) => b - a);
-        break;
-
-      case "price-l-to-h":
-        cocktails.sort(({ price: a }, { price: b }) => a - b);
-        break;
-      default:
-        return cocktails;
-    }
-    return cocktails;
-  }
-
-  if (!isLoading && isLoaded) {
-    let filteredCocktails = findMatches(
-      searchText,
-      filterCocktails(sort(cocktails, sortBy), params)
-    );
-    let renderCocktails = filteredCocktails
-      .slice(0, pageSize)
-      .map((cocktailItem) => {
-        return (
-          <CocktailItem
-            key={cocktailItem.idDrink}
-            col={8}
-            cocktail={cocktailItem}
-          />
-        );
+  const renderCocktails = (cocktails, filters, sort, searchValue) => {
+      const sorted = !sort ? cocktails : cocktails.sort((a, b) => {
+          if (sort ===  "price-h-l") return b.price - a.price;
+          if (sort ===  "price-l-h") return a.price - b.price;
+          return b[sort] - a[sort];
       });
 
-    return (
-      <>
-        <Row gutter={24} type={"flex"} className="cocktails-list">
-          {filteredCocktails.length === 0 ? (
-            <h2 className="info-message">
-              We could not find cocktails with this parameters
-            </h2>
-          ) : (
-            renderCocktails
-          )}
-        </Row>
-        {filteredCocktails.length < pageSize ? (
-          ""
-        ) : (
-          <div className="show-more-wrapper">
-            <button className="default-button"
-              size="large"
-              onClick={() => setPageSize(pageSize + cocktailsOnPage)}
-            >
-              Show more
-            </button>
-          </div>
-        )}
-      </>
-    );
-  }
+      const searched = !searchValue ? sorted : searchByFields(cocktails, searchValue, ["name", "price"])
 
-  return <Spinner />;
+    return searched.map((item) => (
+      <CocktailItem key={item.id} cocktail={item} />
+    ));
+  };
+
+  return (
+    <div className="default-section cocktailsList">
+      <div className="cocktails-list row">
+        {!cocktails ? <SmallSpinner /> : renderCocktails(cocktails.slice(0, 25), filters, sort, searchValue)}
+      </div>
+      <RippleButton>Load more</RippleButton>
+    </div>
+  );
 };
 
 export default connect(
   (state) => ({
-    isLoading: cocktailsLoadingSelector(state),
-    isLoaded: cocktailsLoadedSelector(state),
-    cocktails: cocktailsSelector(state),
+    cocktails: state.cocktails.list,
   }),
-  { loadCocktails }
+  { fetchCocktailsList }
 )(CocktailsList);

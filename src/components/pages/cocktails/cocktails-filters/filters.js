@@ -1,7 +1,7 @@
 export const ALCOHOLIC = [
-  { label: "Alcoholic", value: "alcoholic" },
-  { label: "Non alcoholic", value: "non-alcoholic" },
-  { label: "Optional alcohol", value: "optional-alcohol" },
+  { label: "Alcoholic", value: "Alcoholic" },
+  { label: "Non alcoholic", value: "Non alcoholic" },
+  { label: "Optional alcohol", value: "Optional alcohol" },
 ];
 
 export const CATEGORIES = [

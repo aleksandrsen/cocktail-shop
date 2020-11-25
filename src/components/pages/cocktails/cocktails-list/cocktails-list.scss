@@ -1,24 +1,11 @@
-.cocktails-list {
+.cocktailsList {
+  padding-bottom: 0;
+  text-align: right;
+  .col:nth-child(n + 4) {
+    margin-top: 40px;
+  }
 
-    .ant-col {
-        display: flex;
-    }
-
-    .ant-col:nth-child(n + 4) {
-        margin-top: 40px;
-    }
-
-    .info-message {
-        font-size: 30px;
-        text-align: center;
-        width: 100%;
-        color: #a97409;
-    }
-
-    & + .show-more-wrapper {
-        padding: 15px;
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
-    }
+  .rippleButton {
+    margin-top: 40px;
+  }
 }

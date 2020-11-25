@@ -4,6 +4,7 @@ import CocktailsFilters from "./cocktails-filters";
 import CocktailsList from "./cocktails-list";
 import SearchCocktailsForm from "./search-cocktails-form";
 import CocktailsSortSelect from "./cocktails-sort-select";
+import {Input} from "antd";
 
 const CocktailsPage = (props) => {
   const [filters, setFilters] = useState({});
@@ -29,10 +30,12 @@ const CocktailsPage = (props) => {
                 <CocktailsSortSelect handleSort={handleSort} />
               </div>
               <div className="col col-6">
-                <SearchCocktailsForm handleSearch={handleSearch} />
+                <form className="search-cocktails-form">
+                  <Input onChange={handleSearch} placeholder="Type to search cocktails" />
+                </form>
               </div>
             </div>
-            {/*<CocktailsList params={params} sortBy={this.state.sortBy} searchText={this.state.searchText}/>*/}
+            <CocktailsList params={{filters, sort: sortParam, searchValue}}/>
           </div>
         </div>
       </div>

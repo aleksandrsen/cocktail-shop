@@ -31,3 +31,22 @@ export const formatDate = (date, optionsObj) => {
   const formatter = new Intl.DateTimeFormat("en", optionsObj || defaultOptions);
   return formatter.format(date_);
 };
+
+export const searchByFields = (arrayOfObj, searchValue, keyFields) => {
+  const result = [];
+  const term = searchValue.replace(",", " ").toLowerCase();
+
+  arrayOfObj.forEach(item => {
+    const descr = keyFields
+        .reduce((acc, field) => {
+          acc.push(item[field]);
+          return acc;
+        }, [])
+        .join(" ");
+
+    if (descr.toLowerCase().includes(term)) {
+      result.push(item);
+    }
+  });
+  return result;
+}
