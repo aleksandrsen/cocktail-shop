@@ -13,10 +13,6 @@ const SORT_PARAMS = [
     label: "Rate",
     value: "rate",
   },
-  // {
-  //   label: "Popularity",
-  //   value: "popularity",
-  // },
   {
     label: "Price: high to low",
     value: "price-h-l",
