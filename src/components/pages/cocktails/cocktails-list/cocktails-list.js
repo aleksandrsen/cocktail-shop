@@ -19,8 +19,6 @@ const CocktailsList = ({
     fetchCocktailsList();
   }, []);
 
-  // CRATE NEW ARRAY FOR FILTERS BY INGREDIENTS ??????????????????????????????????
-
   const checkIsFiltersEmpty = (filters) => {
     const alcoholic =
       filters.alcoholic && Object.values(filters.alcoholic).length;
@@ -53,22 +51,6 @@ const CocktailsList = ({
   };
 
   const renderCocktails = (cocktails, filters, sort, searchValue) => {
-
-      const arr = cocktails.reduce((obj, item) => {
-          obj[item.category] = {
-              label: item.category,
-              value: item.category
-          }
-          return obj;
-
-      }, {})
-
-      console.log(arr);
-      const sortedd = Object.values(arr).sort((a, b) => a.label < b.label)
-
-      console.log(sortedd)
-
-
     const sorted = !sort
       ? cocktails
       : cocktails.sort((a, b) => {
