@@ -1,5 +1,5 @@
 import React from "react";
-import "./cocktails-sort-select.scss";
+import "./cocktails-select.scss";
 // Components
 import { Select } from "antd";
 const { Option } = Select;
@@ -23,7 +23,7 @@ const SORT_PARAMS = [
   },
 ];
 
-const CocktailsSortSelect = ({ handleSort }) => (
+const CocktailsSelect = ({ handleSort }) => (
   <Select
     onChange={handleSort}
     className="selectCocktails"
@@ -37,4 +37,4 @@ const CocktailsSortSelect = ({ handleSort }) => (
   </Select>
 );
 
-export default CocktailsSortSelect;
+export default CocktailsSelect;

@@ -214,10 +214,10 @@ input {
 }
 
 /**
- * Address inconsistent `text-transform` inheritance for `default-button` and `cocktails-sort-select`.
+ * Address inconsistent `text-transform` inheritance for `default-button` and `cocktails-select`.
  * All other form control elements do not inherit `text-transform` values.
  * Correct `default-button` style inheritance in Chrome, Safari 5+, and IE 6+.
- * Correct `cocktails-sort-select` style inheritance in Firefox 4+ and Opera.
+ * Correct `cocktails-select` style inheritance in Firefox 4+ and Opera.
  */
 
 button,

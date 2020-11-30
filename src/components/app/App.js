@@ -15,6 +15,7 @@ import Bartenders from "../pages/bartenders";
 import BlogPage from "../pages/blog/blog-page";
 import EventDetails from "../pages/event-details";
 import Contacts from "../pages/contact/contact-page";
+import CocktailDetails from "../pages/cocktail-details";
 import Cocktails from "../pages/cocktails/cocktails-page";
 import BartenderDetails from "../pages/bartender-details";
 import BlogDetails from "../pages/blog-details/blog-details";
@@ -30,15 +31,7 @@ const App = (props) => (
         <Route path={routes.home.link} exact component={Home} />
         <Route path={routes.about.link} exact component={About} />
         <Route path={routes.cocktails.link} exact component={Cocktails} />
-        {/*<Route path="/cocktails/" exact component={CocktailsPage} />*/}
-        {/*<Route*/}
-        {/*  path="/cocktails/:id"*/}
-        {/*  render={({ match, location, history }) => {*/}
-        {/*    const { id } = match.params;*/}
-        {/*    return <CocktailDetails id={id} />;*/}
-        {/*  }}*/}
-        {/*/>*/}
-
+        <Route path={routes.cocktails.details} exact component={CocktailDetails} />
         <Route path={routes.bartenders.link} exact component={Bartenders} />
         <Route path={routes.bartenders.details} component={BartenderDetails} />
         <Route path={routes.musicEvents.link} exact component={MusicEvents} />

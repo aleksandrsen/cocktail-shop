@@ -5,6 +5,10 @@
   color: var(--secondary-color);
   transition: 0.3s;
 
+  &:hover {
+    color: var(--secondary-color);
+  }
+
   &__imgWrap {
     position: relative;
     border-radius: 10px 10px 0 0;

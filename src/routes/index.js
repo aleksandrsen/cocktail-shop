@@ -9,7 +9,8 @@ export const routes = {
     },
     cocktails: {
         link: "/cocktails/",
-        label: "Cocktails"
+        label: "Cocktails",
+        details: "/cocktails/:id"
     },
     musicEvents: {
         link: "/music-events/",

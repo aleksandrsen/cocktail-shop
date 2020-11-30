@@ -3,7 +3,7 @@ import "./cocktails-page.scss";
 // Components
 import CocktailsList from "./cocktails-list";
 import CocktailsFilters from "./cocktails-filters";
-import CocktailsSortSelect from "./cocktails-sort-select";
+import CocktailsSelect from "./cocktails-select";
 // Utils
 import { Icons } from "../../../src_/icons";
 
@@ -45,7 +45,7 @@ const CocktailsPage = (props) => {
                 </div>
               </div>
               <div className="col col-3">
-                <CocktailsSortSelect handleSort={handleSort} />
+                <CocktailsSelect handleSort={handleSort} />
               </div>
             </div>
             <CocktailsList params={{ filters, sort: sortParam, searchValue }} />

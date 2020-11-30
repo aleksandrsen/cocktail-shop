@@ -6,12 +6,13 @@ import { cutTextContent } from "../../../../../utils";
 import { Rate } from "antd";
 import "tippy.js/dist/tippy.css";
 import Tippy from "@tippyjs/react";
+import { Link } from "react-router-dom";
 
 const CocktailItem = ({
-  cocktail: { name, previewSrc, rate, price, ingredients },
+  cocktail: { id, name, previewSrc, rate, price, ingredients },
 }) => (
   <div className="col col-3">
-    <div className="cocktailItem">
+    <Link to={`/cocktails/${id}`} className="cocktailItem">
       <div className="cocktailItem__imgWrap">
         <img src={previewSrc} />
       </div>
@@ -33,7 +34,7 @@ const CocktailItem = ({
         </div>
         <div className="cocktailItem__price">{price}$</div>
       </div>
-    </div>
+    </Link>
   </div>
 );
 
