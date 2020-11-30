@@ -1,8 +1,25 @@
 .cocktailsList {
   padding-bottom: 0;
   text-align: right;
-  .col:nth-child(n + 4) {
+
+  .row {
+    min-height: 70vh;
+  }
+
+  .col {
+    display: flex;
+  }
+
+  .col:nth-child(n + 5) {
     margin-top: 40px;
+  }
+
+  &__empty {
+    flex-grow: 1;
+    font-size: 18px;
+    color: #a3a2a2;
+    padding: 32px 16px;
+    text-align: center;
   }
 
   .rippleButton {

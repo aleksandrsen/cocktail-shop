@@ -1,7 +1,7 @@
 import React from "react";
 import "./cocktail-item.scss";
 // Utils
-import { cutTextContent } from "../../../../utils";
+import { cutTextContent } from "../../../../../utils";
 // Components
 import { Rate } from "antd";
 import "tippy.js/dist/tippy.css";

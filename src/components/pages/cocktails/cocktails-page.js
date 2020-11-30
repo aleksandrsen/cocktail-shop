@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import "./cocktails-page.scss";
 // Components
-import CocktailsFilters from "./cocktails-filters";
 import CocktailsList from "./cocktails-list";
-import SearchCocktailsForm from "./search-cocktails-form";
+import CocktailsFilters from "./cocktails-filters";
 import CocktailsSortSelect from "./cocktails-sort-select";
-import {Input} from "antd";
+// Utils
+import { Icons } from "../../../src_/icons";
 
 const CocktailsPage = (props) => {
   const [filters, setFilters] = useState({});
@@ -17,7 +18,7 @@ const CocktailsPage = (props) => {
       return obj;
     }, {});
 
-    setFilters({ ...filters, [type]: value_ })
+    setFilters({ ...filters, [type]: value_ });
   };
 
   const handleSort = (value) => setSortParam(value);
@@ -25,30 +26,34 @@ const CocktailsPage = (props) => {
   const handleSearch = ({ target: { value } }) => setSearchValue(value);
 
   return (
-    <section className="default-section">
+    <section className="default-section cocktailsPage">
       <div className="container">
         <div className="row">
           <div className="col col-3">
             <CocktailsFilters setFilter={setFilter} />
           </div>
           <div className="col col-9">
-            <div className="row">
-              <div className="col col-6">
+            <div className="row align-items-center flex-end">
+              <div className="col col-4 cocktailsPage__searchInputCol">
+                <div className="inputWrapper">
+                  {Icons.searchIcon}
+                  <input
+                    value={searchValue}
+                    onChange={handleSearch}
+                    placeholder="Type to search cocktails"
+                  />
+                </div>
+              </div>
+              <div className="col col-3">
                 <CocktailsSortSelect handleSort={handleSort} />
               </div>
-              <div className="col col-6">
-                <form className="search-cocktails-form">
-                  <Input onChange={handleSearch} placeholder="Type to search cocktails" />
-                </form>
-              </div>
             </div>
-            <CocktailsList params={{filters, sort: sortParam, searchValue}}/>
+            <CocktailsList params={{ filters, sort: sortParam, searchValue }} />
           </div>
         </div>
       </div>
     </section>
   );
-  // }
 };
 
 export default CocktailsPage;

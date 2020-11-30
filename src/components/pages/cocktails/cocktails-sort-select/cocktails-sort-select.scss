@@ -1,9 +1,7 @@
 .selectCocktails {
-  width: 70%;
-
+  width: 100%;
   &.ant-select-open .ant-select-selection {
     border-color: var(--main-color);
-    //box-shadow: 0 0 0 2px var(--main-color);
     box-shadow: none;
 
     &:hover {
@@ -13,14 +11,5 @@
 
   .ant-select-selection:hover {
     border-color: var(--main-color);
-  }
-}
-
-.selectCocktails__options:hover {
-  background-color: var(--main-color) !important;
-
-  &.ant-select-dropdown-menu-item-selected,
-  &.ant-select-dropdown-menu-item-active {
-    background-color: var(--main-color) !important;
   }
 }

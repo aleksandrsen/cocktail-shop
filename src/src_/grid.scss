@@ -36,6 +36,9 @@
     justify-content: center;
   }
 
+  &.flex-end {
+    justify-content: flex-end;
+  }
   &.noWrap {
     flex-wrap: nowrap;
   }

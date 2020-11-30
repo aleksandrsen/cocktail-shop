@@ -3,7 +3,7 @@ import "./cocktails-list.scss";
 // Actions
 import { fetchCocktailsList } from "../../../../actions/cocktails";
 // Components
-import CocktailItem from "../cocktail-item";
+import CocktailItem from "./cocktail-item";
 import SmallSpinner from "../../../spinner";
 import RippleButton from "../../../reusable-components/Button";
 // Utils
@@ -70,17 +70,17 @@ const CocktailsList = ({
     return filtered.length ? (
       filtered.map((item) => <CocktailItem key={item.id} cocktail={item} />)
     ) : (
-      <div>No cocktails with this params</div>
+      <div className="cocktailsList__empty">No cocktails with this params</div>
     );
   };
 
   return (
     <div className="default-section cocktailsList">
-      <div className="cocktails-list row">
+      <div className="row">
         {!cocktails ? (
           <SmallSpinner />
         ) : (
-          renderCocktails(cocktails, filters, sort, searchValue)
+          renderCocktails(cocktails.slice(0, 35), filters, sort, searchValue)
         )}
       </div>
       <RippleButton>Load more</RippleButton>
