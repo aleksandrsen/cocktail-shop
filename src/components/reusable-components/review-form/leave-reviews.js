@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./leave-reviews.scss";
 // Components
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import TextInput from "../../../reusable-components/TextInput";
-import RippleButton from "../../../reusable-components/Button";
+import TextInput from "../TextInput";
+import RippleButton from "../Button";
 
 const ReviewForm = ({ handleSubmit }) => (
   <div className="reviewFormWrapper">

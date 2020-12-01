@@ -12,10 +12,10 @@ import {
   setDislikeBlogPostReview,
 } from "../../../../actions/blog";
 // Components
-import ReviewForm from "../review-form";
-import ReviewsList from "../reviews-list";
+import ReviewForm from "../../../reusable-components/review-form";
 import SmallSpinner from "../../../spinner";
 import SocialNetworks from "../../../social-networks";
+import ReviewsList from "../../../reusable-components/reviews-list";
 
 const BlogPostDetails = ({
   details,

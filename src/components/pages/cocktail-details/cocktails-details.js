@@ -2,84 +2,84 @@ import React, { useEffect } from "react";
 import "./cocktails-details.scss";
 // Actions
 import { addToCart, addToWishList } from "../../../actions";
-import { fetchCocktailsDetails } from "../../../actions/cocktails";
+import {
+  sendCocktailReview,
+  setLikeCocktailReview,
+  fetchCocktailsDetails,
+  setDislikeCocktailReview,
+} from "../../../actions/cocktails";
 // Components
-import { Col, Row } from "antd";
-import LeaveReviews from "../blog-details/review-form";
 import SmallSpinner from "../../spinner";
-// Utils
-
-import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
 import RippleButton from "../../reusable-components/Button";
+import ReviewForm from "../../reusable-components/review-form";
+import ReviewsList from "../../reusable-components/reviews-list";
+// Utils
+import { connect } from "react-redux";
+import { Icons } from "../../../src_/icons";
+import { useParams } from "react-router-dom";
 
-const CocktailDetails = ({ cocktailDetails, fetchCocktailsDetails }) => {
+const CocktailDetails = ({
+  cocktailDetails,
+  sendCocktailReview,
+  setLikeCocktailReview,
+  fetchCocktailsDetails,
+  setDislikeCocktailReview,
+}) => {
   const { id } = useParams();
 
   useEffect(() => {
     fetchCocktailsDetails(id);
   }, []);
 
-  const handleSubmit = values => {
-    console.log(values)
-  }
+  const handleSubmit = (data) => sendCocktailReview(id, data);
 
   return !cocktailDetails ? (
     <SmallSpinner />
   ) : (
-    <section className="default-section cocktail-details">
+    <section className="default-section cocktailDetails">
       <div className="container">
         <div className="row">
           <div className="col col-5">
             <img
-              className="cocktail-img"
+              className="cocktailDetails__img"
               src={cocktailDetails.previewSrc}
-              alt=""
+              alt={cocktailDetails.name}
             />
           </div>
           <div className="col col-6">
-            <h2 className="section-title">
+            <h2 className="cocktailDetails__title">
               {cocktailDetails.name}{" "}
-              <span className="alc-type">{`(${cocktailDetails.alcoholic.toLowerCase()})`}</span>
+              <span className="cocktailDetails__alcoholic">{`(${cocktailDetails.alcoholic.toLowerCase()})`}</span>
             </h2>
-            <div className="cocktail-info">
-              <div className="cocktail-info-item">
-                <span className="title">Category - </span>
-                <span className="info">{cocktailDetails.category}</span>
+            <div className="cocktailDetails__info">
+              <div className="cocktailDetails__item">
+                <span className="detailsTitle">Category - </span>
+                <span className="detailsInfo">{cocktailDetails.category}</span>
               </div>
-              {/*<div className="cocktail-info-item">*/}
-              {/*  <span className="title">Glass - </span>*/}
-              {/*  <span className="info">{strGlass}</span>*/}
-              {/*</div>*/}
-              <div className="cocktail-info-item">
-                <span className="title">Ingredients - </span>
-                <span className="info">
+              <div className="cocktailDetails__item">
+                <span className="detailsTitle">Ingredients - </span>
+                <span className="detailsInfo">
                   {cocktailDetails.ingredients.join(" ")}
                 </span>
               </div>
             </div>
-            <div className="actions">
+            <div className="cocktailDetails__actions">
               <div className="price">{cocktailDetails.price}$</div>
-              <button
-                className="default-button"
-                // onClick={() => addToCart(idDrink)}
-              >
-                Add to card
-              </button>
-              <button
-                className="default-button"
-                // onClick={() => addToWishList(idDrink)}
-              >
-                Add to wish list
-              </button>
+              <button className="wishListBtn">{Icons.wishList}</button>
+              <RippleButton>Add to cart</RippleButton>
             </div>
           </div>
         </div>
-        <div className="cocktail-instructions">
-          <h3>Instructions</h3>
-          {/*<p className="instructions">{strInstructions}</p>*/}
+        <div className="row">
+          <div className="col-5">
+            <ReviewForm handleSubmit={handleSubmit} />
+            <ReviewsList
+              setLike={setLikeCocktailReview}
+              reviews={cocktailDetails.reviews}
+              setDislike={setDislikeCocktailReview}
+            />
+          </div>
         </div>
-        <LeaveReviews handleSubmit={handleSubmit} />
       </div>
     </section>
   );
@@ -89,5 +89,12 @@ export default connect(
   (state) => ({
     cocktailDetails: state.cocktails.cocktailDetails,
   }),
-  { addToCart, addToWishList, fetchCocktailsDetails }
+  {
+    addToCart,
+    addToWishList,
+    sendCocktailReview,
+    setLikeCocktailReview,
+    fetchCocktailsDetails,
+    setDislikeCocktailReview,
+  }
 )(CocktailDetails);

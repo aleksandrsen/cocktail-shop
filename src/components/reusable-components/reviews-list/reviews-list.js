@@ -1,8 +1,8 @@
 import React from "react";
 import "./reviews-list.scss";
 // Utils
-import { formatDate } from "../../../../utils";
-import { Icons } from "../../../../src_/icons";
+import { formatDate } from "../../../utils";
+import { Icons } from "../../../src_/icons";
 
 const ReviewsList = ({ reviews, setDislike, setLike }) => (
   <section className="reviewsList">

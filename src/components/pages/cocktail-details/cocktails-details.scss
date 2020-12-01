@@ -1,91 +1,83 @@
-.cocktail-details {
-    img.cocktail-img {
+.cocktailDetails {
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__title {
+    font-size: 38px;
+    line-height: 1em;
+  }
+
+  &__alcoholic {
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--main-color);
+  }
+
+  &__info {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    & + .cocktailDetails-info-item {
+      margin-top: 20px;
+    }
+
+    border-bottom: 1px solid var(--main-color);
+    padding: 0 15px 5px;
+
+    .detailsTitle,
+    .detailsInfo {
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .detailsTitle {
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+
+    .detailsInfo {
+      font-size: 24px;
+      color: #3c3c3c;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+    border: 1px solid #dddddd;
+
+    .wishListBtn {
+      margin-right: 16px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      svg {
         display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    .section-title {
-        font-size: 38px;
-        line-height: 1em;
-    }
-
-    .alc-type {
-        font-size: 22px;
-        font-weight: 400;
-        font-style: italic;
-        color: #ffac04;
-    }
-
-    .cocktail-info {
-        margin-bottom: 40px;
-    }
-
-    .cocktail-info-item {
-        & + .cocktail-info-item {
-            margin-top: 20px;
-        }
-
-        border-bottom: 1px solid #ffac04;
-        padding: 0 15px 5px;
-    }
-
-    .title,
-    .info {
-        font-size: 28px;
-        font-weight: 400;
-    }
-
-    .title {
-        color: #000;
-        font-weight: 500;
-    }
-
-    .info {
-        font-size: 24px;
-        color: #3c3c3c;
-    }
-
-    .actions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 15px;
-        border: 1px solid #dddddd;
+        width: 32px;
+        height: 32px;
+        color: var(--main-color);
+      }
     }
 
     .price {
-        flex-grow: 1;
-        font-size: 50px;
-        color: #ffac04;
-        margin-right: 50px;
-        line-height: 1em;
+      flex-grow: 1;
+      font-size: 50px;
+      color: var(--main-color);
+      margin-right: 50px;
+      line-height: 1em;
     }
+  }
 
-    .default-button + .default-button {
-        margin-left: 25px;
-    }
-
-    .ant-row-flex + .ant-row-flex {
-        margin-top: 50px;
-    }
-
-    .cocktail-instructions {
-        padding: 20px 15px;
-        border: 1px solid #dddddd;
-    }
-
-    .cocktail-instructions h3 {
-        font-size: 30px;
-        color: #000;
-        font-weight: 500;
-        border-bottom: 1px solid #ffac04;
-    }
-
-    .instructions {
-        text-indent: 30px;
-        font-size: 26px;
-        line-height: 1.5em;
-        color: #000;
-    }
+  .reviewFormWrapper {
+    margin: 40px auto 0;
+    max-width: 700px;
+  }
 }
