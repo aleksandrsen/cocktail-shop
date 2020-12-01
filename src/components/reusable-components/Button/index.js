@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 
-const RippleButton = ({ children, onClick, type, disabled = false }) => {
+const RippleButton = ({ children, onClick, type, disabled = false, ...rest }) => {
   const createRipple = (e) => {
     if (onClick) onClick(e);
 
@@ -34,6 +34,7 @@ const RippleButton = ({ children, onClick, type, disabled = false }) => {
       className="rippleButton"
       type={type || ""}
       disabled={disabled}
+      {...rest}
     >
       {children}
     </button>

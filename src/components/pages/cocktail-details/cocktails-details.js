@@ -8,6 +8,11 @@ import {
   fetchCocktailsDetails,
   setDislikeCocktailReview,
 } from "../../../actions/cocktails";
+import {
+  addItemToCard,
+  addItemToWishList,
+  deleteItemFromWishList,
+} from "../../../actions/user";
 // Components
 import SmallSpinner from "../../spinner";
 import RippleButton from "../../reusable-components/Button";
@@ -19,10 +24,13 @@ import { Icons } from "../../../src_/icons";
 import { useParams } from "react-router-dom";
 
 const CocktailDetails = ({
+  addItemToCard,
   cocktailDetails,
+  addItemToWishList,
   sendCocktailReview,
   setLikeCocktailReview,
   fetchCocktailsDetails,
+  deleteItemFromWishList,
   setDislikeCocktailReview,
 }) => {
   const { id } = useParams();
@@ -32,6 +40,19 @@ const CocktailDetails = ({
   }, []);
 
   const handleSubmit = (data) => sendCocktailReview(id, data);
+
+  const handleCard = ({ target: { dataset } }) => {
+    const { id, name, price, previewSrc } = cocktailDetails;
+
+    const data = {
+      id,
+      name,
+      price,
+      previewSrc,
+    };
+    if (dataset.name === "card") return addItemToCard(data);
+    addItemToWishList(data);
+  };
 
   return !cocktailDetails ? (
     <SmallSpinner />
@@ -65,8 +86,16 @@ const CocktailDetails = ({
             </div>
             <div className="cocktailDetails__actions">
               <div className="price">{cocktailDetails.price}$</div>
-              <button className="wishListBtn">{Icons.wishList}</button>
-              <RippleButton>Add to cart</RippleButton>
+              <button
+                className="wishListBtn"
+                onClick={handleCard}
+                data-name="wishList"
+              >
+                {Icons.wishList}
+              </button>
+              <RippleButton onClick={handleCard} data-name="card">
+                Add to cart
+              </RippleButton>
             </div>
           </div>
         </div>
@@ -92,9 +121,12 @@ export default connect(
   {
     addToCart,
     addToWishList,
+    addItemToCard,
+    addItemToWishList,
     sendCocktailReview,
     setLikeCocktailReview,
     fetchCocktailsDetails,
+    deleteItemFromWishList,
     setDislikeCocktailReview,
   }
 )(CocktailDetails);
