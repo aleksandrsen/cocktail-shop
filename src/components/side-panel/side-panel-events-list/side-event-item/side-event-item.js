@@ -2,8 +2,7 @@ import React from "react";
 import "./side-event-item.scss";
 // Utils
 import { Icons } from "../../../../src_/icons";
-import formatDate from "../../../../functions/format-date";
-import cutTextContent from "../../../../functions/cut-text-content";
+import {formatDate, cutTextContent} from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 

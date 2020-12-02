@@ -21,7 +21,7 @@ import BartenderDetails from "../pages/bartender-details";
 import BlogDetails from "../pages/blog-details/blog-details";
 import MusicEvents from "../pages/music-events/music-events";
 // Utils
-import { routes } from "../../routes";
+import { routes } from "../../config/routes";
 
 const App = (props) => (
   <>

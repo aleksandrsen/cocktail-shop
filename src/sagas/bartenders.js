@@ -10,7 +10,7 @@ import {
   SEND_MESSAGE_TO_BARTENDER_SUCCESS,
   SEND_MESSAGE_TO_BARTENDER_FAIL,
 } from "../constants/bartenders";
-import callApi from "../api";
+import callApi from "../config/api";
 
 const wait = () =>
   new Promise((resolve) => setTimeout(() => resolve({}), 1500));

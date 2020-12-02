@@ -1,11 +1,12 @@
 import React from "react";
 import "./header.scss";
-import logo from "../../img/logo.png";
+// Utils
+import logo from "../../src_/img/logo.png";
 // Components
 import MainMenu from "./main-menu";
 import ShoppingCart from "./shopping-cart";
 import WishList from "./wish-list";
-import Login from "../auth/Login";
+import Login from "../auth/login";
 
 const Header = (props) => (
   <header className="header">

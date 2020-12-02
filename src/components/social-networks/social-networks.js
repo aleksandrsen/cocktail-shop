@@ -1,6 +1,6 @@
 import React from "react";
 import "./social-networks.scss";
-import { SocialData } from "../../app_constants";
+import { SocialData } from "../../config/social";
 
 const SocialNetworks = ({ exclude }) => (
   <div className="socialNetworks">

@@ -18,7 +18,7 @@ import {
   SEND_COCKTAIL_REVIEW_REQUEST,
   SEND_COCKTAIL_REVIEW_SUCCESS,
 } from "../constants/cocktails";
-import callApi from "../api";
+import callApi from "../config/api";
 import { LIKE_BLOG_POST_REVIEW_FAIL } from "../constants/blog";
 
 // workers

@@ -7,7 +7,7 @@ import {
   FETCH_GALLERY_PHOTOS_SUCCESS,
   FETCH_GALLERY_PHOTOS_FAIL,
 } from "../constants/gallery";
-import callApi from "../api";
+import callApi from "../config/api";
 
 // workers
 function* fetchInstagramPhotosWorker() {

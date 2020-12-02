@@ -1,8 +1,10 @@
 import React from "react";
 import "./footer.scss";
-import logo from "../../img/logo.png";
-import SocialNetworks from "../social-networks";
+// Utils
+import logo from "../../src_/img/logo.png";
 import { Icons } from "../../src_/icons";
+// Components
+import SocialNetworks from "../social-networks";
 
 const Footer = (props) => (
   <footer className="mainFooter">

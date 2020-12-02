@@ -12,7 +12,7 @@ import {
   FETCH_UPCOMING_EVENT_REQUEST,
   FETCH_UPCOMING_EVENT_SUCCESS,
 } from "../constants/events";
-import callApi from "../api";
+import callApi from "../config/api";
 
 // workers
 function* upcomingEventWorker() {

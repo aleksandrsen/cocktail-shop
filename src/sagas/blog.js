@@ -19,7 +19,7 @@ import {
   DISLIKE_BLOG_POST_REVIEW_SUCCESS,
   DISLIKE_BLOG_POST_REVIEW_FAIL,
 } from "../constants/blog";
-import callApi from "../api";
+import callApi from "../config/api";
 
 // workers
 function* fetchLatestBlogPostsWorker() {
