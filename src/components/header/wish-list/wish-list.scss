@@ -1,11 +1,21 @@
-.wish-list {
-    display: flex;
-    align-items: center;
-    svg {
-        display: block;
-        width: 20px;
-        height: 20px;
-        color: var(--main-color);
-        cursor: pointer;
-    }
+.wishList {
+  display: flex;
+  align-items: center;
+  position: relative;
+  svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+    color: var(--main-color);
+    cursor: pointer;
+  }
+
+  &__count {
+    position: absolute;
+    top: -18px;
+    left: -20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--main-color);
+  }
 }

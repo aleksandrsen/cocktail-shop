@@ -1,23 +1,23 @@
 import {
-  ADD_ITEM_TO_CARD,
-  ADD_ITEM_TO_WISH_LIST,
-  DELETE_ITEM_FROM_CARD,
-  DELETE_ITEM_FROM_WISH_LIST,
+  ADD_ITEM_TO_CARD_SUCCESS,
+  ADD_ITEM_TO_WISH_LIST_SUCCESS,
+  DELETE_ITEM_FROM_CARD_SUCCESS,
+  DELETE_ITEM_FROM_WISH_LIST_SUCCESS,
 } from "../constants/user";
 
 const defaultState = {
   userInfo: null,
-  card: null,
-  wishList: null,
+  card: {},
+  wishList: {},
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_ITEM_TO_CARD:
-    case DELETE_ITEM_FROM_CARD:
+    case ADD_ITEM_TO_CARD_SUCCESS:
+    case DELETE_ITEM_FROM_CARD_SUCCESS:
       return { ...state, card: action.payload };
-    case ADD_ITEM_TO_WISH_LIST:
-    case DELETE_ITEM_FROM_WISH_LIST:
+    case ADD_ITEM_TO_WISH_LIST_SUCCESS:
+    case DELETE_ITEM_FROM_WISH_LIST_SUCCESS:
       return { ...state, wishList: action.payload };
 
     default:

@@ -59,6 +59,7 @@
       border: none;
       outline: none;
       cursor: pointer;
+
       svg {
         display: block;
         width: 32px;
@@ -73,6 +74,11 @@
       color: var(--main-color);
       margin-right: 50px;
       line-height: 1em;
+    }
+
+    .rippleButton:disabled {
+      color: var(--main-color);
+      background-color: var(--secondary-color);
     }
   }
 

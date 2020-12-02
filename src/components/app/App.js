@@ -30,14 +30,14 @@ const App = (props) => (
       <Switch>
         <Route path={routes.home.link} exact component={Home} />
         <Route path={routes.about.link} exact component={About} />
-        <Route path={routes.cocktails.link} exact component={Cocktails} />
-        <Route path={routes.cocktails.details} exact component={CocktailDetails} />
-        <Route path={routes.bartenders.link} exact component={Bartenders} />
+        <Route path={routes.cocktails.details} component={CocktailDetails} />
+        <Route path={routes.cocktails.link} component={Cocktails} />
         <Route path={routes.bartenders.details} component={BartenderDetails} />
-        <Route path={routes.musicEvents.link} exact component={MusicEvents} />
+        <Route path={routes.bartenders.link} component={Bartenders} />
         <Route path={routes.musicEvents.details} component={EventDetails} />
-        <Route path={routes.blog.link} exact component={BlogPage} />
+        <Route path={routes.musicEvents.link} component={MusicEvents} />
         <Route path={routes.blog.details} component={BlogDetails} />
+        <Route path={routes.blog.link} component={BlogPage} />
         <Route path={routes.contact.link} exact component={Contacts} />
       </Switch>
     </main>

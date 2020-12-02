@@ -4,13 +4,14 @@
   outline: 0;
   cursor: pointer;
   font-size: 16px;
-  padding: 10px 35px;
+  padding: 10px 16px;
   background-color: var(--secondary-color);
   color: var(--button-text-color);
   text-transform: uppercase;
   border: 1px solid var(--main-color);
   transition: 0.3s;
   border-radius: 5px;
+  min-width: 140px;
 
   &:hover {
     color: #000;

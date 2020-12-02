@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import "./cocktails-details.scss";
 // Actions
-import { addToCart, addToWishList } from "../../../actions";
+import {
+  addItemToCard,
+  addItemToWishList,
+  deleteItemFromWishList,
+} from "../../../actions/user";
 import {
   sendCocktailReview,
   setLikeCocktailReview,
   fetchCocktailsDetails,
   setDislikeCocktailReview,
 } from "../../../actions/cocktails";
-import {
-  addItemToCard,
-  addItemToWishList,
-  deleteItemFromWishList,
-} from "../../../actions/user";
 // Components
 import SmallSpinner from "../../spinner";
 import RippleButton from "../../reusable-components/Button";
@@ -24,6 +23,8 @@ import { Icons } from "../../../src_/icons";
 import { useParams } from "react-router-dom";
 
 const CocktailDetails = ({
+  card,
+  wishList,
   addItemToCard,
   cocktailDetails,
   addItemToWishList,
@@ -51,6 +52,9 @@ const CocktailDetails = ({
       previewSrc,
     };
     if (dataset.name === "card") return addItemToCard(data);
+
+    if (wishList[id]) return deleteItemFromWishList(id);
+
     addItemToWishList(data);
   };
 
@@ -91,10 +95,14 @@ const CocktailDetails = ({
                 onClick={handleCard}
                 data-name="wishList"
               >
-                {Icons.wishList}
+                {wishList[cocktailDetails.id] ? Icons.heart : Icons.wishList}
               </button>
-              <RippleButton onClick={handleCard} data-name="card">
-                Add to cart
+              <RippleButton
+                onClick={handleCard}
+                data-name="card"
+                disabled={card[cocktailDetails.id]}
+              >
+                {card[cocktailDetails.id] ? "Item in cart" : "Add to cart"}
               </RippleButton>
             </div>
           </div>
@@ -116,11 +124,11 @@ const CocktailDetails = ({
 
 export default connect(
   (state) => ({
+    card: state.user.card,
+    wishList: state.user.wishList,
     cocktailDetails: state.cocktails.cocktailDetails,
   }),
   {
-    addToCart,
-    addToWishList,
     addItemToCard,
     addItemToWishList,
     sendCocktailReview,

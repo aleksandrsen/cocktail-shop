@@ -1,12 +1,21 @@
 import React from "react";
 import "./shopping-cart.scss";
-import {Icons} from "../../../src_/icons";
+// Utils
+import { connect } from "react-redux";
+import { Icons } from "../../../src_/icons";
 
-const ShoppingCart = ({ amount }) => (
-  <div className="shopping-cart">
+const ShoppingCart = ({ goods }) => (
+  <div className="shoppingCart">
     {Icons.shoppingCard}
-    {amount !== 0 && <span className="count">{amount}</span>}
+    {!!Object.values(goods).length && (
+      <span className="shoppingCart__count">{Object.values(goods).length}</span>
+    )}
   </div>
 );
 
-export default ShoppingCart;
+export default connect(
+  (state) => ({
+    goods: state.user.card,
+  }),
+  null
+)(ShoppingCart);
