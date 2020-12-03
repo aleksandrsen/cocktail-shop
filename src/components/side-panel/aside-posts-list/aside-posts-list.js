@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import "./aside-posts-list.scss";
+// Utils
 import { connect } from "react-redux";
 // Actions
 import { fetchBlogPosts } from "../../../actions/blog";
 // Components
-import AsidePostItem from "./aside-post-item";
 import SmallSpinner from "../../spinner";
+import AsidePostItem from "./aside-post-item";
 
 const AsidePostsList = ({ fetchBlogPosts, blogPosts }) => {
   useEffect(() => {

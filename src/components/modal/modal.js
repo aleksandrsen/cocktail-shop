@@ -1,24 +1,23 @@
 import React from "react";
 import "./modal.scss";
-import {Modal as ModalWindow}  from "antd";
+// Components
+import { Modal as ModalWindow } from "antd";
 
-export default function Modal(props) {
-    let {visible, setVisible, okText} = props;
+const Modal = ({ visible, setVisible, okText, children }) => (
+  <div>
+    <ModalWindow
+      className="modal"
+      title="Login"
+      centered
+      visible={visible}
+      onOk={() => setVisible(false)}
+      onCancel={() => setVisible(false)}
+      bodyStyle={{ overflow: "auto" }}
+      okText={okText}
+    >
+      {children}
+    </ModalWindow>
+  </div>
+);
 
-    return (
-        <div>
-            <ModalWindow
-                className='modal'
-                title="Login"
-                centered
-                visible={visible}
-                onOk={() => setVisible(false)}
-                onCancel={() => setVisible(false)}
-                bodyStyle={{overflow: 'auto'}}
-                okText={okText}
-            >
-                {props.children}
-            </ModalWindow>
-        </div>
-    )
-}
+export default Modal;

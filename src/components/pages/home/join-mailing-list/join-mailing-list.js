@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./join-mailing-list.scss";
-import RippleButton from "../../../reusable-components/Button";
+// Components
+import RippleButton from "../../../reusable-components/ripple-button";
 
 const JoinMailingList = (props) => {
   const [email, setEmail] = useState("");

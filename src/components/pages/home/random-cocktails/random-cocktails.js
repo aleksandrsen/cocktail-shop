@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 // Actions
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
-import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
 import { Carousel } from "antd";
 import SmallSpinner from "../../../spinner";
+import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
 
 const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
   useEffect(() => {

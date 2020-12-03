@@ -1,10 +1,10 @@
 import React from "react";
-import "./about-us-section.scss";
+import "./about-us.scss";
 // Components
 import { Link } from "react-router-dom";
 import newBottle from "../../../../src_/img/new-bottle.jpg";
 
-const AboutUsSection = (props) => (
+const AboutUs = (props) => (
   <div className="default-section about">
     <div className="container">
       <h2 className="section-title">The best of history</h2>
@@ -39,4 +39,4 @@ const AboutUsSection = (props) => (
   </div>
 );
 
-export default AboutUsSection;
+export default AboutUs;

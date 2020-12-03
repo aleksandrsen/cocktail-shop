@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.scss";
+import "./ripple-button.scss";
 
 const RippleButton = ({ children, onClick, type, disabled = false, ...rest }) => {
   const createRipple = (e) => {

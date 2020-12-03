@@ -1,9 +1,10 @@
 import React from "react";
+// Components
 import Map from "./map";
 import ContactUs from "./contact-us";
 import GetInTouch from "./get-in-touch";
 
-const ContactPage = (props) => (
+const Contact = (props) => (
   <>
     <GetInTouch />
     <Map />
@@ -11,4 +12,4 @@ const ContactPage = (props) => (
   </>
 );
 
-export default ContactPage;
+export default Contact;

@@ -1,5 +1,6 @@
 import React from "react";
 import "./next-event-item.scss";
+// Utils
 import { Link } from "react-router-dom";
 import { formatDate, cutTextContent } from "../../../../../utils";
 

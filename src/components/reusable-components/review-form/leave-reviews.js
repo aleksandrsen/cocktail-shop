@@ -3,8 +3,8 @@ import "./leave-reviews.scss";
 // Components
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import TextInput from "../TextInput";
-import RippleButton from "../Button";
+import TextInput from "../text-input";
+import RippleButton from "../ripple-button";
 
 const ReviewForm = ({ handleSubmit }) => (
   <div className="reviewFormWrapper">

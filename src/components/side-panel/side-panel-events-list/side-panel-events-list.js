@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 // Actions
 import { fetchEventsList } from "../../../actions/events";
 // Components
-import SideEventItem from "./side-event-item";
 import SmallSpinner from "../../spinner";
+import SideEventItem from "./side-event-item";
 
 const SidePanelEventsList = ({ fetchEventsList, events }) => {
   useEffect(() => {

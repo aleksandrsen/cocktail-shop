@@ -1,6 +1,8 @@
 import React from "react";
 import "./main-slider.scss";
+// Components
 import { Carousel } from "antd";
+// Utils
 import slides from "../../../../src_/img/main-slider-slides";
 
 const MainSlider = (props) => (

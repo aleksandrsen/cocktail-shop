@@ -1,8 +1,10 @@
 import React from "react";
 import "./blog-news-item.scss";
-import { cutTextContent, formatDate } from "../../../../../utils";
-import { Link } from "react-router-dom";
+// Utils
 import { Icons } from "../../../../../src_/icons";
+import { cutTextContent, formatDate } from "../../../../../utils";
+// Components
+import { Link } from "react-router-dom";
 
 const BlogNewsItem = ({
   imgLeft,

@@ -1,6 +1,8 @@
 import React from "react";
 import "./main-menu.scss";
+// Utils
 import { routes } from "../../../config/routes";
+// Components
 import { NavLink } from "react-router-dom";
 
 const MainMenu = (props) => (

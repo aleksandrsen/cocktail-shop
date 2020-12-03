@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./index.scss";
+import "./text-input.scss";
+// Utils
 import { useField } from "formik";
 
 const TextInput = ({ name, type, placeholder, textarea }) => {

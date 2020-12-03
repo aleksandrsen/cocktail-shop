@@ -3,8 +3,8 @@ import "./contact-us.scss";
 // Components
 import * as Yup from "yup";
 import { Form, Formik } from "formik";
-import TextInput from "../../../reusable-components/TextInput";
-import RippleButton from "../../../reusable-components/Button";
+import TextInput from "../../../reusable-components/text-input";
+import RippleButton from "../../../reusable-components/ripple-button";
 // Actions
 import { userSendMessage } from "../../../../actions/user";
 // Utils

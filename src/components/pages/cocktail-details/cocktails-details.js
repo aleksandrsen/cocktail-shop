@@ -14,9 +14,9 @@ import {
 } from "../../../actions/cocktails";
 // Components
 import SmallSpinner from "../../spinner";
-import RippleButton from "../../reusable-components/Button";
 import ReviewForm from "../../reusable-components/review-form";
 import ReviewsList from "../../reusable-components/reviews-list";
+import RippleButton from "../../reusable-components/ripple-button";
 // Utils
 import { connect } from "react-redux";
 import { Icons } from "../../../src_/icons";

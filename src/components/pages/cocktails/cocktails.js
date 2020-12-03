@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import "./cocktails-page.scss";
+import "./cocktails.scss";
 // Components
 import CocktailsList from "./cocktails-list";
-import CocktailsFilters from "./cocktails-filters";
 import CocktailsSelect from "./cocktails-select";
+import CocktailsFilters from "./cocktails-filters";
 // Utils
 import { Icons } from "../../../src_/icons";
 
-const CocktailsPage = (props) => {
+const Cocktails = (props) => {
   const [filters, setFilters] = useState({});
   const [sortParam, setSortParam] = useState("");
   const [searchValue, setSearchValue] = useState("");
@@ -56,4 +56,4 @@ const CocktailsPage = (props) => {
   );
 };
 
-export default CocktailsPage;
+export default Cocktails;

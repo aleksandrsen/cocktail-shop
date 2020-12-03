@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import "./bartener-details.scss";
+// Utils
 import { connect } from "react-redux";
 // Actions
 import { fetchBartendersDetails } from "../../../actions/bartenders";
 // Components
 import SmallSpinner from "../../spinner";
 import TalkToBartender from "./talk-to-bartender";
-import RippleButton from "../../reusable-components/Button";
+import RippleButton from "../../reusable-components/ripple-button";
 
 const BartenderDetails = ({
   match: {

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import "./logOut-logIn-btn.scss";
-import { connect } from "react-redux";
-// Actions
+import "./login.scss";
 // Components
 import Modal from "../../modal";
 import LoginForm from "../login-form";
 
-const LogOutLogInBtn = ({ isLogin, userLogIn, userLogOut }) => {
+const Login = ({ isLogin, userLogIn, userLogOut }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -21,4 +19,4 @@ const LogOutLogInBtn = ({ isLogin, userLogIn, userLogOut }) => {
   );
 };
 
-export default LogOutLogInBtn
+export default Login

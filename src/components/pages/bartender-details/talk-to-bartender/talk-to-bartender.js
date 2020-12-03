@@ -4,8 +4,8 @@ import "./talk-to-bartender.scss";
 import { sendMessageToBartender } from "../../../../actions/bartenders";
 // Components
 import { Formik, Form } from "formik";
-import TextInput from "../../../reusable-components/TextInput";
-import RippleButton from "../../../reusable-components/Button";
+import TextInput from "../../../reusable-components/text-input";
+import RippleButton from "../../../reusable-components/ripple-button";
 import * as Yup from "yup";
 // Utils
 import { connect } from "react-redux";

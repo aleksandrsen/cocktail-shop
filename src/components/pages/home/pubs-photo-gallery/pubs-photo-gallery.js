@@ -5,7 +5,6 @@ import photo2 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-2.
 import photo3 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-3.jpg";
 import photo4 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-4.jpg";
 import photo5 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-5.jpg";
-
 // Components
 import JoinMailingList from "../join-mailing-list";
 

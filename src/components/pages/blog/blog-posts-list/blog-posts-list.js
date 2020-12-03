@@ -5,7 +5,7 @@ import { fetchBlogPosts } from "../../../../actions/blog";
 // Components
 import SmallSpinner from "../../../spinner";
 import BlogPostItem from "./blog-post-item";
-import RippleButton from "../../../reusable-components/Button";
+import RippleButton from "../../../reusable-components/ripple-button";
 // Utils
 import { connect } from "react-redux";
 

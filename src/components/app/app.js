@@ -1,25 +1,22 @@
 import React from "react";
-// Styles
-import "./App.scss";
-import "../../src_/var.scss";
-import "../../src_/grid.scss";
-import "../../src_/common.scss";
+import "./app.scss";
 // Components
 import Header from "../header";
 import Footer from "../footer";
 import { Route, Switch } from "react-router-dom";
 // Pages
-import Home from "../pages/home/home";
-import About from "../pages/about/about";
+import Home from "../pages/home";
+import About from "../pages/about";
+import BlogPage from "../pages/blog";
+import Contact from "../pages/contact";
+import Cocktails from "../pages/cocktails";
 import Bartenders from "../pages/bartenders";
-import BlogPage from "../pages/blog/blog-page";
+import MusicEvents from "../pages/music-events";
+import BlogDetails from "../pages/blog-details";
 import EventDetails from "../pages/event-details";
-import Contacts from "../pages/contact/contact-page";
 import CocktailDetails from "../pages/cocktail-details";
-import Cocktails from "../pages/cocktails/cocktails-page";
 import BartenderDetails from "../pages/bartender-details";
-import BlogDetails from "../pages/blog-details/blog-details";
-import MusicEvents from "../pages/music-events/music-events";
+
 // Utils
 import { routes } from "../../config/routes";
 
@@ -38,7 +35,7 @@ const App = (props) => (
         <Route path={routes.musicEvents.link} component={MusicEvents} />
         <Route path={routes.blog.details} component={BlogDetails} />
         <Route path={routes.blog.link} component={BlogPage} />
-        <Route path={routes.contact.link} exact component={Contacts} />
+        <Route path={routes.contact.link} exact component={Contact} />
       </Switch>
     </main>
     <Footer />

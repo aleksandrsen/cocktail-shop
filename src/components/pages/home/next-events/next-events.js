@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import "./next-events.scss";
+// Utils
+import { connect } from "react-redux";
 // Actions
 import { fetchNextEvents } from "../../../../actions/events";
 // Components
-import NextEventItem from "./next-event-item";
 import SmallSpinner from "../../../spinner";
+import NextEventItem from "./next-event-item";
 
 const NextEvents = ({ events, fetchNextEvents }) => {
   useEffect(() => {

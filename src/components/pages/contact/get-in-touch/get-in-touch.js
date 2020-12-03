@@ -1,5 +1,6 @@
 import React from "react";
 import "./get-in-touch.scss";
+// Utils
 import { Icons } from "../../../../src_/icons";
 
 const GetInTouch = (props) => (

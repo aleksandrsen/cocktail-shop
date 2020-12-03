@@ -1,5 +1,6 @@
 import React from "react";
 import "./social-networks.scss";
+// Utils
 import { SocialData } from "../../config/social";
 
 const SocialNetworks = ({ exclude }) => (

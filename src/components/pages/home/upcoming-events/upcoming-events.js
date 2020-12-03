@@ -6,11 +6,11 @@ import { fetchUpcomingEvent } from "../../../../actions/events";
 import { connect } from "react-redux";
 import { cutTextContent, formatDate } from "../../../../utils";
 // Components
-import EventCounter from "./event-counter";
-import RippleButton from "../../../reusable-components/Button";
-import SmallSpinner from "../../../spinner";
 import { Link } from "react-router-dom";
-import {Icons} from "../../../../src_/icons";
+import EventCounter from "./event-counter";
+import SmallSpinner from "../../../spinner";
+import { Icons } from "../../../../src_/icons";
+import RippleButton from "../../../reusable-components/ripple-button";
 
 const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
   useEffect(() => {

@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 import { fetchEventsList } from "../../../../actions/events";
 // Components
 import SmallSpinner from "../../../spinner";
-import RippleButton from "../../../reusable-components/Button";
-import MusicEventItem from "../music-event-item/music-event-item";
+import MusicEventItem from "../music-event-item";
+import RippleButton from "../../../reusable-components/ripple-button";
 
 const MusicEventsList = ({ fetchEventsList, events }) => {
   useEffect(() => {
