@@ -10,7 +10,7 @@ import { ScrollTop } from "./utils";
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <ScrollTop />
+      {/*<ScrollTop />*/}
       <App />
     </Router>
   </Provider>,

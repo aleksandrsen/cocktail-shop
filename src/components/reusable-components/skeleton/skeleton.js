@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./skeleton.scss";
 
-const Skeleton = ({style}) => <div style={style} className="skeleton" />
+const ImgSkeleton = ({ skeletonStyle, src, title, classes }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
 
-export default Skeleton;
+  return (
+    <>
+      {!isLoaded && <div style={skeletonStyle} className="imgSkeleton" />}
+      <img
+        style={!isLoaded ? { width: 0, height: 0 } : {}}
+        className={classes.join(" ")}
+        src={src}
+        alt={title}
+        onLoad={(e) => setIsLoaded(true)}
+        onError={(e) => setIsLoaded(true)}
+      />
+    </>
+  );
+};
+
+export default ImgSkeleton;

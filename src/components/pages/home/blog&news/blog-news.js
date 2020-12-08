@@ -6,7 +6,6 @@ import { fetchLatestBlogPosts } from "../../../../actions/blog";
 import BlogNewsItem from "./blog&news-item";
 // Utils
 import { connect } from "react-redux";
-import SmallSpinner from "../../../spinner";
 
 const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
   useEffect(() => {
@@ -27,7 +26,10 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
               <BlogNewsItem key={post.id} imgLeft={idx % 2} post={post} />
             ))
           ) : (
-            <SmallSpinner />
+            <>
+              <div className="blogNewsItemCard col col-10" />
+              <div className="blogNewsItemCard reverse col col-10" />
+            </>
           )}
         </div>
       </div>

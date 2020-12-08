@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./blog-news-item.scss";
 // Utils
 import { Icons } from "../../../../../src_/icons";
 import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
 import { Link } from "react-router-dom";
+import ImgSkeleton from "../../../../reusable-components/skeleton";
 
 const BlogNewsItem = ({
   imgLeft,
@@ -15,7 +16,7 @@ const BlogNewsItem = ({
   });
 
   return (
-    <div className="col col-10 blogNewsItem">
+    <div className="col col-12 blogNewsItem">
       <div className="row center">
         <div className="col col-5" style={{ order: imgLeft ? 1 : 0 }}>
           <div className="blogNewsItem__info">
@@ -54,7 +55,12 @@ const BlogNewsItem = ({
           </div>
         </div>
         <div className="col col-5">
-          <img className="blogNewsItem__preview" src={previewSrc} alt={title} />
+          <ImgSkeleton
+            skeletonStyle={{ height: "250px" }}
+            src={previewSrc}
+            title={title}
+            classes={["blogNewsItem__preview"]}
+          />
         </div>
       </div>
     </div>

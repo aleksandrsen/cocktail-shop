@@ -1,4 +1,4 @@
-.skeleton {
+.imgSkeleton {
   background-color: lightgrey;
   &:empty::after {
     content: "";
@@ -15,11 +15,11 @@
     background-position: -150%;
     background-size: 55% 100%;
     background-repeat: no-repeat;
-    animation: loadingSkeleton 1.5s infinite;
+    animation: imgSkeletonLoading 1.5s infinite;
   }
 }
 
-@keyframes loadingSkeleton {
+@keyframes imgSkeletonLoading {
   to {
     background-position: 250% 0, 20px 20px, 20px 120px, 0 0;
   }
