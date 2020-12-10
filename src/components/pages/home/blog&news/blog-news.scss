@@ -1,9 +1,9 @@
 .blogNewsHome {
-  .blogNewsItemCard {
+  .blogNewsItemCardSkeleton {
     padding: 0;
-    $card-height: 230px;
+    $card-height: 280px;
     $card-padding: 20px;
-    & + .blogNewsItemCard {
+    & + .blogNewsItemCardSkeleton {
       margin-top: 30px;
     }
 

@@ -27,8 +27,8 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
             ))
           ) : (
             <>
-              <div className="blogNewsItemCard col col-10" />
-              <div className="blogNewsItemCard reverse col col-10" />
+              <div className="blogNewsItemCardSkeleton col col-10" />
+              <div className="blogNewsItemCardSkeleton reverse col col-10" />
             </>
           )}
         </div>
