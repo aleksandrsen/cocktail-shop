@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./skeleton.scss";
+import "./img-skeleton.scss";
 import semantic from "../../../src_/img/semantic.png";
 
 const ImgSkeleton = ({ skeletonStyle, src, title, classes }) => {

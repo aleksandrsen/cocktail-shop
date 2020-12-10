@@ -9,8 +9,9 @@ import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import EventCounter from "./event-counter";
+import ImgSkeleton from "../../../reusable-components/img-skeleton";
 import RippleButton from "../../../reusable-components/ripple-button";
-import ImgSkeleton from "../../../reusable-components/skeleton";
+import FieldSkeleton from "../../../reusable-components/field-skeleton";
 
 const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
   useEffect(() => {
@@ -30,32 +31,75 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
           </p>
         </div>
         <div className="row justify-content-center">
-          {event ? (
-            <div className="col col-4 upcomingEvent__info">
-              <h3 className="upcomingEvent__title">{event.title}</h3>
-              <div className="upcomingEvent__date">
-                {Icons.calendar}
-                {formatDate(event.dateStart)}
-              </div>
-              <p className="default-text">
-                {cutTextContent(event.description, 100)}
-              </p>
+          <div className="col col-4 upcomingEvent__info">
+            <h3 className="upcomingEvent__title">{event?.title}</h3>
+            <div className="upcomingEvent__date">
+              {Icons.calendar}
+              {event?.dateStart ? (
+                formatDate(event.dateStart)
+              ) : (
+                <FieldSkeleton
+                  styles={{
+                    height: "30px",
+                    width: "50%",
+                  }}
+                />
+              )}
+            </div>
+            <p className="default-text">
+              {event?.description ? (
+                cutTextContent(event.description, 100)
+              ) : (
+                <FieldSkeleton
+                  styles={{
+                    height: "70px",
+                    width: "100%",
+                  }}
+                />
+              )}
+            </p>
+            {event?.dateStart ? (
               <EventCounter date={event.dateStart} />
-              <div className="upcomingEvent__actions">
+            ) : (
+              <FieldSkeleton
+                styles={{
+                  height: "80px",
+                  width: "100%",
+                  marginBottom: "20px",
+                }}
+              />
+            )}
+            <div className="upcomingEvent__actions">
+              {event?.id ? (
                 <Link to={"/music-events/"} className="default-button">
                   Events
                 </Link>
+              ) : (
+                <FieldSkeleton
+                  styles={{
+                    height: "30px",
+                    width: "20%",
+                  }}
+                />
+              )}
+              {event?.id ? (
                 <RippleButton>Book on event</RippleButton>
-              </div>
+              ) : (
+                <FieldSkeleton
+                  styles={{
+                    height: "30px",
+                    width: "20%",
+                    marginLeft: "16px",
+                  }}
+                />
+              )}
             </div>
-          ) : (
-            <div className="upcomingEvent__skeleton col col-4" />
-          )}
+          </div>
           <div className="col col-6 upcomingEvent__img">
             <ImgSkeleton
               src={event?.previewSrc}
               title={event?.title}
-              skeletonStyle={{ height: "100%" }}
+              skeletonStyle={{ minHeight: "100%" }}
             />
           </div>
         </div>

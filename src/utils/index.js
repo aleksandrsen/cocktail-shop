@@ -19,6 +19,7 @@ export const cutTextContent = (text, maxLength) => {
 };
 
 export const formatDate = (date, optionsObj) => {
+  if (!date) return null;
   const defaultOptions = {
     year: "numeric",
     month: "short",

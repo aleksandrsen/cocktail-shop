@@ -21,16 +21,13 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
           veniam vero voluptates. Aliasamet doloribus fuga impedit modi quia
         </p>
         <div className="row center">
-          {blogPosts && blogPosts.length ? (
-            blogPosts.map((post, idx) => (
-              <BlogNewsItem key={post.id} imgLeft={idx % 2} post={post} />
-            ))
-          ) : (
-            <>
-              <div className="blogNewsItemCardSkeleton col col-10" />
-              <div className="blogNewsItemCardSkeleton reverse col col-10" />
-            </>
-          )}
+          {blogPosts?.length
+            ? blogPosts.map((post, idx) => (
+                <BlogNewsItem key={post.id} imgLeft={idx % 2} post={post} />
+              ))
+            : [0, 1].map((num) => (
+                <BlogNewsItem key={num} imgLeft={num % 2} post={null} />
+              ))}
         </div>
       </div>
     </div>
