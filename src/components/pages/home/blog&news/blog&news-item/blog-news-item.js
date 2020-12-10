@@ -56,9 +56,9 @@ const BlogNewsItem = ({
         </div>
         <div className="col col-5">
           <ImgSkeleton
-            skeletonStyle={{ height: "250px" }}
-            src={previewSrc}
             title={title}
+            src={previewSrc}
+            skeletonStyle={{ height: "250px" }}
             classes={["blogNewsItem__preview"]}
           />
         </div>

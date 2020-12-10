@@ -53,8 +53,8 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
           )}
           <div className="col col-6 upcomingEvent__img">
             <ImgSkeleton
-              src={event ? event.previewSrc : ""}
-              title={event ? event.title : ""}
+              src={event?.previewSrc}
+              title={event?.title}
               skeletonStyle={{ height: "100%" }}
             />
           </div>
