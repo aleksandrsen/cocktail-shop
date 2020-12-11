@@ -1,47 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./pubs-photo-gallery.scss";
-import photo1 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-1.jpg";
-import photo2 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-2.jpg";
-import photo3 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-3.jpg";
-import photo4 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-4.jpg";
-import photo5 from "../../../../src_/img/pubs-photo-gallery/photo-gallery-img-5.jpg";
+// Actions
+import { fetchGalleryPhotos } from "../../../../actions/gallery";
+// Utils
+import { connect } from "react-redux";
 // Components
 import JoinMailingList from "../join-mailing-list";
+import ImgSkeleton from "../../../reusable-components/img-skeleton";
+import FieldSkeleton from "../../../reusable-components/field-skeleton";
 
-const PubsPhotoGallery = (props) => (
-  <div className="default-section pubGallery">
-    <div className="container">
-      <h2 className="section-title">Pubs photo gallery</h2>
-      <p className="default-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi, aut
-        distinctio dolore fugiat itaque nulla, obcaecati omnis perspiciatis
-        placeat quas quasi, quia quos sint voluptatem! Aperiam, debitis minima.
-        Accusamus
-      </p>
-    </div>
-    <div className="row">
-      <div className="col col-6">
-        <div className="row">
-          <div className="col col-6">
-            <img src={photo1} alt="photo-gallery-img" />
-          </div>
-          <div className="col col-6">
-            <img src={photo2} alt="photo-gallery-img" />
-          </div>
-          <div className="col col-6">
-            <img src={photo3} alt="photo-gallery-img" />
-          </div>
-          <div className="col col-6">
-            <img src={photo4} alt="photo-gallery-img" />
+const PubsPhotoGallery = ({ galleryPhotos, fetchGalleryPhotos }) => {
+  useEffect(() => {
+    fetchGalleryPhotos();
+  }, []);
+
+  return (
+    <div className="default-section pubGallery">
+      <div className="container">
+        <h2 className="section-title">Pubs photo gallery</h2>
+        <p className="default-text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi, aut
+          distinctio dolore fugiat itaque nulla, obcaecati omnis perspiciatis
+          placeat quas quasi, quia quos sint voluptatem! Aperiam, debitis
+          minima. Accusamus
+        </p>
+      </div>
+      <div className="row">
+        <div className="col col-6">
+          <div className="row">
+            {galleryPhotos?.length
+              ? galleryPhotos.slice(0, 4).map((src) => (
+                  <div className="col col-6">
+                    <ImgSkeleton
+                      src={src}
+                      skeletonStyle={{ height: "300px" }}
+                    />
+                  </div>
+                ))
+              : new Array(4).fill(1).map((num) => (
+                  <FieldSkeleton
+                    styles={{
+                      height: "300px",
+                      width: "50%",
+                      border: "2px solid #fff",
+                      borderRadius: 0,
+                    }}
+                  />
+                ))}
           </div>
         </div>
+        <div className="col col-6">
+          {galleryPhotos?.length ? (
+            <ImgSkeleton
+              src={galleryPhotos[4]}
+              skeletonStyle={{ height: "600px" }}
+            />
+          ) : (
+            <FieldSkeleton styles={{ height: "600px", borderRadius: 0 }} />
+          )}
+        </div>
       </div>
-      <div className="col col-6">
-        <img src={photo5} alt="photo-gallery-img" />
-      </div>
+      <JoinMailingList />
     </div>
-    <JoinMailingList />
-  </div>
-);
+  );
+};
 
-export default PubsPhotoGallery;
+export default connect((state) => ({ galleryPhotos: state.gallery.gallery }), {
+  fetchGalleryPhotos,
+})(PubsPhotoGallery);
