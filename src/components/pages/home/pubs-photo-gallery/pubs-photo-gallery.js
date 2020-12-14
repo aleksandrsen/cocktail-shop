@@ -30,15 +30,16 @@ const PubsPhotoGallery = ({ galleryPhotos, fetchGalleryPhotos }) => {
           <div className="row">
             {galleryPhotos?.length
               ? galleryPhotos.slice(0, 4).map((src) => (
-                  <div className="col col-6">
+                  <div className="col col-6" key={src}>
                     <ImgSkeleton
                       src={src}
                       skeletonStyle={{ height: "300px" }}
                     />
                   </div>
                 ))
-              : new Array(4).fill(1).map((num) => (
+              : new Array(4).fill(1).map((num, idx) => (
                   <FieldSkeleton
+                    key={num + idx}
                     styles={{
                       height: "300px",
                       width: "50%",

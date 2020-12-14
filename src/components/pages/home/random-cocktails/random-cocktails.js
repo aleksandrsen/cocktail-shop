@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
 import { Carousel } from "antd";
-import SmallSpinner from "../../../spinner";
 import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
 
 const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
@@ -16,7 +15,7 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
 
   const cutArray = (arr, itemArrLength) => {
     if (!arr || !arr.length) return [];
-    let res = [];
+    const res = [];
     let j = 0;
     for (let i = 0; i < Math.ceil(arr.length / itemArrLength); ) {
       res.push(cocktails.slice(j, j + itemArrLength));
@@ -27,7 +26,7 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
   };
 
   return (
-    <div className="cocktailsHome default-section">
+    <div className="randomCocktails default-section">
       <div className="container">
         <div className="section-title">Our cocktails</div>
         <p className="default-text">
@@ -36,20 +35,34 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
           nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
           repudiandae soluta veritatis voluptates.
         </p>
-        {cocktails && cocktails.length ? (
-          <Carousel autoplay autoplaySpeed={50000000} dots={false}>
+        {cocktails?.length ? (
+          <Carousel autoplay autoplaySpeed={2000} dots={false}>
             {cutArray(cocktails, 4).map((itemArr) => (
-              <div className="slideWrapper">
-                <div key={itemArr[0].idDrink} className="row noWrap">
+              <div
+                className="randomCocktails__slideWrapper"
+                key={`${itemArr[0].id}${itemArr[1].id}`}
+              >
+                <div
+                  key={`${itemArr[0].id}${itemArr[1].id}`}
+                  className="row noWrap"
+                >
                   {itemArr.map((cocktail) => (
-                    <CocktailItem key={cocktail.idDrink} cocktail={cocktail} col={3} />
+                    <CocktailItem
+                      key={cocktail.id}
+                      cocktail={cocktail}
+                      col={3}
+                    />
                   ))}
                 </div>
               </div>
             ))}
           </Carousel>
         ) : (
-          <SmallSpinner />
+          <div className="row noWrap">
+            {new Array(4).fill(1).map((num, idx) => (
+              <CocktailItem key={`${num}${idx}`} cocktail={null} col={3} />
+            ))}
+          </div>
         )}
       </div>
     </div>

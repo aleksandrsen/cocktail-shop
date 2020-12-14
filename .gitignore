@@ -10,6 +10,7 @@ notepad.js
 # testing
 /coverage
 .idea
+.eslintcache
 # production
 /build
 # misc

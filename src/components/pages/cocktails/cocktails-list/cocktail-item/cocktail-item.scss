@@ -62,9 +62,13 @@
   }
 
   &__price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     margin-top: auto;
     padding: 0 16px;
     text-align: right;
+    line-height: 1em;
     font-size: 25px;
   }
 }
