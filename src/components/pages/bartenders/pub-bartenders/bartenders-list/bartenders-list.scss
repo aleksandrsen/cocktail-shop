@@ -1,7 +1,5 @@
 .bartendersList {
-
-    .row:first-child {
-        margin-bottom: 30px;
-    }
-
+  .col:nth-child(n + 5) {
+    margin-top: 32px;
+  }
 }
