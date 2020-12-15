@@ -68,7 +68,14 @@ const CocktailsList = ({
       : getFilteredCocktails(cocktails, filters);
 
     return filtered.length ? (
-      filtered.map((item) => <CocktailItem key={item.id} cocktail={item} />)
+      filtered.map((item) => (
+        <CocktailItem
+          col={3}
+          key={item.id}
+          cocktail={item}
+          imgSkeletonStyles={{ height: "220px" }}
+        />
+      ))
     ) : (
       <div className="cocktailsList__empty">No cocktails with this params</div>
     );
@@ -77,11 +84,18 @@ const CocktailsList = ({
   return (
     <div className="default-section cocktailsList">
       <div className="row">
-        {!cocktails ? (
-          <SmallSpinner />
-        ) : (
-          renderCocktails(cocktails.slice(0, 35), filters, sort, searchValue)
-        )}
+        {!cocktails
+          ? new Array(16)
+              .fill(1)
+              .map((num, idx) => (
+                <CocktailItem
+                  col={3}
+                  cocktail={null}
+                  key={`${num}${idx}`}
+                  imgSkeletonStyles={{ height: "220px" }}
+                />
+              ))
+          : renderCocktails(cocktails.slice(0, 35), filters, sort, searchValue)}
       </div>
       <RippleButton>Load more</RippleButton>
     </div>

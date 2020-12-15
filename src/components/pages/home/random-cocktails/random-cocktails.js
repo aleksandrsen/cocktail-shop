@@ -36,7 +36,7 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
           repudiandae soluta veritatis voluptates.
         </p>
         {cocktails?.length ? (
-          <Carousel autoplay autoplaySpeed={2000} dots={false}>
+          <Carousel autoplay autoplaySpeed={5000} dots={false}>
             {cutArray(cocktails, 4).map((itemArr) => (
               <div
                 className="randomCocktails__slideWrapper"
@@ -48,9 +48,10 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
                 >
                   {itemArr.map((cocktail) => (
                     <CocktailItem
+                      col={3}
                       key={cocktail.id}
                       cocktail={cocktail}
-                      col={3}
+                      imgSkeletonStyles={{ height: "310px" }}
                     />
                   ))}
                 </div>
@@ -60,7 +61,12 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
         ) : (
           <div className="row noWrap">
             {new Array(4).fill(1).map((num, idx) => (
-              <CocktailItem key={`${num}${idx}`} cocktail={null} col={3} />
+              <CocktailItem
+                col={3}
+                cocktail={null}
+                key={`${num}${idx}`}
+                imgSkeletonStyles={{ height: "310px" }}
+              />
             ))}
           </div>
         )}
