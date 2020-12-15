@@ -5,7 +5,8 @@ import Header from "../header";
 import Footer from "../footer";
 import { Route, Switch } from "react-router-dom";
 // Pages
-import Home from "../pages/home";
+// import Home from "../pages/home";
+import Home from "./../pages/home"
 import About from "../pages/about";
 import BlogPage from "../pages/blog";
 import Contact from "../pages/contact";

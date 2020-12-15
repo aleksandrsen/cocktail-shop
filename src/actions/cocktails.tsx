@@ -6,32 +6,37 @@ import {
   LIKE_COCKTAIL_REVIEW_REQUEST,
   SEND_COCKTAIL_REVIEW_REQUEST,
 } from "../constants/cocktails";
+import { CocktailsActionType } from "../interfaces/actions/cocktails";
+import { RequestMessageType } from "../interfaces/common";
 
-export const fetchRandomCocktails = () => ({
+export const fetchRandomCocktails = (): CocktailsActionType => ({
   type: FETCH_RANDOM_COCKTAILS_REQUEST,
 });
 
-export const fetchCocktailsList = () => ({
+export const fetchCocktailsList = (): CocktailsActionType => ({
   type: FETCH_COCKTAILS_LIST_REQUEST,
 });
 
-export const fetchCocktailsDetails = (id: string) => ({
+export const fetchCocktailsDetails = (id: number): CocktailsActionType => ({
   type: FETCH_COCKTAIL_DETAILS_REQUEST,
   id,
 });
 
-export const sendCocktailReview = (id: string, data: {}) => ({
+export const sendCocktailReview = (
+  id: number,
+  data: RequestMessageType
+): CocktailsActionType => ({
   type: SEND_COCKTAIL_REVIEW_REQUEST,
   id,
   data,
 });
 
-export const setLikeCocktailReview = (id: string) => ({
+export const setLikeCocktailReview = (id: number): CocktailsActionType => ({
   type: LIKE_COCKTAIL_REVIEW_REQUEST,
   id,
 });
 
-export const setDislikeCocktailReview = (id: string) => ({
+export const setDislikeCocktailReview = (id: number): CocktailsActionType => ({
   type: DISLIKE_COCKTAIL_REVIEW_REQUEST,
   id,
 });

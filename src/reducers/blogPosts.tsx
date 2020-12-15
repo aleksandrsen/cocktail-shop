@@ -6,14 +6,15 @@ import {
   LIKE_BLOG_POST_REVIEW_SUCCESS,
   SEND_BLOG_POST_REVIEW_SUCCESS,
 } from "../constants/blog";
+import { IBlogPosts } from "../interfaces/reducers";
 
-const initialState = {
+const initialState: IBlogPosts = {
   blogPosts: null,
   latestBlogPosts: null,
   blogPostDetails: null,
 };
 
-export default (state = initialState, action) => {
+const BlogPostsState = (state = initialState, action: any): IBlogPosts => {
   switch (action.type) {
     case FETCH_LATEST_BLOG_POSTS_SUCCESS:
       return { ...state, latestBlogPosts: action.payload };
@@ -29,3 +30,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default BlogPostsState;

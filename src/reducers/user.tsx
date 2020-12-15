@@ -4,14 +4,15 @@ import {
   DELETE_ITEM_FROM_CARD_SUCCESS,
   DELETE_ITEM_FROM_WISH_LIST_SUCCESS,
 } from "../constants/user";
+import { IUser } from "../interfaces/reducers";
 
-const defaultState = {
+const defaultState: IUser = {
   userInfo: null,
   card: {},
   wishList: {},
 };
 
-export default (state = defaultState, action) => {
+const UserState = (state = defaultState, action: any): IUser => {
   switch (action.type) {
     case ADD_ITEM_TO_CARD_SUCCESS:
     case DELETE_ITEM_FROM_CARD_SUCCESS:
@@ -24,3 +25,5 @@ export default (state = defaultState, action) => {
       return state;
   }
 };
+
+export default UserState;

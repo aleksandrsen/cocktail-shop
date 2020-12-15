@@ -6,14 +6,18 @@ import {
   LIKE_COCKTAIL_REVIEW_SUCCESS,
   SEND_COCKTAIL_REVIEW_SUCCESS,
 } from "../constants/cocktails";
+import { ICocktailsReducer } from "../interfaces/reducers";
 
-const initialState = {
+const initialState: ICocktailsReducer = {
   list: null,
   randomCocktails: null,
   cocktailDetails: null,
 };
 
-export default (state = initialState, action) => {
+const CocktailsState = (
+  state = initialState,
+  action: any
+): ICocktailsReducer => {
   switch (action.type) {
     case FETCH_RANDOM_COCKTAILS_SUCCESS:
       return { ...state, randomCocktails: action.payload };
@@ -29,3 +33,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default CocktailsState;

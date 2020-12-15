@@ -1,7 +1,12 @@
 import React from "react";
 import "./field-skeleton.scss";
 
-const FieldSkeleton = ({ styles, className }) => (
+interface FieldSkeletonProps {
+  styles: object;
+  className: string;
+}
+
+const FieldSkeleton = ({ styles, className }: FieldSkeletonProps) => (
   <div style={styles} className={`fieldSkeleton ${className || ""}`} />
 );
 
