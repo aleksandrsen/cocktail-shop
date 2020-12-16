@@ -8,31 +8,31 @@ import {
 } from "../../constants/cocktails";
 import { RequestMessageType } from "../common";
 
-export interface IFetchRandomCocktails {
+interface IFetchRandomCocktails {
   type: typeof FETCH_RANDOM_COCKTAILS_REQUEST;
 }
 
-export interface IFetchCocktailsList {
+interface IFetchCocktailsList {
   type: typeof FETCH_COCKTAILS_LIST_REQUEST;
 }
 
-export interface IFetchCocktailDetails {
+interface IFetchCocktailDetails {
   type: typeof FETCH_COCKTAIL_DETAILS_REQUEST;
   id: number;
 }
 
-export interface ISendCocktailReview {
+interface ISendCocktailReview {
   type: typeof SEND_COCKTAIL_REVIEW_REQUEST;
   id: number;
   data: RequestMessageType;
 }
 
-export interface ISetLikeCocktailReview {
+interface ISetLikeCocktailReview {
   type: typeof LIKE_COCKTAIL_REVIEW_REQUEST;
   id: number;
 }
 
-export interface ISetDislikeCocktailReview {
+interface ISetDislikeCocktailReview {
   type: typeof DISLIKE_COCKTAIL_REVIEW_REQUEST;
   id: number;
 }
