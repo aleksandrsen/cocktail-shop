@@ -8,7 +8,7 @@ import {
   sendMessageToBartender,
 } from "../../../actions/bartenders";
 // Components
-import TalkToBartender from "./talk-to-bartender";
+import ReviewForm from "../../reusable-components/review-form";
 import ImgSkeleton from "../../reusable-components/img-skeleton";
 import RippleButton from "../../reusable-components/ripple-button";
 import FieldSkeleton from "../../reusable-components/field-skeleton";
@@ -24,6 +24,8 @@ const BartenderDetails = ({
   useEffect(() => {
     fetchBartendersDetails(id);
   }, []);
+
+  const handleSubmit = (values) => sendMessageToBartender(id, values);
 
   return (
     <>
@@ -66,9 +68,9 @@ const BartenderDetails = ({
             tempora, veniam veritatis!
           </p>
           <RippleButton>Awards</RippleButton>
-          <TalkToBartender
-            bartenderDetails={bartenderDetails}
-            sendMessageToBartender={sendMessageToBartender}
+          <ReviewForm
+            handleSubmit={handleSubmit}
+            title={`Talk to ${bartenderDetails?.name} ${bartenderDetails?.surname}`}
           />
         </div>
       </div>

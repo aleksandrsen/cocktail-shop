@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import TextInput from "../text-input";
 import RippleButton from "../ripple-button";
 
-const ReviewForm = ({ handleSubmit }) => (
+const ReviewForm = ({ handleSubmit, title }) => (
   <div className="reviewFormWrapper">
-    <h3 className="reviewFormWrapper__title">Leave review</h3>
+    <h3 className="reviewFormWrapper__title">{title || "Leave review"}</h3>
     <Formik
       initialValues={{
         name: "",
