@@ -1,25 +1,21 @@
 import React from "react";
 import "./talk-to-bartender.scss";
-// Actions
-import { sendMessageToBartender } from "../../../../actions/bartenders";
 // Components
 import { Formik, Form } from "formik";
 import TextInput from "../../../reusable-components/text-input";
 import RippleButton from "../../../reusable-components/ripple-button";
 import * as Yup from "yup";
-// Utils
-import { connect } from "react-redux";
 
-const TalkToBartender = ({
-  sendMessageToBartender,
-  bartenderDetails: { name, surname, id },
-}) => {
-  const handleSubmit = (values) => sendMessageToBartender(id, values);
+const TalkToBartender = ({ bartenderDetails, sendMessageToBartender }) => {
+  const handleSubmit = (values) =>
+    sendMessageToBartender(bartenderDetails?.id, values);
 
   return (
     <section className="default-section talkToBartender">
       <div className="container">
-        <h2 className="section-title">Talk to {name + " " + surname}</h2>
+        <h2 className="section-title">
+          Talk to {bartenderDetails?.name + " " + bartenderDetails?.surname}
+        </h2>
       </div>
       <div>
         <Formik
@@ -62,4 +58,4 @@ const TalkToBartender = ({
   );
 };
 
-export default connect(null, { sendMessageToBartender })(TalkToBartender);
+export default TalkToBartender;

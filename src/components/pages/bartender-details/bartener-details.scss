@@ -2,6 +2,8 @@
   text-align: center;
 
   &__photo {
+    height: auto;
+    max-width: 100%;
     margin-bottom: 50px;
   }
 }
