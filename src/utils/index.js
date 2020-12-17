@@ -1,5 +1,5 @@
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 export const ScrollTop = () => {
   const { pathname } = useLocation();
@@ -17,6 +17,11 @@ export const cutTextContent = (text, maxLength) => {
   }
   return text;
 };
+
+export const getSkeletons = (length, Component, props = {}) =>
+  new Array(length)
+    .fill(1)
+    .map((num, idx) => <Component key={`${num}${idx}`} {...props} />);
 
 export const formatDate = (date, optionsObj) => {
   if (!date) return null;
@@ -37,17 +42,17 @@ export const searchByFields = (arrayOfObj, searchValue, keyFields) => {
   const result = [];
   const term = searchValue.replace(",", " ").toLowerCase();
 
-  arrayOfObj.forEach(item => {
+  arrayOfObj.forEach((item) => {
     const descr = keyFields
-        .reduce((acc, field) => {
-          acc.push(item[field]);
-          return acc;
-        }, [])
-        .join(" ");
+      .reduce((acc, field) => {
+        acc.push(item[field]);
+        return acc;
+      }, [])
+      .join(" ");
 
     if (descr.toLowerCase().includes(term)) {
       result.push(item);
     }
   });
   return result;
-}
+};
