@@ -6,8 +6,8 @@ import {
   LIKE_COCKTAIL_REVIEW_REQUEST,
   SEND_COCKTAIL_REVIEW_REQUEST,
 } from "../constants/cocktails";
-import { CocktailsActionType } from "../interfaces/actions/cocktails";
-import { RequestMessageType } from "../interfaces/common";
+import { CocktailsActionType } from "../types/actions/cocktails";
+import { RequestMessageType } from "../types/common";
 
 export const fetchRandomCocktails = (): CocktailsActionType => ({
   type: FETCH_RANDOM_COCKTAILS_REQUEST,

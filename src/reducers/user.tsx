@@ -4,7 +4,7 @@ import {
   DELETE_ITEM_FROM_CARD_SUCCESS,
   DELETE_ITEM_FROM_WISH_LIST_SUCCESS,
 } from "../constants/user";
-import { IUser } from "../interfaces/reducers";
+import { IUser } from "../types/reducers";
 
 const defaultState: IUser = {
   userInfo: null,

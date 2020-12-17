@@ -6,8 +6,8 @@ import {
   LIKE_BLOG_POST_REVIEW_REQUEST,
   DISLIKE_BLOG_POST_REVIEW_REQUEST,
 } from "../constants/blog";
-import { BlogPostsActionType } from "../interfaces/actions/blog";
-import { RequestMessageType } from "../interfaces/common";
+import { BlogPostsActionType } from "../types/actions/blog";
+import { RequestMessageType } from "../types/common";
 
 export const fetchLatestBlogPosts = (): BlogPostsActionType => ({
   type: FETCH_LATEST_BLOG_POSTS_REQUEST,

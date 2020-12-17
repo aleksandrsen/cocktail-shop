@@ -2,7 +2,7 @@ import {
   FETCH_BARTENDERS_DETAILS_SUCCESS,
   FETCH_BARTENDERS_SUCCESS,
 } from "../constants/bartenders";
-import { IBartenders } from "../interfaces/reducers";
+import { IBartenders } from "../types/reducers";
 
 const initial: IBartenders = {
   bartenders: null,

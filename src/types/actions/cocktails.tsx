@@ -8,39 +8,39 @@ import {
 } from "../../constants/cocktails";
 import { RequestMessageType } from "../common";
 
-interface IFetchRandomCocktails {
+type FetchRandomCocktailsActionType = {
   type: typeof FETCH_RANDOM_COCKTAILS_REQUEST;
-}
+};
 
-interface IFetchCocktailsList {
+type FetchCocktailsListActionType = {
   type: typeof FETCH_COCKTAILS_LIST_REQUEST;
-}
+};
 
-interface IFetchCocktailDetails {
+type FetchCocktailDetailsActionType = {
   type: typeof FETCH_COCKTAIL_DETAILS_REQUEST;
   id: number;
-}
+};
 
-interface ISendCocktailReview {
+type SendCocktailReviewActionType = {
   type: typeof SEND_COCKTAIL_REVIEW_REQUEST;
   id: number;
   data: RequestMessageType;
-}
+};
 
-interface ISetLikeCocktailReview {
+type SetLikeCocktailReviewActionType = {
   type: typeof LIKE_COCKTAIL_REVIEW_REQUEST;
   id: number;
-}
+};
 
-interface ISetDislikeCocktailReview {
+type SetDislikeCocktailReviewActionType = {
   type: typeof DISLIKE_COCKTAIL_REVIEW_REQUEST;
   id: number;
-}
+};
 
 export type CocktailsActionType =
-  | IFetchRandomCocktails
-  | IFetchCocktailsList
-  | IFetchCocktailDetails
-  | ISendCocktailReview
-  | ISetLikeCocktailReview
-  | ISetDislikeCocktailReview;
+  | FetchRandomCocktailsActionType
+  | FetchCocktailsListActionType
+  | FetchCocktailDetailsActionType
+  | SendCocktailReviewActionType
+  | SetLikeCocktailReviewActionType
+  | SetDislikeCocktailReviewActionType;

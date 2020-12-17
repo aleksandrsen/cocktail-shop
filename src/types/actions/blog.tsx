@@ -8,39 +8,39 @@ import {
 } from "../../constants/blog";
 import { RequestMessageType } from "../common";
 
-interface IFetchLatestBlogPosts {
+type FetchLatestBlogPostsActionType = {
   type: typeof FETCH_LATEST_BLOG_POSTS_REQUEST;
-}
+};
 
-interface IFetchBlogPosts {
+type FetchBlogPostsActionType = {
   type: typeof FETCH_BLOG_POSTS_REQUEST;
-}
+};
 
-interface IFetchBlogPostDetails {
+type FetchBlogPostDetailsActionType = {
   type: typeof FETCH_BLOG_POST_DETAILS_REQUEST;
   id: number;
-}
+};
 
-interface ISendBlogPostReview {
+type SendBlogPostReviewActionType = {
   type: typeof SEND_BLOG_POST_REVIEW_REQUEST;
   id: number;
   data: RequestMessageType;
-}
+};
 
-interface ISetLikeBlogPostReview {
+type SetLikeBlogPostReviewActionType = {
   type: typeof LIKE_BLOG_POST_REVIEW_REQUEST;
   id: number;
-}
+};
 
-interface ISetDislikeBlogPostReview {
+type SetDislikeBlogPostReviewActionType = {
   type: typeof DISLIKE_BLOG_POST_REVIEW_REQUEST;
   id: number;
-}
+};
 
 export type BlogPostsActionType =
-  | IFetchLatestBlogPosts
-  | IFetchBlogPosts
-  | IFetchBlogPostDetails
-  | ISendBlogPostReview
-  | ISetLikeBlogPostReview
-  | ISetDislikeBlogPostReview;
+  | FetchLatestBlogPostsActionType
+  | FetchBlogPostsActionType
+  | FetchBlogPostDetailsActionType
+  | SendBlogPostReviewActionType
+  | SetLikeBlogPostReviewActionType
+  | SetDislikeBlogPostReviewActionType;

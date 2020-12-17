@@ -6,7 +6,7 @@ import {
   LIKE_BLOG_POST_REVIEW_SUCCESS,
   SEND_BLOG_POST_REVIEW_SUCCESS,
 } from "../constants/blog";
-import { IBlogPosts } from "../interfaces/reducers";
+import { IBlogPosts } from "../types/reducers";
 
 const initialState: IBlogPosts = {
   blogPosts: null,

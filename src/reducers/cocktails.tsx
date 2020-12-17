@@ -6,7 +6,7 @@ import {
   LIKE_COCKTAIL_REVIEW_SUCCESS,
   SEND_COCKTAIL_REVIEW_SUCCESS,
 } from "../constants/cocktails";
-import { ICocktailsReducer } from "../interfaces/reducers";
+import { ICocktailsReducer } from "../types/reducers";
 
 const initialState: ICocktailsReducer = {
   list: null,

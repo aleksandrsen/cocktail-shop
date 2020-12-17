@@ -2,7 +2,7 @@ import {
   FETCH_INSTAGRAM_PHOTOS_SUCCESS,
   FETCH_GALLERY_PHOTOS_SUCCESS,
 } from "../constants/gallery";
-import { IGallery } from "../interfaces/reducers";
+import { IGallery } from "../types/reducers";
 
 const initial: IGallery = {
   instagram: null,

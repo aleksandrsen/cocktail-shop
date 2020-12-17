@@ -4,7 +4,7 @@ import {
   FETCH_NEXT_EVENTS_SUCCESS,
   FETCH_UPCOMING_EVENT_SUCCESS,
 } from "../constants/events";
-import { IEvents } from "../interfaces/reducers";
+import { IEvents } from "../types/reducers";
 
 const initialState: IEvents = {
   events: null,
