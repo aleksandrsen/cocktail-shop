@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 // Actions
 import { fetchEventsList } from "../../../../actions/events";
 // Components
-import SmallSpinner from "../../../spinner";
 import MusicEventItem from "../music-event-item";
 import RippleButton from "../../../reusable-components/ripple-button";
 
@@ -14,13 +13,17 @@ const MusicEventsList = ({ fetchEventsList, events }) => {
     fetchEventsList();
   }, []);
 
-  return !events ? (
-    <SmallSpinner />
-  ) : (
+  return (
     <div className="musicEventsList">
-      {events.map((eventItem) => (
-        <MusicEventItem key={eventItem.id} eventItem={eventItem} />
-      ))}
+      {events
+        ? events.map((eventItem) => (
+            <MusicEventItem key={eventItem.id} eventItem={eventItem} />
+          ))
+        : new Array(7)
+            .fill(1)
+            .map((num, idx) => (
+              <MusicEventItem key={`${num}${idx}`} eventItem={null} />
+            ))}
       <RippleButton>Load more events</RippleButton>
     </div>
   );
