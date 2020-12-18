@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./random-cocktails..scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 // Actions
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
@@ -60,14 +61,10 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
           </Carousel>
         ) : (
           <div className="row noWrap">
-            {new Array(4).fill(1).map((num, idx) => (
-              <CocktailItem
-                col={3}
-                cocktail={null}
-                key={`${num}${idx}`}
-                imgSkeletonStyles={{ height: "310px" }}
-              />
-            ))}
+            {getSkeletons(4, CocktailItem, {
+              col: 3,
+              imgSkeletonStyles: { height: "310px" },
+            })}
           </div>
         )}
       </div>

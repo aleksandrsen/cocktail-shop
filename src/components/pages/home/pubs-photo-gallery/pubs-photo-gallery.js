@@ -4,6 +4,7 @@ import "./pubs-photo-gallery.scss";
 import { fetchGalleryPhotos } from "../../../../actions/gallery";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 // Components
 import JoinMailingList from "../join-mailing-list";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
@@ -37,17 +38,15 @@ const PubsPhotoGallery = ({ galleryPhotos, fetchGalleryPhotos }) => {
                     />
                   </div>
                 ))
-              : new Array(4).fill(1).map((num, idx) => (
-                  <FieldSkeleton
-                    key={num + idx}
-                    styles={{
-                      height: "300px",
-                      width: "50%",
-                      border: "2px solid #fff",
-                      borderRadius: 0,
-                    }}
-                  />
-                ))}
+              : getSkeletons(4, FieldSkeleton, {
+                  styles: {
+                    height: "300px",
+                    width: "50%",
+                    border: "1px solid #fff",
+                    borderRadius: 0,
+                    borderStyle: "inset",
+                  },
+                })}
           </div>
         </div>
         <div className="col col-6">

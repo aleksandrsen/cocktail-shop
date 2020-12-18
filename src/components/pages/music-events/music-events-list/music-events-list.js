@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./music-events-list.scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 // Actions
 import { fetchEventsList } from "../../../../actions/events";
 // Components
@@ -19,11 +20,7 @@ const MusicEventsList = ({ fetchEventsList, events }) => {
         ? events.map((eventItem) => (
             <MusicEventItem key={eventItem.id} eventItem={eventItem} />
           ))
-        : new Array(7)
-            .fill(1)
-            .map((num, idx) => (
-              <MusicEventItem key={`${num}${idx}`} eventItem={null} />
-            ))}
+        : getSkeletons(7, MusicEventItem)}
       <RippleButton>Load more events</RippleButton>
     </div>
   );

@@ -6,6 +6,7 @@ import { fetchLatestBlogPosts } from "../../../../actions/blog";
 import BlogNewsItem from "./blog&news-item";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 
 const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
   useEffect(() => {
@@ -22,12 +23,10 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
         </p>
         <div className="row center">
           {blogPosts?.length
-            ? blogPosts.map((post, idx) => (
-                <BlogNewsItem key={post.id} imgLeft={idx % 2} post={post} />
+            ? blogPosts.map((post) => (
+                <BlogNewsItem key={post.id} post={post} />
               ))
-            : [0, 1].map((num) => (
-                <BlogNewsItem key={num} imgLeft={num % 2} post={null} />
-              ))}
+            : getSkeletons(2, BlogNewsItem)}
         </div>
       </div>
     </div>

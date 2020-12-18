@@ -8,7 +8,7 @@ import SmallSpinner from "../../../spinner";
 import RippleButton from "../../../reusable-components/ripple-button";
 // Utils
 import { connect } from "react-redux";
-import { searchByFields } from "../../../../utils";
+import { searchByFields, getSkeletons } from "../../../../utils";
 
 const CocktailsList = ({
   cocktails,
@@ -85,16 +85,10 @@ const CocktailsList = ({
     <div className="default-section cocktailsList">
       <div className="row">
         {!cocktails
-          ? new Array(16)
-              .fill(1)
-              .map((num, idx) => (
-                <CocktailItem
-                  col={3}
-                  cocktail={null}
-                  key={`${num}${idx}`}
-                  imgSkeletonStyles={{ height: "220px" }}
-                />
-              ))
+          ? getSkeletons(16, CocktailItem, {
+              col: 3,
+              imgSkeletonStyles: { height: "220px" },
+            })
           : renderCocktails(cocktails.slice(0, 35), filters, sort, searchValue)}
       </div>
       <RippleButton>Load more</RippleButton>
