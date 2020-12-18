@@ -5,21 +5,38 @@ import { Icons } from "../../../../src_/icons";
 import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
+import ImgSkeleton from "../../../reusable-components/img-skeleton";
+import FieldSkeleton from "../../../reusable-components/field-skeleton";
 
-const AsidePostItem = ({ postItem: { previewSrc, title, date, id } }) => (
-  <Link to={`/blog/${id}`} className="asidePostItem">
-    <img src={previewSrc} className="asidePostItem__img" />
+const AsidePostItem = ({ postItem }) => (
+  <Link to={`/blog/${postItem?.id}`} className="asidePostItem">
+    <ImgSkeleton
+      src={postItem?.previewSrc}
+      classes={["asidePostItem__img"]}
+      skeletonStyle={{ width: "50%", flexGrow: 1, borderRadius: "5px" }}
+    />
     <div className="asidePostItem__info">
-      <div className="asidePostItem__title">{cutTextContent(title, 35)}</div>
+      <div className="asidePostItem__title">
+        {}
+        {postItem ? (
+          cutTextContent(postItem.title, 35)
+        ) : (
+          <FieldSkeleton styles={{ padding: "16px", marginBottom: "10px" }} />
+        )}
+      </div>
       <div className="asidePostItem__date">
         {Icons.calendar}
-        <span>
-          {formatDate(date, {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </span>
+        {postItem ? (
+          <div>
+            {formatDate(postItem.date, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </div>
+        ) : (
+          <FieldSkeleton styles={{ width: "100%", padding: "10px" }} />
+        )}
       </div>
     </div>
   </Link>
