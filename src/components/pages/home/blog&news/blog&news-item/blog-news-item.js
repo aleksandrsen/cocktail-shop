@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 
-const BlogNewsItem = ({ imgLeft, post }) => {
+const BlogNewsItem = ({ post }) => {
   const dayNum = formatDate(post?.date, {
     day: "numeric",
   });
@@ -16,7 +16,7 @@ const BlogNewsItem = ({ imgLeft, post }) => {
   return (
     <div className="col col-12 blogNewsItem">
       <div className="row center">
-        <div className="col col-5" style={{ order: imgLeft ? 1 : 0 }}>
+        <div className="col col-5">
           <div className="blogNewsItem__info">
             <div className="blogNewsItem__date">
               <div className="blogNewsItem__dateDay">

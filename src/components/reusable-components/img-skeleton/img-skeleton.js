@@ -12,9 +12,11 @@ const ImgSkeleton = ({ skeletonStyle, src, title, classes }) => {
 
   return (
     <>
-      {!isLoaded && !error && <div style={skeletonStyle} className="imgSkeleton" />}
+      {!isLoaded && !error && (
+        <div style={skeletonStyle} className="imgSkeleton" />
+      )}
       <img
-        style={!isLoaded ? { width: 0, height: 0 } : {}}
+        style={!isLoaded ? { width: 0, height: 0, opacity: 0 } : {}}
         className={classes ? classes.join(" ") : ""}
         src={src}
         alt={title}

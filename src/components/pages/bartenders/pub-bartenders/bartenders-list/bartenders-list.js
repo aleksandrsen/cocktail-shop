@@ -14,22 +14,15 @@ const BartendersList = ({ fetchBartenders, bartenders }) => {
 
   return (
     <div className="bartendersList">
-      {bartenders ? (
-        <>
-          <div className="row justify-content-center">
-            {bartenders.slice(0, 3).map((item) => (
+      <div className="row justify-content-center">
+        {bartenders
+          ? bartenders.map((item) => (
               <BartenderItem key={item.id} bartender={item} />
-            ))}
-          </div>
-          <div className="row justify-content-center">
-            {bartenders.slice(3).map((item) => (
-              <BartenderItem key={item.id} bartender={item} />
-            ))}
-          </div>
-        </>
-      ) : (
-        <SmallSpinner />
-      )}
+            ))
+          : new Array(6)
+              .fill(1)
+              .map((num, idx) => <BartenderItem key={`${num}${idx}`} />)}
+      </div>
     </div>
   );
 };

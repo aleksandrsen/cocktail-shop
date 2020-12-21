@@ -6,7 +6,7 @@ import blogPosts from "./blogPosts";
 import cocktails from "./cocktails";
 import bartenders from "./bartenders";
 
-const reducers = combineReducers({
+const rootReducer = combineReducers({
   user,
   events,
   gallery,
@@ -15,4 +15,6 @@ const reducers = combineReducers({
   bartenders,
 });
 
-export default reducers;
+export type RootReducer = typeof rootReducer;
+
+export default rootReducer;

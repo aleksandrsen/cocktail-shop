@@ -4,15 +4,16 @@ import {
   FETCH_NEXT_EVENTS_SUCCESS,
   FETCH_UPCOMING_EVENT_SUCCESS,
 } from "../constants/events";
+import { IEvents } from "../types/reducers";
 
-const initialState = {
+const initialState: IEvents = {
   events: null,
   upcomingEvent: null,
   nextEvents: null,
   eventDetails: null,
 };
 
-export default (state = initialState, action) => {
+const EventsState = (state = initialState, action: any): IEvents => {
   switch (action.type) {
     case FETCH_UPCOMING_EVENT_SUCCESS:
       return { ...state, upcomingEvent: action.payload };
@@ -29,3 +30,4 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+export default EventsState;

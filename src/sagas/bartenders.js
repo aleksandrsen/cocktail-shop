@@ -25,9 +25,9 @@ function* fetchBartendersWorker() {
   }
 }
 
-function* fetchBartenderDetailsWorker(action) {
+function* fetchBartenderDetailsWorker({id}) {
   try {
-    const { data } = yield callApi(`/bartenders/${action.payload}`);
+    const { data } = yield callApi(`/bartenders/${id}`);
     yield put({ type: FETCH_BARTENDERS_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_BARTENDERS_DETAILS_FAIL, payload: err });

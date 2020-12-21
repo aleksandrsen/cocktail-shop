@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "./aside-posts-list.scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../utils";
 // Actions
 import { fetchBlogPosts } from "../../../actions/blog";
 // Components
-import SmallSpinner from "../../spinner";
 import AsidePostItem from "./aside-post-item";
 
 const AsidePostsList = ({ fetchBlogPosts, blogPosts }) => {
@@ -20,7 +20,7 @@ const AsidePostsList = ({ fetchBlogPosts, blogPosts }) => {
       ))}
     </div>
   ) : (
-    <SmallSpinner />
+    getSkeletons(4, AsidePostItem)
   );
 };
 

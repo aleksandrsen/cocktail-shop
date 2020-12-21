@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "./music-events-list.scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 // Actions
 import { fetchEventsList } from "../../../../actions/events";
 // Components
-import SmallSpinner from "../../../spinner";
 import MusicEventItem from "../music-event-item";
 import RippleButton from "../../../reusable-components/ripple-button";
 
@@ -14,13 +14,13 @@ const MusicEventsList = ({ fetchEventsList, events }) => {
     fetchEventsList();
   }, []);
 
-  return !events ? (
-    <SmallSpinner />
-  ) : (
+  return (
     <div className="musicEventsList">
-      {events.map((eventItem) => (
-        <MusicEventItem key={eventItem.id} eventItem={eventItem} />
-      ))}
+      {events
+        ? events.map((eventItem) => (
+            <MusicEventItem key={eventItem.id} eventItem={eventItem} />
+          ))
+        : getSkeletons(7, MusicEventItem)}
       <RippleButton>Load more events</RippleButton>
     </div>
   );

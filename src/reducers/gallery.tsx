@@ -2,13 +2,14 @@ import {
   FETCH_INSTAGRAM_PHOTOS_SUCCESS,
   FETCH_GALLERY_PHOTOS_SUCCESS,
 } from "../constants/gallery";
+import { IGallery } from "../types/reducers";
 
-const initial = {
+const initial: IGallery = {
   instagram: null,
   gallery: null,
 };
 
-export default (state = initial, action) => {
+const GalleryState = (state = initial, action: any): IGallery => {
   switch (action.type) {
     case FETCH_INSTAGRAM_PHOTOS_SUCCESS:
       return { ...state, instagram: action.payload };
@@ -18,3 +19,5 @@ export default (state = initial, action) => {
       return state;
   }
 };
+
+export default GalleryState;

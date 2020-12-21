@@ -4,8 +4,10 @@ import "./instagram-gallery.scss";
 import { fetchInstagramPhotos } from "../../../actions/gallery";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../utils";
 // Components
-import SmallSpinner from "../../spinner";
+import ImgSkeleton from "../../reusable-components/img-skeleton";
+import FieldSkeleton from "../../reusable-components/field-skeleton";
 
 const InstagramGallery = ({ photos, fetchInstagramPhotos }) => {
   useEffect(() => {
@@ -14,11 +16,11 @@ const InstagramGallery = ({ photos, fetchInstagramPhotos }) => {
 
   return (
     <div className="instagramGallery">
-      {!photos ? (
-        <SmallSpinner />
-      ) : (
-        photos.map((url) => <img key={url} src={url} alt="instagram photo" />)
-      )}
+      {photos
+        ? photos.map((url) => <ImgSkeleton src={url} title="instagram photo" />)
+        : getSkeletons(6, FieldSkeleton, {
+            styles: { width: "32%", minHeight: "100px", margin: "2px" },
+          })}
     </div>
   );
 };

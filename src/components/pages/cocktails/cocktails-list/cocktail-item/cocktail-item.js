@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 
-const CocktailItem = ({ cocktail }) => (
-  <div className="col col-3">
+const CocktailItem = ({ cocktail, col = 3, imgSkeletonStyles = {} }) => (
+  <div className={`col col-${col}`}>
     <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem">
       <div className="cocktailItem__imgWrap">
         <ImgSkeleton
@@ -19,8 +19,8 @@ const CocktailItem = ({ cocktail }) => (
           title={cocktail?.name}
           skeletonStyle={{
             width: "100%",
-            height: "310px",
             borderRadius: "10px 10px 0 0",
+            ...imgSkeletonStyles,
           }}
         />
       </div>
@@ -38,7 +38,7 @@ const CocktailItem = ({ cocktail }) => (
             <FieldSkeleton styles={{ padding: "16px 0" }} />
           )}
         </div>
-        {cocktail?.rate ? (
+        {cocktail?.rate || cocktail?.rate === 0 ? (
           <Rate value={cocktail?.rate} />
         ) : (
           <FieldSkeleton

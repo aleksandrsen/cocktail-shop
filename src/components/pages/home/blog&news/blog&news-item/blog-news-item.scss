@@ -3,6 +3,10 @@
     margin-top: 32px;
   }
 
+  &:nth-child(even) .col.col-5:first-child {
+    order: 1;
+  }
+
   &__info {
     display: flex;
     align-items: center;

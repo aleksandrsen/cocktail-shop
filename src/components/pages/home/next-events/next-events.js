@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./next-events.scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../utils";
 // Actions
 import { fetchNextEvents } from "../../../../actions/events";
 // Components
@@ -22,13 +23,10 @@ const NextEvents = ({ events, fetchNextEvents }) => {
             ? events.map((event) => (
                 <NextEventItem key={event.id} event={event} />
               ))
-            : [0, 1].map((num) => (
-                <FieldSkeleton
-                  key={num}
-                  styles={{ height: "75px" }}
-                  className="nextEventsItem"
-                />
-              ))}
+            : getSkeletons(2, FieldSkeleton, {
+                styles: { height: "75px" },
+                className: "nextEventsItem",
+              })}
         </div>
       </div>
     </div>

@@ -4,12 +4,12 @@ import OurStory from "./our-story";
 import HappyHour from "./happy-hour";
 import NextEvents from "./next-events";
 import MainSlider from "./main-slider";
-import BlogNewsSection from "./blog&news";
+import BlogNews from "./blog&news";
 import UpcomingEvents from "./upcoming-events";
 import PubsPhotoGallery from "./pubs-photo-gallery";
 import CocktailsHomeSection from "./random-cocktails";
 
-const Home = (props) => (
+const Home = () => (
   <>
     <MainSlider />
     <OurStory />
@@ -18,7 +18,7 @@ const Home = (props) => (
     <UpcomingEvents />
     <NextEvents />
     <PubsPhotoGallery />
-    <BlogNewsSection />
+    <BlogNews />
   </>
 );
 
