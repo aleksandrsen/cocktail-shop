@@ -12,6 +12,7 @@ const initialState: IBlogPosts = {
   blogPosts: null,
   latestBlogPosts: null,
   blogPostDetails: null,
+  counter: 0,
 };
 
 const BlogPostsState = (state = initialState, action: any): IBlogPosts => {
@@ -25,6 +26,8 @@ const BlogPostsState = (state = initialState, action: any): IBlogPosts => {
     case LIKE_BLOG_POST_REVIEW_SUCCESS:
     case DISLIKE_BLOG_POST_REVIEW_SUCCESS:
       return { ...state, blogPostDetails: action.payload };
+    case "COUNTER":
+      return { ...state, counter: state.counter + 1 };
 
     default:
       return state;

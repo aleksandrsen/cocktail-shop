@@ -8,6 +8,8 @@ export interface IBlogPosts {
   readonly blogPosts: null | [];
   readonly latestBlogPosts: null | [];
   readonly blogPostDetails: null | {};
+  readonly counter: number;
+
 }
 
 export interface IBartenders {

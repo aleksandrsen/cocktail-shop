@@ -24,7 +24,6 @@ export const getSkeletons = (length, Component, props = {}) =>
     .map((num, idx) => <Component key={`${num}${idx}`} {...props} />);
 
 export const formatDate = (date, optionsObj) => {
-  if (!date) return null;
   const defaultOptions = {
     year: "numeric",
     month: "short",

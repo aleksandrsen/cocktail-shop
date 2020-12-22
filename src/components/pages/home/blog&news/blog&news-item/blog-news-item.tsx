@@ -1,15 +1,19 @@
 import React from "react";
 import "./blog-news-item.scss";
 // Utils
-import { Icons } from "../../../../../src_/icons";
+import { BlogNewsItemType } from "../../../../../types/common";
 import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 
-const BlogNewsItem = ({ post }) => {
-  const dayNum = formatDate(post?.date, {
+type BlogNewsItemTypeProps = {
+  post: BlogNewsItemType;
+};
+
+const BlogNewsItem = ({ post }: BlogNewsItemTypeProps) => {
+  const dayNum: string = formatDate(post?.date, {
     day: "numeric",
   });
 
@@ -21,7 +25,7 @@ const BlogNewsItem = ({ post }) => {
             <div className="blogNewsItem__date">
               <div className="blogNewsItem__dateDay">
                 {dayNum ? (
-                  dayNum < 10 ? (
+                  +dayNum < 10 ? (
                     "0" + dayNum
                   ) : (
                     dayNum
@@ -44,7 +48,9 @@ const BlogNewsItem = ({ post }) => {
             <div className="blogNewsItem__details">
               {post?.authorFullName ? (
                 <div className="blogNewsItem__author">
-                  {Icons.home_blogNewsUser}
+                  <svg width="16" height="16">
+                    <use xlinkHref="#user-icon-home" />
+                  </svg>
                   <span>{`${post.authorFullName}`}</span>
                 </div>
               ) : (
@@ -89,7 +95,9 @@ const BlogNewsItem = ({ post }) => {
               )}
               {post?.content ? (
                 <div className="blogNewsItem__fullDate">
-                  {Icons.home_blogNewsClock}
+                  <svg width="16" height="16">
+                    <use xlinkHref="#blog-news-clock" />
+                  </svg>
                   <span>
                     {formatDate(post?.date, {
                       year: "numeric",
@@ -122,4 +130,4 @@ const BlogNewsItem = ({ post }) => {
   );
 };
 
-export default BlogNewsItem;
+export default React.memo(BlogNewsItem);

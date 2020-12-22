@@ -12,6 +12,7 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
   useEffect(() => {
     fetchLatestBlogPosts();
   }, []);
+
   return (
     <div className="default-section blogNewsHome">
       <div className="container">
@@ -36,4 +37,4 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
 export default connect(
   (state) => ({ blogPosts: state.blogPosts.latestBlogPosts }),
   { fetchLatestBlogPosts }
-)(BlogNews);
+)(React.memo(BlogNews));
