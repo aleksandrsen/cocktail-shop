@@ -1,3 +1,4 @@
+/// Common ///
 export type RequestMessageType = {
   name: string;
   email: string;
@@ -18,21 +19,72 @@ export type WishListItemType = {
   previewSrc: string;
 };
 
-export type ReviewType = {
-  id: string;
+//// COCKTAILS ////
+export type CocktailItemType = {
+  id: number;
+  rate: number;
+  name: string;
+  price: number;
+  category: string;
+  alcoholic: string;
+  previewSrc: string;
+  ingredients: string[];
+  reviews?: CocktailReviewItemType[];
+};
+
+export type CocktailReviewItemType = {
   author: string;
   date: string;
-  likes: number;
   dislikes: number;
+  id: number;
+  likes: number;
   text: string;
 };
 
-export type BlogNewsItemType = {
+/// BLOG POSTS ///
+export type BlogPostItemType = {
   authorFullName: string;
   content: string;
   date: string;
   id: number;
-  title: string,
+  title: string;
   previewSrc: string;
-  reviews?: ReviewType[];
+  reviews?: BlogPostReviewItemType[];
+};
+
+export type BlogPostReviewItemType = {
+  author: string;
+  date: string;
+  dislikes: number;
+  id: number;
+  likes: number;
+  text: string;
+};
+
+/// EVENTS ///
+export type EventItemType = {
+  address: string;
+  dateEnd: string;
+  dateStart: string;
+  description: string;
+  id: number;
+  previewSrc: string;
+  title: string;
+};
+
+/// BARTENDERS ///
+export type BartenderItemType = {
+  email: string;
+  id: number; // ?????????????????????
+  img: string;
+  name: string;
+  surname: string;
+};
+
+/// USER ///
+export type UserItemType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
 };

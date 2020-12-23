@@ -7,8 +7,16 @@ import BlogNewsItem from "./blog&news-item";
 // Utils
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
+// Types
+import { AppStateType } from "../../../../store";
+import { BlogPostItemType } from "../../../../types/common";
 
-const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
+type BlogNewsPropsType = {
+  blogPosts: null | BlogPostItemType[];
+  fetchLatestBlogPosts: () => void;
+};
+
+const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
   useEffect(() => {
     fetchLatestBlogPosts();
   }, []);
@@ -35,6 +43,6 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }) => {
 };
 
 export default connect(
-  (state) => ({ blogPosts: state.blogPosts.latestBlogPosts }),
+  (state: AppStateType) => ({ blogPosts: state.blogPosts.latestBlogPosts }),
   { fetchLatestBlogPosts }
 )(React.memo(BlogNews));

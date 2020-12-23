@@ -1,18 +1,19 @@
 import React from "react";
 import "./blog-news-item.scss";
+// Types
+import { BlogPostItemType } from "../../../../../types/common";
 // Utils
-import { BlogNewsItemType } from "../../../../../types/common";
 import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 
-type BlogNewsItemTypeProps = {
-  post: BlogNewsItemType;
+type BlogPostItemTypeProps = {
+  post: BlogPostItemType;
 };
 
-const BlogNewsItem = ({ post }: BlogNewsItemTypeProps) => {
+const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
   const dayNum: string = formatDate(post?.date, {
     day: "numeric",
   });
