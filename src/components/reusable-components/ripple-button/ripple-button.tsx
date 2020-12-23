@@ -1,8 +1,21 @@
-import React from "react";
+import React, { ReactChildren, ReactNode } from "react";
 import "./ripple-button.scss";
 
-const RippleButton = ({ children, onClick, type, disabled = false, ...rest }) => {
-  const createRipple = (e) => {
+type RippleButtonPropsType = {
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  children: ReactChildren | ReactNode;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const RippleButton = ({
+  children,
+  onClick,
+  type,
+  disabled = false,
+  ...rest
+}: RippleButtonPropsType) => {
+  const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) onClick(e);
 
     const button = e.currentTarget;
@@ -32,7 +45,7 @@ const RippleButton = ({ children, onClick, type, disabled = false, ...rest }) =>
     <button
       onClick={createRipple}
       className="rippleButton"
-      type={type || ""}
+      type={type}
       disabled={disabled}
       {...rest}
     >

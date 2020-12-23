@@ -2,6 +2,7 @@ import {
   FETCH_USER_INFO_REQUEST,
   ADD_ITEM_TO_CARD_REQUEST,
   USER_SEND_MESSAGE_REQUEST,
+  JOIN_MAILING_LIST_REQUEST,
   ADD_ITEM_TO_WISH_LIST_REQUEST,
   DELETE_ITEM_FROM_CARD_REQUEST,
   DELETE_ITEM_FROM_WISH_LIST_REQUEST,
@@ -38,4 +39,9 @@ export const addItemToWishList = (data: WishListItemType): UserActionType => ({
 export const deleteItemFromWishList = (id: number): UserActionType => ({
   type: DELETE_ITEM_FROM_WISH_LIST_REQUEST,
   id,
+});
+
+export const addUserToMailingList = (email: string): UserActionType => ({
+  type: JOIN_MAILING_LIST_REQUEST,
+  email,
 });

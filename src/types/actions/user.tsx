@@ -2,6 +2,7 @@ import {
   FETCH_USER_INFO_REQUEST,
   ADD_ITEM_TO_CARD_REQUEST,
   USER_SEND_MESSAGE_REQUEST,
+  JOIN_MAILING_LIST_REQUEST,
   ADD_ITEM_TO_WISH_LIST_REQUEST,
   DELETE_ITEM_FROM_CARD_REQUEST,
   DELETE_ITEM_FROM_WISH_LIST_REQUEST,
@@ -37,10 +38,16 @@ type DeleteItemFromWishListActionType = {
   id: number;
 };
 
+type UserJoinMailingListActionType = {
+  type: typeof JOIN_MAILING_LIST_REQUEST;
+  email: string;
+};
+
 export type UserActionType =
   | GetUserInfoActionType
   | UserSendMessageActionType
   | AddItemToCardActionType
   | DeleteItemFromCard
   | AddItemToWishListActionType
-  | DeleteItemFromWishListActionType;
+  | DeleteItemFromWishListActionType
+  | UserJoinMailingListActionType;
