@@ -12,7 +12,7 @@ import { AppStateType } from "../../../../store";
 import { BlogPostItemType } from "../../../../types/common";
 
 type BlogNewsPropsType = {
-  blogPosts: null | BlogPostItemType[];
+  blogPosts: BlogPostItemType[] | null;
   fetchLatestBlogPosts: () => void;
 };
 

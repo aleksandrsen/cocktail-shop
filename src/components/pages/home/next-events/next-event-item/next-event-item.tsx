@@ -3,8 +3,16 @@ import "./next-event-item.scss";
 // Utils
 import { Link } from "react-router-dom";
 import { formatDate, cutTextContent } from "../../../../../utils";
+// Types
+import { EventItemType } from "../../../../../types/common";
 
-const NextEventItem = ({ event: { dateStart, id, title } }) => (
+type NextEventItemPropsType = {
+  event: EventItemType;
+};
+
+const NextEventItem = ({
+  event: { dateStart, id, title },
+}: NextEventItemPropsType) => (
   <div className="nextEventsItem">
     <div className="nextEventsItem__info">
       <span className="nextEventsItem__date">
@@ -21,4 +29,4 @@ const NextEventItem = ({ event: { dateStart, id, title } }) => (
   </div>
 );
 
-export default NextEventItem;
+export default React.memo(NextEventItem);

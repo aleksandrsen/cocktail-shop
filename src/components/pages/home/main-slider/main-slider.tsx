@@ -5,11 +5,11 @@ import { Carousel } from "antd";
 // Utils
 import slides from "../../../../src_/img/main-slider-slides";
 
-const MainSlider = (props) => (
+const MainSlider = () => (
   <section className="mainSlider">
     <Carousel autoplay>
       {slides.map(({ name, img }) => (
-        <img src={img} alt={name} key={name}/>
+        <img src={img} alt={name} key={name} />
       ))}
     </Carousel>
   </section>

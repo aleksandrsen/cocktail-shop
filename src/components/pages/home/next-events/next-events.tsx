@@ -8,8 +8,16 @@ import { fetchNextEvents } from "../../../../actions/events";
 // Components
 import NextEventItem from "./next-event-item";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
+// Types
+import { AppStateType } from "../../../../store";
+import { EventItemType } from "../../../../types/common";
 
-const NextEvents = ({ events, fetchNextEvents }) => {
+type NextEventsPropsType = {
+  events: EventItemType[] | null;
+  fetchNextEvents: () => void;
+};
+
+const NextEvents = ({ events, fetchNextEvents }: NextEventsPropsType) => {
   useEffect(() => {
     fetchNextEvents();
   }, []);
@@ -33,6 +41,9 @@ const NextEvents = ({ events, fetchNextEvents }) => {
   );
 };
 
-export default connect((state) => ({ events: state.events.nextEvents }), {
-  fetchNextEvents,
-})(NextEvents);
+export default connect(
+  (state: AppStateType) => ({ events: state.events.nextEvents }),
+  {
+    fetchNextEvents,
+  }
+)(React.memo(NextEvents));
