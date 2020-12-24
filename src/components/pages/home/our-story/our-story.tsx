@@ -4,7 +4,7 @@ import ourStory from "../../../../src_/img/our-story.png";
 // Components
 import { Link } from "react-router-dom";
 
-const OurStory = (props) => (
+const OurStory = () => (
   <div className="default-section ourStory">
     <div className="container">
       <div className="row space-between align-items-center">

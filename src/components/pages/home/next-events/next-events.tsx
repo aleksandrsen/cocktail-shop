@@ -9,7 +9,7 @@ import { fetchNextEvents } from "../../../../actions/events";
 import NextEventItem from "./next-event-item";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
 // Types
-import { AppStateType } from "../../../../store";
+import { AppRootState } from "../../../../store";
 import { EventItemType } from "../../../../types/common";
 
 type NextEventsPropsType = {
@@ -42,7 +42,7 @@ const NextEvents = ({ events, fetchNextEvents }: NextEventsPropsType) => {
 };
 
 export default connect(
-  (state: AppStateType) => ({ events: state.events.nextEvents }),
+  (state: AppRootState) => ({ events: state.events.nextEvents }),
   {
     fetchNextEvents,
   }

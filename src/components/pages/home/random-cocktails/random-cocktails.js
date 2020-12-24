@@ -9,6 +9,7 @@ import { fetchRandomCocktails } from "../../../../actions/cocktails";
 import { Carousel } from "antd";
 import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
 
+
 const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
   useEffect(() => {
     fetchRandomCocktails();

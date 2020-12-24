@@ -6,11 +6,20 @@ import { fetchGalleryPhotos } from "../../../../actions/gallery";
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
 // Components
+import { AppRootState } from "../../../../store";
 import JoinMailingList from "../join-mailing-list";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
 
-const PubsPhotoGallery = ({ galleryPhotos, fetchGalleryPhotos }) => {
+type PubsPhotoGalleryPropsType = {
+  galleryPhotos: null | string[];
+  fetchGalleryPhotos: () => void;
+};
+
+const PubsPhotoGallery = ({
+  galleryPhotos,
+  fetchGalleryPhotos,
+}: PubsPhotoGalleryPropsType) => {
   useEffect(() => {
     fetchGalleryPhotos();
   }, []);
@@ -65,6 +74,9 @@ const PubsPhotoGallery = ({ galleryPhotos, fetchGalleryPhotos }) => {
   );
 };
 
-export default connect((state) => ({ galleryPhotos: state.gallery.gallery }), {
-  fetchGalleryPhotos,
-})(PubsPhotoGallery);
+export default connect(
+  (state: AppRootState) => ({ galleryPhotos: state.gallery.gallery }),
+  {
+    fetchGalleryPhotos,
+  }
+)(React.memo(PubsPhotoGallery));

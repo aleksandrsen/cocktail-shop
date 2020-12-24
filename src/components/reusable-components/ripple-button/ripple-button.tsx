@@ -54,4 +54,4 @@ const RippleButton = ({
   );
 };
 
-export default RippleButton;
+export default React.memo(RippleButton);

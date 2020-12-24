@@ -8,7 +8,7 @@ import BlogNewsItem from "./blog&news-item";
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
 // Types
-import { AppStateType } from "../../../../store";
+import { AppRootState } from "../../../../store";
 import { BlogPostItemType } from "../../../../types/common";
 
 type BlogNewsPropsType = {
@@ -43,6 +43,6 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
 };
 
 export default connect(
-  (state: AppStateType) => ({ blogPosts: state.blogPosts.latestBlogPosts }),
+  (state: AppRootState) => ({ blogPosts: state.blogPosts.latestBlogPosts }),
   { fetchLatestBlogPosts }
 )(React.memo(BlogNews));
