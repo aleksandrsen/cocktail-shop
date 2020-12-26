@@ -9,8 +9,20 @@ import Tippy from "@tippyjs/react";
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
+// Types
+import { CocktailItemType } from "../../../../../types/common";
 
-const CocktailItem = ({ cocktail, col = 3, imgSkeletonStyles = {} }) => (
+type CocktailItemPropsType = {
+  cocktail: null | CocktailItemType;
+  col: number;
+  imgSkeletonStyles: React.CSSProperties;
+};
+
+const CocktailItem = ({
+  cocktail,
+  col = 3,
+  imgSkeletonStyles = {},
+}: CocktailItemPropsType) => (
   <div className={`col col-${col}`}>
     <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem">
       <div className="cocktailItem__imgWrap">
@@ -79,4 +91,4 @@ const CocktailItem = ({ cocktail, col = 3, imgSkeletonStyles = {} }) => (
   </div>
 );
 
-export default CocktailItem;
+export default React.memo(CocktailItem);

@@ -8,18 +8,28 @@ import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
 import { Carousel } from "antd";
 import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
+// Types
+import { AppRootState } from "../../../../store";
+import { CocktailItemType } from "../../../../types/common";
 
+type RandomCocktailsPropsType = {
+  cocktails: null | CocktailItemType[];
+  fetchRandomCocktails: () => void;
+};
 
-const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
+const RandomCocktails = ({
+  cocktails,
+  fetchRandomCocktails,
+}: RandomCocktailsPropsType) => {
   useEffect(() => {
     fetchRandomCocktails();
   }, []);
 
-  const cutArray = (arr, itemArrLength) => {
-    if (!arr || !arr.length) return [];
+  const cutArray = (cocktails: CocktailItemType[], itemArrLength: number) => {
+    if (!cocktails || !cocktails.length) return [];
     const res = [];
     let j = 0;
-    for (let i = 0; i < Math.ceil(arr.length / itemArrLength); ) {
+    for (let i = 0; i < Math.ceil(cocktails.length / itemArrLength); ) {
       res.push(cocktails.slice(j, j + itemArrLength));
       i += 1;
       j += itemArrLength;
@@ -74,6 +84,6 @@ const RandomCocktails = ({ cocktails, fetchRandomCocktails }) => {
 };
 
 export default connect(
-  (state) => ({ cocktails: state.cocktails.randomCocktails }),
+  (state: AppRootState) => ({ cocktails: state.cocktails.randomCocktails }),
   { fetchRandomCocktails }
-)(RandomCocktails);
+)(React.memo(RandomCocktails));

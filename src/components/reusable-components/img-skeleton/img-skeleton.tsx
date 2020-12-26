@@ -4,7 +4,7 @@ import semantic from "../../../src_/img/semantic.png";
 
 type ImgSkeletonPropsType = {
   skeletonStyle: React.CSSProperties;
-  src: string;
+  src?: string;
   title?: string;
   classes?: string[];
 };
