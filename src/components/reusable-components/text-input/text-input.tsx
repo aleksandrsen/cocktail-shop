@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, FocusEvent, SyntheticEvent } from "react";
 import "./text-input.scss";
 // Utils
 import { useField } from "formik";
 
-const TextInput = ({ name, type, placeholder, textarea }) => {
+type TextInputPropsType = {
+  name: string;
+  type: string;
+  placeholder: string;
+  textarea?: boolean;
+};
+
+const TextInput = ({
+  name,
+  type,
+  placeholder,
+  textarea,
+}: TextInputPropsType) => {
   const [focused, setFocused] = useState(false);
   const [field, meta] = useField({ name, type, placeholder });
 
-  const handleFocus = (e) => setFocused(!focused);
+  const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setFocused(!focused);
 
-  const handleBlur = (e) => {
+  const handleBlur = (
+    e: SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     field.onBlur(e);
     setFocused(false);
   };
@@ -40,9 +55,9 @@ const TextInput = ({ name, type, placeholder, textarea }) => {
           onBlur={handleBlur}
         />
       )}
-      {meta.touched && meta.error ? (
+      {meta.touched && meta.error && (
         <div className="textInput__error">{meta.error}</div>
-      ) : null}
+      )}
     </div>
   );
 };

@@ -11,10 +11,11 @@ import {
   setDislikeBlogPostReview,
 } from "../../../../actions/blog";
 // Components
-import SmallSpinner from "../../../spinner";
 import SocialNetworks from "../../../social-networks";
 import ReviewForm from "../../../reusable-components/review-form";
 import ReviewsList from "../../../reusable-components/reviews-list";
+import ImgSkeleton from "../../../reusable-components/img-skeleton";
+import FieldSkeleton from "../../../reusable-components/field-skeleton";
 // Types
 import { AppRootState } from "../../../../store";
 import { BlogPostItemType, RequestMessageType } from "../../../../types/common";
@@ -42,47 +43,62 @@ const BlogPostDetails = ({
 
   const handleSubmit = (
     values: RequestMessageType,
-    { resetForm }: { resetForm: () => void }
+    { resetForm }: { resetForm?: () => void }
   ) => {
     sendBlogPostReview(blogPostId, values);
-    resetForm();
+    if (resetForm) resetForm();
   };
 
-  return details ? (
+  return (
     <div className="blogPostDetails">
-      <img
-        className="blogPostDetails__img"
-        src={details.previewSrc}
-        alt={details.title}
+      <ImgSkeleton
+        src={details?.previewSrc}
+        title={details?.title}
+        classes={["blogPostDetails__img"]}
+        skeletonStyle={{ height: "250px" }}
       />
-      <h2 className="blogPostDetails__title">{details.title}</h2>
+      {details ? (
+        <h2 className="blogPostDetails__title">{details.title}</h2>
+      ) : (
+        <FieldSkeleton styles={{ padding: "16px", marginBottom: "10px" }} />
+      )}
       <div className="blogPostDetails__info">
         <div className="blogPostDetails__author">
           <svg width="16" height="16">
             <use xlinkHref="#user" />
           </svg>
-          {details.authorFullName}
+          {details ? (
+            details.authorFullName
+          ) : (
+            <FieldSkeleton styles={{ padding: "12px 32px" }} />
+          )}
         </div>
         <div className="blogPostDetails__date">
           <svg width="16" height="16">
             <use xlinkHref="#clock" />
           </svg>
-          {formatDate(details.date)}
+          {details ? (
+            formatDate(details.date)
+          ) : (
+            <FieldSkeleton styles={{ padding: "12px 32px" }} />
+          )}
         </div>
       </div>
-      <p className="default-text">{details.content}</p>
-      <SocialNetworks />
-      {/*<ReviewForm handleSubmit={handleSubmit} />*/}
-      {details.reviews && (
-        <ReviewsList
-          reviews={details.reviews}
-          setLike={setLikeBlogPostReview}
-          setDislike={setDislikeBlogPostReview}
+      {details ? (
+        <p className="default-text">{details.content}</p>
+      ) : (
+        <FieldSkeleton
+          styles={{ padding: "130px 32px", marginBottom: "16px" }}
         />
       )}
+      <SocialNetworks />
+      <ReviewForm handleSubmit={handleSubmit} />
+      <ReviewsList
+        reviews={details?.reviews}
+        setLike={setLikeBlogPostReview}
+        setDislike={setDislikeBlogPostReview}
+      />
     </div>
-  ) : (
-    <SmallSpinner />
   );
 };
 

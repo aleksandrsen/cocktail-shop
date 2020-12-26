@@ -14,7 +14,7 @@ const SideEventItem = ({ eventItem }) => {
     <Link to={`/music-events/${eventItem?.id}`} className="asideEventItem">
       <div className="asideEventItem__date">
         <div className="asideEventItem__day">
-          {day ? (
+          {eventItem?.dateStart ? (
             day < 10 ? (
               "0" + day
             ) : (
