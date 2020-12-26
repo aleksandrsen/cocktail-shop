@@ -2,7 +2,7 @@ import React from "react";
 import AboutUs from "./about-us";
 import PubPartners from "../bartenders/pub-partners";
 
-const About = (props) => (
+const About = () => (
   <>
     <AboutUs />
     <PubPartners />

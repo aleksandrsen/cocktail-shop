@@ -4,7 +4,6 @@ import "./upcoming-events.scss";
 import { fetchUpcomingEvent } from "../../../../actions/events";
 // Utils
 import { connect } from "react-redux";
-import { Icons } from "../../../../src_/icons";
 import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
@@ -12,8 +11,19 @@ import EventCounter from "./event-counter";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
 import RippleButton from "../../../reusable-components/ripple-button";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
+// Types
+import { EventItemType } from "../../../../types/common";
+import { AppRootState } from "../../../../store";
 
-const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
+type UpcomingEventsPropsType = {
+  event: null | EventItemType;
+  fetchUpcomingEvent: () => void;
+};
+
+const UpcomingEvents = ({
+  event,
+  fetchUpcomingEvent,
+}: UpcomingEventsPropsType) => {
   useEffect(() => {
     fetchUpcomingEvent();
   }, []);
@@ -34,7 +44,9 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
           <div className="col col-4 upcomingEvent__info">
             <h3 className="upcomingEvent__title">{event?.title}</h3>
             <div className="upcomingEvent__date">
-              {Icons.calendar}
+              <svg width="16" height="16">
+                <use xlinkHref="#event-counter-date" />
+              </svg>
               {event?.dateStart ? (
                 formatDate(event.dateStart)
               ) : (
@@ -108,6 +120,9 @@ const UpcomingEvents = ({ event, fetchUpcomingEvent }) => {
   );
 };
 
-export default connect((state) => ({ event: state.events.upcomingEvent }), {
-  fetchUpcomingEvent,
-})(UpcomingEvents);
+export default connect(
+  (state: AppRootState) => ({ event: state.events.upcomingEvent }),
+  {
+    fetchUpcomingEvent,
+  }
+)(React.memo(UpcomingEvents));

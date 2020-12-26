@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./bartener-details.scss";
 // Utils
 import { connect } from "react-redux";
+import { match } from "react-router-dom";
 // Actions
 import {
   fetchBartendersDetails,
@@ -12,6 +13,20 @@ import ReviewForm from "../../reusable-components/review-form";
 import ImgSkeleton from "../../reusable-components/img-skeleton";
 import RippleButton from "../../reusable-components/ripple-button";
 import FieldSkeleton from "../../reusable-components/field-skeleton";
+// Types
+import { AppRootState } from "../../../store";
+import { BartenderItemType, RequestMessageType } from "../../../types/common";
+
+interface IMatchParams {
+  id: string;
+}
+
+type BartenderDetailsPropsType = {
+  match: match<IMatchParams>;
+  bartenderDetails: null | BartenderItemType;
+  fetchBartendersDetails: (id: number) => void;
+  sendMessageToBartender: (id: number, values: RequestMessageType) => void;
+};
 
 const BartenderDetails = ({
   match: {
@@ -20,12 +35,13 @@ const BartenderDetails = ({
   bartenderDetails,
   fetchBartendersDetails,
   sendMessageToBartender,
-}) => {
+}: BartenderDetailsPropsType) => {
   useEffect(() => {
-    fetchBartendersDetails(id);
+    fetchBartendersDetails(+id);
   }, []);
 
-  const handleSubmit = (values) => sendMessageToBartender(id, values);
+  const handleSubmit = (values: RequestMessageType) =>
+    sendMessageToBartender(+id, values);
 
   return (
     <>
@@ -79,6 +95,8 @@ const BartenderDetails = ({
 };
 
 export default connect(
-  (state) => ({ bartenderDetails: state.bartenders.bartenderDetails }),
+  (state: AppRootState) => ({
+    bartenderDetails: state.bartenders.bartenderDetails,
+  }),
   { fetchBartendersDetails, sendMessageToBartender }
 )(BartenderDetails);

@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./event-counter.scss";
 
-const EventCounter = ({ date: eventDate }) => {
-  const [date, setDate] = useState({
+interface IDate {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const EventCounter = ({ date: eventDate }: { date: string }) => {
+  const [date, setDate] = useState<IDate>({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -11,7 +18,7 @@ const EventCounter = ({ date: eventDate }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const dateDifference = new Date(new Date(eventDate) - new Date());
+      const dateDifference: Date = new Date(+new Date(eventDate) - +new Date());
 
       setDate({
         days: Math.floor(+dateDifference / (24 * 60 * 60 * 1000)),
@@ -41,4 +48,4 @@ const EventCounter = ({ date: eventDate }) => {
   );
 };
 
-export default EventCounter;
+export default React.memo(EventCounter);
