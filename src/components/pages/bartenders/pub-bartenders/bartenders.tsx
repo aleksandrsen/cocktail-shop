@@ -3,7 +3,7 @@ import "./bartenders.scss";
 // Components
 import BartendersList from "./bartenders-list";
 
-const PubBartenders = (props) => (
+const PubBartenders = () => (
   <section className="default-section pubBartenders">
     <div className="container">
       <h2 className="section-title">Our team</h2>

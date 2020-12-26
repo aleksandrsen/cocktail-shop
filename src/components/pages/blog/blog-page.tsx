@@ -3,7 +3,7 @@ import React from "react";
 import SidePanel from "../../side-panel";
 import BlogPostsList from "./blog-posts-list";
 
-const BlogPage = (props) => (
+const BlogPage = () => (
   <section className="default-section">
     <div className="container">
       <div className="row justify-content-center">

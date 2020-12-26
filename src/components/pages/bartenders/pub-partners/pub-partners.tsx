@@ -3,7 +3,7 @@ import "./pub-partners.scss";
 import partner1 from "../../../../src_/img/pub-partners/partner-1.png";
 import partner2 from "../../../../src_/img/pub-partners/partner-2.png";
 
-const PubPartners = (props) => (
+const PubPartners = () => (
   <section className="default-section pubPartners">
     <div className="container">
       <h2 className="section-title">Pub partners</h2>

@@ -1,17 +1,23 @@
 import React from "react";
 import "./blog-post-item.scss";
 // Utils
+import { match } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
-import { Icons } from "../../../../../src_/icons";
 import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import SocialNetworks from "../../../../social-networks";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
+// Types
+import { BlogPostItemType } from "../../../../../types/common";
 
-const BlogPostItem = ({ post }) => {
-  const match = useRouteMatch();
+type BlogPostItemPropsType = {
+  post: null | BlogPostItemType;
+};
+
+const BlogPostItem = ({ post }: BlogPostItemPropsType) => {
+  const match: match = useRouteMatch();
 
   return (
     <div className="blogPostItem">
@@ -58,19 +64,21 @@ const BlogPostItem = ({ post }) => {
           <>
             <Link to={`${match.url}${post?.id}`}>Read more</Link>
             <span className="blogPostItem__reviewsWrap">
-              {Icons.reviews}
+              <svg width="16" height="16">
+                <use xlinkHref="#reviews-icon" />
+              </svg>
               <span className="blogPostItem__reviews">
-                {post?.reviews.length}
+                {post.reviews && post.reviews.length}
               </span>
             </span>
             <SocialNetworks exclude="Youtube" />
           </>
         ) : (
-          <FieldSkeleton styles={{ padding: "10px", flexGrow: "1" }} />
+          <FieldSkeleton styles={{ padding: "10px", flexGrow: 1 }} />
         )}
       </div>
     </div>
   );
 };
 
-export default BlogPostItem;
+export default React.memo(BlogPostItem);

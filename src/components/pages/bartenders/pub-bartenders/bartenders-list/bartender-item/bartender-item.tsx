@@ -4,8 +4,14 @@ import "./bartender-item.scss";
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../../reusable-components/field-skeleton";
+// Types
+import { BartenderItemType } from "../../../../../../types/common";
 
-const BartenderItem = ({ bartender }) => (
+type BartenderItemPropsType = {
+  bartender: null | BartenderItemType;
+};
+
+const BartenderItem = ({ bartender }: BartenderItemPropsType) => (
   <div className="col col-3">
     <Link to={`/bartenders/${bartender?.id}`} className="bartenderItem">
       <div className="bartenderItem__imgWrapper">
@@ -34,4 +40,4 @@ const BartenderItem = ({ bartender }) => (
   </div>
 );
 
-export default BartenderItem;
+export default React.memo(BartenderItem);

@@ -8,8 +8,19 @@ import RippleButton from "../../../reusable-components/ripple-button";
 // Utils
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
+// Types
+import { AppRootState } from "../../../../store";
+import { BlogPostItemType } from "../../../../types/common";
 
-const BlogPostsList = ({ blogPosts, fetchBlogPosts }) => {
+type BlogPostsListPropsType = {
+  blogPosts: null | BlogPostItemType[];
+  fetchBlogPosts: () => void;
+};
+
+const BlogPostsList = ({
+  blogPosts,
+  fetchBlogPosts,
+}: BlogPostsListPropsType) => {
   useEffect(() => {
     fetchBlogPosts();
   }, []);
@@ -26,6 +37,9 @@ const BlogPostsList = ({ blogPosts, fetchBlogPosts }) => {
   );
 };
 
-export default connect((state) => ({ blogPosts: state.blogPosts.blogPosts }), {
-  fetchBlogPosts,
-})(BlogPostsList);
+export default connect(
+  (state: AppRootState) => ({ blogPosts: state.blogPosts.blogPosts }),
+  {
+    fetchBlogPosts,
+  }
+)(React.memo(BlogPostsList));

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./blog-post-details.scss";
 // Utils
 import { connect } from "react-redux";
-import { Icons } from "../../../../src_/icons";
 import { formatDate } from "../../../../utils";
 // Actions
 import {
@@ -16,6 +15,18 @@ import SmallSpinner from "../../../spinner";
 import SocialNetworks from "../../../social-networks";
 import ReviewForm from "../../../reusable-components/review-form";
 import ReviewsList from "../../../reusable-components/reviews-list";
+// Types
+import { AppRootState } from "../../../../store";
+import { BlogPostItemType, RequestMessageType } from "../../../../types/common";
+
+type BlogPostDetailsPropsType = {
+  blogPostId: number;
+  details: null | BlogPostItemType;
+  setLikeBlogPostReview: (id: number) => void;
+  setDislikeBlogPostReview: (id: number) => void;
+  fetchBlogPostDetails: (blogPostId: number) => void;
+  sendBlogPostReview: (blogPostId: number, values: RequestMessageType) => void;
+};
 
 const BlogPostDetails = ({
   details,
@@ -24,12 +35,15 @@ const BlogPostDetails = ({
   fetchBlogPostDetails,
   setLikeBlogPostReview,
   setDislikeBlogPostReview,
-}) => {
+}: BlogPostDetailsPropsType) => {
   useEffect(() => {
     fetchBlogPostDetails(blogPostId);
   }, []);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (
+    values: RequestMessageType,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     sendBlogPostReview(blogPostId, values);
     resetForm();
   };
@@ -44,22 +58,28 @@ const BlogPostDetails = ({
       <h2 className="blogPostDetails__title">{details.title}</h2>
       <div className="blogPostDetails__info">
         <div className="blogPostDetails__author">
-          {Icons.user}
+          <svg width="16" height="16">
+            <use xlinkHref="#user" />
+          </svg>
           {details.authorFullName}
         </div>
         <div className="blogPostDetails__date">
-          {Icons.clock}
+          <svg width="16" height="16">
+            <use xlinkHref="#clock" />
+          </svg>
           {formatDate(details.date)}
         </div>
       </div>
       <p className="default-text">{details.content}</p>
       <SocialNetworks />
-      <ReviewForm handleSubmit={handleSubmit} />
-      <ReviewsList
-        reviews={details.reviews}
-        setLike={setLikeBlogPostReview}
-        setDislike={setDislikeBlogPostReview}
-      />
+      {/*<ReviewForm handleSubmit={handleSubmit} />*/}
+      {details.reviews && (
+        <ReviewsList
+          reviews={details.reviews}
+          setLike={setLikeBlogPostReview}
+          setDislike={setDislikeBlogPostReview}
+        />
+      )}
     </div>
   ) : (
     <SmallSpinner />
@@ -67,11 +87,11 @@ const BlogPostDetails = ({
 };
 
 export default connect(
-  (state) => ({ details: state.blogPosts.blogPostDetails }),
+  (state: AppRootState) => ({ details: state.blogPosts.blogPostDetails }),
   {
     sendBlogPostReview,
     fetchBlogPostDetails,
     setLikeBlogPostReview,
     setDislikeBlogPostReview,
   }
-)(BlogPostDetails);
+)(React.memo(BlogPostDetails));

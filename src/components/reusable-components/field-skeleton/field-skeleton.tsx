@@ -2,7 +2,7 @@ import React from "react";
 import "./field-skeleton.scss";
 
 interface FieldSkeletonProps {
-  styles?: object;
+  styles?: React.CSSProperties;
   className?: string;
 }
 

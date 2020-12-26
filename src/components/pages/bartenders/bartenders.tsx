@@ -3,7 +3,7 @@ import React from "react";
 import PubPartners from "./pub-partners";
 import PubBartenders from "./pub-bartenders";
 
-const Bartenders = (props) => (
+const Bartenders = () => (
   <>
     <PubBartenders />
     <PubPartners />

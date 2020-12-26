@@ -2,12 +2,24 @@ import React, { useEffect } from "react";
 import "./bartenders-list.scss";
 // Utils
 import { connect } from "react-redux";
+import { getSkeletons } from "../../../../../utils/index";
+// Actions
 import { fetchBartenders } from "../../../../../actions/bartenders";
 // Components
 import BartenderItem from "./bartender-item";
-import SmallSpinner from "../../../../spinner";
+// Types
+import { AppRootState } from "../../../../../store";
+import { BartenderItemType } from "../../../../../types/common";
 
-const BartendersList = ({ fetchBartenders, bartenders }) => {
+type BartendersListPropsType = {
+  bartenders: null | BartenderItemType[];
+  fetchBartenders: () => void;
+};
+
+const BartendersList = ({
+  bartenders,
+  fetchBartenders,
+}: BartendersListPropsType) => {
   useEffect(() => {
     fetchBartenders();
   }, []);
@@ -19,17 +31,15 @@ const BartendersList = ({ fetchBartenders, bartenders }) => {
           ? bartenders.map((item) => (
               <BartenderItem key={item.id} bartender={item} />
             ))
-          : new Array(6)
-              .fill(1)
-              .map((num, idx) => <BartenderItem key={`${num}${idx}`} />)}
+          : getSkeletons(6, BartenderItem)}
       </div>
     </div>
   );
 };
 
 export default connect(
-  (state) => ({
+  (state: AppRootState) => ({
     bartenders: state.bartenders.bartenders,
   }),
   { fetchBartenders }
-)(BartendersList);
+)(React.memo(BartendersList));

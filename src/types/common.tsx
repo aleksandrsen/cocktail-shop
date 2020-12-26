@@ -75,10 +75,12 @@ export type EventItemType = {
 /// BARTENDERS ///
 export type BartenderItemType = {
   email: string;
-  id: number; // ?????????????????????
+  id: number;
   img: string;
   name: string;
   surname: string;
+  story: string;
+  greeting: string;
 };
 
 /// USER ///
