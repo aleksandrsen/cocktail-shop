@@ -8,8 +8,18 @@ import { getSkeletons } from "../../../utils";
 // Components
 import ImgSkeleton from "../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../reusable-components/field-skeleton";
+import { AppRootState } from "../../../store";
+// Types
 
-const InstagramGallery = ({ photos, fetchInstagramPhotos }) => {
+type InstagramGalleryPropsType = {
+  photos: null | string[];
+  fetchInstagramPhotos: () => void;
+};
+
+const InstagramGallery = ({
+  photos,
+  fetchInstagramPhotos,
+}: InstagramGalleryPropsType) => {
   useEffect(() => {
     fetchInstagramPhotos();
   }, []);
@@ -25,6 +35,9 @@ const InstagramGallery = ({ photos, fetchInstagramPhotos }) => {
   );
 };
 
-export default connect((state) => ({ photos: state.gallery.instagram }), {
-  fetchInstagramPhotos,
-})(InstagramGallery);
+export default connect(
+  (state: AppRootState) => ({ photos: state.gallery.instagram }),
+  {
+    fetchInstagramPhotos,
+  }
+)(InstagramGallery);

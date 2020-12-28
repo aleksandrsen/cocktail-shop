@@ -1,14 +1,19 @@
 import React from "react";
 import "./aside-post-item.scss";
 // Utils
-import { Icons } from "../../../../src_/icons";
 import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
+// Types
+import { BlogPostItemType } from "../../../../types/common";
 
-const AsidePostItem = ({ postItem }) => (
+type AsidePostItemPropsType = {
+  postItem: null | BlogPostItemType;
+};
+
+const AsidePostItem = ({ postItem }: AsidePostItemPropsType) => (
   <Link to={`/blog/${postItem?.id}`} className="asidePostItem">
     <ImgSkeleton
       src={postItem?.previewSrc}
@@ -25,7 +30,9 @@ const AsidePostItem = ({ postItem }) => (
         )}
       </div>
       <div className="asidePostItem__date">
-        {Icons.calendar}
+        <svg width="16" height="16">
+          <use xlinkHref="#side-panel-post-calendar" />
+        </svg>
         {postItem ? (
           <div>
             {formatDate(postItem.date, {
@@ -42,4 +49,4 @@ const AsidePostItem = ({ postItem }) => (
   </Link>
 );
 
-export default AsidePostItem;
+export default React.memo(AsidePostItem);

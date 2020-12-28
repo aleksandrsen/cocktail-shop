@@ -4,11 +4,17 @@ import "./music-event-item.scss";
 import Tippy from "@tippyjs/react";
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
+import FieldSkeleton from "../../../reusable-components/field-skeleton";
 // Utils
 import { formatDate, cutTextContent } from "../../../../utils";
-import FieldSkeleton from "../../../reusable-components/field-skeleton";
+// Types
+import { EventItemType } from "../../../../types/common";
 
-const MusicEventItem = ({ eventItem }) => (
+type MusicEventItemPropType = {
+  eventItem: null | EventItemType;
+};
+
+const MusicEventItem = ({ eventItem }: MusicEventItemPropType) => (
   <div className="musicEventItem">
     <div className="row noWrap">
       <div className="col col-6">
@@ -64,4 +70,4 @@ const MusicEventItem = ({ eventItem }) => (
   </div>
 );
 
-export default MusicEventItem;
+export default React.memo(MusicEventItem);

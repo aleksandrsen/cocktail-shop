@@ -4,20 +4,22 @@ import "./side-panel.scss";
 import AsidePostsList from "./aside-posts-list";
 import InstagramGallery from "./instagram-gallery";
 import SidePanelEventsList from "./side-panel-events-list";
-// Utils
-import { Icons } from "../../src_/icons";
 
-const SidePanel = (props) => {
+const SidePanel = () => {
   const [searchValue, setSearchValue] = useState("");
 
-  const handleSearch = ({ target: { value } }) => setSearchValue(value);
+  const handleSearch = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>) => setSearchValue(value);
 
   return (
     <aside className="sidePanel">
       <div className="sidePanel__item">
         <h3 className="sidePanel__title search">Search</h3>
         <div className="sidePanel__searchWrapper">
-          {Icons.searchIcon}
+          <svg width="16" height="16">
+            <use xlinkHref="#search-icon" />
+          </svg>
           <input
             type="text"
             placeholder="Enter key words"
@@ -42,4 +44,4 @@ const SidePanel = (props) => {
   );
 };
 
-export default SidePanel;
+export default React.memo(SidePanel);

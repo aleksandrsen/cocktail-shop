@@ -1,13 +1,18 @@
 import React from "react";
 import "./side-event-item.scss";
 // Utils
-import { Icons } from "../../../../src_/icons";
 import { formatDate, cutTextContent } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
+// Types
+import { EventItemType } from "../../../../types/common";
 
-const SideEventItem = ({ eventItem }) => {
+type SideEventItemPropType = {
+  eventItem: null | EventItemType;
+};
+
+const SideEventItem = ({ eventItem }: SideEventItemPropType) => {
   const day = formatDate(eventItem?.dateStart, { day: "numeric" });
 
   return (
@@ -15,7 +20,7 @@ const SideEventItem = ({ eventItem }) => {
       <div className="asideEventItem__date">
         <div className="asideEventItem__day">
           {eventItem?.dateStart ? (
-            day < 10 ? (
+            +day < 10 ? (
               "0" + day
             ) : (
               day
@@ -48,9 +53,10 @@ const SideEventItem = ({ eventItem }) => {
             className="asideEventItem__title"
           />
         )}
-
         <div className="asideEventItem__time">
-          {Icons.clock}
+          <svg width="16" height="16">
+            <use xlinkHref="#side-panel-event-clock" />
+          </svg>
           {eventItem ? (
             `${formatDate(eventItem.dateStart, {
               hour: "2-digit",
@@ -68,4 +74,4 @@ const SideEventItem = ({ eventItem }) => {
   );
 };
 
-export default SideEventItem;
+export default React.memo(SideEventItem);

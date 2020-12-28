@@ -8,8 +8,19 @@ import { fetchEventsList } from "../../../../actions/events";
 // Components
 import MusicEventItem from "../music-event-item";
 import RippleButton from "../../../reusable-components/ripple-button";
+// Types
+import { AppRootState } from "../../../../store";
+import { EventItemType } from "../../../../types/common";
 
-const MusicEventsList = ({ fetchEventsList, events }) => {
+type MusicEventsListPropsType = {
+  fetchEventsList: () => void;
+  events: null | EventItemType[];
+};
+
+const MusicEventsList = ({
+  fetchEventsList,
+  events,
+}: MusicEventsListPropsType) => {
   useEffect(() => {
     fetchEventsList();
   }, []);
@@ -26,6 +37,9 @@ const MusicEventsList = ({ fetchEventsList, events }) => {
   );
 };
 
-export default connect((state) => ({ events: state.events.events }), {
-  fetchEventsList,
-})(MusicEventsList);
+export default connect(
+  (state: AppRootState) => ({ events: state.events.events }),
+  {
+    fetchEventsList,
+  }
+)(React.memo(MusicEventsList));

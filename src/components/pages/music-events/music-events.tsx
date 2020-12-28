@@ -1,4 +1,5 @@
 import React from "react";
+// Components
 import SidePanel from "../../side-panel";
 import MusicEventsList from "./music-events-list";
 

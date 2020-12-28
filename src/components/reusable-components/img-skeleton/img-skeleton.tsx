@@ -3,7 +3,7 @@ import "./img-skeleton.scss";
 import semantic from "../../../src_/img/semantic.png";
 
 type ImgSkeletonPropsType = {
-  skeletonStyle: React.CSSProperties;
+  skeletonStyle?: React.CSSProperties;
   src?: string;
   title?: string;
   classes?: string[];

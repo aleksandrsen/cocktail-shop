@@ -7,8 +7,19 @@ import { getSkeletons } from "../../../utils";
 import { fetchEventsList } from "../../../actions/events";
 // Components
 import SideEventItem from "./side-event-item";
+// Types
+import { AppRootState } from "../../../store";
+import { EventItemType } from "../../../types/common";
 
-const SidePanelEventsList = ({ fetchEventsList, events }) => {
+type SidePanelEventsListPropsType = {
+  fetchEventsList: () => void;
+  events: null | EventItemType[];
+};
+
+const SidePanelEventsList = ({
+  fetchEventsList,
+  events,
+}: SidePanelEventsListPropsType) => {
   useEffect(() => {
     fetchEventsList();
   }, []);
@@ -24,6 +35,9 @@ const SidePanelEventsList = ({ fetchEventsList, events }) => {
   );
 };
 
-export default connect((state) => ({ events: state.events.events }), {
-  fetchEventsList,
-})(SidePanelEventsList);
+export default connect(
+  (state: AppRootState) => ({ events: state.events.events }),
+  {
+    fetchEventsList,
+  }
+)(React.memo(SidePanelEventsList));
