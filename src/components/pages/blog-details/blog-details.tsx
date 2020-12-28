@@ -5,12 +5,12 @@ import SidePanel from "../../side-panel";
 // Utils
 import { match } from "react-router-dom";
 
-interface IMatchParams {
+interface MatchTypeParams {
   id: string;
 }
 
 type BlogDetailsPropsType = {
-  match: match<IMatchParams>;
+  match: match<MatchTypeParams>;
 };
 
 const BlogDetails = ({
