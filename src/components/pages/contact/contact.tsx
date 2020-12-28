@@ -4,7 +4,7 @@ import Map from "./map";
 import ContactUs from "./contact-us";
 import GetInTouch from "./get-in-touch";
 
-const Contact = (props) => (
+const Contact = () => (
   <>
     <GetInTouch />
     <Map />

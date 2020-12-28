@@ -2,7 +2,7 @@ import React from "react";
 import SidePanel from "../../side-panel";
 import MusicEventsList from "./music-events-list";
 
-const MusicEvents = (props) => (
+const MusicEvents = () => (
   <section className="default-section">
     <div className="container">
       <div className="row justify-content-center">
