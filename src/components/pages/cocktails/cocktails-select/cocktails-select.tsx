@@ -4,7 +4,19 @@ import "./cocktails-select.scss";
 import { Select } from "antd";
 const { Option } = Select;
 
-const SORT_PARAMS = [
+export type SortParamsValuesTypes =
+  | "rate"
+  | "price-h-l"
+  | "price-l-h"
+  | "name"
+  | "";
+
+type SortParamItem = {
+  label: string;
+  value: SortParamsValuesTypes;
+};
+
+const SORT_PARAMS: SortParamItem[] = [
   {
     label: "Name",
     value: "name",
@@ -23,7 +35,11 @@ const SORT_PARAMS = [
   },
 ];
 
-const CocktailsSelect = ({ handleSort }) => (
+type CocktailsSelectPropType = {
+  handleSort: (value: SortParamsValuesTypes) => void;
+};
+
+const CocktailsSelect = ({ handleSort }: CocktailsSelectPropType) => (
   <Select
     onChange={handleSort}
     className="selectCocktails"
@@ -37,4 +53,4 @@ const CocktailsSelect = ({ handleSort }) => (
   </Select>
 );
 
-export default CocktailsSelect;
+export default React.memo(CocktailsSelect);

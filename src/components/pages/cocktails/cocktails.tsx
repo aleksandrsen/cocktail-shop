@@ -1,29 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, useCallback } from "react";
 import "./cocktails.scss";
 // Components
 import CocktailsList from "./cocktails-list";
 import CocktailsSelect from "./cocktails-select";
 import CocktailsFilters from "./cocktails-filters";
-// Utils
-import { Icons } from "../../../src_/icons";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
+import { SortParamsValuesTypes } from "./cocktails-select/cocktails-select";
+// Types
 
-const Cocktails = (props) => {
-  const [filters, setFilters] = useState({});
-  const [sortParam, setSortParam] = useState("");
+type Filters = {
+  [key: string]: CheckboxValueType;
+};
+
+export type AllFilters = {
+  [key: string]: Filters;
+};
+
+const Cocktails = () => {
+  const [filters, setFilters] = useState<AllFilters>({});
+  const [sortParam, setSortParam] = useState<SortParamsValuesTypes>("");
   const [searchValue, setSearchValue] = useState("");
 
-  const setFilter = (type, value) => {
-    const value_ = value.reduce((obj, field) => {
-      obj[field.toLowerCase()] = field;
+  const setFilter = useCallback((type: string, value: CheckboxValueType[]) => {
+    const value_ = value.reduce((obj: Filters, field): Filters => {
+      obj[`${field}`.toLowerCase()] = field;
       return obj;
     }, {});
 
     setFilters({ ...filters, [type]: value_ });
-  };
+  }, []);
 
-  const handleSort = (value) => setSortParam(value);
+  const handleSort = useCallback(
+    (value: SortParamsValuesTypes) => setSortParam(value),
+    []
+  );
 
-  const handleSearch = ({ target: { value } }) => setSearchValue(value);
+  const handleSearch = ({ target: { value } }: ChangeEvent<HTMLInputElement>) =>
+    setSearchValue(value);
 
   return (
     <section className="default-section cocktailsPage">
@@ -36,7 +49,9 @@ const Cocktails = (props) => {
             <div className="row align-items-center flex-end">
               <div className="col col-4 cocktailsPage__searchInputCol">
                 <div className="inputWrapper">
-                  {Icons.searchIcon}
+                  <svg>
+                    <use xlinkHref="#search-icon" />
+                  </svg>
                   <input
                     value={searchValue}
                     onChange={handleSearch}
@@ -56,4 +71,4 @@ const Cocktails = (props) => {
   );
 };
 
-export default Cocktails;
+export default React.memo(Cocktails);

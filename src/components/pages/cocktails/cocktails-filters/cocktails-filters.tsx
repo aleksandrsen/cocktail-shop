@@ -1,12 +1,18 @@
 import React from "react";
 import "./cocktails-filters.scss";
+// Types
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 // Utils
 import { ALCOHOLIC, CATEGORIES, INGREDIENTS } from "./filters";
 // Components
 import { Checkbox, Collapse } from "antd";
 const { Panel } = Collapse;
 
-const CocktailsFilters = ({ setFilter }) => (
+type CocktailsFiltersPropsType = {
+  setFilter: (type: string, checkedValue: CheckboxValueType[]) => void;
+};
+
+const CocktailsFilters = ({ setFilter }: CocktailsFiltersPropsType) => (
   <aside className="aside-cocktails">
     <Collapse bordered={false} defaultActiveKey={["1"]}>
       <Panel header="Alcoholic" key="1">
@@ -31,4 +37,4 @@ const CocktailsFilters = ({ setFilter }) => (
   </aside>
 );
 
-export default CocktailsFilters;
+export default React.memo(CocktailsFilters);

@@ -1,10 +1,15 @@
-export const ALCOHOLIC = [
+type ParamItemType = {
+  label: string;
+  value: string;
+};
+
+export const ALCOHOLIC: ParamItemType[] = [
   { label: "Alcoholic", value: "Alcoholic" },
   { label: "Non alcoholic", value: "Non alcoholic" },
   { label: "Optional alcohol", value: "Optional alcohol" },
 ];
 
-export const CATEGORIES = [
+export const CATEGORIES: ParamItemType[] = [
   { label: "Beer", value: "Beer" },
   { label: "Cocktail", value: "Cocktail" },
   { label: "Cocoa", value: "Cocoa" },
@@ -18,7 +23,7 @@ export const CATEGORIES = [
   { label: "Soft Drink Soda", value: "Soft Drink Soda" },
 ];
 
-export const INGREDIENTS = [
+export const INGREDIENTS: ParamItemType[] = [
   { label: "151 proof rum", value: "151 proof rum" },
   { label: "7-up", value: "7-up" },
   { label: "Absolut citron", value: "absolut citron" },

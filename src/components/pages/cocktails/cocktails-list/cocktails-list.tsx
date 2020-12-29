@@ -1,34 +1,51 @@
-import React, { useEffect } from "react";
+import React, { ReactHTMLElement, useEffect } from "react";
 import "./cocktails-list.scss";
 // Actions
 import { fetchCocktailsList } from "../../../../actions/cocktails";
 // Components
 import CocktailItem from "./cocktail-item";
-import SmallSpinner from "../../../spinner";
 import RippleButton from "../../../reusable-components/ripple-button";
 // Utils
 import { connect } from "react-redux";
 import { searchByFields, getSkeletons } from "../../../../utils";
+// Types
+import { AllFilters } from "../cocktails";
+import { AppRootState } from "../../../../store";
+import { CocktailItemType } from "../../../../types/common";
+import { SortParamsValuesTypes } from "../cocktails-select/cocktails-select";
+
+type CocktailsListPropsType = {
+  cocktails: null | CocktailItemType[];
+  fetchCocktailsList: () => void;
+  params: {
+    filters: AllFilters;
+    sort: SortParamsValuesTypes;
+    searchValue: string;
+  };
+};
 
 const CocktailsList = ({
   cocktails,
   fetchCocktailsList,
   params: { filters, sort, searchValue },
-}) => {
+}: CocktailsListPropsType) => {
   useEffect(() => {
     fetchCocktailsList();
   }, []);
 
-  const checkIsFiltersEmpty = (filters) => {
+  const checkIsFiltersEmpty = (filters: AllFilters): boolean => {
     const alcoholic =
       filters.alcoholic && Object.values(filters.alcoholic).length;
     const category = filters.category && Object.values(filters.category).length;
     const ingredients =
       filters.ingredients && Object.values(filters.ingredients).length;
-    return alcoholic || category || ingredients;
+    return !!alcoholic || !!category || !!ingredients;
   };
 
-  const getFilteredCocktails = (cocktails, filters) => {
+  const getFilteredCocktails = (
+    cocktails: CocktailItemType[],
+    filters: AllFilters
+  ): CocktailItemType[] => {
     const alcoholic_ =
       filters.alcoholic && Object.values(filters.alcoholic).length
         ? cocktails.filter(
@@ -50,13 +67,19 @@ const CocktailsList = ({
       : category_;
   };
 
-  const renderCocktails = (cocktails, filters, sort, searchValue) => {
+  const renderCocktails = (
+    cocktails: CocktailItemType[],
+    filters: AllFilters,
+    sort: SortParamsValuesTypes,
+    searchValue: string
+  ) => {
     const sorted = !sort
       ? cocktails
       : cocktails.sort((a, b) => {
           if (sort === "price-h-l") return b.price - a.price;
           if (sort === "price-l-h") return a.price - b.price;
-          return b[sort] - a[sort];
+          if (sort === "rate") return b.rate - a.rate;
+          return a[sort] > b[sort] ? 1 : -1;
         });
 
     const searched = !searchValue
@@ -97,7 +120,7 @@ const CocktailsList = ({
 };
 
 export default connect(
-  (state) => ({
+  (state: AppRootState) => ({
     cocktails: state.cocktails.list,
   }),
   { fetchCocktailsList }
