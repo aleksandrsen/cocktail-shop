@@ -21,13 +21,11 @@
     margin-bottom: 40px;
   }
 
-  &__item {
-    & + .cocktailDetails-info-item {
+  &__infoItem {
+
+    & + .cocktailDetails__infoItem {
       margin-top: 20px;
     }
-
-    border-bottom: 1px solid var(--main-color);
-    padding: 0 15px 5px;
 
     .detailsTitle,
     .detailsInfo {

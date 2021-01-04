@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./cocktails-details.scss";
 // Actions
 import {
@@ -13,17 +13,19 @@ import {
   setDislikeCocktailReview,
 } from "../../../actions/cocktails";
 // Components
-import SmallSpinner from "../../spinner";
 import ReviewForm from "../../reusable-components/review-form";
+import ImgSkeleton from "../../reusable-components/img-skeleton";
 import ReviewsList from "../../reusable-components/reviews-list";
 import RippleButton from "../../reusable-components/ripple-button";
+import FieldSkeleton from "../../reusable-components/field-skeleton";
 // Utils
 import { connect } from "react-redux";
-import { Icons } from "../../../src_/icons";
-import { useParams } from "react-router-dom";
 
 const CocktailDetails = ({
   card,
+  match: {
+    params: { id },
+  },
   wishList,
   addItemToCard,
   cocktailDetails,
@@ -34,13 +36,13 @@ const CocktailDetails = ({
   deleteItemFromWishList,
   setDislikeCocktailReview,
 }) => {
-  const { id } = useParams();
-
   useEffect(() => {
     fetchCocktailsDetails(id);
   }, []);
 
-  const handleSubmit = (data) => sendCocktailReview(id, data);
+  const handleSubmit = useCallback((data) => sendCocktailReview(id, data), [
+    id,
+  ]);
 
   const handleCard = ({ target: { dataset } }) => {
     const { id, name, price, previewSrc } = cocktailDetails;
@@ -58,61 +60,94 @@ const CocktailDetails = ({
     addItemToWishList(data);
   };
 
-  return !cocktailDetails ? (
-    <SmallSpinner />
-  ) : (
+  return (
     <section className="default-section cocktailDetails">
       <div className="container">
         <div className="row">
           <div className="col col-5">
-            <img
-              className="cocktailDetails__img"
-              src={cocktailDetails.previewSrc}
-              alt={cocktailDetails.name}
+            <ImgSkeleton
+              title={cocktailDetails?.name}
+              classes={["cocktailDetails__img"]}
+              src={cocktailDetails?.previewSrc}
+              skeletonStyle={{
+                width: "100%",
+                height: "500px",
+                borderRadius: "10px",
+              }}
             />
           </div>
           <div className="col col-6">
             <h2 className="cocktailDetails__title">
-              {cocktailDetails.name}{" "}
-              <span className="cocktailDetails__alcoholic">{`(${cocktailDetails.alcoholic.toLowerCase()})`}</span>
+              {cocktailDetails ? (
+                <>
+                  {cocktailDetails.name}
+                  <span className="cocktailDetails__alcoholic">{` (${cocktailDetails.alcoholic.toLowerCase()})`}</span>
+                </>
+              ) : (
+                <FieldSkeleton styles={{ padding: "25px" }} />
+              )}
             </h2>
             <div className="cocktailDetails__info">
-              <div className="cocktailDetails__item">
-                <span className="detailsTitle">Category - </span>
-                <span className="detailsInfo">{cocktailDetails.category}</span>
+              <div className="cocktailDetails__infoItem">
+                {cocktailDetails ? (
+                  <>
+                    <span className="detailsTitle">Category - </span>
+                    <span className="detailsInfo">
+                      {cocktailDetails.category}
+                    </span>
+                  </>
+                ) : (
+                  <FieldSkeleton styles={{ padding: "25px" }} />
+                )}
               </div>
-              <div className="cocktailDetails__item">
-                <span className="detailsTitle">Ingredients - </span>
-                <span className="detailsInfo">
-                  {cocktailDetails.ingredients.join(" ")}
-                </span>
+              <div className="cocktailDetails__infoItem">
+                {cocktailDetails ? (
+                  <>
+                    <span className="detailsTitle">Ingredients - </span>
+                    <span className="detailsInfo">
+                      {cocktailDetails.ingredients.join(" ")}
+                    </span>
+                  </>
+                ) : (
+                  <FieldSkeleton styles={{ padding: "25px" }} />
+                )}
               </div>
             </div>
-            <div className="cocktailDetails__actions">
-              <div className="price">{cocktailDetails.price}$</div>
-              <button
-                className="wishListBtn"
-                onClick={handleCard}
-                data-name="wishList"
-              >
-                {wishList[cocktailDetails.id] ? Icons.heart : Icons.wishList}
-              </button>
-              <RippleButton
-                onClick={handleCard}
-                data-name="card"
-                disabled={card[cocktailDetails.id]}
-              >
-                {card[cocktailDetails.id] ? "Item in cart" : "Add to cart"}
-              </RippleButton>
-            </div>
+            {cocktailDetails ? (
+              <div className="cocktailDetails__actions">
+                <div className="price">{cocktailDetails.price}$</div>
+                <button
+                  className="wishListBtn"
+                  onClick={handleCard}
+                  data-name="wishList"
+                >
+                  <svg width="32" height="32">
+                    <use
+                      xlinkHref={`${
+                        wishList[cocktailDetails.id] ? "#heart" : "#wish-list"
+                      }`}
+                    />
+                  </svg>
+                </button>
+                <RippleButton
+                  data-name="card"
+                  onClick={handleCard}
+                  disabled={card[cocktailDetails.id]}
+                >
+                  {card[cocktailDetails.id] ? "Item in cart" : "Add to cart"}
+                </RippleButton>
+              </div>
+            ) : (
+              <FieldSkeleton styles={{ padding: "32px" }} />
+            )}
           </div>
         </div>
         <div className="row">
-          <div className="col-5">
+          <div className="col col-5">
             <ReviewForm handleSubmit={handleSubmit} />
             <ReviewsList
               setLike={setLikeCocktailReview}
-              reviews={cocktailDetails.reviews}
+              reviews={cocktailDetails?.reviews}
               setDislike={setDislikeCocktailReview}
             />
           </div>
@@ -137,4 +172,4 @@ export default connect(
     deleteItemFromWishList,
     setDislikeCocktailReview,
   }
-)(CocktailDetails);
+)(React.memo(CocktailDetails));

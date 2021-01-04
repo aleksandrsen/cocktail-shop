@@ -14,7 +14,7 @@ const WishList = ({ goods, counter }) => (
       <span className="wishList__count">{Object.values(goods).length}</span>
     )}
     <svg width="25" height="25">
-      <use xlinkHref="#wish-list" />
+      <use xlinkHref="#wish-list-header" />
     </svg>
   </div>
 );

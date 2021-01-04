@@ -25,9 +25,10 @@ const ReviewsList = ({
     {reviews
       ? reviews.map((review) => (
           <ReviewListItem
+            key={review.id}
+            review={review}
             setLike={setLike}
             setDislike={setDislike}
-            review={review}
           />
         ))
       : getSkeletons(5, ReviewListItem)}

@@ -58,4 +58,4 @@ const ReviewForm = ({ handleSubmit, title }: ReviewFormPropsType) => (
   </div>
 );
 
-export default ReviewForm;
+export default React.memo(ReviewForm);
