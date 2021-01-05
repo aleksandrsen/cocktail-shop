@@ -7,7 +7,6 @@ import CocktailsFilters from "./cocktails-filters";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { SortParamsValuesTypes } from "./cocktails-select/cocktails-select";
 // Types
-
 type Filters = {
   [key: string]: CheckboxValueType;
 };

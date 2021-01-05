@@ -17,12 +17,12 @@ import FieldSkeleton from "../../reusable-components/field-skeleton";
 import { AppRootState } from "../../../store";
 import { BartenderItemType, RequestMessageType } from "../../../types/common";
 
-interface IMatchParams {
+type MatchParamsType = {
   id: string;
-}
+};
 
 type BartenderDetailsPropsType = {
-  match: match<IMatchParams>;
+  match: match<MatchParamsType>;
   bartenderDetails: null | BartenderItemType;
   fetchBartendersDetails: (id: number) => void;
   sendMessageToBartender: (id: number, values: RequestMessageType) => void;

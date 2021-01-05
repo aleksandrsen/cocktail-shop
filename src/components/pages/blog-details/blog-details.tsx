@@ -5,7 +5,7 @@ import SidePanel from "../../side-panel";
 // Utils
 import { match } from "react-router-dom";
 
-interface MatchTypeParams {
+type MatchTypeParams = {
   id: string;
 }
 

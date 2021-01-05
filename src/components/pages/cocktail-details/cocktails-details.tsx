@@ -20,6 +20,35 @@ import RippleButton from "../../reusable-components/ripple-button";
 import FieldSkeleton from "../../reusable-components/field-skeleton";
 // Utils
 import { connect } from "react-redux";
+// Types
+import { match } from "react-router-dom";
+import { AppRootState } from "../../../store";
+import {
+  UserCardType,
+  CardItemType,
+  CocktailItemType,
+  UserWishListType,
+  WishListItemType,
+  RequestMessageType,
+} from "../../../types/common";
+
+type MatchParamsType = {
+  id: string;
+};
+
+type CocktailsDetailsPropsType = {
+  card: UserCardType;
+  match: match<MatchParamsType>;
+  wishList: UserWishListType;
+  cocktailDetails: null | CocktailItemType;
+  addItemToCard: (data: CardItemType) => void;
+  setLikeCocktailReview: (id: number) => void;
+  fetchCocktailsDetails: (id: number) => void;
+  deleteItemFromWishList: (id: number) => void;
+  setDislikeCocktailReview: (id: number) => void;
+  addItemToWishList: (data: WishListItemType) => void;
+  sendCocktailReview: (id: number, data: RequestMessageType) => void;
+};
 
 const CocktailDetails = ({
   card,
@@ -35,29 +64,30 @@ const CocktailDetails = ({
   fetchCocktailsDetails,
   deleteItemFromWishList,
   setDislikeCocktailReview,
-}) => {
+}: CocktailsDetailsPropsType) => {
   useEffect(() => {
-    fetchCocktailsDetails(id);
+    fetchCocktailsDetails(+id);
   }, []);
 
-  const handleSubmit = useCallback((data) => sendCocktailReview(id, data), [
+  const handleSubmit = useCallback((data) => sendCocktailReview(+id, data), [
     id,
   ]);
 
-  const handleCard = ({ target: { dataset } }) => {
-    const { id, name, price, previewSrc } = cocktailDetails;
+  const handleCard = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    if (cocktailDetails) {
+      const { id, name: cocktailName, price, previewSrc } = cocktailDetails;
+      const { name } = (e.target as HTMLButtonElement).dataset;
 
-    const data = {
-      id,
-      name,
-      price,
-      previewSrc,
-    };
-    if (dataset.name === "card") return addItemToCard(data);
-
-    if (wishList[id]) return deleteItemFromWishList(id);
-
-    addItemToWishList(data);
+      const data = {
+        id,
+        price,
+        previewSrc,
+        name: cocktailName,
+      };
+      if (name === "card") return addItemToCard(data);
+      if (wishList[id]) return deleteItemFromWishList(+id);
+      addItemToWishList(data);
+    }
   };
 
   return (
@@ -132,7 +162,7 @@ const CocktailDetails = ({
                 <RippleButton
                   data-name="card"
                   onClick={handleCard}
-                  disabled={card[cocktailDetails.id]}
+                  disabled={!!card[cocktailDetails.id]}
                 >
                   {card[cocktailDetails.id] ? "Item in cart" : "Add to cart"}
                 </RippleButton>
@@ -158,7 +188,7 @@ const CocktailDetails = ({
 };
 
 export default connect(
-  (state) => ({
+  (state: AppRootState) => ({
     card: state.user.card,
     wishList: state.user.wishList,
     cocktailDetails: state.cocktails.cocktailDetails,
@@ -172,4 +202,4 @@ export default connect(
     deleteItemFromWishList,
     setDislikeCocktailReview,
   }
-)(React.memo(CocktailDetails));
+)(CocktailDetails);

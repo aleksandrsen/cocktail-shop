@@ -12,12 +12,20 @@ export type CardItemType = {
   previewSrc: string;
 };
 
+export type UserCardType = {
+  [id: number]: CardItemType
+}
+
 export type WishListItemType = {
   id: number;
   name: string;
   price: number;
   previewSrc: string;
 };
+
+export type UserWishListType = {
+  [id: number]: WishListItemType
+}
 
 //// COCKTAILS ////
 export type CocktailItemType = {

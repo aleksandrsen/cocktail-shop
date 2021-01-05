@@ -1,10 +1,10 @@
 import {
   UserItemType,
-  CardItemType,
+  UserCardType,
   EventItemType,
   BlogPostItemType,
-  WishListItemType,
   CocktailItemType,
+  UserWishListType,
   BartenderItemType,
 } from "../common";
 
@@ -40,6 +40,6 @@ export interface IGallery {
 
 export interface IUser {
   readonly userInfo: null | UserItemType;
-  readonly card: { [key: number]: CardItemType };
-  readonly wishList: { [key: number]: WishListItemType };
+  readonly card: UserCardType;
+  readonly wishList: UserWishListType;
 }
