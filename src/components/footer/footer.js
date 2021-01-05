@@ -2,11 +2,10 @@ import React from "react";
 import "./footer.scss";
 // Utils
 import logo from "../../src_/img/logo.png";
-import { Icons } from "../../src_/icons";
 // Components
 import SocialNetworks from "../social-networks";
 
-const Footer = (props) => (
+const Footer = () => (
   <footer className="mainFooter">
     <div className="container">
       <div className="row">
@@ -45,7 +44,9 @@ const Footer = (props) => (
       </div>
       <SocialNetworks />
       <div className="mainFooter__copyright">
-        {Icons.footer_copyright}
+        <svg>
+          <use xlinkHref="#footer-copyright" />
+        </svg>
         {new Date().getFullYear()} - Hub on pubs - All Rights Reserved
       </div>
     </div>
