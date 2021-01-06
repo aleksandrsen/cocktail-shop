@@ -1,6 +1,7 @@
 import {
-  FETCH_BARTENDERS_DETAILS_REQUEST,
+  RESET_BARTENDER_DETAILS,
   FETCH_BARTENDERS_REQUEST,
+  FETCH_BARTENDERS_DETAILS_REQUEST,
   SEND_MESSAGE_TO_BARTENDER_REQUEST,
 } from "../constants/bartenders";
 import { RequestMessageType } from "../types/common";
@@ -20,4 +21,8 @@ export const sendMessageToBartender = (
   type: SEND_MESSAGE_TO_BARTENDER_REQUEST,
   bartenderId,
   data,
+});
+
+export const resetBartenderDetails = (): BartendersActionType => ({
+  type: RESET_BARTENDER_DETAILS,
 });

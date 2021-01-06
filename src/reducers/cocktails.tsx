@@ -4,6 +4,7 @@ import {
   FETCH_COCKTAILS_LIST_SUCCESS,
   FETCH_RANDOM_COCKTAILS_SUCCESS,
   LIKE_COCKTAIL_REVIEW_SUCCESS,
+  RESET_COCKTAIL_DETAILS,
   SEND_COCKTAIL_REVIEW_SUCCESS,
 } from "../constants/cocktails";
 import { ICocktailsReducer } from "../types/reducers";
@@ -28,6 +29,8 @@ const CocktailsState = (
     case LIKE_COCKTAIL_REVIEW_SUCCESS:
     case DISLIKE_COCKTAIL_REVIEW_SUCCESS:
       return { ...state, cocktailDetails: action.payload };
+    case RESET_COCKTAIL_DETAILS:
+      return { ...state, cocktailDetails: null };
 
     default:
       return state;

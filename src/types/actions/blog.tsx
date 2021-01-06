@@ -5,6 +5,7 @@ import {
   SEND_BLOG_POST_REVIEW_REQUEST,
   LIKE_BLOG_POST_REVIEW_REQUEST,
   DISLIKE_BLOG_POST_REVIEW_REQUEST,
+  RESET_BLOG_POST_DETAILS,
 } from "../../constants/blog";
 import { RequestMessageType } from "../common";
 
@@ -19,6 +20,10 @@ type FetchBlogPostsActionType = {
 type FetchBlogPostDetailsActionType = {
   type: typeof FETCH_BLOG_POST_DETAILS_REQUEST;
   id: number;
+};
+
+type ResetBlogPostDetailsActionType = {
+  type: typeof RESET_BLOG_POST_DETAILS;
 };
 
 type SendBlogPostReviewActionType = {
@@ -41,6 +46,7 @@ export type BlogPostsActionType =
   | FetchLatestBlogPostsActionType
   | FetchBlogPostsActionType
   | FetchBlogPostDetailsActionType
+  | ResetBlogPostDetailsActionType
   | SendBlogPostReviewActionType
   | SetLikeBlogPostReviewActionType
   | SetDislikeBlogPostReviewActionType;

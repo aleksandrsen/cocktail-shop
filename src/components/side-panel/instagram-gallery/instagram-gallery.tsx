@@ -27,7 +27,7 @@ const InstagramGallery = ({
   return (
     <div className="instagramGallery">
       {photos
-        ? photos.map((url) => <ImgSkeleton src={url} title="instagram photo" />)
+        ? photos.map((url) => <ImgSkeleton key={url} src={url} title="instagram photo" />)
         : getSkeletons(6, FieldSkeleton, {
             styles: { width: "32%", minHeight: "100px", margin: "2px" },
           })}

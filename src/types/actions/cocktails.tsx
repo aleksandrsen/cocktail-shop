@@ -4,6 +4,7 @@ import {
   FETCH_COCKTAILS_LIST_REQUEST,
   FETCH_RANDOM_COCKTAILS_REQUEST,
   LIKE_COCKTAIL_REVIEW_REQUEST,
+  RESET_COCKTAIL_DETAILS,
   SEND_COCKTAIL_REVIEW_REQUEST,
 } from "../../constants/cocktails";
 import { RequestMessageType } from "../common";
@@ -19,6 +20,10 @@ type FetchCocktailsListActionType = {
 type FetchCocktailDetailsActionType = {
   type: typeof FETCH_COCKTAIL_DETAILS_REQUEST;
   id: number;
+};
+
+type resetCocktailDetailsActionType = {
+  type: typeof RESET_COCKTAIL_DETAILS;
 };
 
 type SendCocktailReviewActionType = {
@@ -41,6 +46,7 @@ export type CocktailsActionType =
   | FetchRandomCocktailsActionType
   | FetchCocktailsListActionType
   | FetchCocktailDetailsActionType
+  | resetCocktailDetailsActionType
   | SendCocktailReviewActionType
   | SetLikeCocktailReviewActionType
   | SetDislikeCocktailReviewActionType;

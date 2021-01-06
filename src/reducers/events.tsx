@@ -3,6 +3,7 @@ import {
   FETCH_EVENTS_LIST_SUCCESS,
   FETCH_NEXT_EVENTS_SUCCESS,
   FETCH_UPCOMING_EVENT_SUCCESS,
+  RESET_EVENT_DETAILS,
 } from "../constants/events";
 import { IEvents } from "../types/reducers";
 
@@ -25,6 +26,8 @@ const EventsState = (state = initialState, action: any): IEvents => {
       return { ...state, events: action.payload };
     case FETCH_EVENT_DETAILS_SUCCESS:
       return { ...state, eventDetails: action.payload };
+    case RESET_EVENT_DETAILS:
+      return { ...state, eventDetails: null };
 
     default:
       return state;

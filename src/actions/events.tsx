@@ -2,7 +2,7 @@ import {
   FETCH_EVENT_DETAILS_REQUEST,
   FETCH_EVENTS_LIST_REQUEST,
   FETCH_NEXT_EVENTS_REQUEST,
-  FETCH_UPCOMING_EVENT_REQUEST,
+  FETCH_UPCOMING_EVENT_REQUEST, RESET_EVENT_DETAILS,
 } from "../constants/events";
 import { EventsActionType } from "../types/actions/events";
 
@@ -22,3 +22,7 @@ export const fetchEventDetails = (id: number): EventsActionType => ({
   type: FETCH_EVENT_DETAILS_REQUEST,
   id,
 });
+
+export const resetEventDetails = (): EventsActionType => ({
+  type: RESET_EVENT_DETAILS
+})

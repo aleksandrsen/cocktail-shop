@@ -7,6 +7,7 @@ import { formatDate } from "../../../../utils";
 import {
   sendBlogPostReview,
   fetchBlogPostDetails,
+  resetBlogPostDetails,
   setLikeBlogPostReview,
   setDislikeBlogPostReview,
 } from "../../../../actions/blog";
@@ -23,6 +24,7 @@ import { BlogPostItemType, RequestMessageType } from "../../../../types/common";
 type BlogPostDetailsPropsType = {
   blogPostId: number;
   details: null | BlogPostItemType;
+  resetBlogPostDetails: () => void;
   setLikeBlogPostReview: (id: number) => void;
   setDislikeBlogPostReview: (id: number) => void;
   fetchBlogPostDetails: (blogPostId: number) => void;
@@ -34,11 +36,15 @@ const BlogPostDetails = ({
   blogPostId,
   sendBlogPostReview,
   fetchBlogPostDetails,
+  resetBlogPostDetails,
   setLikeBlogPostReview,
   setDislikeBlogPostReview,
 }: BlogPostDetailsPropsType) => {
   useEffect(() => {
     fetchBlogPostDetails(blogPostId);
+    return () => {
+      resetBlogPostDetails();
+    };
   }, []);
 
   const handleSubmit = (
@@ -107,6 +113,7 @@ export default connect(
   {
     sendBlogPostReview,
     fetchBlogPostDetails,
+    resetBlogPostDetails,
     setLikeBlogPostReview,
     setDislikeBlogPostReview,
   }

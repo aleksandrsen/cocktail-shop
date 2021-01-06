@@ -5,6 +5,7 @@ import {
   SEND_BLOG_POST_REVIEW_REQUEST,
   LIKE_BLOG_POST_REVIEW_REQUEST,
   DISLIKE_BLOG_POST_REVIEW_REQUEST,
+  RESET_BLOG_POST_DETAILS
 } from "../constants/blog";
 import { BlogPostsActionType } from "../types/actions/blog";
 import { RequestMessageType } from "../types/common";
@@ -21,6 +22,10 @@ export const fetchBlogPostDetails = (id: number): BlogPostsActionType => ({
   type: FETCH_BLOG_POST_DETAILS_REQUEST,
   id,
 });
+
+export const resetBlogPostDetails = (): BlogPostsActionType => ({
+  type: RESET_BLOG_POST_DETAILS
+})
 
 export const sendBlogPostReview = (
   id: number,

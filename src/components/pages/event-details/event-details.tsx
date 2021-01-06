@@ -7,7 +7,7 @@ import PubPartners from "../bartenders/pub-partners";
 import ImgSkeleton from "../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../reusable-components/field-skeleton";
 // Actions
-import { fetchEventDetails } from "../../../actions/events";
+import { fetchEventDetails, resetEventDetails } from "../../../actions/events";
 // Utils
 import { connect } from "react-redux";
 import { match } from "react-router-dom";
@@ -21,20 +21,25 @@ type MatchTypeParams = {
 };
 
 type EventDetailsPropsType = {
+  match: match<MatchTypeParams>;
+  resetEventDetails: () => void;
   eventDetails: null | EventItemType;
   fetchEventDetails: (id: number) => void;
-  match: match<MatchTypeParams>;
 };
 
 const EventDetails = ({
   eventDetails,
   fetchEventDetails,
+  resetEventDetails,
   match: {
     params: { id },
   },
 }: EventDetailsPropsType) => {
   useEffect(() => {
     fetchEventDetails(+id);
+    return () => {
+      resetEventDetails();
+    };
   }, []);
 
   return (
@@ -114,5 +119,5 @@ const EventDetails = ({
 
 export default connect(
   (state: AppRootState) => ({ eventDetails: state.events.eventDetails }),
-  { fetchEventDetails }
+  { fetchEventDetails, resetEventDetails }
 )(React.memo(EventDetails));

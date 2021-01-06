@@ -9,6 +9,7 @@ import {
 import {
   sendCocktailReview,
   setLikeCocktailReview,
+  resetCocktailsDetails,
   fetchCocktailsDetails,
   setDislikeCocktailReview,
 } from "../../../actions/cocktails";
@@ -38,8 +39,9 @@ type MatchParamsType = {
 
 type CocktailsDetailsPropsType = {
   card: UserCardType;
-  match: match<MatchParamsType>;
   wishList: UserWishListType;
+  match: match<MatchParamsType>;
+  resetCocktailsDetails: () => void;
   cocktailDetails: null | CocktailItemType;
   addItemToCard: (data: CardItemType) => void;
   setLikeCocktailReview: (id: number) => void;
@@ -62,11 +64,15 @@ const CocktailDetails = ({
   sendCocktailReview,
   setLikeCocktailReview,
   fetchCocktailsDetails,
+  resetCocktailsDetails,
   deleteItemFromWishList,
   setDislikeCocktailReview,
 }: CocktailsDetailsPropsType) => {
   useEffect(() => {
     fetchCocktailsDetails(+id);
+    return () => {
+      resetCocktailsDetails();
+    };
   }, []);
 
   const handleSubmit = useCallback((data) => sendCocktailReview(+id, data), [
@@ -198,6 +204,7 @@ export default connect(
     addItemToWishList,
     sendCocktailReview,
     setLikeCocktailReview,
+    resetCocktailsDetails,
     fetchCocktailsDetails,
     deleteItemFromWishList,
     setDislikeCocktailReview,

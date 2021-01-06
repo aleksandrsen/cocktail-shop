@@ -4,6 +4,7 @@ import {
   FETCH_COCKTAILS_LIST_REQUEST,
   FETCH_RANDOM_COCKTAILS_REQUEST,
   LIKE_COCKTAIL_REVIEW_REQUEST,
+  RESET_COCKTAIL_DETAILS,
   SEND_COCKTAIL_REVIEW_REQUEST,
 } from "../constants/cocktails";
 import { CocktailsActionType } from "../types/actions/cocktails";
@@ -20,6 +21,10 @@ export const fetchCocktailsList = (): CocktailsActionType => ({
 export const fetchCocktailsDetails = (id: number): CocktailsActionType => ({
   type: FETCH_COCKTAIL_DETAILS_REQUEST,
   id,
+});
+
+export const resetCocktailsDetails = (): CocktailsActionType => ({
+  type: RESET_COCKTAIL_DETAILS,
 });
 
 export const sendCocktailReview = (

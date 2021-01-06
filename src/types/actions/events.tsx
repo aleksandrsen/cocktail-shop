@@ -3,6 +3,7 @@ import {
   FETCH_EVENTS_LIST_REQUEST,
   FETCH_NEXT_EVENTS_REQUEST,
   FETCH_UPCOMING_EVENT_REQUEST,
+  RESET_EVENT_DETAILS,
 } from "../../constants/events";
 
 type FetchUpcomingEventActionType = {
@@ -22,8 +23,13 @@ type FetchEventDetailsActionType = {
   id: number;
 };
 
+type ResetEventDetailsActionType = {
+  type: typeof RESET_EVENT_DETAILS;
+};
+
 export type EventsActionType =
   | FetchUpcomingEventActionType
   | FetchNextEventsActionType
   | FetchEventsListActionType
+  | ResetEventDetailsActionType
   | FetchEventDetailsActionType;

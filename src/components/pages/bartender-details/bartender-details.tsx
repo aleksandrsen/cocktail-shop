@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { match } from "react-router-dom";
 // Actions
 import {
+  resetBartenderDetails,
   fetchBartendersDetails,
   sendMessageToBartender,
 } from "../../../actions/bartenders";
@@ -23,6 +24,7 @@ type MatchParamsType = {
 
 type BartenderDetailsPropsType = {
   match: match<MatchParamsType>;
+  resetBartenderDetails: () => void;
   bartenderDetails: null | BartenderItemType;
   fetchBartendersDetails: (id: number) => void;
   sendMessageToBartender: (id: number, values: RequestMessageType) => void;
@@ -33,20 +35,19 @@ const BartenderDetails = ({
     params: { id },
   },
   bartenderDetails,
+  resetBartenderDetails,
   fetchBartendersDetails,
   sendMessageToBartender,
 }: BartenderDetailsPropsType) => {
   useEffect(() => {
     fetchBartendersDetails(+id);
     return () => {
-      console.log("reset function call ------------------")
-    }
+      resetBartenderDetails();
+    };
   }, []);
 
   const handleSubmit = (values: RequestMessageType) =>
     sendMessageToBartender(+id, values);
-
-  console.log(bartenderDetails?.img, "----")
 
   return (
     <>
@@ -104,5 +105,5 @@ export default connect(
   (state: AppRootState) => ({
     bartenderDetails: state.bartenders.bartenderDetails,
   }),
-  { fetchBartendersDetails, sendMessageToBartender }
+  { fetchBartendersDetails, sendMessageToBartender, resetBartenderDetails }
 )(React.memo(BartenderDetails));

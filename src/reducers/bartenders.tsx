@@ -1,6 +1,7 @@
 import {
-  FETCH_BARTENDERS_DETAILS_SUCCESS,
+  RESET_BARTENDER_DETAILS,
   FETCH_BARTENDERS_SUCCESS,
+  FETCH_BARTENDERS_DETAILS_SUCCESS,
 } from "../constants/bartenders";
 import { IBartenders } from "../types/reducers";
 
@@ -15,6 +16,8 @@ const BartendersState = (state = initial, action: any): IBartenders => {
       return { ...state, bartenders: action.payload };
     case FETCH_BARTENDERS_DETAILS_SUCCESS:
       return { ...state, bartenderDetails: action.payload };
+    case RESET_BARTENDER_DETAILS:
+      return { ...state, bartenderDetails: null };
     default:
       return state;
   }

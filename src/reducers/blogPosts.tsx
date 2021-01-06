@@ -4,6 +4,7 @@ import {
   FETCH_BLOG_POSTS_SUCCESS,
   FETCH_LATEST_BLOG_POSTS_SUCCESS,
   LIKE_BLOG_POST_REVIEW_SUCCESS,
+  RESET_BLOG_POST_DETAILS,
   SEND_BLOG_POST_REVIEW_SUCCESS,
 } from "../constants/blog";
 import { IBlogPosts } from "../types/reducers";
@@ -25,6 +26,8 @@ const BlogPostsState = (state = initialState, action: any): IBlogPosts => {
     case LIKE_BLOG_POST_REVIEW_SUCCESS:
     case DISLIKE_BLOG_POST_REVIEW_SUCCESS:
       return { ...state, blogPostDetails: action.payload };
+    case RESET_BLOG_POST_DETAILS:
+      return { ...state, blogPostDetails: null };
 
     default:
       return state;
