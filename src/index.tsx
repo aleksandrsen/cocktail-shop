@@ -1,16 +1,16 @@
 import React from "react";
 import "./index.scss";
+import store from "./store";
 import ReactDOM from "react-dom";
 import App from "./components/app";
-import store from "./store";
+import { ScrollTop } from "./utils";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import { ScrollTop } from "./utils";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      {/*<ScrollTop />*/}
+      <ScrollTop />
       <App />
     </Router>
   </Provider>,

@@ -17,10 +17,10 @@ import EventDetails from "../pages/event-details";
 import CocktailDetails from "../pages/cocktail-details";
 import BartenderDetails from "../pages/bartender-details";
 // Utils
-import { routes } from "../../config/routes";
 import AppIcons from "../../src_/icons";
+import { routes } from "../../config/routes";
 
-const App = (props) => (
+const App = () => (
   <>
     <Header />
     <AppIcons />

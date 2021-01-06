@@ -5,7 +5,7 @@ import { routes } from "../../../config/routes";
 // Components
 import { NavLink } from "react-router-dom";
 
-const MainMenu = (props) => (
+const MainMenu = () => (
   <nav className="mainMenu">
     {Object.values(routes).map(({ link, label }) => (
       <NavLink
@@ -21,4 +21,4 @@ const MainMenu = (props) => (
   </nav>
 );
 
-export default MainMenu;
+export default React.memo(MainMenu);

@@ -2,7 +2,7 @@ import React from "react";
 // Components
 import FieldSkeleton from "../../field-skeleton";
 // Utils
-import { formatDate } from "../../../../utils/index";
+import { formatDate } from "../../../../utils";
 // Types
 import {
   BlogPostReviewItemType,

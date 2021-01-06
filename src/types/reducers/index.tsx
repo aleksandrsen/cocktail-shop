@@ -18,7 +18,6 @@ export interface IBlogPosts {
   readonly blogPosts: null | BlogPostItemType[];
   readonly latestBlogPosts: null | BlogPostItemType[];
   readonly blogPostDetails: null | BlogPostItemType;
-  readonly counter: number;
 }
 
 export interface IBartenders {

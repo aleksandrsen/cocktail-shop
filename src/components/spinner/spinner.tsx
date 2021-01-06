@@ -1,7 +1,7 @@
 import React from 'react';
 import './spinner.scss';
 
-function SmallSpinner(props) {
+function SmallSpinner() {
     return (
         <div className="lds-css ng-scope smallSpinner">
             <div className="lds-spin">

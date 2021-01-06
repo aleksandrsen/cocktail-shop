@@ -2,8 +2,15 @@ import React from "react";
 import "./shopping-cart.scss";
 // Utils
 import { connect } from "react-redux";
+// Types
+import { AppRootState } from "../../../store";
+import { UserCardType } from "../../../types/common";
 
-const ShoppingCart = ({ goods }) => (
+type ShoppingCartPropsType = {
+  goods: UserCardType;
+};
+
+const ShoppingCart = ({ goods }: ShoppingCartPropsType) => (
   <div className="shoppingCart">
     <svg>
       <use xlinkHref="#shopping-cart" />
@@ -14,9 +21,6 @@ const ShoppingCart = ({ goods }) => (
   </div>
 );
 
-export default connect(
-  (state) => ({
-    goods: state.user.card,
-  }),
-  null
-)(ShoppingCart);
+export default connect((state: AppRootState) => ({
+  goods: state.user.card,
+}))(ShoppingCart);

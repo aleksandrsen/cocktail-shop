@@ -2,14 +2,16 @@ import React from "react";
 import "./wish-list.scss";
 // Utils
 import { connect } from "react-redux";
+// Types
+import { AppRootState } from "../../../store";
+import { UserWishListType } from "../../../types/common";
 
-const counter = () => ({ type: "COUNTER" });
+type WishListPropsType = {
+  goods: UserWishListType;
+};
 
-const WishList = ({ goods, counter }) => (
+const WishList = ({ goods }: WishListPropsType) => (
   <div className="wishList">
-    <button onClick={counter} style={{ padding: "16px", fontSize: "18px" }}>
-      Counter
-    </button>
     {!!Object.values(goods).length && (
       <span className="wishList__count">{Object.values(goods).length}</span>
     )}
@@ -19,9 +21,6 @@ const WishList = ({ goods, counter }) => (
   </div>
 );
 
-export default connect(
-  (state) => ({
-    goods: state.user.wishList,
-  }),
-  { counter }
-)(WishList);
+export default connect((state: AppRootState) => ({
+  goods: state.user.wishList,
+}))(React.memo(WishList));

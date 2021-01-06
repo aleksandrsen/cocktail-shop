@@ -6,7 +6,7 @@ import RippleButton from "../../../reusable-components/ripple-button";
 import { addUserToMailingList } from "../../../../actions/user";
 // Utils
 import { connect } from "react-redux";
-import { validateEmail } from "../../../../utils/index";
+import { validateEmail } from "../../../../utils";
 
 type JoinMailingListProps = {
   addUserToMailingList: (email: string) => void;

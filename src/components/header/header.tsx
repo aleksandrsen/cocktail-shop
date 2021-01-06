@@ -8,7 +8,7 @@ import MainMenu from "./main-menu";
 import WishList from "./wish-list";
 import ShoppingCart from "./shopping-cart";
 
-const Header = (props) => (
+const Header = () => (
   <header className="header">
     <div className="container-fluid">
       <img className="header__logo" src={logo} alt="" />
@@ -22,4 +22,4 @@ const Header = (props) => (
   </header>
 );
 
-export default Header;
+export default React.memo(Header);

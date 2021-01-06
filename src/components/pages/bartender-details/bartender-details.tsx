@@ -38,10 +38,15 @@ const BartenderDetails = ({
 }: BartenderDetailsPropsType) => {
   useEffect(() => {
     fetchBartendersDetails(+id);
+    return () => {
+      console.log("reset function call ------------------")
+    }
   }, []);
 
   const handleSubmit = (values: RequestMessageType) =>
     sendMessageToBartender(+id, values);
+
+  console.log(bartenderDetails?.img, "----")
 
   return (
     <>

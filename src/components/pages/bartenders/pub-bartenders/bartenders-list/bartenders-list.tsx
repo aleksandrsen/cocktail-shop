@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./bartenders-list.scss";
 // Utils
 import { connect } from "react-redux";
-import { getSkeletons } from "../../../../../utils/index";
+import { getSkeletons } from "../../../../../utils";
 // Actions
 import { fetchBartenders } from "../../../../../actions/bartenders";
 // Components
