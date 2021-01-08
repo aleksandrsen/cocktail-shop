@@ -7,6 +7,7 @@ type ImgSkeletonPropsType = {
   src?: string;
   title?: string;
   classes?: string[];
+  skeletonClasses?: string[];
 };
 
 const ImgSkeleton = ({
@@ -14,6 +15,7 @@ const ImgSkeleton = ({
   src,
   title,
   classes = [],
+  skeletonClasses = [],
 }: ImgSkeletonPropsType) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -28,7 +30,10 @@ const ImgSkeleton = ({
   return (
     <>
       {!isLoaded && !error && (
-        <div style={skeletonStyle} className="imgSkeleton" />
+        <div
+          style={skeletonStyle}
+          className={`imgSkeleton ${skeletonClasses.join(" ")}`}
+        />
       )}
       <img
         style={!isLoaded ? { width: 0, height: 0, opacity: 0 } : {}}

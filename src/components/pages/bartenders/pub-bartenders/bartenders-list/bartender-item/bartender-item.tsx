@@ -12,7 +12,7 @@ type BartenderItemPropsType = {
 };
 
 const BartenderItem = ({ bartender }: BartenderItemPropsType) => (
-  <div className="col col-3">
+  <div className="col col-3 col-lg-4 col-md-6 col-sm-10 col-xs-12">
     <Link to={`/bartenders/${bartender?.id}`} className="bartenderItem">
       <div className="bartenderItem__imgWrapper">
         <ImgSkeleton

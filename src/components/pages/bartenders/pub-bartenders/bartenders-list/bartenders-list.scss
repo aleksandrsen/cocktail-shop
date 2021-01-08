@@ -1,5 +1,25 @@
+@import "src/src_/var";
+
 .bartendersList {
   .col:nth-child(n + 5) {
     margin-top: 32px;
+  }
+
+  @include lg-screen {
+    .col:nth-child(n + 4) {
+      margin-top: 32px;
+    }
+  }
+
+  @include md-screen {
+    .col:nth-child(n + 3) {
+      margin-top: 32px;
+    }
+  }
+
+  @include sm-screen {
+    .col:nth-child(n + 2) {
+      margin-top: 32px;
+    }
   }
 }
