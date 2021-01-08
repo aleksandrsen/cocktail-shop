@@ -23,27 +23,27 @@ $link-hover-color: #ffd235;
 //  }
 //}
 
-@mixin large-screen() {
+@mixin lg-screen() {
   @media screen and (max-width: 1199px) {
     @content;
   }
 }
-@mixin medium-screen() {
+@mixin md-screen() {
   @media screen and (max-width: 991px) {
     @content;
   }
 }
-@mixin small-screen() {
+@mixin sm-screen() {
   @media screen and (max-width: 767px) {
     @content;
   }
 }
-@mixin extra-small-screen() {
+@mixin xs-screen() {
   @media screen and (max-width: 575px) {
     @content;
   }
 }
-@mixin xx-small-screen() {
+@mixin xxs-screen() {
   @media screen and (max-width: 478px) {
     @content;
   }

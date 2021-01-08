@@ -36,11 +36,11 @@ const PubsPhotoGallery = ({
         </p>
       </div>
       <div className="row">
-        <div className="col col-6">
+        <div className="col col-6 col-md-12">
           <div className="row">
             {galleryPhotos?.length
               ? galleryPhotos.slice(0, 4).map((src) => (
-                  <div className="col col-6" key={src}>
+                  <div className="col col-6 col-xs-12" key={src}>
                     <ImgSkeleton
                       src={src}
                       skeletonStyle={{ height: "300px" }}
@@ -58,7 +58,7 @@ const PubsPhotoGallery = ({
                 })}
           </div>
         </div>
-        <div className="col col-6">
+        <div className="col col-6 col-md-12">
           {galleryPhotos?.length ? (
             <ImgSkeleton
               src={galleryPhotos[4]}

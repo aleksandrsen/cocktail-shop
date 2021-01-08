@@ -1,18 +1,28 @@
+@import "src/src_/var";
+
 .joinMailingList {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
+  background-color: $secondary-color;
   padding: 40px 30px;
+
+  @include md-screen {
+    flex-direction: column;
+  }
 
   &__label {
     text-transform: uppercase;
-    color: #ffac04;
+    color: $main-color;
     font-size: 27px;
+
+    @include md-screen {
+      margin-bottom: 16px;
+    }
   }
 
   input {
-    min-width: 500px;
+    width: 100%;
     font-size: 19px;
     padding: 5px 10px;
     border: 1px solid transparent;
@@ -21,6 +31,20 @@
   .inputWrapper {
     position: relative;
     margin: 0 40px;
+    width: 30%;
+
+    @include lg-screen {
+      width: 40%;
+    }
+
+    @include md-screen {
+      width: 80%;
+      margin-bottom: 32px;
+    }
+
+    @include sm-screen {
+      width: 95%;
+    }
 
     &::before {
       display: none;
@@ -28,7 +52,7 @@
       position: absolute;
       top: 100%;
       left: 0;
-      color: var(--main-color);
+      color: $main-color;
       font-size: 18px;
     }
 
@@ -40,6 +64,12 @@
       input {
         border-color: red;
       }
+    }
+  }
+
+  @include sm-screen {
+    .rippleButton {
+      min-width: 230px;
     }
   }
 }

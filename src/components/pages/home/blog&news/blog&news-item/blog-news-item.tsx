@@ -21,7 +21,7 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
   return (
     <div className="col col-12 blogNewsItem">
       <div className="row center">
-        <div className="col col-5">
+        <div className="col col-5 col-lg-6 col-md-12">
           <div className="blogNewsItem__info">
             <div className="blogNewsItem__date">
               <div className="blogNewsItem__dateDay">
@@ -57,8 +57,8 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
               ) : (
                 <FieldSkeleton
                   styles={{
-                    width: "100%",
-                    height: "35px",
+                    width: "50%",
+                    padding: "16px 0",
                     marginBottom: "16px",
                   }}
                 />
@@ -110,15 +110,15 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
               ) : (
                 <FieldSkeleton
                   styles={{
-                    width: "100%",
-                    height: "30px",
+                    width: "30%",
+                    padding: "15px",
                   }}
                 />
               )}
             </div>
           </div>
         </div>
-        <div className="col col-5">
+        <div className="col col-5  col-lg-6 col-md-12">
           <ImgSkeleton
             title={post?.title}
             src={post?.previewSrc}

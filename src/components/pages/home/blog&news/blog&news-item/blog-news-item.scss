@@ -1,3 +1,5 @@
+@import "src/src_/var";
+
 .blogNewsItem {
   & + .blogNewsItem {
     margin-top: 32px;
@@ -5,11 +7,27 @@
 
   &:nth-child(even) .col.col-5:first-child {
     order: 1;
+
+    @include md-screen {
+      order: -1;
+    }
   }
 
   &__info {
     display: flex;
     align-items: center;
+
+    @include md-screen {
+      margin-bottom: 32px;
+    }
+
+    @include sm-screen {
+      flex-direction: column;
+
+      .blogNewsItem__date {
+        margin-bottom: 32px;
+      }
+    }
   }
 
   &__date {
@@ -22,13 +40,13 @@
     font-family: "Roboto", sans-serif;
     line-height: 1;
     font-size: 110px;
-    color: var(--main-color);
+    color: $main-color;
   }
 
   &__dateMonth {
     line-height: 1;
     font-size: 50px;
-    color: #000;
+    color: $secondary-color;
     text-transform: uppercase;
   }
 
@@ -38,6 +56,11 @@
     justify-content: space-between;
     margin-left: 35px;
     flex-grow: 1;
+    width: 100%;
+
+    @include sm-screen {
+      margin-left: 0;
+    }
   }
 
   &__author {
@@ -45,7 +68,7 @@
     align-items: center;
     font-size: 18px;
     text-transform: uppercase;
-    color: #000;
+    color: $secondary-color;
     margin-bottom: 5px;
 
     span {
@@ -62,19 +85,23 @@
   &__title {
     font-size: 20px;
     text-transform: uppercase;
-    color: var(--main-color);
+    color: $main-color;
     margin-bottom: 5px;
     outline: none;
     transition: 0.3s;
 
     &:hover {
-      color: var(--link-hover-color);
+      color: $main-hover-color;
     }
   }
 
   .default-text {
     text-align: left;
     margin-bottom: 5px;
+
+    @include sm-screen {
+      text-align: justify;
+    }
   }
 
   &__fullDate {
@@ -84,7 +111,7 @@
 
     span {
       font-size: 16px;
-      color: #000;
+      color: $secondary-color;
     }
 
     span {
@@ -97,7 +124,7 @@
       display: block;
       width: 16px;
       height: 16px;
-      color: var(--main-color);
+      color: $main-color;
     }
   }
 

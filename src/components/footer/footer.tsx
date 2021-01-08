@@ -9,7 +9,7 @@ const Footer = () => (
   <footer className="mainFooter">
     <div className="container">
       <div className="row">
-        <div className="col col-4 col-md-6">
+        <div className="col col-4 col-md-6 col-sm-12">
           <div className="mainFooter__contacts">
             <h4 className="mainFooter__title">Contact us</h4>
             <div className="mainFooter__contactItem">
@@ -29,7 +29,7 @@ const Footer = () => (
         <div className="col col-4 col-md-12">
           <img src={logo} alt="logo" />
         </div>
-        <div className="col col-4 col-md-6">
+        <div className="col col-4 col-md-6 col-sm-12">
           <div className="mainFooter__about">
             <h4 className="mainFooter__title">About story</h4>
             <p>

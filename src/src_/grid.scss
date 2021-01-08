@@ -1,25 +1,30 @@
 @import "./var";
 
 .container {
+  width: 100%;
   max-width: 1400px;
   padding: 0 15px;
   margin-right: auto;
   margin-left: auto;
 
-  @include large-screen {
+  @include lg-screen {
     max-width: 1200px;
   }
 
-  @include medium-screen {
+  @include md-screen {
     max-width: 992px;
   }
 
-  @include small-screen {
+  @include sm-screen {
     max-width: 768px;
   }
 
-  @include xx-small-screen {
-    max-width: 556px;
+  @include xs-screen {
+    max-width: 576px;
+  }
+
+  @include xxs-screen {
+    max-width: 479px;
   }
 }
 
