@@ -1,5 +1,20 @@
+@import "src/src_/var";
+
 .randomCocktails {
+
+  .row {
+    justify-content: center;
+  }
+
   .col {
     display: flex;
+
+    @include sm-screen {
+      width: 75%;
+    }
+
+    @include xs-screen {
+      width: 100%;
+    }
   }
 }

@@ -3,6 +3,7 @@ import "./random-cocktails..scss";
 // Utils
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
+import { useMedia } from "../../../../utils/hooks";
 // Actions
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
@@ -24,6 +25,18 @@ const RandomCocktails = ({
   useEffect(() => {
     fetchRandomCocktails();
   }, []);
+
+  const columns = useMedia(
+    [
+      "(min-width: 1200px)",
+      "(min-width: 992px)",
+      "(min-width: 767px)",
+      "(min-width: 576px)",
+      "(min-width: 200px)",
+    ],
+    [4, 3, 3, 1, 1],
+    4
+  );
 
   const cutArray = (cocktails: CocktailItemType[], itemArrLength: number) => {
     if (!cocktails || !cocktails.length) return [];
@@ -48,19 +61,19 @@ const RandomCocktails = ({
           repudiandae soluta veritatis voluptates.
         </p>
         {cocktails?.length ? (
-          <Carousel autoplay autoplaySpeed={5000} dots={false}>
-            {cutArray(cocktails, 4).map((itemArr) => (
+          <Carousel autoplay autoplaySpeed={500000} dots={false}>
+            {cutArray(cocktails, columns).map((itemArr) => (
               <div
                 className="randomCocktails__slideWrapper"
-                key={`${itemArr[0].id}${itemArr[1].id}`}
+                key={`${itemArr[0]?.id}${itemArr[1]?.id}`}
               >
                 <div
-                  key={`${itemArr[0].id}${itemArr[1].id}`}
+                  key={`${itemArr[0]?.id}${itemArr[1]?.id}`}
                   className="row noWrap"
                 >
                   {itemArr.map((cocktail) => (
                     <CocktailItem
-                      col={3}
+                      col={12 / columns}
                       key={cocktail.id}
                       cocktail={cocktail}
                       imgSkeletonStyles={{ height: "310px" }}

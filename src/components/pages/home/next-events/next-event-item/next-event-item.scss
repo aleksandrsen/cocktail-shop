@@ -1,16 +1,33 @@
+@import "src/src_/var";
+
 .nextEventsItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 22px;
   color: #000;
-  background-color: #f1f1f1;
   text-transform: uppercase;
   text-align: center;
 
+  @include lg-screen {
+    font-size: 18px;
+  }
+
+  @include md-screen {
+    font-size: 16px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  @include sm-screen {
+    padding: 0 32px;
+  }
+
   &:first-child {
-    background-color: var(--main-color);
-    color: #fff;
+    .nextEventsItem__info {
+      background-color: $main-color;
+      color: #fff;
+    }
   }
 
   & + .nextEventsItem {
@@ -21,29 +38,55 @@
     flex-grow: 1;
     display: flex;
     align-items: center;
+    background-color: #f1f1f1;
+
+    @include md-screen {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    @include sm-screen {
+      flex-direction: column;
+    }
 
     span {
       width: 33.3333%;
+
+      @include sm-screen {
+        width: 100%;
+        border-bottom: 1px solid $secondary-color;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
     }
   }
 
   &__title {
-    border-left: 1px solid var(--secondary-color);
-    border-right: 1px solid var(--secondary-color);
+    border-left: 1px solid $secondary-color;
+    border-right: 1px solid $secondary-color;
+    @include sm-screen {
+      border: none;
+    }
   }
 
   span,
-  a {
+  &__details {
     padding: 20px 25px;
   }
 
-  a {
-    background-color: var(--secondary-color);
+  &__details {
+    background-color: $secondary-color;
     color: #fff;
     transition: 0.3s;
 
+    @include md-screen {
+      padding: 14px 60px;
+    }
+
     &:hover {
-      color: var(--main-color);
+      color: $main-color;
     }
   }
 }

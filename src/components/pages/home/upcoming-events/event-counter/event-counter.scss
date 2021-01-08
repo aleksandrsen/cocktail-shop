@@ -1,3 +1,5 @@
+@import "src/src_/var";
+
 .eventCounter {
   display: flex;
   justify-content: space-between;
@@ -8,7 +10,7 @@
     width: 23%;
     padding: 15px 10px;
     font-size: 26px;
-    background-color: var(--secondary-color);
+    background-color: $secondary-color;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -16,12 +18,12 @@
     transition: 0.3s;
 
     &:hover {
-      color: #000;
-      background-color: var(--main-color);
+      color: $secondary-color;
+      background-color: $main-color;
     }
 
     &.active {
-      background-color: var(--main-color);
+      background-color: $main-color;
     }
 
     span {
