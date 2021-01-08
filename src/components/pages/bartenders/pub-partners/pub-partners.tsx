@@ -14,13 +14,13 @@ const PubPartners = () => (
         veritatis!
       </p>
       <div className="row justify-content-center">
-        <div className="col col-4">
+        <div className="col col-4 col-sm-6 col-xs-12">
           <img src={partner1} alt="pub partner img" />
         </div>
-        <div className="col col-4">
+        <div className="col col-4 col-sm-12">
           <img src={partner2} alt="pub partner img" />
         </div>
-        <div className="col col-4">
+        <div className="col col-4 col-sm-6 col-xs-12">
           <img src={partner1} alt="pub partner img" />
         </div>
       </div>

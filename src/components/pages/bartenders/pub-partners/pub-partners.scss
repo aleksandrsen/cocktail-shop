@@ -1,5 +1,19 @@
+@import "src/src_/var";
+
 .pubPartners {
   .col {
     text-align: center;
+
+    &:nth-child(2) {
+      @include sm-screen {
+        order: -1;
+      }
+    }
+
+    @include xs-screen {
+      &:not(:last-child) {
+        margin-bottom: 64px;
+      }
+    }
   }
 }

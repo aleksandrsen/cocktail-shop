@@ -6,7 +6,7 @@ const GetInTouch = () => (
     <h2 className="getInTouch__title section-title">Get in touch</h2>
     <div className="container">
       <div className="row align-items-center justify-content-center">
-        <div className="col col-4">
+        <div className="col col-4 col-md-12">
           <div className="getInTouch__contactItem">
             <svg width="40" height="40">
               <use xlinkHref="#contact-email" />
@@ -16,7 +16,7 @@ const GetInTouch = () => (
             </div>
           </div>
         </div>
-        <div className="col col-4">
+        <div className="col col-4 col-md-6 col-sm-12">
           <div className="getInTouch__contactItem">
             <svg width="40" height="40">
               <use xlinkHref="#contact-phone" />
@@ -26,7 +26,7 @@ const GetInTouch = () => (
             </div>
           </div>
         </div>
-        <div className="col col-4">
+        <div className="col col-4 col-md-6 col-sm-12">
           <div className="getInTouch__contactItem">
             <svg width="40" height="40">
               <use xlinkHref="#contact-map" />

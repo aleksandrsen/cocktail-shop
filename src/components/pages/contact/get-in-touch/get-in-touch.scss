@@ -1,15 +1,23 @@
+@import "src/src_/var";
+
 .getInTouch {
   &__title {
     margin-bottom: 60px;
   }
 
+  .col {
+    @include md-screen {
+      margin-bottom: 32px;
+    }
+  }
+
   &__contactItem {
     font-size: 16px;
     text-align: center;
-    color: var(--secondary-color);
+    color: $secondary-color;
 
     span:first-child {
-      color: var(--main-color);
+      color: $main-color;
     }
 
     svg {

@@ -42,7 +42,7 @@
 
     @include md-screen {
       width: 100%;
-      margin-bottom: 16px;
+      margin-bottom: 32px;
     }
 
     @include sm-screen {
@@ -54,7 +54,7 @@
 
       @include sm-screen {
         width: 100%;
-        border-bottom: 1px solid $secondary-color;
+        border-bottom: 1px solid #fff;
 
         &:last-child {
           border-bottom: none;
@@ -83,6 +83,8 @@
 
     @include md-screen {
       padding: 14px 60px;
+      border-radius: 5px;
+      border: 1px solid $main-color
     }
 
     &:hover {

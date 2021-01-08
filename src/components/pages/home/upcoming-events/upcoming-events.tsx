@@ -111,7 +111,7 @@ const UpcomingEvents = ({
             <ImgSkeleton
               src={event?.previewSrc}
               title={event?.title}
-              skeletonStyle={{ minHeight: "100%" }}
+              skeletonStyle={{ height: "100%", minHeight: "450px" }}
             />
           </div>
         </div>

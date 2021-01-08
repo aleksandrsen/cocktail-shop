@@ -8,7 +8,7 @@ const OurStory = () => (
   <div className="default-section ourStory">
     <div className="container">
       <div className="row space-between align-items-center">
-        <div className="col col-5">
+        <div className="col col-5 col-sm-12">
           <div className="section-title">Our Story</div>
           <h2 className="section-sub-title">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.

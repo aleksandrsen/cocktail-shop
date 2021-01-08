@@ -34,7 +34,7 @@ const RandomCocktails = ({
       "(min-width: 576px)",
       "(min-width: 200px)",
     ],
-    [4, 3, 3, 1, 1],
+    [4, 3, 2, 1, 1],
     4
   );
 
@@ -59,9 +59,10 @@ const RandomCocktails = ({
           architecto at atque corporis, dicta doloremque illum nemo nihil
           nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
           repudiandae soluta veritatis voluptates.
+          <br/>
         </p>
         {cocktails?.length ? (
-          <Carousel autoplay autoplaySpeed={500000} dots={false}>
+          <Carousel autoplay autoplaySpeed={5000} dots={false}>
             {cutArray(cocktails, columns).map((itemArr) => (
               <div
                 className="randomCocktails__slideWrapper"
@@ -85,8 +86,8 @@ const RandomCocktails = ({
           </Carousel>
         ) : (
           <div className="row noWrap">
-            {getSkeletons(4, CocktailItem, {
-              col: 3,
+            {getSkeletons(columns, CocktailItem, {
+              col: 12/columns,
               imgSkeletonStyles: { height: "310px" },
             })}
           </div>

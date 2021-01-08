@@ -1,3 +1,5 @@
+@import "src/src_/var";
+
 .ourStory {
   background-color: #f1f1f1;
   text-align: center;
@@ -5,6 +7,12 @@
   .container {
     display: flex;
     justify-content: center;
+  }
+
+  @include sm-screen {
+    .col.col-5:last-child {
+      display: none;
+    }
   }
 
   img {

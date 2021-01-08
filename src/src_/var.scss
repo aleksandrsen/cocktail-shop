@@ -17,12 +17,6 @@ $secondary-color: #000;
 $button-text-color: #fff;
 $link-hover-color: #ffd235;
 
-//@mixin large-screen() {
-//  @media screen and (max-width: 1399px) {
-//    @content;
-//  }
-//}
-
 @mixin lg-screen() {
   @media screen and (max-width: 1199px) {
     @content;

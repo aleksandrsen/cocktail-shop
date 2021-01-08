@@ -43,7 +43,7 @@ const PubsPhotoGallery = ({
                   <div className="col col-6 col-xs-12" key={src}>
                     <ImgSkeleton
                       src={src}
-                      skeletonStyle={{ height: "300px" }}
+                      skeletonStyle={{ minHeight: "300px" }}
                     />
                   </div>
                 ))
