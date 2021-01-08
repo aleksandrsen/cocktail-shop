@@ -11,6 +11,7 @@ import {
   SEND_MESSAGE_TO_BARTENDER_FAIL,
 } from "../constants/bartenders";
 import callApi from "../config/api";
+import {BartendersActionType} from "../types/actions/bartenders";
 
 const wait = () =>
   new Promise((resolve) => setTimeout(() => resolve({}), 1500));

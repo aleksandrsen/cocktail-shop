@@ -7,3 +7,44 @@
   --button-text-color: #fff;
   --link-hover-color: #ffd235;
 }
+
+// colors
+$main-color: #ffad05;
+$main-hover-color: #a36d05;
+$default-text-color: #606060;
+$section-title-color: #000;
+$secondary-color: #000;
+$button-text-color: #fff;
+$link-hover-color: #ffd235;
+
+//@mixin large-screen() {
+//  @media screen and (max-width: 1399px) {
+//    @content;
+//  }
+//}
+
+@mixin large-screen() {
+  @media screen and (max-width: 1199px) {
+    @content;
+  }
+}
+@mixin medium-screen() {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+@mixin small-screen() {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+@mixin extra-small-screen() {
+  @media screen and (max-width: 575px) {
+    @content;
+  }
+}
+@mixin xx-small-screen() {
+  @media screen and (max-width: 478px) {
+    @content;
+  }
+}
