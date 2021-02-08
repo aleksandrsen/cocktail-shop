@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, {JSXElementConstructor, useEffect} from "react";
 import { useLocation } from "react-router-dom";
 
-export const ScrollTop = () => {
+export const ScrollTop = (): null => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -15,10 +15,14 @@ export const cutTextContent = (text: string, maxLength: number): string => {
   return text;
 };
 
-export function getSkeletons (length: number, SkeletonComponent: any, props: object = {}): JSX.Element[] {
+export function getSkeletons(
+  length: number,
+  SkeletonComponent: JSXElementConstructor<any>,
+  props: object = {}
+): JSX.Element[] {
   return new Array(length)
-      .fill(1)
-      .map((num, idx) => <SkeletonComponent key={`${num}${idx}`} {...props} />);
+    .fill(1)
+    .map((num, idx) => <SkeletonComponent key={`${num}${idx}`} {...props} />);
 }
 
 type DateOptionItem = "2-digit" | "numeric";
@@ -50,14 +54,17 @@ export const formatDate = (
   return formatter.format(date_);
 };
 
-export function searchByFields <T>(arrayOfObj: T[], searchValue: string, keyFields: (keyof T)[]): T[] {
+export function searchByFields<T extends object, U extends keyof T>(
+  arrayOfObj: T[],
+  searchValue: string,
+  keyFields: U[]
+): T[] {
   const result: T[] = [];
   const term = searchValue.replace(",", " ").toLowerCase();
 
-  arrayOfObj.forEach((obj) => {
+  arrayOfObj.forEach((obj: T) => {
     const descr = keyFields
-      .reduce((arr, field) => {
-        // @ts-ignore
+      .reduce((arr: T[U][], field) => {
         arr.push(obj[field]);
         return arr;
       }, [])
@@ -68,6 +75,5 @@ export function searchByFields <T>(arrayOfObj: T[], searchValue: string, keyFiel
   return result;
 }
 
-export const validateEmail = (str: string): boolean => {
-  return !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(str);
-};
+export const validateEmail = (str: string): boolean =>
+  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(str);
