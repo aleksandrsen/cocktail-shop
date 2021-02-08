@@ -18,7 +18,7 @@ type FetchEventsListActionType = {
   type: typeof FETCH_EVENTS_LIST_REQUEST;
 };
 
-type FetchEventDetailsActionType = {
+export type FetchEventDetailsActionType = {
   type: typeof FETCH_EVENT_DETAILS_REQUEST;
   id: number;
 };
@@ -28,8 +28,8 @@ type ResetEventDetailsActionType = {
 };
 
 export type EventsActionType =
+  | FetchEventDetailsActionType
   | FetchUpcomingEventActionType
   | FetchNextEventsActionType
   | FetchEventsListActionType
-  | ResetEventDetailsActionType
-  | FetchEventDetailsActionType;
+  | ResetEventDetailsActionType;

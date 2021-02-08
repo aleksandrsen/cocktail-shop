@@ -1,4 +1,5 @@
 import { put, takeLatest, all } from "redux-saga/effects";
+import {PhotosActionType} from "../types/actions/gallery";
 import {
   FETCH_INSTAGRAM_PHOTOS_REQUEST,
   FETCH_INSTAGRAM_PHOTOS_SUCCESS,

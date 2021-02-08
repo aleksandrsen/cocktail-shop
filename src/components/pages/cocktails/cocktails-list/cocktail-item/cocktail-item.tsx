@@ -13,8 +13,8 @@ import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 import { CocktailItemType } from "../../../../../types/common";
 
 type CocktailItemPropsType = {
-  cocktail: null | CocktailItemType;
   col: number;
+  cocktail: null | CocktailItemType;
   imgSkeletonStyles: React.CSSProperties;
 };
 
@@ -37,19 +37,15 @@ const CocktailItem = ({
         />
       </div>
       <div className="cocktailItem__info">
-        <div className="cocktailItem__title">
-          {cocktail?.name ? (
-            <Tippy
-              content={cocktail?.name}
-              theme="bootstrap"
-              disabled={cocktail?.name.length <= 21}
-            >
-              <span>{cocktail?.name && cutTextContent(cocktail.name, 21)}</span>
-            </Tippy>
-          ) : (
-            <FieldSkeleton styles={{ padding: "16px 0" }} />
-          )}
-        </div>
+        <Tippy content={cocktail?.name} theme="bootstrap">
+          <div className="cocktailItem__title textOverflow">
+            {cocktail?.name ? (
+              cocktail?.name
+            ) : (
+              <FieldSkeleton styles={{ padding: "16px 0" }} />
+            )}
+          </div>
+        </Tippy>
         {cocktail?.rate || cocktail?.rate === 0 ? (
           <Rate value={cocktail?.rate} />
         ) : (
@@ -58,14 +54,11 @@ const CocktailItem = ({
           />
         )}
 
-        <div className="cocktailItem__ingredients">
+        <div className="cocktailItem__ingredients textOverflow">
           {cocktail?.ingredients ? (
-            cutTextContent(
-              `${cocktail?.ingredients
-                .join("")[0]
-                .toUpperCase()}${cocktail?.ingredients.join(", ").slice(1)}`,
-              40
-            )
+            `${cocktail?.ingredients
+              .join("")[0]
+              .toUpperCase()}${cocktail?.ingredients.join(", ").slice(1)}`
           ) : (
             <FieldSkeleton
               styles={{ padding: "20px 0", width: "90%", margin: "auto" }}

@@ -62,7 +62,8 @@ const RandomCocktails = ({
           <br/>
         </p>
         {cocktails?.length ? (
-          <Carousel autoplay autoplaySpeed={5000} dots={false}>
+          // <Carousel autoplay autoplaySpeed={5000} dots={false}>
+          <Carousel autoplaySpeed={5000} dots={false}>
             {cutArray(cocktails, columns).map((itemArr) => (
               <div
                 className="randomCocktails__slideWrapper"

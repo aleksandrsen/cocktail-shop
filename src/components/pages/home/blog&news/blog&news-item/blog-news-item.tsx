@@ -52,7 +52,7 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
                   <svg width="16" height="16">
                     <use xlinkHref="#user-icon-home" />
                   </svg>
-                  <span>{`${post.authorFullName}`}</span>
+                  <span className="textOverflow">{`${post.authorFullName}`}</span>
                 </div>
               ) : (
                 <FieldSkeleton
@@ -63,13 +63,12 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
                   }}
                 />
               )}
-              <Link to={`/blog/${post?.id}`} className="blogNewsItem__title">
+              <Link
+                to={`/blog/${post?.id}`}
+                className="blogNewsItem__title textOverflow"
+              >
                 {post?.title ? (
-                  post.title.length > 35 ? (
-                    cutTextContent(post.title, 35)
-                  ) : (
-                    post.title
-                  )
+                  post.title
                 ) : (
                   <FieldSkeleton
                     styles={{

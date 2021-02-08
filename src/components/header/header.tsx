@@ -6,17 +6,19 @@ import logo from "../../src_/img/logo.png";
 import Login from "../auth/login";
 import MainMenu from "./main-menu";
 import WishList from "./wish-list";
+import MyAccount from "./my-account";
 import ShoppingCart from "./shopping-cart";
 
 const Header = () => (
   <header className="header">
-    <div className="container-fluid">
+    <div className="container">
       <img className="header__logo" src={logo} alt="" />
       <MainMenu />
       <div className="header__wrapper">
         <WishList />
         <ShoppingCart />
         <Login />
+        <MyAccount/>
       </div>
     </div>
   </header>

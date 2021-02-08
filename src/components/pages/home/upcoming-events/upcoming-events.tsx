@@ -42,7 +42,7 @@ const UpcomingEvents = ({
         </div>
         <div className="row justify-content-center">
           <div className="col col-4 col-lg-5 col-md-8 col-sm-11 upcomingEvent__info">
-            <h3 className="upcomingEvent__title">{event?.title}</h3>
+            <h3 className="upcomingEvent__title textOverflow">{event?.title}</h3>
             <div className="upcomingEvent__date">
               <svg width="16" height="16">
                 <use xlinkHref="#event-counter-date" />

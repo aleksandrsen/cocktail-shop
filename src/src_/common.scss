@@ -64,3 +64,10 @@
     padding: 12px 45px;
   }
 }
+
+.textOverflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+

@@ -21,7 +21,7 @@ const NextEventItem = ({
       <span className="nextEventsItem__title">
         {formatDate(dateStart, { hour: "2-digit", minute: "2-digit" })}
       </span>
-      <span className="nextEventsItem__time">{cutTextContent(title, 20)}</span>
+      <span className="nextEventsItem__time textOverflow">{title}</span>
     </div>
     <Link to={`/music-events/${id}`} className="nextEventsItem__details">
       Event details

@@ -41,4 +41,5 @@ export interface IUser {
   readonly userInfo: null | UserItemType;
   readonly card: UserCardType;
   readonly wishList: UserWishListType;
+  readonly isAuthenticated: boolean
 }
