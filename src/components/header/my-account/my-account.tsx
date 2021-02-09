@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./my-account.scss";
 // Components
+import Auth from "../../auth";
 import { Link } from "react-router-dom";
 import ModalWrapper from "../../reusable-components/modal-wrapper";
 // Utils
@@ -73,10 +74,7 @@ const MyAccount = ({ isAuthenticated }: MyAccountPropType) => {
         )}
       </div>
       <ModalWrapper isOpen={isOpenLogin} toggleOpen={toggleIsOpenLogin}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
-        asperiores commodi doloremque expedita in iure nostrum nulla, officiis
-        optio sequi! A, deserunt magnam neque non perferendis sed sequi. Eaque,
-        tempora!
+        <Auth />
       </ModalWrapper>
     </>
   );

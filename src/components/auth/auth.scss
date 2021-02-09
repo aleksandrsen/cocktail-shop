@@ -1,0 +1,29 @@
+@import "src/src_/var";
+
+.auth {
+  &__header {
+    padding: 16px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    color: $default-text-color;
+  }
+
+  &__closeBtn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: -15px -10px 0 auto;
+
+    svg {
+      color: $default-text-color;
+    }
+  }
+}

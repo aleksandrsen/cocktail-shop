@@ -7,7 +7,7 @@ interface FieldSkeletonProps {
 }
 
 const FieldSkeleton = ({ styles, className = "" }: FieldSkeletonProps) => (
-  <div style={styles} className={`fieldSkeleton ${className}`} />
+  <span style={styles} className={`fieldSkeleton ${className}`} />
 );
 
 export default FieldSkeleton;
