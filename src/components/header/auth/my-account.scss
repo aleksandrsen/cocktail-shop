@@ -1,0 +1,77 @@
+@import "src/src_/var";
+
+.myAccount {
+  $border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  color: $main-color;
+  cursor: pointer;
+  padding-right: 10px;
+  position: relative;
+
+  &:hover .myAccount__menuList {
+    display: block;
+  }
+
+  &__logIn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    margin-left: 16px;
+    font-size: 20px;
+  }
+
+  &__userIcon {
+    margin-left: 25px;
+  }
+
+  &__menuList {
+    min-width: 170px;
+    border-radius: $border-radius;
+    position: absolute;
+    top: 100%;
+    left: 5px;
+    background-color: transparent;
+    padding-top: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    animation: userMenu 0.5s;
+    display: none;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    li {
+      & + li {
+        border-top: 1px solid #ebebeb;
+      }
+
+      &:first-child {
+        border-radius: $border-radius $border-radius 0 0;
+        overflow: hidden;
+      }
+
+      a {
+        display: block;
+        font-size: 18px;
+        color: $main-color;
+        padding: 7px 14px;
+        transition: 0.3s;
+        background-color: #fff;
+
+        &:hover {
+          background-color: #f4f4f4;
+        }
+      }
+    }
+  }
+
+  @keyframes userMenu {
+    0% {
+      top: calc(100% + 25px);
+    }
+    100% {
+      top: 100%;
+    }
+  }
+}

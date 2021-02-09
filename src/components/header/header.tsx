@@ -3,7 +3,6 @@ import "./header.scss";
 // Utils
 import logo from "../../src_/img/logo.png";
 // Components
-import Login from "../auth/login";
 import MainMenu from "./main-menu";
 import WishList from "./wish-list";
 import MyAccount from "./my-account";
@@ -17,7 +16,6 @@ const Header = () => (
       <div className="header__wrapper">
         <WishList />
         <ShoppingCart />
-        <Login />
         <MyAccount/>
       </div>
     </div>
