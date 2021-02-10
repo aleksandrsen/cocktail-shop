@@ -6,15 +6,19 @@ import { useField } from "formik";
 type TextInputPropsType = {
   name: string;
   type: string;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
   textarea?: boolean;
+  showError?: boolean;
 };
 
 const TextInput = ({
   name,
   type,
-  placeholder,
+  label,
   textarea,
+  placeholder,
+  showError = true,
 }: TextInputPropsType) => {
   const [focused, setFocused] = useState(false);
   const [field, meta] = useField({ name, type, placeholder });
@@ -35,6 +39,7 @@ const TextInput = ({
         meta.touched && meta.error ? "error" : ""
       }`}
     >
+      <label htmlFor={label}>{label}</label>
       {!textarea ? (
         <input
           className="textInput__input"
@@ -44,6 +49,7 @@ const TextInput = ({
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          id={label ? label : undefined}
         />
       ) : (
         <textarea
@@ -53,9 +59,10 @@ const TextInput = ({
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          id={label ? label : undefined}
         />
       )}
-      {meta.touched && meta.error && (
+      {showError && meta.touched && meta.error && (
         <div className="textInput__error">{meta.error}</div>
       )}
     </div>

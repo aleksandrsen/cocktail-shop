@@ -9,9 +9,9 @@ type RippleButtonPropsType = {
 };
 
 const RippleButton = ({
-  children,
-  onClick,
   type,
+  onClick,
+  children,
   disabled = false,
   ...rest
 }: RippleButtonPropsType) => {

@@ -1,7 +1,9 @@
+@import "src/src_/var";
+
 .aside-cocktails {
   .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     font-size: 18px;
-    color: var(--main-color);
+    color: $main-color;
   }
 
   .ant-checkbox-group {
@@ -14,17 +16,17 @@
   }
 
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: var(--main-color);
-    border-color: var(--main-color);
+    background-color: $main-color;
+    border-color: $main-color;
   }
 
   .ant-checkbox-wrapper:hover .ant-checkbox-inner {
-    border-color: var(--main-color);
+    border-color: $main-color;
   }
 
   .ant-checkbox-wrapper-checked:hover {
     .ant-checkbox-checked::after {
-      border-color: var(--main-color);
+      border-color: $main-color;
     }
   }
 }

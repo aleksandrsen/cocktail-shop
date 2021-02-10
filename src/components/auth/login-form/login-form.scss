@@ -1,21 +1,73 @@
-.wishList {
-  display: flex;
-  align-items: center;
-  position: relative;
-  svg {
-    display: block;
-    width: 25px;
-    height: 25px;
-    color: var(--main-color);
-    cursor: pointer;
+@import "src/src_/var";
+
+.loginForm {
+  text-align: center;
+  .textInput {
+    & + .textInput {
+      margin-top: 24px;
+    }
+    &::before {
+      display: none;
+    }
+
+    input {
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #d6d6d6;
+    }
+
+    &__error {
+      left: 0;
+      font-size: 14px;
+      top: 100%;
+    }
   }
 
-  &__count {
-    position: absolute;
-    top: -18px;
-    left: -20px;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--main-color);
+  &__options {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    justify-content: space-between;
+
+    .forgotPassword {
+      text-decoration: none;
+      color: $main-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .ant-checkbox-checked .ant-checkbox-inner {
+      background-color: $main-color;
+      border-color: $main-color;
+    }
+
+    .ant-checkbox-wrapper:hover .ant-checkbox-inner {
+      border-color: $main-color;
+    }
+
+    .ant-checkbox-wrapper-checked:hover {
+      .ant-checkbox-checked::after {
+        border-color: $main-color;
+      }
+    }
+  }
+
+  .rippleButton {
+    margin-top: 40px;
+    width: 100%;
+    text-transform: none;
+  }
+
+  &__signInBtn {
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-top: 16px;
+    color: $main-color;
   }
 }

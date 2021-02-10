@@ -74,7 +74,7 @@ const MyAccount = ({ isAuthenticated }: MyAccountPropType) => {
         )}
       </div>
       <ModalWrapper isOpen={isOpenLogin} toggleOpen={toggleIsOpenLogin}>
-        <Auth />
+        <Auth toggleOpen={toggleIsOpenLogin} />
       </ModalWrapper>
     </>
   );
