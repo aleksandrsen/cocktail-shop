@@ -1,28 +1,42 @@
 import React, { useState } from "react";
 import "./auth.scss";
 // Components
-import LoginForm from "./login-form";
-import SignInForm from "./sign-in-form";
-import ForgotPasswordForm from "./forgot-password";
+import AuthForm from "./AuthForm";
 
 type AuthPropsType = {
   toggleOpen: () => void;
 };
 
+export type ActiveFormType = {
+  [key: string]: boolean;
+};
+
 const Auth = ({ toggleOpen }: AuthPropsType) => {
-  const [activeForm, setActiveForm] = useState({
+  const [activeForm, setActiveForm] = useState<ActiveFormType>({
     login: true,
     signIn: false,
     forgotPassword: false,
   });
 
-  // const setActiveForm = formName => e => setActiveForm({...activeForm, [formName]: })
+  const toggleFormsView = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { value } = (e.target as HTMLButtonElement).dataset;
+    const res: ActiveFormType = { ...activeForm };
+    for (const key in res) {
+      res[key] = false;
+      if (key === value) res[key] = true;
+    }
+    setActiveForm(res);
+  };
 
   return (
     <div className="auth">
       <div className="auth__header">
         <div className="auth__title">
-          {activeForm.login || activeForm.forgotPassword ? "Log in" : "Sign in"}
+          {activeForm.login
+            ? "Log in"
+            : activeForm.signIn
+            ? "Sign in"
+            : "Forgot password"}
           <button className="auth__closeBtn" onClick={toggleOpen}>
             <svg width="25" height="25">
               <use xlinkHref="#close-icon" />
@@ -32,15 +46,11 @@ const Auth = ({ toggleOpen }: AuthPropsType) => {
       </div>
       <div className="auth__content">
         <div className="auth__formsWrapper">
-          {activeForm.login ? (
-            <LoginForm />
-          ) : activeForm.signIn ? (
-            <SignInForm />
-          ) : activeForm.forgotPassword ? (
-            <ForgotPasswordForm />
-          ) : (
-            ""
-          )}
+          <AuthForm
+            key={`${Math.random()}`}
+            activeForm={activeForm}
+            toggleFormsView={toggleFormsView}
+          />
         </div>
         <div className="auth__signInWith">
           <div className="subTitle">Sign in with</div>

@@ -4,7 +4,7 @@
   text-align: center;
   .textInput {
     & + .textInput {
-      margin-top: 24px;
+      margin-top: 20px;
     }
     &::before {
       display: none;
@@ -19,7 +19,7 @@
 
     &__error {
       left: 0;
-      font-size: 14px;
+      font-size: 12px;
       top: 100%;
     }
   }
@@ -32,7 +32,10 @@
     justify-content: space-between;
 
     .forgotPassword {
-      text-decoration: none;
+      padding: 0;
+      border: none;
+      outline: none;
+      background-color: transparent;
       color: $main-color;
 
       &:hover {
@@ -60,6 +63,7 @@
     margin-top: 40px;
     width: 100%;
     text-transform: none;
+    font-size: 18px;
   }
 
   &__signInBtn {

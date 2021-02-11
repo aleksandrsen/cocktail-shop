@@ -5,11 +5,13 @@ type RippleButtonPropsType = {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
   children: ReactChildren | ReactNode;
+  style?: React.CSSProperties;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const RippleButton = ({
   type,
+  style,
   onClick,
   children,
   disabled = false,
@@ -48,6 +50,7 @@ const RippleButton = ({
       type={type}
       disabled={disabled}
       {...rest}
+      style={style}
     >
       {children}
     </button>
