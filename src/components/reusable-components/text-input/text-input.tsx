@@ -1,15 +1,16 @@
 import React, { useState, FocusEvent, SyntheticEvent } from "react";
 import "./text-input.scss";
 // Utils
-import { useField } from "formik";
+import { FieldMetaProps, useField } from "formik";
 
 type TextInputPropsType = {
   name: string;
   type: string;
   label?: string;
-  placeholder?: string;
   textarea?: boolean;
   showError?: boolean;
+  placeholder?: string;
+  handleBlur?: (name: string, meta: FieldMetaProps<void>) => void;
 };
 
 const TextInput = ({
@@ -17,20 +18,34 @@ const TextInput = ({
   type,
   label,
   textarea,
+  handleBlur,
   placeholder,
   showError = true,
 }: TextInputPropsType) => {
+  const [fieldType, setFieldType] = useState("password");
   const [focused, setFocused] = useState(false);
-  const [field, meta] = useField({ name, type, placeholder });
+  const [field, meta] = useField({
+    name,
+    type: type === "password" ? fieldType : type,
+    placeholder,
+  });
 
   const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setFocused(!focused);
 
-  const handleBlur = (
+  const handleBlurField = (
     e: SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     field.onBlur(e);
     setFocused(false);
+    if (handleBlur) handleBlur(name, meta);
+
+    console.log(meta, "-----");
+  };
+
+  const toggleFieldType = () => {
+    if (fieldType === "password") return setFieldType("text");
+    setFieldType("password");
   };
 
   return (
@@ -41,16 +56,32 @@ const TextInput = ({
     >
       <label htmlFor={label}>{label}</label>
       {!textarea ? (
-        <input
-          className="textInput__input"
-          {...field}
-          type={type}
-          name={name}
-          placeholder={placeholder}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          id={label ? label : undefined}
-        />
+        <>
+          <input
+            className={`textInput__input ${
+              type === "password" ? "password" : ""
+            }`}
+            {...field}
+            type={type === "password" ? fieldType : type}
+            name={name}
+            placeholder={placeholder}
+            onFocus={handleFocus}
+            onBlur={handleBlurField}
+            id={label ? label : undefined}
+          />
+          {type === "password" && (
+            <svg
+              onClick={toggleFieldType}
+              width="16"
+              height="16"
+              className={`textInput__togglePasswordView ${
+                fieldType === "text" ? "view" : ""
+              }`}
+            >
+              <use xlinkHref="#password-eye" />
+            </svg>
+          )}
+        </>
       ) : (
         <textarea
           className="textInput__input"
@@ -58,7 +89,7 @@ const TextInput = ({
           name={name}
           placeholder={placeholder}
           onFocus={handleFocus}
-          onBlur={handleBlur}
+          onBlur={handleBlurField}
           id={label ? label : undefined}
         />
       )}

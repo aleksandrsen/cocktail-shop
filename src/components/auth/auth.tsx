@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./auth.scss";
 // Components
 import AuthForm from "./AuthForm";
+import { FieldMetaProps } from "formik";
 
 type AuthPropsType = {
   toggleOpen: () => void;
@@ -12,21 +13,39 @@ export type ActiveFormType = {
 };
 
 const Auth = ({ toggleOpen }: AuthPropsType) => {
+  const [savedValues, setSavedValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [key, setKey] = useState(0);
+
   const [activeForm, setActiveForm] = useState<ActiveFormType>({
     login: true,
     signIn: false,
     forgotPassword: false,
   });
 
-  const toggleFormsView = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { value } = (e.target as HTMLButtonElement).dataset;
-    const res: ActiveFormType = { ...activeForm };
-    for (const key in res) {
-      res[key] = false;
-      if (key === value) res[key] = true;
-    }
-    setActiveForm(res);
-  };
+  const toggleFormsView = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const { value } = (e.target as HTMLButtonElement).dataset;
+      const res: ActiveFormType = { ...activeForm };
+      for (const key in res) {
+        res[key] = false;
+        if (key === value) res[key] = true;
+      }
+      setActiveForm(res);
+      setKey(key + 1);
+    },
+    [activeForm]
+  );
+
+  const handleSaveValues = useCallback(
+    (name: string, meta: FieldMetaProps<void>): void => {
+      setSavedValues({ ...savedValues, [name]: meta.value });
+    },
+    [savedValues]
+  );
 
   return (
     <div className="auth">
@@ -47,9 +66,11 @@ const Auth = ({ toggleOpen }: AuthPropsType) => {
       <div className="auth__content">
         <div className="auth__formsWrapper">
           <AuthForm
-            key={`${Math.random()}`}
+            key={key}
             activeForm={activeForm}
+            savedValues={savedValues}
             toggleFormsView={toggleFormsView}
+            handleSaveValues={handleSaveValues}
           />
         </div>
         <div className="auth__signInWith">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login-form.scss";
 // Utils
 import * as Yup from "yup";
@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { validateFields } from "./validate";
 // Components
 import { Checkbox } from "antd";
-import { Form, Formik } from "formik";
+import { FieldMetaProps, Form, Formik } from "formik";
 import TextInput from "../../reusable-components/text-input";
 import RippleButton from "../../reusable-components/ripple-button/ripple-button";
 // Types
@@ -19,10 +19,17 @@ type FormValuesType = {
 
 type LoginFormPropsType = {
   activeForm: ActiveFormType;
+  savedValues: { email: string; password: string };
   toggleFormsView: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleSaveValues: (name: string, meta: FieldMetaProps<void>) => void;
 };
 
-const AuthForm = ({ activeForm, toggleFormsView }: LoginFormPropsType) => {
+const AuthForm = ({
+  activeForm,
+  savedValues,
+  toggleFormsView,
+  handleSaveValues,
+}: LoginFormPropsType) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const toggleRememberMe = (e: CheckboxChangeEvent) =>
@@ -37,23 +44,24 @@ const AuthForm = ({ activeForm, toggleFormsView }: LoginFormPropsType) => {
       initialValues={
         activeForm.login
           ? {
-              email: "",
-              password: "",
+              email: savedValues.email,
+              password: savedValues.password,
             }
           : activeForm.signIn
           ? {
-              email: "",
-              password: "",
+              email: savedValues.email,
+              password: savedValues.password,
               firstName: "",
               lastName: "",
               phone: "",
             }
           : {
-              email: "",
+              email: savedValues.email,
             }
       }
       validationSchema={Yup.object(validateFields(activeForm))}
       onSubmit={handleSubmit}
+      handleChange={(e: React.ChangeEvent<any>) => console.log(e)}
     >
       {() => (
         <Form className="loginForm" noValidate>
@@ -64,12 +72,18 @@ const AuthForm = ({ activeForm, toggleFormsView }: LoginFormPropsType) => {
               <TextInput name="phone" type="tel" label="Phone number" />
             </>
           )}
-          <TextInput name="email" type="email" label="Email" />
+          <TextInput
+            name="email"
+            type="email"
+            label="Email"
+            handleBlur={handleSaveValues}
+          />
           {(activeForm.login || activeForm.signIn) && (
             <TextInput
               name="password"
               type="password"
               label="Password"
+              handleBlur={handleSaveValues}
               showError={!activeForm.login}
             />
           )}
@@ -87,6 +101,7 @@ const AuthForm = ({ activeForm, toggleFormsView }: LoginFormPropsType) => {
                 className="forgotPassword"
                 onClick={toggleFormsView}
                 data-value="forgotPassword"
+                form="forgotPasswordButtonOnLoginPage"
               >
                 Forgot password?
               </button>

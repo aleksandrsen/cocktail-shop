@@ -1,3 +1,5 @@
+@import "src/src_/var";
+
 .textInput {
   width: 100%;
   position: relative;
@@ -52,10 +54,27 @@
     &:focus::placeholder {
       opacity: 0;
     }
+
+    &.password {
+      padding-right: 35px !important;
+    }
   }
 
   textarea {
     min-height: 110px;
+  }
+
+  &__togglePasswordView {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: $default-text-color;
+    transition: 0.3s;
+    &.view {
+      color: $main-color;
+    }
   }
 
   &__error {

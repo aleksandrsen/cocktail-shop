@@ -7,9 +7,7 @@ export const validateFields = (activeForm: ActiveFormType) =>
         email: Yup.string()
           .email("Invalid email address")
           .required("This field is required"),
-        password: Yup.string()
-          // .min(8, "Must be at least 8 characters")
-          .required("This field is required"),
+        password: Yup.string().required("This field is required"),
       }
     : activeForm.signIn
     ? {

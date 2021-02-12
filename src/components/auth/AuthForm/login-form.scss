@@ -22,6 +22,10 @@
       font-size: 12px;
       top: 100%;
     }
+
+    &__togglePasswordView {
+      top: calc(50% + 10px);
+    }
   }
 
   &__options {
