@@ -7,17 +7,19 @@ import { NavLink } from "react-router-dom";
 
 const MainMenu = () => (
   <nav className="mainMenu">
-    {Object.values(routes).map(({ link, label }) => (
-      <NavLink
-        to={link}
-        key={label}
-        exact={link === "/"}
-        activeClassName="active"
-        className="mainMenu__item"
-      >
-        {label}
-      </NavLink>
-    ))}
+    {Object.values(routes)
+      .filter((item) => item.label)
+      .map(({ link, label }) => (
+        <NavLink
+          to={link}
+          key={label}
+          exact={link === "/"}
+          activeClassName="active"
+          className="mainMenu__item"
+        >
+          {label}
+        </NavLink>
+      ))}
   </nav>
 );
 

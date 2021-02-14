@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./login-form.scss";
+import "./auth-form.scss";
 // Utils
 import * as Yup from "yup";
 import { connect } from "react-redux";

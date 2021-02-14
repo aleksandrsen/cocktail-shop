@@ -10,7 +10,7 @@ const defaultState: IUser = {
   userInfo: null,
   card: {},
   wishList: {},
-  isAuthenticated: false
+  isAuthenticated: true
 };
 
 const UserState = (state = defaultState, action: any): IUser => {

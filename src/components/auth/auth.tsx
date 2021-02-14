@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import "./auth.scss";
 // Components
-import AuthForm from "./AuthForm";
+import AuthForm from "./auth-form";
 import { FieldMetaProps } from "formik";
 
 type AuthPropsType = {

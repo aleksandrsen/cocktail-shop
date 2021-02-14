@@ -9,34 +9,51 @@ import { connect } from "react-redux";
 // Types
 import { AppRootState } from "../../../store";
 
-const userMenu = [
+export const userMenu = [
+  {
+    label: "My account",
+    link: "/account",
+    iconId: "#user-icon-home",
+  },
   {
     label: "Wish list",
-    link: "/wishlist",
+    link: "/account//wishlist",
+    iconId: "#user-menu-wish-list",
   },
   {
     label: "Card",
-    link: "/Card",
+    link: "/account/card",
+    iconId: "#user-menu-cart",
   },
   {
     label: "Orders",
-    link: "/Orders",
+    link: "/account/orders",
+    iconId: "#user-menu-orders",
   },
   {
     label: "Watched goods",
-    link: "/watched-goods",
+    link: "account/watched-goods",
+    iconId: "#password-eye",
   },
   {
     label: "Booked events",
-    link: "/booked-events",
+    link: "account/booked-events",
+    iconId: "#user-menu-events",
   },
   {
     label: "Messages",
-    link: "/messages",
+    link: "account/messages",
+    iconId: "#user-menu-message",
+  },
+  {
+    label: "Reviews",
+    link: "account/reviews",
+    iconId: "#user-menu-review",
   },
   {
     label: "Log out",
-    link: "/",
+    iconId: "",
+    link: "",
   },
 ];
 

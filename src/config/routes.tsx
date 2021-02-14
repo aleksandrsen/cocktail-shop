@@ -31,4 +31,8 @@ export const routes = {
         link: "/contact",
         label: "Contact"
     },
+    userAccount: {
+        link: "/account",
+        label: ""
+    }
 }
