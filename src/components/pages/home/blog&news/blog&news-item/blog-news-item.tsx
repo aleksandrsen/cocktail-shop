@@ -63,21 +63,21 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
                   }}
                 />
               )}
-              <Link
-                to={`/blog/${post?.id}`}
-                className="blogNewsItem__title textOverflow"
-              >
-                {post?.title ? (
-                  post.title
-                ) : (
-                  <FieldSkeleton
-                    styles={{
-                      width: "100%",
-                      height: "30px",
-                    }}
-                  />
-                )}
-              </Link>
+              {/*<Link*/}
+              {/*  to={`/blog/${post?.id}`}*/}
+              {/*  className="blogNewsItem__title textOverflow"*/}
+              {/*>*/}
+              {/*  {post?.title ? (*/}
+              {/*    post.title*/}
+              {/*  ) : (*/}
+              {/*    <FieldSkeleton*/}
+              {/*      styles={{*/}
+              {/*        width: "100%",*/}
+              {/*        height: "30px",*/}
+              {/*      }}*/}
+              {/*    />*/}
+              {/*  )}*/}
+              {/*</Link>*/}
               {post?.content ? (
                 <p className="default-text">
                   {post.content.length > 140
