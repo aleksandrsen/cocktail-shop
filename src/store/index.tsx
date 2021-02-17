@@ -4,7 +4,7 @@ import reducers, { RootReducer } from "../reducers";
 import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const sagaMiddleware = createSagaMiddleware();
+export const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   reducers,

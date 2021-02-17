@@ -22,7 +22,7 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
   }, []);
 
   return (
-    <div className="default-section blogNewsHome">
+    <div className="default-section blogNewsHome" data-test="blogNewsHome">
       <div className="container">
         <div className="section-title">Blog & News</div>
         <p className="default-text">

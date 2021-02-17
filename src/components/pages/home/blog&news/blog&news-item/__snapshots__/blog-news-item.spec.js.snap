@@ -1,183 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BlogNewsItem component Have not props 1`] = `
-<div
-  className="col col-12 blogNewsItem"
->
-  <div
-    className="row center"
-  >
-    <div
-      className="col col-5 col-lg-6 col-md-12"
-    >
-      <div
-        className="blogNewsItem__info"
-      >
-        <div
-          className="blogNewsItem__date"
-        >
-          <div
-            className="blogNewsItem__dateDay"
-          >
-            <FieldSkeleton
-              styles={
-                Object {
-                  "height": "180px",
-                  "width": "120px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="blogNewsItem__dateMonth"
-          />
-        </div>
-        <div
-          className="blogNewsItem__details"
-        >
-          <FieldSkeleton
-            styles={
-              Object {
-                "marginBottom": "16px",
-                "padding": "16px 0",
-                "width": "50%",
-              }
-            }
-          />
-          <FieldSkeleton
-            styles={
-              Object {
-                "height": "90px",
-                "marginBottom": "10px",
-                "width": "100%",
-              }
-            }
-          />
-          <FieldSkeleton
-            styles={
-              Object {
-                "padding": "15px",
-                "width": "30%",
-              }
-            }
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      className="col col-5  col-lg-6 col-md-12"
-    >
-      <Memo(ImgSkeleton)
-        classes={
-          Array [
-            "blogNewsItem__preview",
-          ]
-        }
-        skeletonStyle={
-          Object {
-            "height": "250px",
-          }
-        }
-      />
-    </div>
-  </div>
-</div>
-`;
-
-exports[`BlogNewsItem component Have props Have props 1`] = `
-<div
-  className="col col-12 blogNewsItem"
->
-  <div
-    className="row center"
-  >
-    <div
-      className="col col-5 col-lg-6 col-md-12"
-    >
-      <div
-        className="blogNewsItem__info"
-      >
-        <div
-          className="blogNewsItem__date"
-        >
-          <div
-            className="blogNewsItem__dateDay"
-          >
-            25
-          </div>
-          <div
-            className="blogNewsItem__dateMonth"
-          >
-            Nov
-          </div>
-        </div>
-        <div
-          className="blogNewsItem__details"
-        >
-          <div
-            className="blogNewsItem__author"
-          >
-            <svg
-              height="16"
-              width="16"
-            >
-              <use
-                xlinkHref="#user-icon-home"
-              />
-            </svg>
-            <span
-              className="textOverflow"
-            >
-              Author
-            </span>
-          </div>
-          <p
-            className="default-text"
-          >
-            description
-          </p>
-          <div
-            className="blogNewsItem__fullDate"
-          >
-            <svg
-              height="16"
-              width="16"
-            >
-              <use
-                xlinkHref="#blog-news-clock"
-              />
-            </svg>
-            <span>
-              Nov 25, 2019
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="col col-5  col-lg-6 col-md-12"
-    >
-      <Memo(ImgSkeleton)
-        classes={
-          Array [
-            "blogNewsItem__preview",
-          ]
-        }
-        skeletonStyle={
-          Object {
-            "height": "250px",
-          }
-        }
-        title="title"
-      />
-    </div>
-  </div>
-</div>
-`;
-
 exports[`BlogNewsItem component Should render component with props Have props 1`] = `
 <div
   className="col col-12 blogNewsItem"
+  data-test="blogNewsItem"
 >
   <div
     className="row center"
@@ -193,6 +19,7 @@ exports[`BlogNewsItem component Should render component with props Have props 1`
         >
           <div
             className="blogNewsItem__dateDay"
+            data-test="blogNewsItem__dateDay"
           >
             25
           </div>
@@ -224,6 +51,7 @@ exports[`BlogNewsItem component Should render component with props Have props 1`
           </div>
           <p
             className="default-text"
+            data-test="blogNewsItemTextContent"
           >
             description
           </p>
@@ -269,6 +97,7 @@ exports[`BlogNewsItem component Should render component with props Have props 1`
 exports[`BlogNewsItem component Should render component without props Have not props 1`] = `
 <div
   className="col col-12 blogNewsItem"
+  data-test="blogNewsItem"
 >
   <div
     className="row center"
@@ -284,6 +113,7 @@ exports[`BlogNewsItem component Should render component without props Have not p
         >
           <div
             className="blogNewsItem__dateDay"
+            data-test="blogNewsItem__dateDay"
           >
             <FieldSkeleton
               styles={

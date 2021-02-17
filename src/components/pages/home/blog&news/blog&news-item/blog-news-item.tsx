@@ -19,12 +19,12 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
   });
 
   return (
-    <div className="col col-12 blogNewsItem">
+    <div className="col col-12 blogNewsItem" data-test="blogNewsItem">
       <div className="row center">
         <div className="col col-5 col-lg-6 col-md-12">
           <div className="blogNewsItem__info">
             <div className="blogNewsItem__date">
-              <div className="blogNewsItem__dateDay">
+              <div className="blogNewsItem__dateDay" data-test="blogNewsItem__dateDay">
                 {dayNum ? (
                   +dayNum < 10 ? (
                     "0" + dayNum
@@ -79,7 +79,7 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
               {/*  )}*/}
               {/*</Link>*/}
               {post?.content ? (
-                <p className="default-text">
+                <p className="default-text" data-test="blogNewsItemTextContent">
                   {post.content.length > 140
                     ? cutTextContent(post.content, 140)
                     : post.content}
