@@ -59,11 +59,15 @@
     "customize-cra": "^1.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
     "jest": "^26.6.0",
     "jest-enzyme": "^7.1.2",
     "node-sass": "^4.14.1",
     "prettier": "2.1.2",
     "react-app-rewired": "^2.1.7",
     "redux-devtools-extension": "^2.13.8"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
