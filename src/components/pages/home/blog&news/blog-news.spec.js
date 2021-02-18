@@ -12,29 +12,30 @@ const setUp = (initialState = {}) => {
 
 describe("BlogNews component", () => {
   let wrapper;
+  const initialState = {
+    blogPosts: [
+      {
+        authorFullName: "Author 1",
+        date: "2019-11-25T07:00",
+        dislikes: 1,
+        id: 2,
+        likes: 3,
+        title: "title 1",
+        content: "description 1",
+      },
+      {
+        authorFullName: "Author 2",
+        date: "2019-11-25T07:00",
+        dislikes: 1,
+        id: 2,
+        likes: 3,
+        title: "title 3",
+        content: "description 3",
+      },
+    ],
+  };
+
   beforeEach(() => {
-    const initialState = {
-      blogPosts: [
-        {
-          authorFullName: "Author 1",
-          date: "2019-11-25T07:00",
-          dislikes: 1,
-          id: 2,
-          likes: 3,
-          title: "title 1",
-          content: "description 1",
-        },
-        {
-          authorFullName: "Author 2",
-          date: "2019-11-25T07:00",
-          dislikes: 1,
-          id: 2,
-          likes: 3,
-          title: "title 3",
-          content: "description 3",
-        },
-      ],
-    };
     wrapper = setUp(initialState);
   });
 

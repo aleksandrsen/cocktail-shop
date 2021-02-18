@@ -6,7 +6,7 @@ import logo from "../../src_/img/logo.png";
 import SocialNetworks from "../social-networks";
 
 const Footer = () => (
-  <footer className="mainFooter">
+  <footer className="mainFooter" data-test="mainFooter">
     <div className="container">
       <div className="row">
         <div className="col col-4 col-md-6 col-sm-12">

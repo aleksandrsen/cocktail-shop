@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render HappyHour component without errors Should render component without errors 1`] = `
+<div
+  className="default-section happyHour"
+  data-test="happyHour"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt=""
+      className="happyHour__logo"
+      src="logo.png"
+    />
+    <div
+      className="section-title"
+    >
+      Happy hour is here
+    </div>
+    <div
+      className="section-sub-title"
+    >
+      Weekdays 6.00 pm to 9.00 pm
+    </div>
+  </div>
+</div>
+`;

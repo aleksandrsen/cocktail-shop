@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainSlider component without errors Should render component without errors 1`] = `
+<section
+  className="mainSlider"
+  data-test="mainSlider"
+>
+  <Carousel
+    arrows={false}
+    autoplay={true}
+    dots={true}
+    draggable={false}
+  >
+    <img
+      alt="slide1"
+      key="slide1"
+      src="cocktail-slide-1.jpg"
+    />
+    <img
+      alt="slide2"
+      key="slide2"
+      src="cocktail-slide-2.jpg"
+    />
+    <img
+      alt="slide3"
+      key="slide3"
+      src="cocktail-slide-3.jpg"
+    />
+    <img
+      alt="slide4"
+      key="slide4"
+      src="cocktail-slide-4.jpg"
+    />
+    <img
+      alt="slide5"
+      key="slide5"
+      src="cocktail-slide-5.jpg"
+    />
+    <img
+      alt="slide6"
+      key="slide6"
+      src="cocktail-slide-6.jpg"
+    />
+    <img
+      alt="slide7"
+      key="slide7"
+      src="cocktail-slide-7.jpg"
+    />
+  </Carousel>
+</section>
+`;

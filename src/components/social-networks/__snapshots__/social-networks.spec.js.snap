@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render SocialNetworks component without errors Should render SocialNetworks component 1`] = `
+<div
+  className="socialNetworks"
+  data-test="socialNetworks"
+>
+  <a
+    href="https://facebook.com/"
+    key="Facebook"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#facebook"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://twitter.com/"
+    key="Twitter"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#twitter"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.pinterest.com/"
+    key="Pinterest"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#pinterest"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.youtube.com"
+    key="Youtube"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#youtube"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.instagram.com/"
+    key="Instagram"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#instagram"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`Should render SocialNetworks component without errors Should render SocialNetworks without Facebook icon 1`] = `
+<div
+  className="socialNetworks"
+  data-test="socialNetworks"
+>
+  <a
+    href="https://twitter.com/"
+    key="Twitter"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#twitter"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.pinterest.com/"
+    key="Pinterest"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#pinterest"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.youtube.com"
+    key="Youtube"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#youtube"
+      />
+    </svg>
+  </a>
+  <a
+    href="https://www.instagram.com/"
+    key="Instagram"
+    target="_blank"
+  >
+    <svg
+      height="16"
+      width="16"
+    >
+      <use
+        xlinkHref="#instagram"
+      />
+    </svg>
+  </a>
+</div>
+`;

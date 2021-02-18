@@ -8,7 +8,7 @@ type SocialNetworksPropsType = {
 };
 
 const SocialNetworks = ({ exclude }: SocialNetworksPropsType) => (
-  <div className="socialNetworks">
+  <div className="socialNetworks" data-test="socialNetworks">
     {SocialData.filter(({ name }) => name !== exclude).map(
       ({ link, iconId, name }) => (
         <a key={name} href={link} target="_blank">

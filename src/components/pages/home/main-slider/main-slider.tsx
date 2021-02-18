@@ -6,7 +6,7 @@ import { Carousel } from "antd";
 import slides from "../../../../src_/img/main-slider-slides";
 
 const MainSlider = () => (
-  <section className="mainSlider">
+  <section className="mainSlider" data-test="mainSlider">
     <Carousel autoplay>
       {slides.map(({ name, img }) => (
         <img src={img} alt={name} key={name} />

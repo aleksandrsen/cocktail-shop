@@ -2,7 +2,7 @@ import React from "react";
 import "./get-in-touch.scss";
 
 const GetInTouch = () => (
-  <section className="default-section getInTouch">
+  <section className="default-section getInTouch" data-test="getInTouch">
     <h2 className="getInTouch__title section-title">Get in touch</h2>
     <div className="container">
       <div className="row align-items-center justify-content-center">

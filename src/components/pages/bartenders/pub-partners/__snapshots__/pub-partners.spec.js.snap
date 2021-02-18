@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render PubPartners component without errors Should render component without errors 1`] = `
+<section
+  className="default-section pubPartners"
+  data-test="pubPartners"
+>
+  <div
+    className="container"
+  >
+    <h2
+      className="section-title"
+    >
+      Pub partners
+    </h2>
+    <p
+      className="default-text"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At deleniti dolores eaque et expedita harum hic illo iste modi necessitatibus nostrum nulla porro quae quidem repellat soluta tempora, veniam veritatis!
+    </p>
+    <div
+      className="row justify-content-center"
+    >
+      <div
+        className="col col-4 col-sm-6 col-xs-12"
+      >
+        <img
+          alt="pub partner img"
+          src="partner-1.png"
+        />
+      </div>
+      <div
+        className="col col-4 col-sm-12"
+      >
+        <img
+          alt="pub partner img"
+          src="partner-2.png"
+        />
+      </div>
+      <div
+        className="col col-4 col-sm-6 col-xs-12"
+      >
+        <img
+          alt="pub partner img"
+          src="partner-1.png"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+`;

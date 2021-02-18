@@ -25,7 +25,7 @@ const PubsPhotoGallery = ({
   }, []);
 
   return (
-    <div className="default-section pubGallery">
+    <div className="default-section pubGallery" data-test="pubGallery">
       <div className="container">
         <h2 className="section-title">Pubs photo gallery</h2>
         <p className="default-text">

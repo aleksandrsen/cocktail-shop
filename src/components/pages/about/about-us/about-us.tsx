@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import newBottle from "../../../../src_/img/new-bottle.jpg";
 
 const AboutUs = () => (
-  <div className="default-section about">
+  <div className="default-section about" data-test="about">
     <div className="container">
       <h2 className="section-title">The best of history</h2>
       <div className="about__history">
