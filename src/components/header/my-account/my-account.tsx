@@ -9,53 +9,53 @@ import { connect } from "react-redux";
 // Types
 import { AppRootState } from "../../../store";
 
-export const userMenu = [
-  {
-    label: "My account",
-    link: "/account",
+export const userMenu = {
+  userProfile: {
+    label: "Profile",
+    link: "/profile/info",
     iconId: "#user-icon-home",
   },
-  {
+  userWishList: {
     label: "Wish list",
-    link: "/account//wishlist",
+    link: "/profile/wishlist",
     iconId: "#user-menu-wish-list",
   },
-  {
+  userCard: {
     label: "Card",
-    link: "/account/card",
+    link: "/profile/card",
     iconId: "#user-menu-cart",
   },
-  {
+  userOrders: {
     label: "Orders",
-    link: "/account/orders",
+    link: "/profile/orders",
     iconId: "#user-menu-orders",
   },
-  {
+  userWatchedGoods: {
     label: "Watched goods",
-    link: "account/watched-goods",
+    link: "/profile/watched-goods",
     iconId: "#password-eye",
   },
-  {
+  userBookedEvents: {
     label: "Booked events",
-    link: "account/booked-events",
+    link: "/profile/booked-events",
     iconId: "#user-menu-events",
   },
-  {
+  userMessages: {
     label: "Messages",
-    link: "account/messages",
+    link: "/profile/messages",
     iconId: "#user-menu-message",
   },
-  {
+  userReviews: {
     label: "Reviews",
-    link: "account/reviews",
+    link: "/profile/reviews",
     iconId: "#user-menu-review",
   },
-  {
+  logOut: {
     label: "Log out",
     iconId: "",
     link: "",
   },
-];
+};
 
 type MyAccountPropType = {
   isAuthenticated: boolean;
@@ -82,7 +82,7 @@ const MyAccount = ({ isAuthenticated }: MyAccountPropType) => {
         )}
         {isAuthenticated && (
           <ul className="myAccount__menuList">
-            {userMenu.map(({ label, link }) => (
+            {Object.values(userMenu).map(({ label, link }) => (
               <li key={label}>
                 <Link to={link}>{label}</Link>
               </li>

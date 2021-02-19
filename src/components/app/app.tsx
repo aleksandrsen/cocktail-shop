@@ -11,7 +11,7 @@ import BlogPage from "../pages/blog";
 import Contact from "../pages/contact";
 import Cocktails from "../pages/cocktails";
 import Bartenders from "../pages/bartenders";
-import UserAccount from "../pages/user-account";
+import UserProfile from "../pages/user-profile";
 import MusicEvents from "../pages/music-events";
 import BlogDetails from "../pages/blog-details";
 import EventDetails from "../pages/event-details";
@@ -38,7 +38,7 @@ const App = () => (
         <Route path={routes.blog.details} component={BlogDetails} />
         <Route path={routes.blog.link} component={BlogPage} />
         <Route path={routes.contact.link} exact component={Contact} />
-        <Route path={routes.userAccount.link} exact component={UserAccount} />
+        <Route path={routes.userProfile.link} component={UserProfile} />
       </Switch>
     </main>
     <Footer />
