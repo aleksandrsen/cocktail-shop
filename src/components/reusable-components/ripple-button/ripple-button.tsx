@@ -2,19 +2,21 @@ import React, { ReactChildren, ReactNode } from "react";
 import "./ripple-button.scss";
 
 type RippleButtonPropsType = {
-  type?: "button" | "submit" | "reset";
+  form?: string;
   disabled?: boolean;
-  children: ReactChildren | ReactNode;
   style?: React.CSSProperties;
+  type?: "button" | "submit" | "reset";
+  children: ReactChildren | ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const RippleButton = ({
-  onClick,
   children,
+  form = "",
   style = {},
   type = "button",
   disabled = false,
+  onClick = (e) => undefined,
   ...rest
 }: RippleButtonPropsType) => {
   const createRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -48,6 +50,7 @@ const RippleButton = ({
       onClick={createRipple}
       className="rippleButton"
       type={type}
+      form={form}
       disabled={disabled}
       {...rest}
       style={style}

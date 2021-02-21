@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./auth-form.scss";
 // Utils
 import * as Yup from "yup";
@@ -17,7 +17,7 @@ type FormValuesType = {
   [key: string]: string;
 };
 
-type LoginFormPropsType = {
+type AuthFormPropsType = {
   activeForm: ActiveFormType;
   savedValues: { email: string; password: string };
   toggleFormsView: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -29,7 +29,7 @@ const AuthForm = ({
   savedValues,
   toggleFormsView,
   handleSaveValues,
-}: LoginFormPropsType) => {
+}: AuthFormPropsType) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const toggleRememberMe = (e: CheckboxChangeEvent) =>
@@ -64,7 +64,7 @@ const AuthForm = ({
       handleChange={(e: React.ChangeEvent<any>) => console.log(e)}
     >
       {() => (
-        <Form className="loginForm" noValidate>
+        <Form className="authForm" noValidate>
           {activeForm.signIn && (
             <>
               <TextInput name="firstName" type="text" label="First name" />
@@ -89,7 +89,7 @@ const AuthForm = ({
           )}
 
           {activeForm.login && (
-            <div className="loginForm__options">
+            <div className="authForm__options">
               <Checkbox
                 onChange={toggleRememberMe}
                 checked={rememberMe}
@@ -120,7 +120,7 @@ const AuthForm = ({
             </>
           </RippleButton>
           <button
-            className="loginForm__signInBtn"
+            className="authForm__signInBtn"
             onClick={toggleFormsView}
             data-value={activeForm.login ? "signIn" : "login"}
             form="buttonOnLoginPage"

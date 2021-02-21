@@ -8,6 +8,7 @@ type TextInputPropsType = {
   type: string;
   label?: string;
   textarea?: boolean;
+  disabled?: boolean;
   showError?: boolean;
   placeholder?: string;
   handleBlur?: (name: string, meta: FieldMetaProps<void>) => void;
@@ -20,6 +21,7 @@ const TextInput = ({
   textarea,
   handleBlur,
   placeholder,
+  disabled = false,
   showError = true,
 }: TextInputPropsType) => {
   const [fieldType, setFieldType] = useState("password");
@@ -39,8 +41,6 @@ const TextInput = ({
     field.onBlur(e);
     setFocused(false);
     if (handleBlur) handleBlur(name, meta);
-
-    console.log(meta, "-----");
   };
 
   const toggleFieldType = () => {
@@ -64,9 +64,10 @@ const TextInput = ({
             {...field}
             type={type === "password" ? fieldType : type}
             name={name}
-            placeholder={placeholder}
+            disabled={disabled}
             onFocus={handleFocus}
             onBlur={handleBlurField}
+            placeholder={placeholder}
             id={label ? label : undefined}
           />
           {type === "password" && (
@@ -87,9 +88,10 @@ const TextInput = ({
           className="textInput__input"
           {...field}
           name={name}
-          placeholder={placeholder}
+          disabled={disabled}
           onFocus={handleFocus}
           onBlur={handleBlurField}
+          placeholder={placeholder}
           id={label ? label : undefined}
         />
       )}

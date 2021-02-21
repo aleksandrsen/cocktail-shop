@@ -5,11 +5,17 @@
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border-radius: 10px;
-    background-color: rgba(255, 173, 5, 0.7);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-bottom: 16px;
+    border-bottom: 1px solid #cdcccc;
+    transition: 0.3s;
+
+    &.active {
+      background-color: rgba(255, 173, 5, 0.7);
+      border-radius: 10px;
+      border-color: transparent;
+    }
 
     .infoWrapper {
       min-width: 0;
@@ -19,6 +25,7 @@
     svg {
       flex-shrink: 0;
       margin-right: 15px;
+      color: $default-text-color;
     }
   }
 
@@ -32,7 +39,7 @@
     padding: 11px 12px;
     color: $default-text-color;
     transition: 0.3s;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 10px;
 
     &:hover {
