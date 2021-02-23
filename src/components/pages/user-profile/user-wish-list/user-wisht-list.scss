@@ -1,0 +1,15 @@
+@import "src/src_/var";
+
+.userWishList {
+  &__options {
+    display: flex;
+    align-items: center;
+  }
+
+  &__selectAllWrapper {
+    .labelText {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}

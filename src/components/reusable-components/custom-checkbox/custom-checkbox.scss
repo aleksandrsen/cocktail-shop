@@ -1,0 +1,58 @@
+@import "src/src_/var";
+
+.customCheckbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  $transitions: 0.4s;
+
+  label {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid $main-color;
+    border-radius: 2px;
+    background: transparent;
+    margin-right: 7px;
+    cursor: pointer;
+    transition: background-color $transitions;
+
+    &.checked {
+      background-color: $main-color;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: relative;
+      opacity: 0;
+      display: block;
+      top: 1px;
+      left: -1px;
+      width: 14px;
+      height: 6px;
+      z-index: 5;
+      border: 2px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      transition: opacity $transitions;
+    }
+  }
+
+  .labelText {
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 16px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+}

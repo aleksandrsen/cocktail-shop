@@ -23,7 +23,6 @@ const UserInfo = () => {
   return (
     <section className="default-section userInfo">
       <h2 className="userProfile__title">Personal info</h2>
-
       <Formik
         initialValues={{
           firstName: "User name",
@@ -80,7 +79,7 @@ const UserInfo = () => {
               onClick={handleClick(submitForm)}
               disabled={!isValid}
             >
-                {edited ? "Save" : "Edit"}
+              {edited ? "Save" : "Edit"}
             </RippleButton>
           </Form>
         )}
