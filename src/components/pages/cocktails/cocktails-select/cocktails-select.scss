@@ -1,15 +1,17 @@
+@import "src/src_/var";
+
 .selectCocktails {
   width: 100%;
   &.ant-select-open .ant-select-selection {
-    border-color: var(--main-color);
+    border-color: $main-color;
     box-shadow: none;
 
     &:hover {
-      border-color: #ffac04;
+      border-color: $main-color;
     }
   }
 
   .ant-select-selection:hover {
-    border-color: var(--main-color);
+    border-color: $main-color;
   }
 }

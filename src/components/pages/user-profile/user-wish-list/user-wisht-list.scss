@@ -6,10 +6,95 @@
     align-items: center;
   }
 
-  &__selectAllWrapper {
+  &__options {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #d4d2d2;
     .labelText {
       font-size: 18px;
       font-weight: 500;
     }
   }
+
+  &__deleteBtn {
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: $default-text-color;
+    background-color: transparent;
+    margin-left: 25px;
+    font-size: 18px;
+    opacity: 0.6;
+
+    &.active {
+      opacity: 1;
+    }
+
+    svg {
+      display: block;
+      margin-right: 7px;
+    }
+  }
+
+  &__select {
+    max-width: 250px;
+    flex-grow: 1;
+    margin-left: auto;
+
+    &.ant-select-open .ant-select-selection {
+      border-color: $main-color;
+      box-shadow: none;
+
+      &:hover {
+        border-color: $main-color;
+      }
+    }
+
+    .ant-select-selection:hover {
+      border-color: $main-color;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+  }
+
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__price {
+    margin-right: 16px;
+    font-size: 26px;
+    font-weight: 500;
+    color: $main-color;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

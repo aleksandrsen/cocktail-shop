@@ -28,4 +28,4 @@ const UserProfile = () => (
   </section>
 );
 
-export default UserProfile;
+export default React.memo(UserProfile);
