@@ -81,13 +81,26 @@ const CocktailDetails = ({
 
   const handleCard = (e: React.MouseEvent<HTMLButtonElement>): void => {
     if (cocktailDetails) {
-      const { id, name: cocktailName, price, previewSrc } = cocktailDetails;
+      const {
+        id,
+        name: cocktailName,
+        price,
+        previewSrc,
+        rate,
+        alcoholic,
+        category,
+        ingredients,
+      } = cocktailDetails;
       const { name } = (e.target as HTMLButtonElement).dataset;
 
       const data = {
         id,
+        rate,
         price,
+        category,
+        alcoholic,
         previewSrc,
+        ingredients,
         name: cocktailName,
       };
       if (name === "card") return addItemToCard(data);
@@ -117,7 +130,7 @@ const CocktailDetails = ({
               {cocktailDetails ? (
                 <>
                   {cocktailDetails.name}
-                  <span className="cocktailDetails__alcoholic">{` (${cocktailDetails.alcoholic.toLowerCase()})`}</span>
+                  <span className="cocktailDetails__alcoholic">{` (${cocktailDetails.alcoholic?.toLowerCase()})`}</span>
                 </>
               ) : (
                 <FieldSkeleton styles={{ padding: "25px" }} />
@@ -141,7 +154,7 @@ const CocktailDetails = ({
                   <>
                     <span className="detailsTitle">Ingredients - </span>
                     <span className="detailsInfo">
-                      {cocktailDetails.ingredients.join(" ")}
+                      {cocktailDetails.ingredients?.join(" ")}
                     </span>
                   </>
                 ) : (

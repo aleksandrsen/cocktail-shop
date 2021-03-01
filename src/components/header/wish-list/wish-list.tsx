@@ -1,5 +1,7 @@
 import React from "react";
 import "./wish-list.scss";
+// Components
+import { Link } from "react-router-dom";
 // Utils
 import { connect } from "react-redux";
 // Types
@@ -11,14 +13,14 @@ type WishListPropsType = {
 };
 
 const WishList = ({ goods }: WishListPropsType) => (
-  <div className="wishList">
+  <Link to="/profile/wishlist" className="wishList">
     {!!Object.values(goods).length && (
       <span className="wishList__count">{Object.values(goods).length}</span>
     )}
     <svg width="25" height="25">
       <use xlinkHref="#wish-list-header" />
     </svg>
-  </div>
+  </Link>
 );
 
 export default connect((state: AppRootState) => ({

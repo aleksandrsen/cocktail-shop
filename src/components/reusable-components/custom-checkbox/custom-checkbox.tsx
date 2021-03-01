@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent, MouseEvent } from "react";
 import "./custom-checkbox.scss";
+
+export type onChangeCustomCheckBoxFuncType = (
+  bool: boolean,
+  e: ChangeEvent<HTMLInputElement> | MouseEvent<HTMLDivElement>,
+  data?: any
+) => void;
 
 type CheckboxPropsType = {
   data?: any;
   label?: string;
   value: boolean;
-  onChange: (
-    bool: boolean,
-    e?: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLDivElement>,
-    data?: any
-  ) => void;
+  onChange: onChangeCustomCheckBoxFuncType;
 };
 
 const CustomCheckbox = ({
@@ -33,7 +35,7 @@ const CustomCheckbox = ({
 
   return (
     <div className="customCheckbox">
-      <label className={`${checked ? "checked" : ""}`}>
+      <label className={`${checked ? "checked" : ""} ${label ? "isLabel" : ""}`}>
         <input type="checkbox" checked={checked} onChange={handleChecked} />
       </label>
       {label && (

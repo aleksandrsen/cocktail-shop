@@ -25,10 +25,9 @@
     background-color: transparent;
     margin-left: 25px;
     font-size: 18px;
-    opacity: 0.6;
 
-    &.active {
-      opacity: 1;
+    &:disabled {
+      opacity: 0.6;
     }
 
     svg {
@@ -56,45 +55,29 @@
     }
   }
 
-  &__empty {
-    text-align: center;
-  }
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px 0 45px;
 
+    .col:nth-child(n + 5) {
+      margin-top: 20px;
+    }
+  }
 
   &__controls {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 16px;
   }
 
   &__price {
     margin-right: 16px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 500;
     color: $main-color;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

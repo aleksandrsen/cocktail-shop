@@ -13,19 +13,23 @@ export type CardItemType = {
 };
 
 export type UserCardType = {
-  [id: number]: CardItemType
-}
+  [id: number]: CardItemType;
+};
 
 export type WishListItemType = {
   id: number;
+  rate: number;
   name: string;
   price: number;
+  category: string;
+  alcoholic: string;
   previewSrc: string;
+  ingredients: string[];
 };
 
 export type UserWishListType = {
-  [id: number]: WishListItemType
-}
+  [id: number]: WishListItemType;
+};
 
 //// COCKTAILS ////
 export type CocktailItemType = {

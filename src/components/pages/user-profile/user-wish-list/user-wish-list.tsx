@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./user-wisht-list.scss";
 // Components
 import { Select } from "antd";
@@ -8,9 +8,11 @@ import CustomCheckbox from "../../../reusable-components/custom-checkbox";
 // Utils
 import { connect } from "react-redux";
 import { AppRootState } from "../../../../store";
+import {getTotalValue} from "../../../../utils";
 import emptyWishListImg from "../../../../src_/img/empty-wish-list.jpg";
 // Types
-import { UserWishListType } from "../../../../types/common";
+import {UserWishListType, WishListItemType} from "../../../../types/common";
+import { onChangeCustomCheckBoxFuncType } from "../../../reusable-components/custom-checkbox/custom-checkbox";
 
 type SortParamItem = {
   label: string;
@@ -36,6 +38,10 @@ const SORT_PARAMS: SortParamItem[] = [
   },
 ];
 
+type SelectedItemsType = {
+  [key: number]: boolean;
+};
+
 type UserWishListPropsType = {
   wishList: UserWishListType;
 };
@@ -43,14 +49,52 @@ type UserWishListPropsType = {
 const { Option } = Select;
 const UserWishList = ({ wishList }: UserWishListPropsType) => {
   const [selectAll, setSelectAll] = useState(false);
-  const [selectedItems, setSelectedItems] = useState({});
+  const [selectedItems, setSelectedItems] = useState<SelectedItemsType>({});
   const [sortBy, setSortBy] = useState("");
 
-  const toggleSelectAll = (checked: boolean) => setSelectAll(checked);
+  useEffect(() => {
+    if (Object.values(wishList).length)
+      setSelectedItems(
+        Object.values(wishList).reduce((obj: SelectedItemsType, item) => {
+          obj[item.id] = false;
+          return obj;
+        }, {})
+      );
+  }, [wishList]);
 
   const handleSort = (value: string) => setSortBy(value);
 
   const formatter = new Intl.NumberFormat("ru");
+
+  const getTotalPrice = (): number => {
+
+    const arr = Object.values(selectedItems).length ?
+        Object.values(wishList).filter(({id}) => selectedItems[id]) : Object.values(wishList)
+
+    console.log(arr)
+
+    return getTotalValue(arr, "price")
+  };
+
+  const handleCheckbox: onChangeCustomCheckBoxFuncType = (
+    value,
+    e,
+    { id }
+  ): void => {
+    const res = { ...selectedItems };
+
+    if (id === "selectAll") {
+      for (const id in res) {
+        res[id] = !selectAll;
+      }
+    } else {
+      res[id] = value;
+    }
+
+    const isAllChecked = Object.values(res).every((bool) => bool);
+    setSelectAll(isAllChecked);
+    setSelectedItems(res);
+  };
 
   return (
     <section className="default-section userWishList">
@@ -58,13 +102,13 @@ const UserWishList = ({ wishList }: UserWishListPropsType) => {
       <div className="userWishList__options">
         <CustomCheckbox
           value={selectAll}
-          onChange={toggleSelectAll}
+          data={{ id: "selectAll" }}
+          onChange={handleCheckbox}
           label="Select All"
         />
         <button
-          className={`userWishList__deleteBtn ${
-            Object.values(selectedItems).length ? "active" : ""
-          }`}
+          className="userWishList__deleteBtn"
+          disabled={!Object.values(selectedItems).length}
         >
           <svg width="16" height="16">
             <use xlinkHref="#delete-bucket" />
@@ -87,24 +131,31 @@ const UserWishList = ({ wishList }: UserWishListPropsType) => {
           ))}
         </Select>
       </div>
-      <ul className="userWishList__list">
+      <div
+        className={`userWishList__list row ${
+          !Object.values(wishList).length ? "center" : ""
+        }`}
+      >
         {!Object.values(wishList).length ? (
-          <li className="userWishList__empty">
-            <img src={emptyWishListImg} />
-          </li>
+          <img src={emptyWishListImg} />
         ) : (
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
-            dolorem, eveniet exercitationem reprehenderit similique tenetur.
-            Corporis, culpa cupiditate doloremque esse in itaque, iure iusto
-            laboriosam modi possimus repellat similique voluptate?
-          </li>
+          [...Object.values(wishList)].map((cocktail) => (
+            <CocktailItem
+              col={3}
+              key={cocktail.id}
+              cocktail={cocktail}
+              isShowCheckBox={true}
+              handleCheckbox={handleCheckbox}
+              checked={selectedItems[cocktail.id]}
+              imgSkeletonStyles={{ height: "220px" }}
+            />
+          ))
         )}
-      </ul>
+      </div>
       {Object.values(wishList).length > 0 && (
         <div className="userWishList__controls">
           <span className="userWishList__price">
-            {formatter.format(2234)} $
+            {formatter.format(getTotalPrice())} $
           </span>
           <RippleButton>Buy</RippleButton>
         </div>
@@ -118,4 +169,4 @@ export default connect(
     wishList: state.user.wishList,
   }),
   null
-)(UserWishList);
+)(React.memo(UserWishList));

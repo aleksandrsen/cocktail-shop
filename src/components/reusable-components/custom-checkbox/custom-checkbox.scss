@@ -18,9 +18,12 @@
     border: 3px solid $main-color;
     border-radius: 2px;
     background: transparent;
-    margin-right: 7px;
     cursor: pointer;
     transition: background-color $transitions;
+
+    &.isLabel {
+      margin-right: 7px;
+    }
 
     &.checked {
       background-color: $main-color;

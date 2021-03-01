@@ -1,7 +1,6 @@
-import React from "react";
+import React, { ChangeEvent, MouseEvent } from "react";
 import "./cocktail-item.scss";
 // Utils
-import { cutTextContent } from "../../../../../utils";
 // Components
 import { Rate } from "antd";
 import "tippy.js/dist/tippy.css";
@@ -9,23 +8,38 @@ import Tippy from "@tippyjs/react";
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
+import CustomCheckbox from "../../../../reusable-components/custom-checkbox";
 // Types
 import { CocktailItemType } from "../../../../../types/common";
+import { onChangeCustomCheckBoxFuncType } from "../../../../reusable-components/custom-checkbox/custom-checkbox";
 
 type CocktailItemPropsType = {
   col: number;
+  checked?: boolean;
+  isShowCheckBox?: boolean;
   cocktail: null | CocktailItemType;
   imgSkeletonStyles: React.CSSProperties;
+  handleCheckbox?: onChangeCustomCheckBoxFuncType;
 };
 
 const CocktailItem = ({
   cocktail,
   col = 3,
+  handleCheckbox,
+  checked = false,
+  isShowCheckBox = false,
   imgSkeletonStyles = {},
 }: CocktailItemPropsType) => (
   <div className={`col col-${col}`}>
-    <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem">
-      <div className="cocktailItem__imgWrap">
+    <div className="cocktailItem">
+      {isShowCheckBox && cocktail && !!handleCheckbox && (
+        <CustomCheckbox
+          value={checked}
+          onChange={handleCheckbox}
+          data={{ id: cocktail.id }}
+        />
+      )}
+      <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem__imgWrap">
         <ImgSkeleton
           src={cocktail?.previewSrc}
           title={cocktail?.name}
@@ -35,7 +49,7 @@ const CocktailItem = ({
             ...imgSkeletonStyles,
           }}
         />
-      </div>
+      </Link>
       <div className="cocktailItem__info">
         <Tippy content={cocktail?.name} theme="bootstrap">
           <div className="cocktailItem__title textOverflow">
@@ -80,7 +94,7 @@ const CocktailItem = ({
           $
         </div>
       </div>
-    </Link>
+    </div>
   </div>
 );
 

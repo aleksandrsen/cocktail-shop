@@ -1,4 +1,4 @@
-import React, {JSXElementConstructor, useEffect} from "react";
+import React, { JSXElementConstructor, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const ScrollTop = (): null => {
@@ -77,3 +77,13 @@ export function searchByFields<T extends object, U extends keyof T>(
 
 export const validateEmail = (str: string): boolean =>
   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(str);
+
+export const getTotalValue = <T extends object, K extends keyof T>(
+  arr: T[],
+  field: K
+): number => {
+  type Val = {
+    [T[K]]: number
+  }
+  return arr.reduce((sum, item) => sum + item[field], 0)
+};
