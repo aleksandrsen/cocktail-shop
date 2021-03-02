@@ -7,7 +7,12 @@ import {
 import { IUser } from "../types/reducers";
 
 const defaultState: IUser = {
-  userInfo: null,
+  userInfo: {
+    firstName: "User first name",
+    lastName: "UserLastName",
+    email: "user@gmail.com",
+    phoneNumber: "+380934321832"
+  },
   card: {},
   wishList: {},
   isAuthenticated: false

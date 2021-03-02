@@ -37,7 +37,7 @@ const Auth = ({ toggleOpen }: AuthPropsType) => {
       setActiveForm(res);
       setKey(key + 1);
     },
-    [activeForm]
+    [activeForm, key]
   );
 
   const handleSaveValues = useCallback(

@@ -8,8 +8,8 @@ import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 import { Link } from "react-router-dom";
 import EventCounter from "./event-counter";
+import BookEventModal from "./book-event-modal";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
-import RippleButton from "../../../reusable-components/ripple-button";
 import FieldSkeleton from "../../../reusable-components/field-skeleton";
 // Types
 import { EventItemType } from "../../../../types/common";
@@ -42,7 +42,9 @@ const UpcomingEvents = ({
         </div>
         <div className="row justify-content-center">
           <div className="col col-4 col-lg-5 col-md-8 col-sm-11 upcomingEvent__info">
-            <h3 className="upcomingEvent__title textOverflow">{event?.title}</h3>
+            <h3 className="upcomingEvent__title textOverflow">
+              {event?.title}
+            </h3>
             <div className="upcomingEvent__date">
               <svg width="16" height="16">
                 <use xlinkHref="#event-counter-date" />
@@ -52,7 +54,7 @@ const UpcomingEvents = ({
               ) : (
                 <FieldSkeleton
                   styles={{
-                    height: "30px",
+                    padding: "15px 0",
                     width: "50%",
                   }}
                 />
@@ -64,7 +66,7 @@ const UpcomingEvents = ({
               ) : (
                 <FieldSkeleton
                   styles={{
-                    height: "70px",
+                    padding: "35px 0",
                     width: "100%",
                   }}
                 />
@@ -75,7 +77,7 @@ const UpcomingEvents = ({
             ) : (
               <FieldSkeleton
                 styles={{
-                  height: "80px",
+                  padding: "40px 0",
                   width: "100%",
                   marginBottom: "20px",
                 }}
@@ -89,18 +91,16 @@ const UpcomingEvents = ({
               ) : (
                 <FieldSkeleton
                   styles={{
-                    height: "30px",
-                    width: "20%",
+                    padding: "20px 60px",
                   }}
                 />
               )}
               {event?.id ? (
-                <RippleButton>Book on event</RippleButton>
+                <BookEventModal event={event}/>
               ) : (
                 <FieldSkeleton
                   styles={{
-                    height: "30px",
-                    width: "20%",
+                    padding: "20px 60px",
                     marginLeft: "16px",
                   }}
                 />

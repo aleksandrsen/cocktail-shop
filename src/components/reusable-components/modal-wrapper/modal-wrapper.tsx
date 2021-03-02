@@ -14,9 +14,9 @@ type AuthPropType = {
 
 const ModalWrapper = ({
   isOpen,
-  toggleOpen,
-  className,
   children,
+  className,
+  toggleOpen,
 }: AuthPropType) => (
   <Modal
     isOpen={isOpen}

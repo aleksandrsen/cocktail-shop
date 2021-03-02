@@ -8,10 +8,10 @@ import CustomCheckbox from "../../../reusable-components/custom-checkbox";
 // Utils
 import { connect } from "react-redux";
 import { AppRootState } from "../../../../store";
-import {getTotalValue} from "../../../../utils";
+import { getTotalValue } from "../../../../utils";
 import emptyWishListImg from "../../../../src_/img/empty-wish-list.jpg";
 // Types
-import {UserWishListType, WishListItemType} from "../../../../types/common";
+import { UserWishListType } from "../../../../types/common";
 import { onChangeCustomCheckBoxFuncType } from "../../../reusable-components/custom-checkbox/custom-checkbox";
 
 type SortParamItem = {
@@ -52,6 +52,8 @@ const UserWishList = ({ wishList }: UserWishListPropsType) => {
   const [selectedItems, setSelectedItems] = useState<SelectedItemsType>({});
   const [sortBy, setSortBy] = useState("");
 
+  const formatter = new Intl.NumberFormat("ru");
+
   useEffect(() => {
     if (Object.values(wishList).length)
       setSelectedItems(
@@ -64,16 +66,14 @@ const UserWishList = ({ wishList }: UserWishListPropsType) => {
 
   const handleSort = (value: string) => setSortBy(value);
 
-  const formatter = new Intl.NumberFormat("ru");
-
   const getTotalPrice = (): number => {
+    const arr =
+      Object.values(selectedItems).length &&
+      Object.values(selectedItems).some((bool) => bool)
+        ? Object.values(wishList).filter(({ id }) => selectedItems[id])
+        : Object.values(wishList);
 
-    const arr = Object.values(selectedItems).length ?
-        Object.values(wishList).filter(({id}) => selectedItems[id]) : Object.values(wishList)
-
-    console.log(arr)
-
-    return getTotalValue(arr, "price")
+    return getTotalValue(arr, "price");
   };
 
   const handleCheckbox: onChangeCustomCheckBoxFuncType = (
