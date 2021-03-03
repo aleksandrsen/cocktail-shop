@@ -42,9 +42,12 @@ const UpcomingEvents = ({
         </div>
         <div className="row justify-content-center">
           <div className="col col-4 col-lg-5 col-md-8 col-sm-11 upcomingEvent__info">
-            <h3 className="upcomingEvent__title textOverflow">
+            <Link
+              to={`/music-events/${event?.id}`}
+              className="upcomingEvent__title textOverflow"
+            >
               {event?.title}
-            </h3>
+            </Link>
             <div className="upcomingEvent__date">
               <svg width="16" height="16">
                 <use xlinkHref="#event-counter-date" />
@@ -96,7 +99,7 @@ const UpcomingEvents = ({
                 />
               )}
               {event?.id ? (
-                <BookEventModal event={event}/>
+                <BookEventModal event={event} />
               ) : (
                 <FieldSkeleton
                   styles={{
