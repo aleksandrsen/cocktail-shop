@@ -30,10 +30,11 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
           labore magni nobis omnis rerum, soluta? Delectus id impedit velit
           veniam vero voluptates. Aliasamet doloribus fuga impedit modi quia
         </p>
+
         <div className="row center">
           {blogPosts?.length
-            ? blogPosts.map((post) => (
-                <BlogNewsItem key={post.id} post={post} />
+            ? blogPosts.map((post, idx) => (
+                <BlogNewsItem key={post.id} post={post} idx={idx} />
               ))
             : getSkeletons(2, BlogNewsItem)}
         </div>

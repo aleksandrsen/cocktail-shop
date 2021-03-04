@@ -28,8 +28,8 @@ const NextEvents = ({ events, fetchNextEvents }: NextEventsPropsType) => {
         <h2 className="section-title">Don't miss our next events</h2>
         <div className="nextEvents__list">
           {events?.length
-            ? events.map((event) => (
-                <NextEventItem key={event.id} event={event} />
+            ? events.map((event, idx) => (
+                <NextEventItem key={event.id} event={event} idx={idx}/>
               ))
             : getSkeletons(2, FieldSkeleton, {
                 styles: { height: "75px" },

@@ -5,26 +5,32 @@ import { BlogPostItemType } from "../../../../../types/common";
 // Utils
 import { cutTextContent, formatDate } from "../../../../../utils";
 // Components
+// @ts-ignore
+import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
 import ImgSkeleton from "../../../../reusable-components/img-skeleton";
 import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 
 type BlogPostItemTypeProps = {
+  idx?: number;
   post: BlogPostItemType;
 };
 
-const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
+const BlogNewsItem = ({ post, idx }: BlogPostItemTypeProps) => {
   const dayNum: string = formatDate(post?.date, {
     day: "numeric",
   });
 
-  return (
+  const res = (
     <div className="col col-12 blogNewsItem" data-test="blogNewsItem">
       <div className="row center">
         <div className="col col-5 col-lg-6 col-md-12">
           <div className="blogNewsItem__info">
             <div className="blogNewsItem__date">
-              <div className="blogNewsItem__dateDay" data-test="blogNewsItem__dateDay">
+              <div
+                className="blogNewsItem__dateDay"
+                data-test="blogNewsItem__dateDay"
+              >
                 {dayNum ? (
                   +dayNum < 10 ? (
                     "0" + dayNum
@@ -63,21 +69,21 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
                   }}
                 />
               )}
-              {/*<Link*/}
-              {/*  to={`/blog/${post?.id}`}*/}
-              {/*  className="blogNewsItem__title textOverflow"*/}
-              {/*>*/}
-              {/*  {post?.title ? (*/}
-              {/*    post.title*/}
-              {/*  ) : (*/}
-              {/*    <FieldSkeleton*/}
-              {/*      styles={{*/}
-              {/*        width: "100%",*/}
-              {/*        height: "30px",*/}
-              {/*      }}*/}
-              {/*    />*/}
-              {/*  )}*/}
-              {/*</Link>*/}
+              <Link
+                to={`/blog/${post?.id}`}
+                className="blogNewsItem__title textOverflow"
+              >
+                {post?.title ? (
+                  post.title
+                ) : (
+                  <FieldSkeleton
+                    styles={{
+                      width: "100%",
+                      height: "30px",
+                    }}
+                  />
+                )}
+              </Link>
               {post?.content ? (
                 <p className="default-text" data-test="blogNewsItemTextContent">
                   {post.content.length > 140
@@ -127,6 +133,14 @@ const BlogNewsItem = ({ post }: BlogPostItemTypeProps) => {
         </div>
       </div>
     </div>
+  );
+
+  return post ? (
+    <Fade left={idx === 0} right={idx !== 0} duration={2500}>
+      {res}
+    </Fade>
+  ) : (
+    res
   );
 };
 
