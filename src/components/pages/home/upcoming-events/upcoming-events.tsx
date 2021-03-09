@@ -8,6 +8,7 @@ import { cutTextContent, formatDate } from "../../../../utils";
 // Components
 // @ts-ignore
 import Zoom from "react-reveal/Zoom";
+import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 import EventCounter from "./event-counter";
 import BookEventModal from "./book-event-modal";
@@ -114,11 +115,13 @@ const UpcomingEvents = ({
               </div>
             </div>
             <div className="col col-6 col-md-8 col-sm-11 upcomingEvent__img">
-              <ImgSkeleton
-                src={event?.previewSrc}
-                title={event?.title}
-                skeletonStyle={{ height: "100%", minHeight: "450px" }}
-              />
+              <LazyLoad height="500">
+                <ImgSkeleton
+                  src={event?.previewSrc}
+                  title={event?.title}
+                  skeletonStyle={{ height: "100%", minHeight: "450px" }}
+                />
+              </LazyLoad>
             </div>
           </div>
         </Zoom>

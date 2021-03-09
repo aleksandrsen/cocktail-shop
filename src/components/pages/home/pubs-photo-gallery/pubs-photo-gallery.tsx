@@ -6,6 +6,7 @@ import { fetchGalleryPhotos } from "../../../../actions/gallery";
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
 // Components
+import LazyLoad from "react-lazyload";
 import { AppRootState } from "../../../../store";
 import JoinMailingList from "../join-mailing-list";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
@@ -41,10 +42,12 @@ const PubsPhotoGallery = ({
             {galleryPhotos?.length
               ? galleryPhotos.slice(0, 4).map((src) => (
                   <div className="col col-6 col-xs-12" key={src}>
-                    <ImgSkeleton
-                      src={src}
-                      skeletonStyle={{ minHeight: "300px" }}
-                    />
+                    <LazyLoad height="300">
+                      <ImgSkeleton
+                        src={src}
+                        skeletonStyle={{ minHeight: "300px" }}
+                      />
+                    </LazyLoad>
                   </div>
                 ))
               : getSkeletons(4, FieldSkeleton, {
@@ -60,10 +63,12 @@ const PubsPhotoGallery = ({
         </div>
         <div className="col col-6 col-md-12">
           {galleryPhotos?.length ? (
-            <ImgSkeleton
-              src={galleryPhotos[4]}
-              skeletonStyle={{ height: "600px" }}
-            />
+            <LazyLoad height="600">
+              <ImgSkeleton
+                src={galleryPhotos[4]}
+                skeletonStyle={{ height: "600px" }}
+              />
+            </LazyLoad>
           ) : (
             <FieldSkeleton styles={{ height: "600px", borderRadius: 0 }} />
           )}

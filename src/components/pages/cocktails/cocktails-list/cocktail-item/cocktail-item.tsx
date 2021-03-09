@@ -12,6 +12,7 @@ import CustomCheckbox from "../../../../reusable-components/custom-checkbox";
 // Types
 import { CocktailItemType } from "../../../../../types/common";
 import { onChangeCustomCheckBoxFuncType } from "../../../../reusable-components/custom-checkbox/custom-checkbox";
+import LazyLoad from "react-lazyload";
 
 type CocktailItemPropsType = {
   col: number;
@@ -40,15 +41,17 @@ const CocktailItem = ({
         />
       )}
       <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem__imgWrap">
-        <ImgSkeleton
-          src={cocktail?.previewSrc}
-          title={cocktail?.name}
-          skeletonStyle={{
-            width: "100%",
-            borderRadius: "10px 10px 0 0",
-            ...imgSkeletonStyles,
-          }}
-        />
+        <LazyLoad height="310">
+          <ImgSkeleton
+            src={cocktail?.previewSrc}
+            title={cocktail?.name}
+            skeletonStyle={{
+              width: "100%",
+              borderRadius: "10px 10px 0 0",
+              ...imgSkeletonStyles,
+            }}
+          />
+        </LazyLoad>
       </Link>
       <div className="cocktailItem__info">
         <Tippy content={cocktail?.name} theme="bootstrap">

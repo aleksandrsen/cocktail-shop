@@ -2,6 +2,7 @@ import React from "react";
 import "./our-story.scss";
 import ourStory from "../../../../src_/img/our-story.png";
 // Components
+import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 // @ts-ignore
 import Fade from "react-reveal/Fade";
@@ -33,7 +34,9 @@ const OurStory = () => (
         </Fade>
         <Fade right>
           <div className="col col-5">
-            <img src={ourStory} alt="Our story img" />
+            <LazyLoad height="450">
+              <img src={ourStory} alt="Our story img" />
+            </LazyLoad>
           </div>
         </Fade>
       </div>

@@ -59,10 +59,9 @@ const RandomCocktails = ({
           architecto at atque corporis, dicta doloremque illum nemo nihil
           nostrum qui ratione reprehenderit. Ex ipsa quibusdam repellat
           repudiandae soluta veritatis voluptates.
-          <br/>
+          <br />
         </p>
         {cocktails?.length ? (
-          // <Carousel autoplay autoplaySpeed={5000} dots={false}>
           <Carousel autoplaySpeed={5000} dots={false}>
             {cutArray(cocktails, columns).map((itemArr) => (
               <div
@@ -88,7 +87,7 @@ const RandomCocktails = ({
         ) : (
           <div className="row noWrap">
             {getSkeletons(columns, CocktailItem, {
-              col: 12/columns,
+              col: 12 / columns,
               imgSkeletonStyles: { height: "310px" },
             })}
           </div>
