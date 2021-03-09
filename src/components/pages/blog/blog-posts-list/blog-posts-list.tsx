@@ -23,7 +23,7 @@ const BlogPostsList = ({
 }: BlogPostsListPropsType) => {
   useEffect(() => {
     fetchBlogPosts();
-  }, []);
+  }, [fetchBlogPosts]);
 
   return (
     <div className="blogPostsList">

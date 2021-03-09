@@ -20,7 +20,7 @@ type NextEventsPropsType = {
 const NextEvents = ({ events, fetchNextEvents }: NextEventsPropsType) => {
   useEffect(() => {
     fetchNextEvents();
-  }, []);
+  }, [fetchNextEvents]);
 
   return (
     <div className="small-section nextEvents">

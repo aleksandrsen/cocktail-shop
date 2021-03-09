@@ -17,12 +17,12 @@ type SidePanelEventsListPropsType = {
 };
 
 const SidePanelEventsList = ({
-  fetchEventsList,
   events,
+  fetchEventsList,
 }: SidePanelEventsListPropsType) => {
   useEffect(() => {
     fetchEventsList();
-  }, []);
+  }, [fetchEventsList]);
 
   return (
     <div className="asideEventsList">

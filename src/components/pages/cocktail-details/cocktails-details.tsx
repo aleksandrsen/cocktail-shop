@@ -73,10 +73,11 @@ const CocktailDetails = ({
     return () => {
       resetCocktailsDetails();
     };
-  }, []);
+  }, [fetchCocktailsDetails, id, resetCocktailsDetails]);
 
   const handleSubmit = useCallback((data) => sendCocktailReview(+id, data), [
     id,
+    sendCocktailReview,
   ]);
 
   const handleCard = (e: React.MouseEvent<HTMLButtonElement>): void => {

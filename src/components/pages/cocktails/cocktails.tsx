@@ -20,14 +20,17 @@ const Cocktails = () => {
   const [sortParam, setSortParam] = useState<SortParamsValuesTypes>("");
   const [searchValue, setSearchValue] = useState("");
 
-  const setFilter = useCallback((type: string, value: CheckboxValueType[]) => {
-    const value_ = value.reduce((obj: Filters, field): Filters => {
-      obj[`${field}`.toLowerCase()] = field;
-      return obj;
-    }, {});
+  const setFilter = useCallback(
+    (type: string, value: CheckboxValueType[]) => {
+      const value_ = value.reduce((obj: Filters, field): Filters => {
+        obj[`${field}`.toLowerCase()] = field;
+        return obj;
+      }, {});
 
-    setFilters({ ...filters, [type]: value_ });
-  }, []);
+      setFilters({ ...filters, [type]: value_ });
+    },
+    [filters]
+  );
 
   const handleSort = useCallback(
     (value: SortParamsValuesTypes) => setSortParam(value),

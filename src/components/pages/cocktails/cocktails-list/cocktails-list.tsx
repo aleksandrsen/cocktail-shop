@@ -1,4 +1,4 @@
-import React, { ReactHTMLElement, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./cocktails-list.scss";
 // Actions
 import { fetchCocktailsList } from "../../../../actions/cocktails";
@@ -31,7 +31,7 @@ const CocktailsList = ({
 }: CocktailsListPropsType) => {
   useEffect(() => {
     fetchCocktailsList();
-  }, []);
+  }, [fetchCocktailsList]);
 
   const checkIsFiltersEmpty = (filters: AllFilters): boolean => {
     const alcoholic =

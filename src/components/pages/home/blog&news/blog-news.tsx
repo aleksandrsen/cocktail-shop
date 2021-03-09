@@ -19,7 +19,7 @@ type BlogNewsPropsType = {
 const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
   useEffect(() => {
     fetchLatestBlogPosts();
-  }, []);
+  }, [fetchLatestBlogPosts]);
 
   return (
     <div className="default-section blogNewsHome" data-test="blogNewsHome">

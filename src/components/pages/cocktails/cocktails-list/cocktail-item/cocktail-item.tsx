@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent } from "react";
+import React from "react";
 import "./cocktail-item.scss";
 // Utils
 // Components

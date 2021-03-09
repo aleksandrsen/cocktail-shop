@@ -23,7 +23,7 @@ const PubsPhotoGallery = ({
 }: PubsPhotoGalleryPropsType) => {
   useEffect(() => {
     fetchGalleryPhotos();
-  }, []);
+  }, [fetchGalleryPhotos]);
 
   return (
     <div className="default-section pubGallery" data-test="pubGallery">

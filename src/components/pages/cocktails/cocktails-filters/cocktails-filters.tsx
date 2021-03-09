@@ -6,7 +6,6 @@ import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { ALCOHOLIC, CATEGORIES, INGREDIENTS } from "./filters";
 // Components
 import { Checkbox, Collapse } from "antd";
-import { string } from "yup";
 const { Panel } = Collapse;
 
 type CocktailsFiltersPropsType = {

@@ -22,7 +22,7 @@ const BartendersList = ({
 }: BartendersListPropsType) => {
   useEffect(() => {
     fetchBartenders();
-  }, []);
+  }, [fetchBartenders]);
 
   return (
     <div className="bartendersList">

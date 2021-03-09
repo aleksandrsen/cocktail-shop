@@ -40,7 +40,7 @@ const EventDetails = ({
     return () => {
       resetEventDetails();
     };
-  }, []);
+  }, [fetchEventDetails, id, resetEventDetails]);
 
   return (
     <section className="default-section eventDetails">

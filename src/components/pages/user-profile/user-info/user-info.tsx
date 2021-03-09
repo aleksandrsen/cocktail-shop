@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./user-info.scss";
-// Utils
-import * as Yup from "yup";
 // Components
 import { Form, Formik } from "formik";
 import TextInput from "../../../reusable-components/text-input";

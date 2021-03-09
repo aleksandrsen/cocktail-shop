@@ -23,7 +23,7 @@ const MusicEventsList = ({
 }: MusicEventsListPropsType) => {
   useEffect(() => {
     fetchEventsList();
-  }, []);
+  }, [fetchEventsList]);
 
   return (
     <div className="musicEventsList">

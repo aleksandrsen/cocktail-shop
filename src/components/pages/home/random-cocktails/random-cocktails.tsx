@@ -24,7 +24,7 @@ const RandomCocktails = ({
 }: RandomCocktailsPropsType) => {
   useEffect(() => {
     fetchRandomCocktails();
-  }, []);
+  }, [fetchRandomCocktails]);
 
   const columns = useMedia(
     [

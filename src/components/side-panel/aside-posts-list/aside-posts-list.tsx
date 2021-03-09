@@ -22,7 +22,7 @@ const AsidePostsList = ({
 }: AsidePostsListPropsType) => {
   useEffect(() => {
     fetchBlogPosts();
-  }, []);
+  }, [fetchBlogPosts]);
 
   return (
     <div className="asidePostsList">

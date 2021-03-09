@@ -29,7 +29,7 @@ const UpcomingEvents = ({
 }: UpcomingEventsPropsType) => {
   useEffect(() => {
     fetchUpcomingEvent();
-  }, []);
+  }, [fetchUpcomingEvent]);
 
   return (
     <section className="default-section upcomingEvent">

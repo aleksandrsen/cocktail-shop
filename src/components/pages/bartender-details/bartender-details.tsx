@@ -44,7 +44,7 @@ const BartenderDetails = ({
     return () => {
       resetBartenderDetails();
     };
-  }, []);
+  }, [fetchBartendersDetails, id, resetBartenderDetails]);
 
   const handleSubmit = (values: RequestMessageType) =>
     sendMessageToBartender(+id, values);
@@ -74,13 +74,18 @@ const BartenderDetails = ({
           <ImgSkeleton
             src={bartenderDetails?.img}
             title={`${bartenderDetails?.name} ${bartenderDetails?.surname}`}
-            classes={["bartenderDetails__photo", "col col-4 col-lg-6 col-md-7 col-sm-10 col-xs-12"]}
+            classes={[
+              "bartenderDetails__photo",
+              "col col-4 col-lg-6 col-md-7 col-sm-10 col-xs-12",
+            ]}
             skeletonStyle={{
               height: "500px",
               margin: "auto",
               borderRadius: "5px",
             }}
-            skeletonClasses={["col col-4 col-lg-6 col-md-7 col-sm-10 col-xs-12"]}
+            skeletonClasses={[
+              "col col-4 col-lg-6 col-md-7 col-sm-10 col-xs-12",
+            ]}
           />
           {bartenderDetails ? (
             <p className="default-text">{bartenderDetails.greeting}</p>

@@ -45,7 +45,7 @@ const BlogPostDetails = ({
     return () => {
       resetBlogPostDetails();
     };
-  }, []);
+  }, [fetchBlogPostDetails, blogPostId, resetBlogPostDetails]);
 
   const handleSubmit = (
     values: RequestMessageType,

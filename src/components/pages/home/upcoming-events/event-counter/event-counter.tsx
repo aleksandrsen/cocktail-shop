@@ -31,7 +31,7 @@ const EventCounter = ({ date: eventDate }: { date: string }) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [eventDate]);
 
   return (
     <div className="eventCounter">
