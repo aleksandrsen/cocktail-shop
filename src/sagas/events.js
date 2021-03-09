@@ -1,4 +1,4 @@
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, put, all, call } from "redux-saga/effects";
 import {
   FETCH_EVENT_DETAILS_FAIL,
   FETCH_EVENT_DETAILS_REQUEST,
@@ -18,7 +18,7 @@ import callApi from "../config/api";
 // workers
 function* upcomingEventWorker() {
   try {
-    const { data } = yield callApi("/upcomingEvent");
+    const { data } = yield call(callApi, "/upcomingEvent");
     yield put({ type: FETCH_UPCOMING_EVENT_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_UPCOMING_EVENT_FAIL, payload: err });
@@ -27,7 +27,7 @@ function* upcomingEventWorker() {
 
 function* fetchNextEventsWorker() {
   try {
-    const { data } = yield callApi("/nextEvents");
+    const { data } = yield call(callApi, "/nextEvents");
     yield put({ type: FETCH_NEXT_EVENTS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_NEXT_EVENTS_FAIL, payload: err });
@@ -36,7 +36,7 @@ function* fetchNextEventsWorker() {
 
 function* fetchEventsListWorker() {
   try {
-    const { data } = yield callApi("/events");
+    const { data } = yield call(callApi, "/events");
     yield put({ type: FETCH_EVENTS_LIST_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_EVENTS_LIST_FAIL, payload: err });
@@ -45,7 +45,7 @@ function* fetchEventsListWorker() {
 
 function* fetchEventDetailsWorker(action) {
   try {
-    const { data } = yield callApi(`/events/${action.id}`);
+    const { data } = yield call(callApi, `/events/${action.id}`);
     yield put({ type: FETCH_EVENT_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_EVENT_DETAILS_FAIL, payload: err });

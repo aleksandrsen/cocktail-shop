@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, put, all, select } from "redux-saga/effects";
+import { takeLatest, takeEvery, put, all, select, call } from "redux-saga/effects";
 import {
   FETCH_LATEST_BLOG_POSTS_REQUEST,
   FETCH_LATEST_BLOG_POSTS_SUCCESS,
@@ -24,7 +24,7 @@ import callApi from "../config/api";
 // workers
 function* fetchLatestBlogPostsWorker() {
   try {
-    const { data } = yield callApi("/latestBlogPosts");
+    const { data } = yield call(callApi, "/latestBlogPosts");
     yield put({ type: FETCH_LATEST_BLOG_POSTS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_LATEST_BLOG_POSTS_FAIL, payload: err });
@@ -33,7 +33,7 @@ function* fetchLatestBlogPostsWorker() {
 
 function* fetchBlogPostsWorker() {
   try {
-    const { data } = yield callApi("/blog-posts");
+    const { data } = yield call(callApi, "/blog-posts");
     yield put({ type: FETCH_BLOG_POSTS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_BLOG_POSTS_FAIL, payload: err });
@@ -42,7 +42,7 @@ function* fetchBlogPostsWorker() {
 
 function* fetchBlogPostDetailsWorker({ id }) {
   try {
-    const { data } = yield callApi(`/blog-posts/${id}`);
+    const { data } = yield call(callApi, `/blog-posts/${id}`);
     yield put({ type: FETCH_BLOG_POST_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_BLOG_POST_DETAILS_FAIL, err });
@@ -53,7 +53,7 @@ function* sendBlogPostReviewWorker({ payload: { id, data } }) {
   try {
     const {
       data: { id: reviewId },
-    } = yield callApi(`/blog-posts/${id}/review`, "POST", data);
+    } = yield call(callApi, `/blog-posts/${id}/review`, "POST", data);
 
     const {
       blogPosts: { blogPostDetails },

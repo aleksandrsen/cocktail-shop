@@ -1,4 +1,4 @@
-import { put, takeLatest, all, select } from "redux-saga/effects";
+import { put, takeLatest, all, select, call } from "redux-saga/effects";
 import {
   DISLIKE_COCKTAIL_REVIEW_FAIL,
   DISLIKE_COCKTAIL_REVIEW_REQUEST,
@@ -24,7 +24,7 @@ import { LIKE_BLOG_POST_REVIEW_FAIL } from "../constants/blog";
 // workers
 function* fetchRandomCocktailsWorker() {
   try {
-    const { data } = yield callApi("/randomCocktails");
+    const { data } = yield call(callApi, "/randomCocktails");
     yield put({ type: FETCH_RANDOM_COCKTAILS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_RANDOM_COCKTAILS_FAIL });
@@ -33,7 +33,7 @@ function* fetchRandomCocktailsWorker() {
 
 function* fetchCocktailsListWorker() {
   try {
-    const { data } = yield callApi("/cocktails");
+    const { data } = yield call(callApi, "/cocktails");
     yield put({ type: FETCH_COCKTAILS_LIST_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_COCKTAILS_LIST_FAIL });
@@ -42,7 +42,7 @@ function* fetchCocktailsListWorker() {
 
 function* fetchCocktailDetailsWorker({ id }) {
   try {
-    const { data } = yield callApi(`/cocktails/${id}`);
+    const { data } = yield call(callApi, `/cocktails/${id}`);
     yield put({ type: FETCH_COCKTAIL_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_COCKTAIL_DETAILS_FAIL });
@@ -53,7 +53,7 @@ function* sendCocktailReviewWorker({ id, data }) {
   try {
     const {
       data: { id: reviewId },
-    } = yield callApi(`/cocktails/${id}/review`, "POST", data);
+    } = yield call(callApi, `/cocktails/${id}/review`, "POST", data);
 
     const {
       cocktails: { cocktailDetails },

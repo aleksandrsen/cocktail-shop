@@ -1,5 +1,4 @@
-import { put, takeLatest, all } from "redux-saga/effects";
-import {PhotosActionType} from "../types/actions/gallery";
+import { put, takeLatest, all, call } from "redux-saga/effects";
 import {
   FETCH_INSTAGRAM_PHOTOS_REQUEST,
   FETCH_INSTAGRAM_PHOTOS_SUCCESS,
@@ -13,7 +12,7 @@ import callApi from "../config/api";
 // workers
 function* fetchInstagramPhotosWorker() {
   try {
-    const { data } = yield callApi("/instagram");
+    const { data } = yield call(callApi, "/instagram");
     yield put({ type: FETCH_INSTAGRAM_PHOTOS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_INSTAGRAM_PHOTOS_FAIL, payload: err });
@@ -22,7 +21,7 @@ function* fetchInstagramPhotosWorker() {
 
 function* fetchGalleryPhotosWorker() {
   try {
-    const { data } = yield callApi("/gallery");
+    const { data } = yield call(callApi, "/gallery");
     yield put({ type: FETCH_GALLERY_PHOTOS_SUCCESS, payload: data });
   } catch (err) {
     yield put({ type: FETCH_GALLERY_PHOTOS_FAIL, payload: err });
