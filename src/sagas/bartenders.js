@@ -43,29 +43,10 @@ function* sendMessageToBartenderWorker() {
   }
 }
 
-// watchers
-function* fetchBartenders() {
-  yield takeLatest(FETCH_BARTENDERS_REQUEST, fetchBartendersWorker);
-}
-
-function* fetchBartenderDetails() {
-  yield takeLatest(
-    FETCH_BARTENDERS_DETAILS_REQUEST,
-    fetchBartenderDetailsWorker
-  );
-}
-
-function* sendMessageToBartender() {
-  yield takeLatest(
-    SEND_MESSAGE_TO_BARTENDER_REQUEST,
-    sendMessageToBartenderWorker
-  );
-}
-
 export function* bartendersSagas() {
   yield all([
-    fetchBartenders(),
-    fetchBartenderDetails(),
-    sendMessageToBartender(),
+    takeLatest(FETCH_BARTENDERS_REQUEST, fetchBartendersWorker),
+    takeLatest(FETCH_BARTENDERS_DETAILS_REQUEST, fetchBartenderDetailsWorker),
+    takeLatest(SEND_MESSAGE_TO_BARTENDER_REQUEST, sendMessageToBartenderWorker),
   ]);
 }

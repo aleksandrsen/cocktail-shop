@@ -134,41 +134,13 @@ function* setDislikeCocktailReviewWorker({ id }) {
   }
 }
 
-// watchers
-function* fetchRandomCocktails() {
-  yield takeLatest(FETCH_RANDOM_COCKTAILS_REQUEST, fetchRandomCocktailsWorker);
-}
-
-function* fetchCocktailsList() {
-  yield takeLatest(FETCH_COCKTAILS_LIST_REQUEST, fetchCocktailsListWorker);
-}
-
-function* fetchCocktailDetails() {
-  yield takeLatest(FETCH_COCKTAIL_DETAILS_REQUEST, fetchCocktailDetailsWorker);
-}
-
-function* sendCocktailReview() {
-  yield takeLatest(SEND_COCKTAIL_REVIEW_REQUEST, sendCocktailReviewWorker);
-}
-
-function* setLikeCocktailReview() {
-  yield takeLatest(LIKE_COCKTAIL_REVIEW_REQUEST, setLikeCocktailReviewWorker);
-}
-
-function* setDislikeCocktailReview() {
-  yield takeLatest(
-    DISLIKE_COCKTAIL_REVIEW_REQUEST,
-    setDislikeCocktailReviewWorker
-  );
-}
-
 export function* cocktailsSagas() {
   yield all([
-    fetchRandomCocktails(),
-    fetchCocktailsList(),
-    fetchCocktailDetails(),
-    sendCocktailReview(),
-    setLikeCocktailReview(),
-    setDislikeCocktailReview(),
+    takeLatest(SEND_COCKTAIL_REVIEW_REQUEST, sendCocktailReviewWorker),
+    takeLatest(FETCH_COCKTAILS_LIST_REQUEST, fetchCocktailsListWorker),
+    takeLatest(LIKE_COCKTAIL_REVIEW_REQUEST, setLikeCocktailReviewWorker),
+    takeLatest(FETCH_RANDOM_COCKTAILS_REQUEST, fetchRandomCocktailsWorker),
+    takeLatest(FETCH_COCKTAIL_DETAILS_REQUEST, fetchCocktailDetailsWorker),
+    takeLatest(DISLIKE_COCKTAIL_REVIEW_REQUEST, setDislikeCocktailReviewWorker)
   ]);
 }

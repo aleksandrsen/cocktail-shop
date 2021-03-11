@@ -52,28 +52,11 @@ function* fetchEventDetailsWorker(action) {
   }
 }
 
-// watchers
-export function* fetchUpcomingEvent() {
-  yield takeLatest(FETCH_UPCOMING_EVENT_REQUEST, upcomingEventWorker);
-}
-
-export function* fetchNextEvents() {
-  yield takeLatest(FETCH_NEXT_EVENTS_REQUEST, fetchNextEventsWorker);
-}
-
-export function* fetchEventsList() {
-  yield takeLatest(FETCH_EVENTS_LIST_REQUEST, fetchEventsListWorker);
-}
-
-export function* fetchEventDetails() {
-  yield takeLatest(FETCH_EVENT_DETAILS_REQUEST, fetchEventDetailsWorker);
-}
-
 export function* eventsSagas() {
   yield all([
-    fetchUpcomingEvent(),
-    fetchNextEvents(),
-    fetchEventsList(),
-    fetchEventDetails(),
+    takeLatest(FETCH_NEXT_EVENTS_REQUEST, fetchNextEventsWorker),
+    takeLatest(FETCH_EVENTS_LIST_REQUEST, fetchEventsListWorker),
+    takeLatest(FETCH_UPCOMING_EVENT_REQUEST, upcomingEventWorker),
+    takeLatest(FETCH_EVENT_DETAILS_REQUEST, fetchEventDetailsWorker),
   ]);
 }

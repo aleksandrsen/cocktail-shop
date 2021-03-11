@@ -28,15 +28,9 @@ function* fetchGalleryPhotosWorker() {
   }
 }
 
-// watchers
-function* fetchInstagramPhotos() {
-  yield takeLatest(FETCH_INSTAGRAM_PHOTOS_REQUEST, fetchInstagramPhotosWorker);
-}
-
-function* fetchGalleryPhotos() {
-  yield takeLatest(FETCH_GALLERY_PHOTOS_REQUEST, fetchGalleryPhotosWorker);
-}
-
 export function* gallerySagas() {
-  yield all([fetchInstagramPhotos(), fetchGalleryPhotos()]);
+  yield all([
+    takeLatest(FETCH_GALLERY_PHOTOS_REQUEST, fetchGalleryPhotosWorker),
+    takeLatest(FETCH_INSTAGRAM_PHOTOS_REQUEST, fetchInstagramPhotosWorker),
+  ]);
 }

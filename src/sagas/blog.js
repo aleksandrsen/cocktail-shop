@@ -147,41 +147,13 @@ function* setDislikeBlogPostReviewWorker({ id }) {
   }
 }
 
-// watchers
-export function* fetchLatestBlogPosts() {
-  yield takeLatest(FETCH_LATEST_BLOG_POSTS_REQUEST, fetchLatestBlogPostsWorker);
-}
-
-export function* fetchBlogPosts() {
-  yield takeLatest(FETCH_BLOG_POSTS_REQUEST, fetchBlogPostsWorker);
-}
-
-export function* fetchBlogPostDetails() {
-  yield takeLatest(FETCH_BLOG_POST_DETAILS_REQUEST, fetchBlogPostDetailsWorker);
-}
-
-export function* sendBlogPostReview() {
-  yield takeLatest(SEND_BLOG_POST_REVIEW_REQUEST, sendBlogPostReviewWorker);
-}
-
-export function* setLikeBlogPostReview() {
-  yield takeEvery(LIKE_BLOG_POST_REVIEW_REQUEST, setLikeBlogPostReviewWorker);
-}
-
-export function* setDislikeBlotPostReview() {
-  yield takeEvery(
-    DISLIKE_BLOG_POST_REVIEW_REQUEST,
-    setDislikeBlogPostReviewWorker
-  );
-}
-
 export function* blogSagas() {
   yield all([
-    fetchLatestBlogPosts(),
-    fetchBlogPosts(),
-    fetchBlogPostDetails(),
-    sendBlogPostReview(),
-    setLikeBlogPostReview(),
-    setDislikeBlotPostReview(),
+    takeLatest(FETCH_BLOG_POSTS_REQUEST, fetchBlogPostsWorker),
+    takeLatest(SEND_BLOG_POST_REVIEW_REQUEST, sendBlogPostReviewWorker),
+    takeEvery(LIKE_BLOG_POST_REVIEW_REQUEST, setLikeBlogPostReviewWorker),
+    takeLatest(FETCH_LATEST_BLOG_POSTS_REQUEST, fetchLatestBlogPostsWorker),
+    takeLatest(FETCH_BLOG_POST_DETAILS_REQUEST, fetchBlogPostDetailsWorker),
+    takeEvery(DISLIKE_BLOG_POST_REVIEW_REQUEST, setDislikeBlogPostReviewWorker),
   ]);
 }

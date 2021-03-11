@@ -76,36 +76,12 @@ function* deleteItemFromWishListWorker({ id }) {
   });
 }
 
-// watchers
-function* userSendMessage() {
-  yield takeLatest(USER_SEND_MESSAGE_REQUEST, userSendMessageWorker);
-}
-
-function* addItemToCard() {
-  yield takeLatest(ADD_ITEM_TO_CARD_REQUEST, addItemToCardWorker);
-}
-
-function* deleteItemFromCard() {
-  yield takeLatest(DELETE_ITEM_FROM_CARD_REQUEST, deleteItemFromCardWorker);
-}
-
-function* addItemToWishList() {
-  yield takeLatest(ADD_ITEM_TO_WISH_LIST_REQUEST, addItemToWishListWorker);
-}
-
-function* deleteItemFromWishList() {
-  yield takeLatest(
-    DELETE_ITEM_FROM_WISH_LIST_REQUEST,
-    deleteItemFromWishListWorker
-  );
-}
-
 export function* userSagas() {
   yield all([
-    userSendMessage(),
-    addItemToCard(),
-    deleteItemFromCard(),
-    addItemToWishList(),
-    deleteItemFromWishList(),
+    takeLatest(ADD_ITEM_TO_CARD_REQUEST, addItemToCardWorker),
+    takeLatest(USER_SEND_MESSAGE_REQUEST, userSendMessageWorker),
+    takeLatest(ADD_ITEM_TO_WISH_LIST_REQUEST, addItemToWishListWorker),
+    takeLatest(DELETE_ITEM_FROM_CARD_REQUEST, deleteItemFromCardWorker),
+    takeLatest(DELETE_ITEM_FROM_WISH_LIST_REQUEST, deleteItemFromWishListWorker),
   ]);
 }
