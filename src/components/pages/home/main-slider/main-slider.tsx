@@ -2,28 +2,31 @@ import React from "react";
 import "./main-slider.scss";
 // Components
 import Slider, { Settings } from "react-slick";
+import ImgSkeleton from "../../../reusable-components/img-skeleton";
 // Utils
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 import slides from "../../../../src_/img/main-slider-slides";
-
 
 const MainSlider = () => {
   const settings: Settings = {
     dots: true,
-    lazyLoad: "ondemand",
+    lazyLoad: "progressive",
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    initialSlide: 1,
+    initialSlide: 0,
+    autoplay: false,
   };
 
   return (
     <section className="mainSlider" data-test="mainSlider">
       <Slider {...settings}>
         {slides.map(({ name, img }) => (
-          <img src={img} alt={name} key={name} />
+          <ImgSkeleton
+            key={name}
+            src={img}
+            skeletonStyle={{ height: "100vh", width: "100vw" }}
+          />
         ))}
       </Slider>
     </section>
