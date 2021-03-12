@@ -7,8 +7,6 @@
   }
 
   .col {
-    display: flex;
-
     @include sm-screen {
       width: 75%;
     }

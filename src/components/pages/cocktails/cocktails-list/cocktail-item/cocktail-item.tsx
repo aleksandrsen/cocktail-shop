@@ -41,17 +41,17 @@ const CocktailItem = ({
         />
       )}
       <Link to={`/cocktails/${cocktail?.id}`} className="cocktailItem__imgWrap">
-        <LazyLoad height="310">
-          <ImgSkeleton
-            src={cocktail?.previewSrc}
-            title={cocktail?.name}
-            skeletonStyle={{
-              width: "100%",
-              borderRadius: "10px 10px 0 0",
-              ...imgSkeletonStyles,
-            }}
-          />
-        </LazyLoad>
+        {/*<LazyLoad height="310">*/}
+        <ImgSkeleton
+          title={cocktail?.name}
+          src={cocktail?.previewSrc}
+          skeletonStyle={{
+            width: "100%",
+            borderRadius: "10px 10px 0 0",
+            ...imgSkeletonStyles,
+          }}
+        />
+        {/*</LazyLoad>*/}
       </Link>
       <div className="cocktailItem__info">
         <Tippy content={cocktail?.name} theme="bootstrap">

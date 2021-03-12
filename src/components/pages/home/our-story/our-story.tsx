@@ -32,7 +32,7 @@ const OurStory = () => (
             </Link>
           </div>
         </Fade>
-        <Fade right>
+        <Fade right enter={false}>
           <div className="col col-5">
             <LazyLoad height="450">
               <img src={ourStory} alt="Our story img" />

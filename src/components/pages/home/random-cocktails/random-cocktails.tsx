@@ -7,7 +7,7 @@ import { useMedia } from "../../../../utils/hooks";
 // Actions
 import { fetchRandomCocktails } from "../../../../actions/cocktails";
 // Components
-import { Carousel } from "antd";
+import Slider, { Settings } from "react-slick";
 import CocktailItem from "../../cocktails/cocktails-list/cocktail-item";
 // Types
 import { AppRootState } from "../../../../store";
@@ -38,16 +38,15 @@ const RandomCocktails = ({
     4
   );
 
-  const cutArray = (cocktails: CocktailItemType[], itemArrLength: number) => {
-    if (!cocktails || !cocktails.length) return [];
-    const res = [];
-    let j = 0;
-    for (let i = 0; i < Math.ceil(cocktails.length / itemArrLength); ) {
-      res.push(cocktails.slice(j, j + itemArrLength));
-      i += 1;
-      j += itemArrLength;
-    }
-    return res;
+  const settings: Settings = {
+    dots: false,
+    lazyLoad: "ondemand",
+    infinite: true,
+    speed: 1000,
+    slidesToShow: columns,
+    slidesToScroll: columns,
+    initialSlide: 0,
+    autoplay: true,
   };
 
   return (
@@ -62,28 +61,16 @@ const RandomCocktails = ({
           <br />
         </p>
         {cocktails?.length ? (
-          <Carousel autoplaySpeed={5000} dots={false}>
-            {cutArray(cocktails, columns).map((itemArr) => (
-              <div
-                className="randomCocktails__slideWrapper"
-                key={`${itemArr[0]?.id}${itemArr[1]?.id}`}
-              >
-                <div
-                  key={`${itemArr[0]?.id}${itemArr[1]?.id}`}
-                  className="row noWrap"
-                >
-                  {itemArr.map((cocktail) => (
-                    <CocktailItem
-                      col={12 / columns}
-                      key={cocktail.id}
-                      cocktail={cocktail}
-                      imgSkeletonStyles={{ height: "310px" }}
-                    />
-                  ))}
-                </div>
-              </div>
+          <Slider {...settings}>
+            {cocktails.map((cocktail) => (
+              <CocktailItem
+                col={12}
+                key={cocktail.id}
+                cocktail={cocktail}
+                imgSkeletonStyles={{ minHeight: "200px" }}
+              />
             ))}
-          </Carousel>
+          </Slider>
         ) : (
           <div className="row noWrap">
             {getSkeletons(columns, CocktailItem, {

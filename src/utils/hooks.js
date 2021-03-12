@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useMedia = (queries, values, defaultValue) => {
   const mediaQueryLists = queries.map((q) => window.matchMedia(q));
