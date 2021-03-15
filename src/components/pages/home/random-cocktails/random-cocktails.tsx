@@ -46,7 +46,7 @@ const RandomCocktails = ({
     slidesToShow: columns,
     slidesToScroll: columns,
     initialSlide: 0,
-    autoplay: true,
+    autoplay: false,
   };
 
   return (
@@ -61,8 +61,9 @@ const RandomCocktails = ({
           <br />
         </p>
         {cocktails?.length ? (
+        // {0 ? (
           <Slider {...settings}>
-            {cocktails.map((cocktail) => (
+            {cocktails?.map((cocktail) => (
               <CocktailItem
                 col={12}
                 key={cocktail.id}

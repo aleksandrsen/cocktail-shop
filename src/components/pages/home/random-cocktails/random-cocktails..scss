@@ -1,9 +1,20 @@
 @import "src/src_/var";
 
 .randomCocktails {
-
+  .col,
   .row {
     justify-content: center;
+    min-height: 525px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+
+    .cocktailItem__imgWrap {
+      display: flex;
+      flex-grow: 1;
+    }
   }
 
   .col {

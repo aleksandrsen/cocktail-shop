@@ -44,7 +44,11 @@ const ImgSkeleton = ({
         onError={handleError}
       />
       {error && (
-        <img src={semantic} alt={title} className={classes.join(" ")} />
+        <img
+          src={semantic}
+          alt={title}
+          className={`${classes.join(" ")} imgSkeleton__semantic`}
+        />
       )}
     </>
   );
