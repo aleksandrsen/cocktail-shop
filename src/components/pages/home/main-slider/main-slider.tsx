@@ -6,6 +6,9 @@ import ImgSkeleton from "../../../reusable-components/img-skeleton";
 // Utils
 import slides from "../../../../src_/img/main-slider-slides";
 
+// import "~slick-carousel/slick/slick.css";
+// import "~slick-carousel/slick/slick-theme.css";
+
 const MainSlider = () => {
   const settings: Settings = {
     dots: true,
