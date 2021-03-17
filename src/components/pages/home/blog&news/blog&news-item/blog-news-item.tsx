@@ -15,15 +15,16 @@ import FieldSkeleton from "../../../../reusable-components/field-skeleton";
 type BlogPostItemTypeProps = {
   idx?: number;
   post: BlogPostItemType;
+  isShowAnimation?: boolean
 };
 
-const BlogNewsItem = ({ post, idx }: BlogPostItemTypeProps) => {
+const BlogNewsItem = ({ post, isShowAnimation = false, idx }: BlogPostItemTypeProps) => {
   const dayNum: string = formatDate(post?.date, {
     day: "numeric",
   });
 
   return (
-    <Fade left={idx === 0} right={idx !== 0}>
+    <Fade left={idx === 0 && isShowAnimation} right={idx !== 0 && isShowAnimation}>
       <div className="col col-12 blogNewsItem" data-test="blogNewsItem">
         <div className="row center">
           <div className="col col-5 col-lg-6 col-md-12">
@@ -133,14 +134,14 @@ const BlogNewsItem = ({ post, idx }: BlogPostItemTypeProps) => {
               <ImgSkeleton
                 title={post?.title}
                 src={post?.previewSrc}
-                skeletonStyle={{ height: "250px" }}
+                skeletonStyle={{ minHeight: "280px" }}
                 classes={["blogNewsItem__preview"]}
               />
             </LazyLoad>
           </div>
         </div>
       </div>
-    </Fade>
+     </Fade>
   );
 };
 
