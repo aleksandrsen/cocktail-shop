@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState, RefObject } from "react";
+import React, { useEffect, useRef } from "react";
 import "./blog-news.scss";
 // Actions
 import { fetchLatestBlogPosts } from "../../../../actions/blog";
 // Components
+// @ts-ignore
+import Fade from "react-reveal/Fade";
 import BlogNewsItem from "./blog&news-item";
 // Utils
 import { connect } from "react-redux";
 import { getSkeletons } from "../../../../utils";
+import { useIsShowAnimation } from "../../../../utils/hooks";
 // Types
 import { AppRootState } from "../../../../store";
 import { BlogPostItemType } from "../../../../types/common";
@@ -16,35 +19,6 @@ type BlogNewsPropsType = {
   fetchLatestBlogPosts: () => void;
 };
 
-function isInViewport(element: any) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-const useIsShowAnimation = (ref: RefObject<any>) => {
-  const [isShow, setIsShow] = useState(false);
-  const windowOffset = window.pageYOffset;
-
-  useEffect(() => {
-    if (ref?.current) {
-      const coords = ref.current.getBoundingClientRect();
-      if (
-        ref.current.offsetTop + coords.height >= windowOffset &&
-        !isInViewport(ref.current)
-      )
-        setIsShow(true);
-    }
-  }, [ref]);
-
-  return isShow;
-};
-
 const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
   useEffect(() => {
     fetchLatestBlogPosts();
@@ -52,10 +26,7 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
 
   const elemRef = useRef<HTMLDivElement>(null);
 
-  const isShowAnimation = useIsShowAnimation(elemRef);
-
-  console.log(isShowAnimation)
-
+  // const isShowAnimation = useIsShowAnimation(elemRef);
 
   return (
     <div
@@ -74,12 +45,15 @@ const BlogNews = ({ blogPosts, fetchLatestBlogPosts }: BlogNewsPropsType) => {
         <div className="row center">
           {blogPosts?.length && elemRef.current
             ? blogPosts.map((post, idx) => (
-                <BlogNewsItem
+                <Fade
                   key={post.id}
-                  post={post}
-                  idx={idx}
-                  isShowAnimation={isShowAnimation}
-                />
+                  // left={!idx && isShowAnimation}
+                  left={!idx && 0}
+                  // right={!!idx && isShowAnimation}
+                  right={!!idx && 0}
+                >
+                  <BlogNewsItem key={post.id} post={post} />
+                </Fade>
               ))
             : getSkeletons(2, BlogNewsItem)}
         </div>

@@ -15,6 +15,7 @@ export interface ICocktailsReducer {
 }
 
 export interface IBlogPosts {
+  // readonly blogPosts: null | BlogPostItemType[];
   readonly blogPosts: null | BlogPostItemType[];
   readonly latestBlogPosts: null | BlogPostItemType[];
   readonly blogPostDetails: null | BlogPostItemType;

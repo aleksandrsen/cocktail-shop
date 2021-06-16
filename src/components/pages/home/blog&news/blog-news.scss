@@ -1,2 +1,9 @@
 .blogNewsHome {
+  .react-reveal:last-child {
+    margin-top: 32px;
+
+    .blogNewsItem .row .col:last-child {
+      order: -1;
+    }
+  }
 }

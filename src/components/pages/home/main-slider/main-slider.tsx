@@ -1,5 +1,5 @@
 import React from "react";
-import "./main-slider.scss";
+import styles from "./main-slider.module.scss";
 // Components
 import Slider, { Settings } from "react-slick";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
@@ -19,7 +19,7 @@ const MainSlider = () => {
   };
 
   return (
-    <section className="mainSlider" data-test="mainSlider">
+    <section className={styles.mainSlider} data-test="mainSlider">
       <Slider {...settings}>
         {slides.map(({ name, img }) => (
           <ImgSkeleton

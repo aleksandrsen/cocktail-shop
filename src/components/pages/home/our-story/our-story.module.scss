@@ -1,0 +1,24 @@
+@import "src/src_/var";
+
+.ourStory {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.ourStoryImgWrapper {
+  @include sm-screen {
+    display: none;
+  }
+}
+
+.ourStoryContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ourStoryImg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 450px;
+}

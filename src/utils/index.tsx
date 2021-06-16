@@ -82,5 +82,24 @@ export function searchByFields<T extends object, U extends keyof T>(
 export const validateEmail = (str: string): boolean =>
   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(str);
 
-export const getTotalValue = (arr: any[], field: string) =>
-  arr.reduce((sum, item) => sum + item[field], 0);
+
+
+export const getTotalValue = <T extends { [F: string]: number }, F extends keyof T>(
+    arr: T[],
+    field: F
+) => {
+     return arr.reduce((sum, item) => sum + item[field], 0);
+};
+
+export const isInViewport = (element: Element) => {
+  if (!element) return false;
+  const rect = element.getBoundingClientRect();
+
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};

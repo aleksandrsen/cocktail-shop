@@ -73,6 +73,7 @@ const UserWishList = ({ wishList }: UserWishListPropsType) => {
         ? Object.values(wishList).filter(({ id }) => selectedItems[id])
         : Object.values(wishList);
 
+    // @ts-ignore
     return getTotalValue(arr, "price");
   };
 

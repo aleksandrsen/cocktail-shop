@@ -22,7 +22,7 @@ import {
 import callApi from "../config/api";
 
 // workers
-function* fetchLatestBlogPostsWorker() {
+function* fetchLatestBlogPosts() {
   try {
     const { data } = yield call(callApi, "/latestBlogPosts");
     yield put({ type: FETCH_LATEST_BLOG_POSTS_SUCCESS, payload: data });
@@ -31,7 +31,7 @@ function* fetchLatestBlogPostsWorker() {
   }
 }
 
-function* fetchBlogPostsWorker() {
+function* fetchBlogPosts() {
   try {
     const { data } = yield call(callApi, "/blog-posts");
     yield put({ type: FETCH_BLOG_POSTS_SUCCESS, payload: data });
@@ -40,7 +40,7 @@ function* fetchBlogPostsWorker() {
   }
 }
 
-function* fetchBlogPostDetailsWorker({ id }) {
+function* fetchBlogPostDetails({ id }) {
   try {
     const { data } = yield call(callApi, `/blog-posts/${id}`);
     yield put({ type: FETCH_BLOG_POST_DETAILS_SUCCESS, payload: data });
@@ -49,7 +49,7 @@ function* fetchBlogPostDetailsWorker({ id }) {
   }
 }
 
-function* sendBlogPostReviewWorker({ payload: { id, data } }) {
+function* sendBlogPostReview({ payload: { id, data } }) {
   try {
     const {
       data: { id: reviewId },
@@ -81,7 +81,7 @@ function* sendBlogPostReviewWorker({ payload: { id, data } }) {
   }
 }
 
-function* setLikeBlogPostReviewWorker({ id }) {
+function* setLikeBlogPostReview({ id }) {
   try {
     // const {
     //   data: { id: reviewId },
@@ -114,7 +114,7 @@ function* setLikeBlogPostReviewWorker({ id }) {
   }
 }
 
-function* setDislikeBlogPostReviewWorker({ id }) {
+function* setDislikeBlogPostReview({ id }) {
   try {
     // const {
     //   data: { id: reviewId },
@@ -149,11 +149,11 @@ function* setDislikeBlogPostReviewWorker({ id }) {
 
 export function* blogSagas() {
   yield all([
-    takeLatest(FETCH_BLOG_POSTS_REQUEST, fetchBlogPostsWorker),
-    takeLatest(SEND_BLOG_POST_REVIEW_REQUEST, sendBlogPostReviewWorker),
-    takeEvery(LIKE_BLOG_POST_REVIEW_REQUEST, setLikeBlogPostReviewWorker),
-    takeLatest(FETCH_LATEST_BLOG_POSTS_REQUEST, fetchLatestBlogPostsWorker),
-    takeLatest(FETCH_BLOG_POST_DETAILS_REQUEST, fetchBlogPostDetailsWorker),
-    takeEvery(DISLIKE_BLOG_POST_REVIEW_REQUEST, setDislikeBlogPostReviewWorker),
+    takeLatest(FETCH_BLOG_POSTS_REQUEST, fetchBlogPosts),
+    takeLatest(SEND_BLOG_POST_REVIEW_REQUEST, sendBlogPostReview),
+    takeEvery(LIKE_BLOG_POST_REVIEW_REQUEST, setLikeBlogPostReview),
+    takeLatest(FETCH_LATEST_BLOG_POSTS_REQUEST, fetchLatestBlogPosts),
+    takeLatest(FETCH_BLOG_POST_DETAILS_REQUEST, fetchBlogPostDetails),
+    takeEvery(DISLIKE_BLOG_POST_REVIEW_REQUEST, setDislikeBlogPostReview),
   ]);
 }
