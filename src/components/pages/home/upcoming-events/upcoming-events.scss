@@ -1,4 +1,4 @@
-@import "src/src_/var";
+@import "../../../../source/variables";
 
 .upcomingEvent {
   .container {
@@ -8,7 +8,7 @@
   &__info {
     padding: 25px;
     background: center / cover no-repeat
-      url("../../../../src_/img/upcoming-event-bg.jpg");
+      url("../../../../source/img/upcoming-event-bg.jpg");
   }
 
   &__title {

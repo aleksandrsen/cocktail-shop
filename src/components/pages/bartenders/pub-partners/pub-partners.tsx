@@ -1,7 +1,7 @@
 import React from "react";
 import "./pub-partners.scss";
-import partner1 from "../../../../src_/img/pub-partners/partner-1.png";
-import partner2 from "../../../../src_/img/pub-partners/partner-2.png";
+import partner1 from "../../../../source/img/pub-partners/partner-1.png";
+import partner2 from "../../../../source/img/pub-partners/partner-2.png";
 
 const PubPartners = () => (
   <section className="default-section pubPartners" data-test="pubPartners">

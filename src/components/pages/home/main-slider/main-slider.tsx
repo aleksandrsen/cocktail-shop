@@ -4,7 +4,7 @@ import styles from "./main-slider.module.scss";
 import Slider, { Settings } from "react-slick";
 import ImgSkeleton from "../../../reusable-components/img-skeleton";
 // Utils
-import slides from "../../../../src_/img/main-slider-slides";
+import slides from "../../../../source/img/main-slider-slides";
 
 const MainSlider = () => {
   const settings: Settings = {

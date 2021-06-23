@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../src_/slick-slider.scss";
+import "../../../source/slick-slider.scss";
 // Components
 import OurStory from "./our-story";
 import HappyHour from "./happy-hour";

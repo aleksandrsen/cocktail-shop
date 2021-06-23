@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.scss";
 // Utils
-import logo from "../../src_/img/logo.png";
+import logo from "../../source/img/logo.png";
 // Components
 import SocialNetworks from "../social-networks";
 

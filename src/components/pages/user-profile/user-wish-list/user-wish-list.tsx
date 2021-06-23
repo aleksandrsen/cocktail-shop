@@ -9,7 +9,7 @@ import CustomCheckbox from "../../../reusable-components/custom-checkbox";
 import { connect } from "react-redux";
 import { AppRootState } from "../../../../store";
 import { getTotalValue } from "../../../../utils";
-import emptyWishListImg from "../../../../src_/img/empty-wish-list.jpg";
+import emptyWishListImg from "../../../../source/img/empty-wish-list.jpg";
 // Types
 import { UserWishListType } from "../../../../types/common";
 import { onChangeCustomCheckBoxFuncType } from "../../../reusable-components/custom-checkbox/custom-checkbox";

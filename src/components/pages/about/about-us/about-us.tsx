@@ -2,7 +2,7 @@ import React from "react";
 import "./about-us.scss";
 // Components
 import { Link } from "react-router-dom";
-import newBottle from "../../../../src_/img/new-bottle.jpg";
+import newBottle from "../../../../source/img/new-bottle.jpg";
 
 const AboutUs = () => (
   <div className="default-section about" data-test="about">

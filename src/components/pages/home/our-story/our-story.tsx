@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // @ts-ignore
 import Fade from "react-reveal/Fade";
 // Utils
-import ourStoryPreview from "../../../../src_/img/our-story.png";
+import ourStoryPreview from "../../../../source/img/our-story.png";
 import { useIsShowAnimation } from "../../../../utils/hooks";
 
 const OurStory = () => {

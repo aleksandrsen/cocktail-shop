@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import "./img-skeleton.scss";
-import semantic from "../../../src_/img/semantic.png";
+import semantic from "../../../source/img/semantic.png";
 
 type ImgSkeletonPropsType = {
   src?: string;

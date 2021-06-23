@@ -1,3 +1,5 @@
+@import "../../../source/variables";
+
 .wishList {
   display: flex;
   align-items: center;
@@ -6,7 +8,7 @@
     display: block;
     width: 25px;
     height: 25px;
-    color: var(--main-color);
+    color: $main-color;
     cursor: pointer;
   }
 
@@ -16,6 +18,6 @@
     left: -20px;
     font-size: 18px;
     font-weight: 500;
-    color: var(--main-color);
+    color: $main-color;
   }
 }

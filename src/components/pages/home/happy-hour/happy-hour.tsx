@@ -1,6 +1,6 @@
 import React from "react";
 import "./happy-hour.scss";
-import logo from "../../../../src_/img/logo.png";
+import logo from "../../../../source/img/logo.png";
 
 const HappyHour = () => (
   <div className="default-section happyHour" data-test="happyHour">

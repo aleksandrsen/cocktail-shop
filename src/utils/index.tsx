@@ -29,7 +29,7 @@ export function getSkeletons(
     .map((num, idx) => <SkeletonComponent key={`${num}${idx}`} {...props} />);
 }
 
-type DateOptionItem = "2-digit" | "numeric";
+type DateOptionItem = "2-digit" | "numeric" | undefined;
 
 type DateOptionsObj = {
   year?: DateOptionItem;
@@ -54,7 +54,7 @@ export const formatDate = (
   };
 
   const date_ = typeof date === "string" ? new Date(Date.parse(date)) : date;
-  const formatter = new Intl.DateTimeFormat("en", optionsObj || defaultOptions);
+  const formatter = new Intl.DateTimeFormat("en", optionsObj);
   return formatter.format(date_);
 };
 
@@ -82,13 +82,14 @@ export function searchByFields<T extends object, U extends keyof T>(
 export const validateEmail = (str: string): boolean =>
   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(str);
 
-
-
-export const getTotalValue = <T extends { [F: string]: number }, F extends keyof T>(
-    arr: T[],
-    field: F
+export const getTotalValue = <
+  T extends { [F: string]: number },
+  F extends keyof T
+>(
+  arr: T[],
+  field: F
 ) => {
-     return arr.reduce((sum, item) => sum + item[field], 0);
+  return arr.reduce((sum, item) => sum + item[field], 0);
 };
 
 export const isInViewport = (element: Element) => {

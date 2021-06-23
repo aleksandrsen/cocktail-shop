@@ -1,25 +1,25 @@
-import React from "react";
-import "./header.scss";
-// Utils
-import logo from "../../src_/img/logo.png";
+import React, { memo } from "react";
+import styles from "./header.module.scss";
 // Components
 import MainMenu from "./main-menu";
 import WishList from "./wish-list";
 import MyAccount from "./my-account";
 import ShoppingCart from "./shopping-cart";
+// Utils
+import logo from "../../source/img/logo.png";
 
 const Header = () => (
-  <header className="header">
-    <div className="container">
-      <img className="header__logo" src={logo} alt="" />
+  <header className={styles.header}>
+    <div className={styles.headerContainer}>
+      <img className={styles.headerLogo} src={logo} alt="" />
       <MainMenu />
-      <div className="header__wrapper">
+      <div className={styles.headerWrapper}>
         <WishList />
         <ShoppingCart />
-        <MyAccount/>
+        <MyAccount />
       </div>
     </div>
   </header>
 );
 
-export default React.memo(Header);
+export default memo(Header);
